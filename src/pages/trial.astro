@@ -2,114 +2,263 @@
 import '../styles/global.css';
 import Icon from '../components/ui/Icon.astro';
 
-// Trial Curated Recipes
+// Authentic Curated World-Class Recipes from SeedData
 const trialRecipes = [
   {
     id: 'recipe-rusdi',
     author: 'Rusdi',
+    countryCode: 'ID',
     flag: '🇮🇩',
     title: 'Resep V60 Pour Over Saya',
-    subtitle: 'Resep seduh V60 Pour...',
+    subtitle: 'Signature Sweetness & Balance Pour Over',
     category: 'V60',
-    coffee: '15g',
-    water: '225ml',
-    temp: '92°C',
+    beanName: 'Jawa Puntang Natural (Single Origin)',
+    variety: 'Typica / Ateng',
+    process: 'Natural Process',
+    roast: 'Light to Medium',
+    coffee: 15,
+    water: 225,
+    temp: 92,
     ratio: '1:15',
     isIced: false,
-    pours: '3x Pour',
-    grind: 'Medium',
-    grindDetail: 'Comandante: 22 klik • Timemore: 16 klik • Vesper: 65 klik',
-    notes: ['Peach', 'Brown Sugar', 'Floral'],
+    pours: 3,
+    grindSize: 'Medium (22 Klik)',
+    grindLabel: 'Medium',
+    notes: [
+      { name: 'Peach', emoji: '🍑', color: '#F97316' },
+      { name: 'Brown Sugar', emoji: '🍯', color: '#D97706' },
+      { name: 'Floral', emoji: '🌸', color: '#EC4899' },
+    ],
     avatar: '/images/characters/char_avatar_1.jpg',
-    dot1: { bg: 'bg-[#FED7AA]', icon: 'flame', color: '#EA580C' },
-    dot2: { bg: 'bg-[#FFEDD5]', icon: 'disc', color: '#D97706' },
-    totalSeconds: 135, // 02:15
+    totalSeconds: 135,
+    description: 'Resep andalan harian dengan rasio 1:15. Mengekstraksi keasaman buah peach manis di tuangan awal, disusul kepekatan rasa brown sugar karamel yang halus dan aftertaste floral panjang.',
     steps: [
-      { name: '1. Blooming & Swirl', time: '00:00 - 00:35', start: 0, end: 35, waterAdded: 45, waterTarget: 45, desc: 'Tuang melingkar pelan, swirl 2x.' },
-      { name: '2. Sweetness Center Pour', time: '00:35 - 01:15', start: 35, end: 75, waterAdded: 90, waterTarget: 135, desc: 'Tuang di tengah untuk ekstraksi gula alami.' },
-      { name: '3. Final Clarity Pour', time: '01:15 - 02:15', start: 75, end: 135, waterAdded: 90, waterTarget: 225, desc: 'Tuang spiral melingkar sampai 225g. Tunggu air turun.' },
+      { order: 1, name: 'Blooming & Swirl', time: '00:00 - 00:35', start: 0, end: 35, duration: 35, waterAdded: 45, waterTarget: 45, desc: 'Tuang melingkar pelan dari tengah, swirl 2x lembut.' },
+      { order: 2, name: 'Sweetness Center Pour', time: '00:35 - 01:15', start: 35, end: 75, duration: 40, waterAdded: 90, waterTarget: 135, desc: 'Tuang tenang di titik tengah untuk melarutkan gula alami.' },
+      { order: 3, name: 'Final Clarity Pour', time: '01:15 - 02:15', start: 75, end: 135, duration: 60, waterAdded: 90, waterTarget: 225, desc: 'Tuang spiral melingkar sampai 225g. Biarkan air turun tuntas.' },
     ]
   },
   {
     id: 'recipe-tetsu',
     author: 'Tetsu Kasuya',
+    countryCode: 'JP',
     flag: '🇯🇵',
-    title: 'Metode Multi-Pour Neo Brew (4:6)',
-    subtitle: "Tetsu Kasuya's 10th...",
+    title: 'Metode Multi-Pour Neo Brew (2026)',
+    subtitle: "Tetsu Kasuya's 10th Anniversary Recipe",
     category: 'V60',
-    coffee: '20g',
-    water: '300ml',
-    temp: '90°C',
+    beanName: 'Light Roast Single Origin Geisha',
+    variety: 'Panama Geisha',
+    process: 'Washed Process',
+    roast: 'Light Roast',
+    coffee: 20,
+    water: 300,
+    temp: 96,
     ratio: '1:15',
     isIced: false,
-    pours: '5x Pour',
-    grind: 'Super Coarse',
-    grindDetail: 'Comandante: 28 klik • Timemore: 22 klik • Vesper: 85 klik',
-    notes: ['Cherry', 'Black Tea', 'Clean Sweet'],
+    pours: 5,
+    grindSize: 'Super Coarse (45 Klik)',
+    grindLabel: 'Super Coarse',
+    notes: [
+      { name: 'Cherry', emoji: '🍒', color: '#DC2626' },
+      { name: 'Black Tea', emoji: '🍵', color: '#059669' },
+      { name: 'Syrupy', emoji: '✨', color: '#ECA400' },
+    ],
     avatar: '/images/avatars/portraits/tetsu_kasuya.jpg',
-    dot1: { bg: 'bg-[#FCE7F3]', icon: 'heart', color: '#DB2777' },
-    dot2: { bg: 'bg-[#E0F2FE]', icon: 'sparkles', color: '#0284C7' },
-    totalSeconds: 210, // 03:30
+    totalSeconds: 210,
+    description: 'Resep ulang tahun ke-10 (2026) Tetsu Kasuya. Menggunakan gilingan super kasar dan tuangan multi-pulse untuk menghasilkan tekstur sangat kental (syrupy), manis maksimal, dan minim rasa pahit.',
     steps: [
-      { name: '1. 40% Rasa (Bloom 1)', time: '00:00 - 00:45', start: 0, end: 45, waterAdded: 50, waterTarget: 50, desc: 'Menentukan balance acidity awal seduhan.' },
-      { name: '2. 40% Rasa (Bloom 2)', time: '00:45 - 01:30', start: 45, end: 90, waterAdded: 70, waterTarget: 120, desc: 'Menentukan tingkat sweetness rasa manis.' },
-      { name: '3. 60% Strength (Pour 3)', time: '01:30 - 02:10', start: 90, end: 130, waterAdded: 60, waterTarget: 180, desc: 'Tuang lembut di tengah untuk konsentrasi strength.' },
-      { name: '4. 60% Strength (Pour 4)', time: '02:10 - 02:50', start: 130, end: 170, waterAdded: 60, waterTarget: 240, desc: 'Tuangan keempat menjaga ekstraksi seimbang.' },
-      { name: '5. Drawdown Finish (Pour 5)', time: '02:50 - 03:30', start: 170, end: 210, waterAdded: 60, waterTarget: 300, desc: 'Tuangan akhir hingga 300g. Biarkan air turun sempurna.' },
+      { order: 1, name: '40% Rasa (Bloom 1)', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Menentukan balance acidity awal seduhan kopi.' },
+      { order: 2, name: '40% Rasa (Bloom 2)', time: '00:45 - 01:30', start: 45, end: 90, duration: 45, waterAdded: 70, waterTarget: 120, desc: 'Menentukan tingkat rasa manis dan kepekatan body.' },
+      { order: 3, name: '60% Strength (Pour 3)', time: '01:30 - 02:10', start: 90, end: 130, duration: 40, waterAdded: 60, waterTarget: 180, desc: 'Tuangan lembut di tengah mengatur konsentrasi rasa.' },
+      { order: 4, name: '60% Strength (Pour 4)', time: '02:10 - 02:50', start: 130, end: 170, duration: 40, waterAdded: 60, waterTarget: 240, desc: 'Tuangan keempat menjaga ekstraksi tetap seimbang.' },
+      { order: 5, name: 'Drawdown Finish', time: '02:50 - 03:30', start: 170, end: 210, duration: 40, waterAdded: 60, waterTarget: 300, desc: 'Tuangan akhir sampai 300g. Biarkan air turun sempurna.' },
+    ]
+  },
+  {
+    id: 'recipe-odd-steinar',
+    author: 'Odd-Steinar Tøllefsen',
+    countryCode: 'NO',
+    flag: '🇳🇴',
+    title: 'Simplifikasi Natural Murni (WBrC Juara 1)',
+    subtitle: 'World Brewers Cup 2015 Winning Routine',
+    category: 'V60',
+    beanName: 'Ninety Plus Nekisse (Ethiopia)',
+    variety: 'Ethiopian Heirloom',
+    process: 'Natural Process',
+    roast: 'Light Cinnamon',
+    coffee: 20,
+    water: 300,
+    temp: 92,
+    ratio: '1:15',
+    isIced: false,
+    pours: 2,
+    grindSize: 'Medium (24 Klik)',
+    grindLabel: 'Medium',
+    notes: [
+      { name: 'Mango', emoji: '🥭', color: '#F59E0B' },
+      { name: 'Passionfruit', emoji: '🍍', color: '#D97706' },
+      { name: 'Apricot', emoji: '🍑', color: '#EA580C' },
+    ],
+    avatar: '/images/avatars/portraits/odd_steinar_tollefsen.jpg',
+    totalSeconds: 210,
+    description: 'Mendobrak dogma dengan kopi proses natural murni. Ekstraksi dimulai dengan blooming panjang 45 detik disusul single continuous pour stabil untuk tekstur luar biasa bersih bebas sepat.',
+    steps: [
+      { order: 1, name: 'Long Extended Bloom', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Pra-infusi lambat meratakan pelepasan gas CO2.' },
+      { order: 2, name: 'Single Continuous Center Pour', time: '00:45 - 03:30', start: 45, end: 210, duration: 165, waterAdded: 250, waterTarget: 300, desc: 'Penuangan kontinu perlahan di tengah dengan flow rate rendah.' },
     ]
   },
   {
     id: 'recipe-mikael-v60',
     author: 'Mikael Jasin',
+    countryCode: 'ID',
     flag: '🇮🇩',
     title: 'V60 Signature Sensory Clarity',
     subtitle: '2024 World Barista Champion Profile',
     category: 'V60',
-    coffee: '15g',
-    water: '240ml',
-    temp: '93°C',
+    beanName: 'Finca Deborah Geisha Nitrogen Macerated',
+    variety: 'Green Tip Geisha',
+    process: 'Anaerobic Washed',
+    roast: 'Light Filter',
+    coffee: 15,
+    water: 240,
+    temp: 93,
     ratio: '1:16',
     isIced: false,
-    pours: '3x Pour',
-    grind: 'Medium-Fine',
-    grindDetail: 'Comandante: 20 klik • Timemore: 15 klik • Vesper: 58 klik',
-    notes: ['Jasmine', 'Meyer Lemon', 'Tropical Fruit'],
+    pours: 3,
+    grindSize: 'Medium-Fine (20 Klik)',
+    grindLabel: 'Medium-Fine',
+    notes: [
+      { name: 'Jasmine', emoji: '🌸', color: '#EC4899' },
+      { name: 'Meyer Lemon', emoji: '🍋', color: '#EAB308' },
+      { name: 'Tropical', emoji: '🍍', color: '#F97316' },
+    ],
     avatar: '/images/avatars/portraits/mikael_jasin.jpg',
-    dot1: { bg: 'bg-[#FED7AA]', icon: 'disc', color: '#EA580C' },
-    dot2: { bg: 'bg-[#FCE7F3]', icon: 'sparkles', color: '#EC4899' },
-    totalSeconds: 150, // 02:30
+    totalSeconds: 150,
+    description: 'Profil kejuaraan dunia Mikael Jasin 2024. Aliran lembut di awal, agitasi agresif di tengah untuk membuka kompleksitas rasa, dan diakhiri tuangan rendah menjaga kejernihan rasa.',
     steps: [
-      { name: '1. Gentle Blooming', time: '00:00 - 00:40', start: 0, end: 40, waterAdded: 45, waterTarget: 45, desc: 'Aliran air lembut 4g/detik melingkar dari tengah ke luar.' },
-      { name: '2. High Agitation Pulse', time: '00:40 - 01:25', start: 40, end: 85, waterAdded: 95, waterTarget: 140, desc: 'Tuang spiral agresif dari ketinggian sedang melarutkan asam buah.' },
-      { name: '3. Melodrip / Low Agitation Finish', time: '01:25 - 02:30', start: 85, end: 150, waterAdded: 100, waterTarget: 240, desc: 'Tuangan sangat rendah di tengah hingga 240g. Drawdown tuntas.' },
+      { order: 1, name: 'Gentle Low-Height Blooming', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 45, waterTarget: 45, desc: 'Aliran air sangat lembut 4g/detik melingkar dari tengah ke luar.' },
+      { order: 2, name: 'High Agitation Pulse', time: '00:40 - 01:25', start: 40, end: 85, duration: 45, waterAdded: 95, waterTarget: 140, desc: 'Spiral agresif dari ketinggian sedang melarutkan asam buah aromatik.' },
+      { order: 3, name: 'Melodrip / Low Agitation Finish', time: '01:25 - 02:30', start: 85, end: 150, duration: 65, waterAdded: 100, waterTarget: 240, desc: 'Tuangan sangat rendah di tengah hingga 240g. Drawdown tuntas.' },
     ]
   },
   {
     id: 'recipe-mikael-iced',
     author: 'Mikael Jasin',
+    countryCode: 'ID',
     flag: '🇮🇩',
     title: 'Japanese Iced V60 Flash Aroma',
-    subtitle: 'Resep Japanese Iced Segar & Manis',
+    subtitle: 'Flash-Chilled Iced Filter Coffee',
     category: 'Japanese',
-    coffee: '18g',
-    water: '270g',
-    temp: '94°C',
+    beanName: 'Mount Halu Banana Fermentation',
+    variety: 'Sigararutang',
+    process: 'Carbonic Maceration',
+    roast: 'Omni Light',
+    coffee: 18,
+    water: 170, // 170ml air panas + 100g es = 270g total
+    ice: 100,
+    temp: 94,
     ratio: '1:15',
     isIced: true,
-    pours: '3x Pour',
-    grind: 'Fine-Medium',
-    grindDetail: 'Comandante: 18 klik • Timemore: 13 klik • Vesper: 52 klik',
-    notes: ['Yellow Flower', 'Strawberry', 'Iced Crisp'],
+    pours: 3,
+    grindSize: 'Fine-Medium (18 Klik)',
+    grindLabel: 'Fine-Medium',
+    notes: [
+      { name: 'Yellow Flower', emoji: '🌼', color: '#EAB308' },
+      { name: 'Strawberry', emoji: '🍓', color: '#EF4444' },
+      { name: 'Crisp Sweet', emoji: '🧊', color: '#38BDF8' },
+    ],
     avatar: '/images/avatars/portraits/mikael_jasin.jpg',
-    dot1: { bg: 'bg-[#FEF9C3]', icon: 'sparkles', color: '#CA8A04' },
-    dot2: { bg: 'bg-[#FFE4E6]', icon: 'heart', color: '#E11D48' },
-    totalSeconds: 140, // 02:20
+    totalSeconds: 140,
+    description: 'Kopi seduh dingin segar Jepang. Ekstraksi langsung menetes ke atas bongkahan es batu di server, mengunci molekul aroma harum dan mencegah oksidasi rasa.',
     steps: [
-      { name: '1. Siapkan Es Batu & Bloom', time: '00:00 - 00:40', start: 0, end: 40, waterAdded: 50, waterTarget: 50, desc: 'Taruh 100g es batu di server. Tuang 50g air panas ke bubuk kopi.' },
-      { name: '2. Continuous Center Pulse', time: '00:40 - 01:20', start: 40, end: 80, waterAdded: 60, waterTarget: 110, desc: 'Tuang lurus di tengah untuk melarutkan komponen aroma segar.' },
-      { name: '3. Final Fast Pour & Swirl', time: '01:20 - 02:20', start: 80, end: 140, waterAdded: 60, waterTarget: 170, desc: 'Tuang melingkar cepat. Angkat dripper lalu swirl server hingga dingin.' },
+      { order: 1, name: 'Es di Server & Bloom', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 50, waterTarget: 50, desc: 'Siapkan 100g es di server. Tuang 50g air panas ke bubuk kopi.' },
+      { order: 2, name: 'Center Extraction Pulse', time: '00:40 - 01:20', start: 40, end: 80, duration: 40, waterAdded: 60, waterTarget: 110, desc: 'Tuang tegak lurus di tengah untuk melarutkan aroma buah segar.' },
+      { order: 3, name: 'Final Pour & Chill Swirl', time: '01:20 - 02:20', start: 80, end: 140, duration: 60, waterAdded: 60, waterTarget: 170, desc: 'Tuang melingkar sampai 170g. Goyang server hingga es larut sempurna.' },
     ]
   },
+  {
+    id: 'recipe-james-hoffmann',
+    author: 'James Hoffmann',
+    countryCode: 'GB',
+    flag: '🇬🇧',
+    title: 'The Ultimate 1-Cup V60 Technique',
+    subtitle: 'Teknik Standar Emas Solo Brewer',
+    category: 'V60',
+    beanName: 'Washed Yirgacheffe Ethiopia',
+    variety: 'Heirloom',
+    process: 'Washed Process',
+    roast: 'Light Roast',
+    coffee: 15,
+    water: 250,
+    temp: 95,
+    ratio: '1:16.7',
+    isIced: false,
+    pours: 5,
+    grindSize: 'Medium-Fine (19 Klik)',
+    grindLabel: 'Medium-Fine',
+    notes: [
+      { name: 'Jasmine', emoji: '🌸', color: '#EC4899' },
+      { name: 'Earl Grey', emoji: '🍵', color: '#059669' },
+      { name: 'Bergamot', emoji: '🍋', color: '#EAB308' },
+    ],
+    avatar: '/images/avatars/portraits/james_hoffmann.jpg',
+    totalSeconds: 180,
+    description: 'Metode 1-Cup V60 legendaris James Hoffmann. Dosis 15g untuk 250ml air dengan 5 tahap penuangan 50g setiap 30 detik untuk ekstraksi manis yang merata.',
+    steps: [
+      { order: 1, name: 'Bloom & Gentle Swirl', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Tuang 50g air, swirl dripper lembut agar seluruh bubuk basah.' },
+      { order: 2, name: 'Second Pour (+50g)', time: '00:45 - 01:15', start: 45, end: 75, duration: 30, waterAdded: 50, waterTarget: 100, desc: 'Tuang spiral melingkar halus hingga timbangan 100g.' },
+      { order: 3, name: 'Third Pour (+50g)', time: '01:15 - 01:45', start: 75, end: 105, duration: 30, waterAdded: 50, waterTarget: 150, desc: 'Jaga ketinggian air tetap stabil di dalam corong.' },
+      { order: 4, name: 'Fourth Pour (+50g)', time: '01:45 - 02:15', start: 105, end: 135, duration: 30, waterAdded: 50, waterTarget: 200, desc: 'Tuang tenang, bilas sisa bubuk kopi di dinding kertas.' },
+      { order: 5, name: 'Final Pour & Swirl Drawdown', time: '02:15 - 03:00', start: 135, end: 180, duration: 45, waterAdded: 50, waterTarget: 250, desc: 'Tuang hingga 250g, berikan satu swirl ringan. Biarkan bed rata.' },
+    ]
+  },
+  {
+    id: 'recipe-carlos-medina',
+    author: 'Carlos Medina',
+    countryCode: 'CL',
+    flag: '🇨🇱',
+    title: 'Competition Origami Profile (WBrC 2023)',
+    subtitle: 'World Brewers Cup 2023 Champion',
+    category: 'Origami',
+    beanName: 'Café de Finca Sidra Anaerobic',
+    variety: 'Sidra',
+    process: 'Anaerobic Natural',
+    roast: 'Very Light',
+    coffee: 15,
+    water: 225,
+    temp: 91,
+    ratio: '1:15',
+    isIced: false,
+    pours: 4,
+    grindSize: 'Coarse (28 Klik)',
+    grindLabel: 'Coarse',
+    notes: [
+      { name: 'White Peach', emoji: '🍑', color: '#F97316' },
+      { name: 'Magnolia', emoji: '🌺', color: '#EC4899' },
+      { name: 'Silky Texture', emoji: '✨', color: '#ECA400' },
+    ],
+    avatar: '/images/avatars/portraits/carlos_medina.jpg',
+    totalSeconds: 165,
+    description: 'Resep juara dunia Origami Dripper asal Chili. Menggunakan kertas saringan Kalita Wave di dalam Origami Dripper untuk aliran air yang sangat seragam dan rasa peach manis.',
+    steps: [
+      { order: 1, name: 'Pre-Infusion Bloom', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 50, waterTarget: 50, desc: 'Penuangan tengah melingkar kecil dengan flow rate lambat.' },
+      { order: 2, name: 'Sweetness Extraction', time: '00:40 - 01:15', start: 40, end: 75, duration: 35, waterAdded: 60, waterTarget: 110, desc: 'Tuang melingkar sedang untuk mengekstrak rasa manis buah.' },
+      { order: 3, name: 'Body Development', time: '01:15 - 01:50', start: 75, end: 110, duration: 35, waterAdded: 60, waterTarget: 170, desc: 'Tuang di tengah untuk membangun tekstur velvety.' },
+      { order: 4, name: 'Clarity Finish', time: '01:50 - 02:45', start: 110, end: 165, duration: 55, waterAdded: 55, waterTarget: 225, desc: 'Tuangan akhir hingga 225g. Drawdown sempurna tanpa genangan.' },
+    ]
+  }
+];
+
+// Barista Spotlight Carousel List
+const baristasList = [
+  { name: 'Tetsu Kasuya', country: 'JP', flag: '🇯🇵', avatar: '/images/avatars/portraits/tetsu_kasuya.jpg' },
+  { name: 'Mikael Jasin', country: 'ID', flag: '🇮🇩', avatar: '/images/avatars/portraits/mikael_jasin.jpg' },
+  { name: 'Odd-Steinar', country: 'NO', flag: '🇳🇴', avatar: '/images/avatars/portraits/odd_steinar_tollefsen.jpg' },
+  { name: 'James Hoffmann', country: 'GB', flag: '🇬🇧', avatar: '/images/avatars/portraits/james_hoffmann.jpg' },
+  { name: 'Carlos Medina', country: 'CL', flag: '🇨🇱', avatar: '/images/avatars/portraits/carlos_medina.jpg' },
+  { name: 'Rusdi', country: 'ID', flag: '🇮🇩', avatar: '/images/characters/char_avatar_1.jpg' },
+  { name: 'Chad Wang', country: 'TW', flag: '🇹🇼', avatar: '/images/avatars/portraits/chad_wang.jpg' },
+  { name: 'Du Jianing', country: 'CN', flag: '🇨🇳', avatar: '/images/avatars/portraits/du_jianing.jpg' },
 ];
 
 const initialRecipe = trialRecipes[0];
@@ -120,15 +269,15 @@ const initialRecipe = trialRecipes[0];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Coffee Labs — Versi Web Uji Coba Gratis (Trial App)</title>
-    <meta name="description" content="Uji coba gratis Coffee Labs via web browser. Panduan seduh presisi, timer interaktif dengan audio efek suara & musik kafe, dan resep barista dunia." />
+    <title>Coffee Labs — Web Trial App</title>
+    <meta name="description" content="Aplikasi panduan seduh kopi presisi Coffee Labs versi Web Trial. Resep juara dunia, guided timer interaktif, audio sound effect & BGM kafe." />
     <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
 
-  <body class="bg-[#181310] text-[#332B25] antialiased select-none font-sans min-h-screen flex flex-col items-center justify-center p-0 md:p-4 overflow-x-hidden">
+  <body class="bg-[#181310] text-[#332B25] antialiased select-none font-sans min-h-screen flex flex-col items-center justify-center p-0 md:p-3 overflow-x-hidden">
     
-    <!-- Top Desktop Quick Bar (Only visible on tablet & desktop) -->
-    <header class="hidden md:flex items-center justify-between max-w-5xl w-full py-2.5 px-4 mb-2 text-white/80 text-xs">
+    <!-- Top Desktop Quick Bar -->
+    <header class="hidden md:flex items-center justify-between max-w-5xl w-full py-2 px-4 mb-2 text-white/80 text-xs">
       <div class="flex items-center gap-2">
         <a href="/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold transition-colors">
           <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
@@ -141,7 +290,7 @@ const initialRecipe = trialRecipes[0];
       </div>
 
       <div class="flex items-center gap-2">
-        <span class="text-white/60 text-[11px] hidden lg:inline">Unduh Versi Penuh:</span>
+        <span class="text-white/60 text-[11px] hidden lg:inline">Aplikasi Versi Penuh:</span>
         <a
           href="https://github.com/rusdifn08/coffe-labs-mobile/actions/runs/39809056131/artifacts/12439526766"
           target="_blank"
@@ -235,110 +384,146 @@ const initialRecipe = trialRecipes[0];
         <!-- ========================================== -->
         <section id="tab-content-recipes" class="p-3.5 space-y-3.5 block">
           
-          <!-- Trial Notice Alert Banner -->
-          <div class="p-3 rounded-2xl bg-gradient-to-r from-[#FFF4D6] to-[#FDF0D5] border border-[#ECA400]/30 shadow-xs flex items-start gap-2.5">
-            <div class="w-7 h-7 rounded-xl bg-[#ECA400] text-[#1E1612] flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-              <Icon name="sparkles" size={14} color="#1E1612" />
+          <!-- Barista Spotlight Carousel (Exact Mobile Feature) -->
+          <div class="space-y-1.5">
+            <div class="flex items-center justify-between text-[11px] font-bold text-[#332B25]">
+              <span>Barista Spotlight</span>
+              <span id="reset-barista-filter" class="text-[10px] text-[#ECA400] cursor-pointer hover:underline hidden">Reset Filter</span>
             </div>
-            <div class="flex-1 text-left">
-              <div class="flex items-center justify-between">
-                <span class="text-[11.5px] font-bold text-[#332B25]">Mode Uji Coba Gratis</span>
-                <span class="text-[9.5px] font-extrabold px-1.5 py-0.5 rounded bg-[#6B4423] text-white">10 Sesi</span>
-              </div>
-              <p class="text-[10px] text-[#6F655D] mt-0.5 leading-snug">
-                Pilih resep di bawah ini untuk memulai <strong>Guided Brew Stopwatch</strong> dengan audio efek suara & musik kafe asli.
-              </p>
-            </div>
-          </div>
-
-          <!-- Search & Filter Bar -->
-          <div class="space-y-2">
-            <div class="relative">
-              <input
-                id="recipe-search-input"
-                type="text"
-                placeholder="Cari resep (V60, Tetsu, Jasin)..."
-                class="w-full pl-8 pr-3 py-1.5 rounded-xl bg-white border border-[#E8DFD8] text-xs text-[#332B25] placeholder-[#8F857D] focus:outline-none focus:border-[#6B4423] shadow-xs"
-              />
-              <svg class="w-3.5 h-3.5 text-[#8F857D] absolute left-2.5 top-1/2 -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            </div>
-
-            <!-- Category Pills -->
-            <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[11px] font-bold">
-              <button class="cat-pill px-3 py-1 rounded-full bg-[#6B4423] text-white shadow-xs cursor-pointer" data-category="ALL">Semua</button>
-              <button class="cat-pill px-3 py-1 rounded-full bg-white text-[#6F655D] border border-[#E8DFD8] hover:bg-black/5 cursor-pointer" data-category="V60">V60 (3)</button>
-              <button class="cat-pill px-3 py-1 rounded-full bg-white text-[#6F655D] border border-[#E8DFD8] hover:bg-black/5 cursor-pointer" data-category="Japanese">Japanese Iced (1)</button>
+            <div class="flex items-center gap-3 overflow-x-auto no-scrollbar py-1">
+              {baristasList.map((b) => (
+                <button
+                  class="barista-avatar-btn flex flex-col items-center gap-1 shrink-0 cursor-pointer group"
+                  data-barista-name={b.name}
+                  title={`Lihat resep ${b.name}`}
+                >
+                  <div class="relative w-12 h-12 rounded-full p-0.5 border-2 border-transparent group-hover:border-[#ECA400] transition-all">
+                    <img src={b.avatar} alt={b.name} class="w-full h-full rounded-full object-cover shadow-xs" />
+                    <span class="absolute -bottom-0.5 -right-0.5 text-xs bg-white rounded-full px-0.5 shadow-xs border border-white/40">
+                      {b.flag}
+                    </span>
+                  </div>
+                  <span class="text-[9.5px] font-semibold text-[#6F655D] group-hover:text-[#332B25] truncate max-w-[54px] text-center">
+                    {b.name.split(' ')[0]}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
 
-          <!-- Section Title -->
+          <!-- Search Input Bar -->
+          <div class="relative">
+            <input
+              id="recipe-search-input"
+              type="text"
+              placeholder="Cari nama resep, brewer, atau dripper..."
+              class="w-full pl-8 pr-7 py-2 rounded-2xl bg-white border border-[#E8DFD8] text-xs text-[#332B25] placeholder-[#8F857D] focus:outline-none focus:border-[#6B4423] shadow-xs transition-colors"
+            />
+            <svg class="w-3.5 h-3.5 text-[#8F857D] absolute left-2.5 top-1/2 -translate-y-1/2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <button id="search-clear-btn" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#8F857D] hover:text-[#332B25] hidden text-xs">✕</button>
+          </div>
+
+          <!-- Dripper Filter Cards (Horizontal Carousel matching Mobile) -->
+          <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 text-[11px] font-bold">
+            <button class="cat-pill px-3 py-1 rounded-full bg-[#6B4423] text-white shadow-xs cursor-pointer" data-category="ALL">Semua</button>
+            <button class="cat-pill px-3 py-1 rounded-full bg-white text-[#6F655D] border border-[#E8DFD8] hover:bg-black/5 cursor-pointer" data-category="V60">V60 (5)</button>
+            <button class="cat-pill px-3 py-1 rounded-full bg-white text-[#6F655D] border border-[#E8DFD8] hover:bg-black/5 cursor-pointer" data-category="Origami">Origami (1)</button>
+            <button class="cat-pill px-3 py-1 rounded-full bg-white text-[#6F655D] border border-[#E8DFD8] hover:bg-black/5 cursor-pointer" data-category="Japanese">Japanese Iced (1)</button>
+          </div>
+
+          <!-- Section Title with Recipe Count -->
           <div class="flex items-center justify-between pt-1">
-            <h3 class="text-xs font-black text-[#332B25] uppercase tracking-wider">Pustaka Resep Trial ({trialRecipes.length})</h3>
-            <span class="text-[10px] text-[#8F857D]">Sentuh untuk seduh</span>
+            <h3 class="text-xs font-black text-[#332B25] uppercase tracking-wider">
+              Pustaka Resep Trial (<span id="visible-recipes-count">{trialRecipes.length}</span>)
+            </h3>
+            <span class="text-[10px] text-[#8F857D]">Sentuh kartu untuk detail</span>
           </div>
 
-          <!-- 2-COLUMN RECIPE GRID (Exact Mobile Layout) -->
+          <!-- 2-COLUMN RECIPE GRID (Exact Mobile _buildGridCard Design) -->
           <div id="recipe-cards-grid" class="grid grid-cols-2 gap-2.5 pb-20">
             {trialRecipes.map((r) => (
               <div
-                class="recipe-card p-2.5 rounded-2xl bg-white border border-[#E8DFD8] hover:border-[#6B4423] shadow-sm hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
+                class="recipe-card p-3 rounded-[20px] bg-white border border-[#6B4423]/10 hover:border-[#6B4423] shadow-sm hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group select-none"
                 data-recipe-id={r.id}
                 data-category={r.category}
+                data-author={r.author}
               >
-                <!-- Card Header: Flag & Category Tag -->
-                <div class="space-y-1">
-                  <div class="flex items-center justify-between">
-                    <span class="text-xs font-semibold text-[#8F857D] flex items-center gap-1 truncate max-w-[95px]">
-                      <span>{r.flag}</span>
-                      <span class="truncate">{r.author}</span>
-                    </span>
-                    <span class="text-[9px] font-extrabold px-1.5 py-0.5 rounded bg-[#F1E8E0] text-[#6B4423]">
-                      {r.category}
-                    </span>
+                <!-- 1. Top Row: Barista Avatar on left, Dose & Water chips on right -->
+                <div class="flex items-center justify-between gap-1">
+                  <!-- Barista Avatar (32px diameter) -->
+                  <div class="relative shrink-0">
+                    <img src={r.avatar} alt={r.author} class="w-8 h-8 rounded-full object-cover border border-[#6B4423]/15 shadow-2xs" />
                   </div>
 
-                  <!-- Recipe Title -->
-                  <h4 class="font-bold text-[11.5px] text-[#332B25] leading-tight group-hover:text-[#6B4423] transition-colors line-clamp-2 min-h-[28px]">
-                    {r.title}
-                  </h4>
-                </div>
+                  <!-- Chips: Coffee Grams & Water -->
+                  <div class="flex items-center gap-1 shrink-0">
+                    <!-- Chip Kopi -->
+                    <div class="flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-[#F6EFEA] border border-[#6B4423]/25 text-[9px] font-bold text-[#6B4423]">
+                      <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.41 0 8 3.59 8 8 0 1.85-.63 3.55-1.69 4.9z"/></svg>
+                      <span>{r.coffee}g</span>
+                    </div>
 
-                <!-- Parameters Grid -->
-                <div class="my-2 py-1.5 px-2 rounded-xl bg-[#F9F6F0] border border-[#E8DFD8]/60 grid grid-cols-2 gap-1 text-[10px]">
-                  <div>
-                    <span class="text-[#8F857D] block text-[8.5px]">Dosis</span>
-                    <span class="font-bold text-[#332B25]">{r.coffee}</span>
-                  </div>
-                  <div>
-                    <span class="text-[#8F857D] block text-[8.5px]">Air</span>
-                    <span class="font-bold text-[#332B25]">{r.water}</span>
-                  </div>
-                  <div>
-                    <span class="text-[#8F857D] block text-[8.5px]">Suhu</span>
-                    <span class="font-bold text-[#332B25]">{r.temp}</span>
-                  </div>
-                  <div>
-                    <span class="text-[#8F857D] block text-[8.5px]">Rasio</span>
-                    <span class="font-bold text-[#332B25]">{r.ratio}</span>
+                    <!-- Chip Air -->
+                    <div class="flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-[#E8F3FA] border border-blue-500/25 text-[9px] font-bold text-[#1976D2]">
+                      {r.isIced ? (
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+                      ) : (
+                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                      )}
+                      <span>{r.isIced ? `${r.water + (r.ice || 0)}g` : `${r.water}ml`}</span>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Tasting Notes -->
-                <div class="flex flex-wrap gap-1 mb-2">
+                <!-- 2. Author Name & Country Flag -->
+                <div class="flex items-center gap-1 mt-2">
+                  <span class="text-xs font-bold text-[#332B25] truncate max-w-[120px]">{r.author}</span>
+                  <span class="text-xs shrink-0">{r.flag}</span>
+                </div>
+
+                <!-- 3. Title (13.5px bold, max 2 lines) -->
+                <h4 class="font-bold text-[13px] text-[#332B25] leading-snug group-hover:text-[#6B4423] transition-colors line-clamp-2 min-h-[34px] mt-1">
+                  {r.title}
+                </h4>
+
+                <!-- 4. Tasting Notes Visual Emoji & Pour Count Chip -->
+                <div class="flex items-center gap-1 my-1.5 overflow-hidden">
                   {r.notes.slice(0, 2).map((note) => (
-                    <span class="px-1.5 py-0.2 rounded-md bg-[#FFF4D6] text-[#6B4423] text-[8.5px] font-medium truncate max-w-[80px]">
-                      {note}
-                    </span>
+                    <div
+                      class="w-6 h-6 rounded-full flex items-center justify-center text-[11px] shrink-0 border"
+                      style={`background-color: ${note.color}15; border-color: ${note.color}40;`}
+                      title={note.name}
+                    >
+                      <span>{note.emoji}</span>
+                    </div>
                   ))}
+                  <div class="px-1.5 py-0.5 rounded-md bg-[#6B4423]/8 text-[#6B4423] font-bold text-[9px] shrink-0 truncate">
+                    {r.pours}x Pour
+                  </div>
                 </div>
 
-                <!-- CTA Button -->
+                <!-- 5. Description snippet (10px, 2 lines) -->
+                <p class="text-[9.5px] text-[#8F857D] leading-tight line-clamp-2 min-h-[22px] mb-2">
+                  {r.description}
+                </p>
+
+                <!-- 6. Category on left & Short Grind on right -->
+                <div class="flex items-center justify-between text-[10px] pb-2 border-b border-[#E8DFD8]">
+                  <span class="text-[#8F857D] truncate max-w-[70px]">{r.category}</span>
+                  <div class="flex items-center gap-1 text-[#6B4423] font-bold truncate max-w-[75px]">
+                    <svg class="w-2.5 h-2.5 fill-none stroke-current stroke-2 shrink-0" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="19" cy="12" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="12" cy="19" r="2"/><circle cx="12" cy="5" r="2"/></svg>
+                    <span class="truncate">{r.grindLabel}</span>
+                  </div>
+                </div>
+
+                <!-- 7. Action Button: Full-width elevated amber button -->
                 <button
                   type="button"
-                  class="w-full py-1.5 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-[10.5px] flex items-center justify-center gap-1 shadow-xs transition-transform active:scale-95"
+                  class="btn-card-brew w-full py-2 mt-2 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#1E1612] font-black text-xs flex items-center justify-center gap-1.5 shadow-xs transition-transform active:scale-95"
+                  data-recipe-id={r.id}
                 >
-                  <Icon name="timer" size={11} color="#332B25" />
-                  <span>Mulai Seduh</span>
+                  <Icon name="timer" size={13} color="#1E1612" />
+                  <span>Seduh</span>
                 </button>
               </div>
             ))}
@@ -352,25 +537,41 @@ const initialRecipe = trialRecipes[0];
         <section id="tab-content-brew" class="p-3.5 space-y-3 hidden pb-24">
           
           <!-- Top Brew Header Bar -->
-          <div class="flex items-center justify-between pb-1 border-b border-[#E8DFD8]">
+          <div class="flex items-center justify-between pb-1.5 border-b border-[#E8DFD8]">
             <button id="brew-back-to-recipes" class="p-1 rounded-lg hover:bg-black/5 text-[#332B25] text-xs font-bold flex items-center gap-1 cursor-pointer">
               <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
-              <span>Ganti Resep</span>
+              <span>Resep</span>
             </button>
             
-            <div class="text-right">
-              <span id="active-recipe-title" class="text-xs font-bold text-[#332B25] block truncate max-w-[170px]">
+            <div class="text-center truncate px-2 max-w-[190px]">
+              <span id="active-recipe-title" class="text-xs font-black text-[#332B25] block truncate">
                 {initialRecipe.title}
               </span>
               <span id="active-recipe-author" class="text-[9.5px] text-[#8F857D] block">
                 {initialRecipe.author} · {initialRecipe.category}
               </span>
             </div>
+
+            <!-- Header Action Icons: Print Thermal Receipt & Brew Doctor -->
+            <div class="flex items-center gap-1">
+              <button id="btn-open-thermal-sheet" class="p-1.5 rounded-lg hover:bg-black/5 text-[#6B4423] cursor-pointer" title="Cetak Struk Thermal (ESC/POS)">
+                <Icon name="printer" size={16} color="#6B4423" />
+              </button>
+              <button id="btn-open-brew-doctor-sheet" class="p-1.5 rounded-lg hover:bg-black/5 text-[#ECA400] cursor-pointer" title="Brew Doctor (Koreksi Rasa)">
+                <Icon name="lightbulb" size={16} color="#ECA400" />
+              </button>
+            </div>
+          </div>
+
+          <!-- Japanese Iced Warning Banner (if recipe is iced) -->
+          <div id="brew-iced-banner" class="hidden p-2.5 rounded-xl bg-sky-50 border border-sky-200 text-sky-900 text-[11px] font-bold flex items-center gap-2">
+            <span class="text-base">🧊</span>
+            <span>Japanese Iced: Siapkan 100g Es di Server + 170g Air Panas (94°C)</span>
           </div>
 
           <!-- Circular Segmented Timer Ring Mockup -->
           <div class="flex justify-center py-1">
-            <div class="relative w-44 h-44 sm:w-48 sm:h-48 flex items-center justify-center">
+            <div class="relative w-48 h-48 sm:w-52 sm:h-52 flex items-center justify-center">
               <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
                 <!-- Background Ring Track -->
                 <circle cx="50" cy="50" r="42" fill="none" stroke="#EFE5D8" stroke-width="7" />
@@ -392,22 +593,40 @@ const initialRecipe = trialRecipes[0];
 
               <!-- Central Timer Readout -->
               <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span id="timer-display" class="text-4xl font-black text-[#5D4037] font-mono tracking-tight leading-none">
-                  00:00
-                </span>
-                <span id="timer-target-text" class="text-[10px] font-semibold text-[#8F857D] mt-1">
-                  Target 02:15 · 225ml
-                </span>
-                <div id="timer-status-badge" class="mt-1.5 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[8.5px] font-bold border border-amber-200 flex items-center gap-1">
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-                  <span id="timer-status-text">SIAP SEDUH</span>
+                <!-- Preparation Countdown Subview -->
+                <div id="prep-view" class="hidden flex-col items-center">
+                  <span class="text-[11px] font-bold text-[#8F857D] uppercase tracking-wider">SIAP SEDUH</span>
+                  <span id="prep-number" class="text-6xl font-black text-[#ECA400] leading-none my-1">3</span>
+                  <button id="btn-skip-prep" class="text-[10px] font-bold text-[#6B4423] hover:underline cursor-pointer">
+                    Lewati Hitung Mundur →
+                  </button>
+                </div>
+
+                <!-- Finished Subview -->
+                <div id="finished-view" class="hidden flex-col items-center">
+                  <span class="text-base font-bold text-[#6B4423]">Enjoy your</span>
+                  <span class="text-2xl font-black text-[#6B4423] leading-none">coffee! ☕</span>
+                </div>
+
+                <!-- Running Timer Subview -->
+                <div id="running-view" class="flex flex-col items-center">
+                  <span id="timer-display" class="text-5xl font-black text-[#6B4423] font-mono tracking-tight leading-none">
+                    00:00
+                  </span>
+                  <span id="timer-target-text" class="text-[10.5px] font-bold text-[#8F857D] mt-1.5">
+                    Target 02:15 · 225ml
+                  </span>
+                  <div id="timer-status-badge" class="mt-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9px] font-bold border border-amber-200 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
+                    <span id="timer-status-text">SIAP SEDUH</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Control Action Buttons -->
-          <div class="flex items-center justify-center gap-3 py-1">
+          <!-- Control Action Buttons Bar -->
+          <div class="flex items-center justify-center gap-2.5 py-1">
             <!-- Reset Button -->
             <button
               id="btn-reset-timer"
@@ -420,19 +639,28 @@ const initialRecipe = trialRecipes[0];
             <!-- Play / Pause Main CTA Button -->
             <button
               id="btn-play-pause-timer"
-              class="px-6 py-2.5 rounded-full bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-black text-xs sm:text-sm flex items-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
+              class="px-7 py-3 rounded-full bg-[#ECA400] hover:bg-[#D4AF37] text-[#1E1612] font-black text-sm flex items-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
             >
               <span id="play-pause-icon">
-                <Icon name="play" size={14} color="#332B25" />
+                <Icon name="play" size={15} color="#1E1612" />
               </span>
               <span id="play-pause-label">Mulai Seduh</span>
+            </button>
+
+            <!-- +10s Button (Flow slow helper) -->
+            <button
+              id="btn-add-10s"
+              class="px-2.5 py-2 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D] hover:text-[#332B25] font-bold text-[11px] shadow-xs transition-transform active:scale-90 cursor-pointer"
+              title="Tambah 10 detik jika air lambat turun"
+            >
+              +10s
             </button>
 
             <!-- Skip / Forward Step Button -->
             <button
               id="btn-skip-step"
               class="w-10 h-10 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D] hover:text-[#332B25] flex items-center justify-center shadow-xs transition-transform active:scale-90 cursor-pointer"
-              title="Lewati Tahap"
+              title="Lewati Tahap Ini"
             >
               <Icon name="forward-end" size={15} color="currentColor" />
             </button>
@@ -623,9 +851,260 @@ const initialRecipe = trialRecipes[0];
 
       </nav>
 
-      <!-- Brew Completed Modal Overlay -->
+      <!-- ============================================================ -->
+      <!-- MODAL 1: RECIPE DETAIL SHEET (Matching RecipeDetailScreen)   -->
+      <!-- ============================================================ -->
+      <div id="recipe-detail-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end justify-center hidden">
+        <div class="w-full max-w-[420px] bg-[#F9F6F0] rounded-t-[32px] p-4 max-h-[85vh] flex flex-col shadow-2xl animate-in slide-in-from-bottom duration-200">
+          
+          <!-- Drag Handle -->
+          <div class="w-10 h-1 bg-[#6B4423]/20 rounded-full mx-auto mb-3 shrink-0"></div>
+
+          <!-- Header Row -->
+          <div class="flex items-start justify-between shrink-0 pb-2 border-b border-[#E8DFD8]">
+            <div class="flex items-center gap-2.5">
+              <img id="detail-modal-avatar" src="/images/characters/char_avatar_1.jpg" alt="Author" class="w-10 h-10 rounded-full object-cover border border-[#6B4423]/20 shadow-xs" />
+              <div>
+                <div class="flex items-center gap-1">
+                  <span id="detail-modal-author" class="font-bold text-xs text-[#332B25]">Rusdi</span>
+                  <span id="detail-modal-flag">🇮🇩</span>
+                </div>
+                <h3 id="detail-modal-title" class="font-extrabold text-sm text-[#332B25] leading-tight line-clamp-1">
+                  Resep V60 Pour Over Saya
+                </h3>
+              </div>
+            </div>
+            <button id="btn-close-recipe-detail" class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-xs font-bold text-[#6F655D] cursor-pointer">
+              ✕
+            </button>
+          </div>
+
+          <!-- Scrollable Detail Body -->
+          <div class="flex-1 overflow-y-auto no-scrollbar py-3 space-y-3 text-xs text-[#332B25]">
+            
+            <!-- Description -->
+            <p id="detail-modal-desc" class="text-xs text-[#6F655D] leading-relaxed bg-white p-2.5 rounded-xl border border-[#E8DFD8]">
+              Resep seduhan V60 pour over.
+            </p>
+
+            <!-- Auto-Scaling Dose Selector Presets (12g, 15g, 18g, 20g, 24g, 30g) -->
+            <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
+              <div class="flex items-center justify-between text-[11px] font-bold">
+                <span class="flex items-center gap-1 text-[#6B4423]">
+                  <Icon name="sparkles" size={13} color="#6B4423" />
+                  <span>Kalkulasi Dosis Otomatis</span>
+                </span>
+                <span id="detail-scale-ratio" class="text-[#8F857D]">Rasio 1:15</span>
+              </div>
+              <div class="grid grid-cols-6 gap-1 text-center font-bold text-xs">
+                { [12, 15, 18, 20, 24, 30].map((dose) => (
+                  <button
+                    class={`dose-preset-btn py-1.5 rounded-lg border text-xs cursor-pointer transition-all ${
+                      dose === 15 ? 'bg-[#6B4423] text-white border-[#6B4423] shadow-xs' : 'bg-[#F9F6F0] text-[#6F655D] border-[#E8DFD8] hover:bg-white'
+                    }`}
+                    data-dose={dose}
+                  >
+                    {dose}g
+                  </button>
+                )) }
+              </div>
+              <div class="flex items-center justify-between pt-1 text-[11px] font-bold text-[#6B4423] border-t border-[#E8DFD8]/60">
+                <span>Total Air Hasil Hitung:</span>
+                <span id="detail-scaled-water" class="text-xs text-[#1976D2]">225ml</span>
+              </div>
+            </div>
+
+            <!-- Bean & Grind Details Card + Grinder Converter Trigger -->
+            <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-xs text-[#332B25]">Gilingan & Biji Kopi</span>
+                <button id="btn-open-grinder-sheet" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#ECA400]/20 text-[#6B4423] text-[10px] font-bold hover:bg-[#ECA400]/30 transition-colors cursor-pointer">
+                  <Icon name="wrench" size={11} color="#6B4423" />
+                  <span>Konversi Grinder</span>
+                </button>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                  <span class="text-[#8F857D] text-[9.5px] block">Level Gilingan</span>
+                  <span id="detail-modal-grind" class="font-bold text-[#6B4423]">Medium (22 Klik)</span>
+                </div>
+                <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                  <span class="text-[#8F857D] text-[9.5px] block">Suhu Air Ideal</span>
+                  <span id="detail-modal-temp" class="font-bold text-[#6B4423]">92°C</span>
+                </div>
+              </div>
+
+              <!-- Tasting Notes Pills -->
+              <div class="pt-1">
+                <span class="text-[10px] text-[#8F857D] block mb-1 font-semibold">Tasting Notes Karakteristik:</span>
+                <div id="detail-modal-notes" class="flex flex-wrap gap-1.5">
+                  <!-- Populated via script -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Steps Preview List -->
+            <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
+              <span class="font-bold text-xs text-[#332B25] block">Rincian Tahapan Seduh</span>
+              <div id="detail-modal-steps" class="space-y-1.5">
+                <!-- Populated via script -->
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom CTA Button -->
+          <div class="pt-3 border-t border-[#E8DFD8] shrink-0">
+            <button
+              id="btn-detail-start-brew"
+              class="w-full py-3 rounded-2xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#1E1612] font-black text-sm flex items-center justify-center gap-2 shadow-md transition-all active:scale-95 cursor-pointer"
+            >
+              <Icon name="timer" size={16} color="#1E1612" />
+              <span>Mulai Seduh Sekarang (Guided Timer)</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODAL 2: GRINDER CONVERTER SHEET (BaristaUtils.grinderConversions) -->
+      <!-- ============================================================ -->
+      <div id="grinder-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end justify-center hidden">
+        <div class="w-full max-w-[420px] bg-[#F9F6F0] rounded-t-[32px] p-4 max-h-[80vh] flex flex-col shadow-2xl animate-in slide-in-from-bottom duration-200">
+          <div class="w-10 h-1 bg-[#6B4423]/20 rounded-full mx-auto mb-3 shrink-0"></div>
+
+          <div class="flex items-center justify-between shrink-0 pb-2 border-b border-[#E8DFD8]">
+            <div class="flex items-center gap-1.5 text-[#332B25]">
+              <Icon name="wrench" size={16} color="#6B4423" />
+              <h3 class="font-extrabold text-sm">Konversi Klik 29 Grinder</h3>
+            </div>
+            <button id="btn-close-grinder" class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-xs font-bold text-[#6F655D] cursor-pointer">
+              ✕
+            </button>
+          </div>
+
+          <div class="p-2 my-2 rounded-xl bg-amber-50 border border-amber-200 text-[10.5px] text-amber-900 font-semibold leading-snug">
+            💡 Konversi dihitung berdasarkan kalibrasi mikron partikel standar industri specialty coffee.
+          </div>
+
+          <!-- Scrollable Table of Grinders -->
+          <div id="grinder-list-container" class="flex-1 overflow-y-auto no-scrollbar space-y-1.5 py-1 text-xs">
+            <!-- Dynamically populated based on active recipe grind -->
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODAL 3: ESC/POS THERMAL RECEIPT SHEET (ThermalReceiptSheet)  -->
+      <!-- ============================================================ -->
+      <div id="thermal-receipt-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+        <div class="w-full max-w-xs bg-white rounded-2xl p-4 shadow-2xl flex flex-col font-mono text-[11px] text-black border-2 border-dashed border-gray-400 relative animate-in zoom-in-95 duration-200">
+          
+          <div class="text-center pb-2 border-b border-dashed border-gray-400 space-y-0.5">
+            <span class="text-sm font-black block">☕ COFFEE LABS</span>
+            <span class="text-[9.5px] text-gray-600 block">SPECIALTY COFFEE SLOW BAR</span>
+            <span class="text-[9px] text-gray-500 block">Thermal Receipt ESC/POS 58mm</span>
+          </div>
+
+          <div class="py-2 border-b border-dashed border-gray-400 space-y-1 text-[10.5px]">
+            <div class="flex justify-between">
+              <span>Barista: Rusdi (Trial)</span>
+              <span id="receipt-date">23/10/2026</span>
+            </div>
+            <div class="flex justify-between">
+              <span id="receipt-title" class="font-bold truncate max-w-[180px]">V60 Pour Over</span>
+              <span id="receipt-ratio">1:15</span>
+            </div>
+            <div class="flex justify-between text-gray-700">
+              <span id="receipt-doses">15g / 225ml</span>
+              <span id="receipt-temp">92°C</span>
+            </div>
+          </div>
+
+          <!-- Stages breakdown -->
+          <div id="receipt-stages" class="py-2 border-b border-dashed border-gray-400 space-y-1">
+            <!-- Populated via script -->
+          </div>
+
+          <div class="text-center pt-2 space-y-1">
+            <span class="text-[9px] text-gray-500 block">*** ENJOY YOUR COFFEE ***</span>
+            <div class="text-[8px] text-gray-400 font-mono tracking-widest">||| | ||||| || |||| |||| || |</div>
+          </div>
+
+          <button id="btn-close-receipt" class="mt-3 w-full py-2 rounded-xl bg-[#6B4423] text-white text-xs font-bold font-sans cursor-pointer">
+            Tutup Struk
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODAL 4: DIAL-IN BREW DOCTOR SHEET (_showDialInDoctorSheet)   -->
+      <!-- ============================================================ -->
+      <div id="brew-doctor-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-end justify-center hidden">
+        <div class="w-full max-w-[420px] bg-[#F9F6F0] rounded-t-[32px] p-4 max-h-[80vh] flex flex-col shadow-2xl animate-in slide-in-from-bottom duration-200">
+          <div class="w-10 h-1 bg-[#6B4423]/20 rounded-full mx-auto mb-3 shrink-0"></div>
+
+          <div class="flex items-center justify-between shrink-0 pb-2 border-b border-[#E8DFD8]">
+            <div class="flex items-center gap-1.5 text-[#332B25]">
+              <Icon name="lightbulb" size={17} color="#ECA400" />
+              <h3 class="font-extrabold text-sm">Brew Doctor (Panduan Koreksi Rasa)</h3>
+            </div>
+            <button id="btn-close-brew-doctor" class="w-7 h-7 rounded-full bg-black/5 hover:bg-black/10 flex items-center justify-center text-xs font-bold text-[#6F655D] cursor-pointer">
+              ✕
+            </button>
+          </div>
+
+          <div class="flex-1 overflow-y-auto no-scrollbar py-2.5 space-y-2.5 text-xs">
+            
+            <!-- Doctor Tip Card 1 -->
+            <div class="p-3 rounded-2xl bg-white border border-orange-200 space-y-1">
+              <div class="flex items-center gap-1.5 text-orange-600 font-bold">
+                <span>⚡</span>
+                <span>Terlalu Asam / Kecut / Tipis (Under-Extracted)</span>
+              </div>
+              <p class="text-[11px] text-[#6F655D] leading-relaxed">
+                • Haluskan gilingan 1–2 klik lebih rapat.<br />
+                • Naikkan suhu air +2°C (misal 92°C → 94°C).<br />
+                • Tuang sedikit lebih lambat atau perpanjang waktu blooming.
+              </p>
+            </div>
+
+            <!-- Doctor Tip Card 2 -->
+            <div class="p-3 rounded-2xl bg-white border border-red-200 space-y-1">
+              <div class="flex items-center gap-1.5 text-red-600 font-bold">
+                <span>🔥</span>
+                <span>Terlalu Pahit / Sepat / Kering (Over-Extracted)</span>
+              </div>
+              <p class="text-[11px] text-[#6F655D] leading-relaxed">
+                • Kasarkan gilingan 1–2 klik lebih longgar.<br />
+                • Turunkan suhu air -2°C (misal 94°C → 92°C).<br />
+                • Kurangi goyangan (swirl) dan tuang lebih tenang di titik tengah.
+              </p>
+            </div>
+
+            <!-- Doctor Tip Card 3 -->
+            <div class="p-3 rounded-2xl bg-white border border-blue-200 space-y-1">
+              <div class="flex items-center gap-1.5 text-blue-600 font-bold">
+                <span>💧</span>
+                <span>Kurang Body / Terlalu Encer (Weak Extraction)</span>
+              </div>
+              <p class="text-[11px] text-[#6F655D] leading-relaxed">
+                • Gunakan rasio lebih pendek (misal 1:14 atau 1:15 alih-alih 1:17).<br />
+                • Tambahkan dosis bubuk kopi +1g hingga +2g.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- MODAL 5: BREW COMPLETED CELEBRATION MODAL                    -->
+      <!-- ============================================================ -->
       <div id="brew-completed-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-        <div class="w-full max-w-xs bg-white rounded-3xl p-5 text-center space-y-4 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+        <div class="w-full max-w-xs bg-white rounded-3xl p-5 text-center space-y-4 shadow-2xl animate-in zoom-in-95 duration-200">
           <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-[#6B4423] to-[#ECA400] text-white flex items-center justify-center mx-auto shadow-md">
             <Icon name="coffee" size={32} color="#FFFFFF" />
           </div>
@@ -643,7 +1122,11 @@ const initialRecipe = trialRecipes[0];
           </div>
 
           <div class="space-y-2">
-            <button id="btn-modal-brew-again" class="w-full py-2.5 rounded-xl bg-[#6B4423] hover:bg-[#563519] text-white text-xs font-bold shadow-sm transition-all cursor-pointer">
+            <button id="btn-modal-print-receipt" class="w-full py-2.5 rounded-xl bg-[#6B4423] hover:bg-[#563519] text-white text-xs font-bold shadow-sm transition-all cursor-pointer flex items-center justify-center gap-1.5">
+              <Icon name="printer" size={14} color="#FFFFFF" />
+              <span>Cetak Struk Seduhan</span>
+            </button>
+            <button id="btn-modal-brew-again" class="w-full py-2 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#1E1612] text-xs font-bold transition-all cursor-pointer">
               Seduh Lagi
             </button>
             <button id="btn-modal-back-recipes" class="w-full py-2 rounded-xl bg-black/5 hover:bg-black/10 text-[#332B25] text-xs font-semibold transition-all cursor-pointer">
@@ -655,14 +1138,13 @@ const initialRecipe = trialRecipes[0];
 
     </main>
 
-    <!-- Embedded Client Application Logic (Audio Engine, Timer, Tabs, State) -->
-    <script define:vars={{ trialRecipes }}>
+    <!-- Embedded Application Client Logic -->
+    <script define:vars={{ trialRecipes, baristasList }}>
       // 1. Audio Engine using Web Audio API + HTML5 Audio
       class AudioEngine {
         constructor() {
           this.muted = false;
           this.bgmAudio = null;
-          this.sfxAudio = null;
           this.audioContext = null;
           this.init();
         }
@@ -673,7 +1155,7 @@ const initialRecipe = trialRecipes[0];
             this.bgmAudio.loop = true;
             this.bgmAudio.volume = 0.35;
           } catch (e) {
-            console.warn('BGM Audio init warning:', e);
+            console.warn('BGM Audio init error:', e);
           }
         }
 
@@ -693,30 +1175,16 @@ const initialRecipe = trialRecipes[0];
           try {
             const a = new Audio(url);
             a.volume = volume;
-            a.play().catch(() => {
-              // Fallback to web audio beep if browser blocks file
-              this.fallbackBeep();
-            });
+            a.play().catch(() => this.fallbackBeep());
           } catch (_) {
             this.fallbackBeep();
           }
         }
 
-        playClick() {
-          this.playFile('/audio/click.wav', 0.5);
-        }
-
-        playTick() {
-          this.playFile('/audio/tick.wav', 0.6);
-        }
-
-        playTransition() {
-          this.playFile('/audio/transition.wav', 0.85);
-        }
-
-        playEnjoy() {
-          this.playFile('/audio/enjoy.wav', 1.0);
-        }
+        playClick() { this.playFile('/audio/click.wav', 0.5); }
+        playTick() { this.playFile('/audio/tick.wav', 0.6); }
+        playTransition() { this.playFile('/audio/transition.wav', 0.85); }
+        playEnjoy() { this.playFile('/audio/enjoy.wav', 1.0); }
 
         startBgm() {
           if (this.muted || !this.bgmAudio) return;
@@ -725,9 +1193,7 @@ const initialRecipe = trialRecipes[0];
             this.bgmAudio.play().then(() => {
               document.getElementById('soundwave-bar')?.classList.remove('hidden');
               document.getElementById('soundwave-bar')?.classList.add('flex');
-            }).catch((err) => {
-              console.warn('Autoplay blocked until user gesture:', err);
-            });
+            }).catch(() => {});
           } catch (_) {}
         }
 
@@ -743,9 +1209,7 @@ const initialRecipe = trialRecipes[0];
 
         toggleMute() {
           this.muted = !this.muted;
-          if (this.muted) {
-            this.stopBgm();
-          }
+          if (this.muted) this.stopBgm();
           return this.muted;
         }
 
@@ -789,14 +1253,12 @@ const initialRecipe = trialRecipes[0];
       function updateClock() {
         const now = new Date();
         const clockEl = document.getElementById('live-clock');
-        if (clockEl) {
-          clockEl.textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-        }
+        if (clockEl) clockEl.textContent = now.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
       }
       setInterval(updateClock, 1000);
       updateClock();
 
-      // Tab Switching
+      // Tab Navigation System
       const tabButtons = document.querySelectorAll('.bottom-tab-btn');
       const tabContents = {
         recipes: document.getElementById('tab-content-recipes'),
@@ -841,34 +1303,58 @@ const initialRecipe = trialRecipes[0];
         });
       });
 
-      // Recipe Search & Category Filters
+      // Recipe Filters & Barista Spotlight
       const searchInput = document.getElementById('recipe-search-input');
+      const clearSearchBtn = document.getElementById('search-clear-btn');
       const catPills = document.querySelectorAll('.cat-pill');
+      const baristaBtns = document.querySelectorAll('.barista-avatar-btn');
+      const resetBaristaFilter = document.getElementById('reset-barista-filter');
       const recipeCards = document.querySelectorAll('.recipe-card');
+      const visibleCountEl = document.getElementById('visible-recipes-count');
 
       let currentCategory = 'ALL';
+      let selectedBarista = '';
       let searchQuery = '';
 
       function filterRecipeList() {
+        let count = 0;
         recipeCards.forEach((card) => {
-          const cardCat = card.getAttribute('data-category');
+          const cardCat = card.getAttribute('data-category') || '';
+          const cardAuthor = card.getAttribute('data-author') || '';
           const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
           const author = card.querySelector('.truncate')?.textContent.toLowerCase() || '';
 
-          const matchCat = currentCategory === 'ALL' || cardCat === currentCategory;
+          const matchCat = currentCategory === 'ALL' || cardCat.includes(currentCategory);
+          const matchBarista = !selectedBarista || cardAuthor.toLowerCase().includes(selectedBarista.toLowerCase());
           const matchQuery = !searchQuery || title.includes(searchQuery) || author.includes(searchQuery);
 
-          if (matchCat && matchQuery) {
+          if (matchCat && matchBarista && matchQuery) {
             card.classList.remove('hidden');
+            count++;
           } else {
             card.classList.add('hidden');
           }
         });
+
+        if (visibleCountEl) visibleCountEl.textContent = String(count);
       }
 
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
           searchQuery = e.target.value.toLowerCase().trim();
+          if (clearSearchBtn) {
+            if (searchQuery) clearSearchBtn.classList.remove('hidden');
+            else clearSearchBtn.classList.add('hidden');
+          }
+          filterRecipeList();
+        });
+      }
+
+      if (clearSearchBtn) {
+        clearSearchBtn.addEventListener('click', () => {
+          if (searchInput) searchInput.value = '';
+          searchQuery = '';
+          clearSearchBtn.classList.add('hidden');
           filterRecipeList();
         });
       }
@@ -887,9 +1373,233 @@ const initialRecipe = trialRecipes[0];
         });
       });
 
-      // ===============================================
+      baristaBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          audio.playClick();
+          const name = btn.getAttribute('data-barista-name') || '';
+          selectedBarista = name;
+          if (resetBaristaFilter) resetBaristaFilter.classList.remove('hidden');
+          filterRecipeList();
+        });
+      });
+
+      if (resetBaristaFilter) {
+        resetBaristaFilter.addEventListener('click', () => {
+          selectedBarista = '';
+          resetBaristaFilter.classList.add('hidden');
+          filterRecipeList();
+        });
+      }
+
+      // ============================================================
+      // RECIPE DETAIL SHEET MODAL WITH AUTO-SCALE DOSING
+      // ============================================================
+      let activeDetailRecipe = trialRecipes[0];
+      let scaledCoffee = activeDetailRecipe.coffee;
+      const detailModal = document.getElementById('recipe-detail-modal');
+
+      function openRecipeDetail(recipe) {
+        activeDetailRecipe = JSON.parse(JSON.stringify(recipe)); // Clone
+        scaledCoffee = activeDetailRecipe.coffee;
+
+        const avatarEl = document.getElementById('detail-modal-avatar');
+        const authorEl = document.getElementById('detail-modal-author');
+        const flagEl = document.getElementById('detail-modal-flag');
+        const titleEl = document.getElementById('detail-modal-title');
+        const descEl = document.getElementById('detail-modal-desc');
+        const grindEl = document.getElementById('detail-modal-grind');
+        const tempEl = document.getElementById('detail-modal-temp');
+        const ratioEl = document.getElementById('detail-scale-ratio');
+        const notesContainer = document.getElementById('detail-modal-notes');
+
+        if (avatarEl) avatarEl.src = recipe.avatar;
+        if (authorEl) authorEl.textContent = recipe.author;
+        if (flagEl) flagEl.textContent = recipe.flag;
+        if (titleEl) titleEl.textContent = recipe.title;
+        if (descEl) descEl.textContent = recipe.description;
+        if (grindEl) grindEl.textContent = recipe.grindSize;
+        if (tempEl) tempEl.textContent = `${recipe.temp}°C`;
+        if (ratioEl) ratioEl.textContent = `Rasio ${recipe.ratio}`;
+
+        if (notesContainer) {
+          notesContainer.innerHTML = '';
+          recipe.notes.forEach((n) => {
+            const badge = document.createElement('span');
+            badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold border flex items-center gap-1';
+            badge.style.backgroundColor = `${n.color}15`;
+            badge.style.borderColor = `${n.color}40`;
+            badge.style.color = '#332B25';
+            badge.innerHTML = `<span>${n.emoji}</span><span>${n.name}</span>`;
+            notesContainer.appendChild(badge);
+          });
+        }
+
+        renderDoseScale(activeDetailRecipe.coffee);
+        if (detailModal) detailModal.classList.remove('hidden');
+      }
+
+      function renderDoseScale(newDose) {
+        scaledCoffee = newDose;
+        const factor = scaledCoffee / activeDetailRecipe.coffee;
+        const scaledWater = Math.round(activeDetailRecipe.water * factor);
+
+        // Update presets styling
+        const presetBtns = document.querySelectorAll('.dose-preset-btn');
+        presetBtns.forEach((btn) => {
+          const d = parseInt(btn.getAttribute('data-dose') || '15', 10);
+          if (d === scaledCoffee) {
+            btn.className = 'dose-preset-btn py-1.5 rounded-lg border text-xs cursor-pointer transition-all bg-[#6B4423] text-white border-[#6B4423] shadow-xs';
+          } else {
+            btn.className = 'dose-preset-btn py-1.5 rounded-lg border text-xs cursor-pointer transition-all bg-[#F9F6F0] text-[#6F655D] border-[#E8DFD8] hover:bg-white';
+          }
+        });
+
+        const waterEl = document.getElementById('detail-scaled-water');
+        if (waterEl) waterEl.textContent = `${scaledWater}ml`;
+
+        // Render steps breakdown
+        const stepsContainer = document.getElementById('detail-modal-steps');
+        if (stepsContainer) {
+          stepsContainer.innerHTML = '';
+          let cumWater = 0;
+          activeDetailRecipe.steps.forEach((s, idx) => {
+            const stepWater = Math.round(s.waterAdded * factor);
+            cumWater += stepWater;
+            const row = document.createElement('div');
+            row.className = 'p-2 rounded-xl bg-[#F9F6F0] flex items-center justify-between text-[11px] font-semibold';
+            row.innerHTML = `
+              <div>
+                <span class="font-bold text-[#332B25] block">${s.name}</span>
+                <span class="text-[9.5px] text-[#8F857D]">${s.time}</span>
+              </div>
+              <div class="text-right">
+                <span class="font-bold text-[#6B4423]">+${stepWater}g air</span>
+                <span class="text-[9.5px] text-[#8F857D] block">Target: ${cumWater}g</span>
+              </div>
+            `;
+            stepsContainer.appendChild(row);
+          });
+        }
+      }
+
+      // Dose presets click
+      document.querySelectorAll('.dose-preset-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          audio.playClick();
+          const dose = parseInt(btn.getAttribute('data-dose') || '15', 10);
+          renderDoseScale(dose);
+        });
+      });
+
+      // Close detail sheet
+      document.getElementById('btn-close-recipe-detail')?.addEventListener('click', () => {
+        audio.playClick();
+        if (detailModal) detailModal.classList.add('hidden');
+      });
+
+      // Start brew from detail modal
+      document.getElementById('btn-detail-start-brew')?.addEventListener('click', () => {
+        audio.playClick();
+        if (detailModal) detailModal.classList.add('hidden');
+        // Build scaled recipe
+        const factor = scaledCoffee / activeDetailRecipe.coffee;
+        const scaledRecipe = JSON.parse(JSON.stringify(activeDetailRecipe));
+        scaledRecipe.coffee = scaledCoffee;
+        scaledRecipe.water = Math.round(activeDetailRecipe.water * factor);
+        let cum = 0;
+        scaledRecipe.steps.forEach((s) => {
+          s.waterAdded = Math.round(s.waterAdded * factor);
+          cum += s.waterAdded;
+          s.waterTarget = cum;
+        });
+
+        loadRecipeToBrew(scaledRecipe);
+      });
+
+      // Card click opens detail sheet
+      recipeCards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.btn-card-brew')) return; // handled separately
+          audio.playClick();
+          const id = card.getAttribute('data-recipe-id');
+          const found = trialRecipes.find((r) => r.id === id);
+          if (found) openRecipeDetail(found);
+        });
+      });
+
+      // Direct brew button on card
+      document.querySelectorAll('.btn-card-brew').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          audio.playClick();
+          const id = btn.getAttribute('data-recipe-id');
+          const found = trialRecipes.find((r) => r.id === id);
+          if (found) loadRecipeToBrew(found);
+        });
+      });
+
+      // ============================================================
+      // GRINDER CONVERTER MODAL (BaristaUtils.grinderConversions)
+      // ============================================================
+      const grinderModal = document.getElementById('grinder-modal');
+      const grinderList = document.getElementById('grinder-list-container');
+
+      function calculateGrinderClicks(rawGrind) {
+        const g = (rawGrind || 'Medium').toLowerCase();
+        let c40 = 23;
+        if (g.includes('super coarse')) c40 = 36;
+        else if (g.includes('coarse')) c40 = 28;
+        else if (g.includes('medium-fine')) c40 = 19;
+        else if (g.includes('fine-medium')) c40 = 18;
+        else if (g.includes('fine')) c40 = 15;
+
+        return [
+          { name: 'Comandante C40 MK3/MK4', val: `${c40} Klik`, note: 'Acuan Industri' },
+          { name: 'Timemore C2 / C3 / Slim', val: `${Math.round(c40 * 0.72)} Klik`, note: 'Populer Indonesia' },
+          { name: 'Timemore C3 ESP', val: `${Math.round(c40 * 2.5)} Klik`, note: 'Dial Luar Presisi' },
+          { name: 'Vesper VS-3 Fold', val: `${Math.round(c40 * 2.8)} Setting`, note: 'Multi-Step Dial' },
+          { name: 'MHW-3BOMBER Sonic / Race', val: `${Math.round(c40 * 0.82)} Klik`, note: 'CNC Burr' },
+          { name: '1Zpresso K-Ultra / K-Max', val: `Angka ${(c40 * 0.32).toFixed(1)}`, note: 'External Ring' },
+          { name: 'Fellow Ode Gen 2', val: `Dial ${(c40 * 0.22).toFixed(1)}`, note: 'Single Dose Flat' },
+          { name: 'DF64 Gen 2', val: `${Math.round(c40 * 2.1)} Dial`, note: 'Flat Burr 64mm' },
+          { name: 'Kingrinder K6', val: `${Math.round(c40 * 3.7)} Klik`, note: '16 Micron / Click' },
+          { name: 'Baratza Encore', val: `Setting ${Math.round(c40 * 0.68)}`, note: 'Conical Electric' },
+        ];
+      }
+
+      function openGrinderConverter(rawGrind) {
+        const conversions = calculateGrinderClicks(rawGrind);
+        if (grinderList) {
+          grinderList.innerHTML = '';
+          conversions.forEach((c) => {
+            const row = document.createElement('div');
+            row.className = 'p-2.5 rounded-xl bg-white border border-[#6B4423]/10 flex items-center justify-between shadow-2xs';
+            row.innerHTML = `
+              <div>
+                <span class="font-bold text-xs text-[#332B25] block">${c.name}</span>
+                <span class="text-[9.5px] text-[#8F857D]">${c.note}</span>
+              </div>
+              <span class="font-black text-xs text-[#6B4423] px-2 py-0.5 rounded-md bg-[#FFF4D6]">${c.val}</span>
+            `;
+            grinderList.appendChild(row);
+          });
+        }
+        if (grinderModal) grinderModal.classList.remove('hidden');
+      }
+
+      document.getElementById('btn-open-grinder-sheet')?.addEventListener('click', () => {
+        audio.playClick();
+        openGrinderConverter(activeDetailRecipe.grindSize);
+      });
+
+      document.getElementById('btn-close-grinder')?.addEventListener('click', () => {
+        audio.playClick();
+        if (grinderModal) grinderModal.classList.add('hidden');
+      });
+
+      // ============================================================
       // BREW TIMER ENGINE & SIMULATION
-      // ===============================================
+      // ============================================================
       let currentRecipe = trialRecipes[0];
       let elapsedSeconds = 0;
       let timerInterval = null;
@@ -976,9 +1686,24 @@ const initialRecipe = trialRecipes[0];
         const m = String(Math.floor(elapsedSeconds / 60)).padStart(2, '0');
         const s = String(elapsedSeconds % 60).padStart(2, '0');
         const display = document.getElementById('timer-display');
-        if (display) display.textContent = `${m}:${s}`;
+        if (display) {
+          display.textContent = `${m}:${s}`;
+          // Check ending soon (red countdown like mobile)
+          let endingSoon = false;
+          currentRecipe.steps.forEach((step) => {
+            const left = step.end - elapsedSeconds;
+            if (left <= 3 && left > 0) endingSoon = true;
+          });
+          if (endingSoon) {
+            display.classList.add('text-red-600');
+            display.classList.remove('text-[#6B4423]');
+          } else {
+            display.classList.remove('text-red-600');
+            display.classList.add('text-[#6B4423]');
+          }
+        }
 
-        // Ring progress
+        // SVG Circular Ring
         const circle = document.getElementById('timer-svg-circle');
         if (circle && currentRecipe.totalSeconds > 0) {
           const totalLength = 264;
@@ -992,16 +1717,23 @@ const initialRecipe = trialRecipes[0];
       function loadRecipeToBrew(recipe) {
         currentRecipe = recipe;
         resetTimer();
+
         const titleEl = document.getElementById('active-recipe-title');
         const authorEl = document.getElementById('active-recipe-author');
         const targetText = document.getElementById('timer-target-text');
+        const icedBanner = document.getElementById('brew-iced-banner');
 
         if (titleEl) titleEl.textContent = recipe.title;
         if (authorEl) authorEl.textContent = `${recipe.author} · ${recipe.category}`;
         if (targetText) {
           const m = String(Math.floor(recipe.totalSeconds / 60)).padStart(2, '0');
           const s = String(recipe.totalSeconds % 60).padStart(2, '0');
-          targetText.textContent = `Target ${m}:${s} · ${recipe.water}`;
+          targetText.textContent = `Target ${m}:${s} · ${recipe.isIced ? `${recipe.water}ml air + ${recipe.ice}g es` : `${recipe.water}ml`}`;
+        }
+
+        if (icedBanner) {
+          if (recipe.isIced) icedBanner.classList.remove('hidden');
+          else icedBanner.classList.add('hidden');
         }
 
         renderBrewSteps(recipe);
@@ -1011,30 +1743,42 @@ const initialRecipe = trialRecipes[0];
       function startPreparation() {
         isPreparing = true;
         prepSeconds = 3;
-        const statusBadge = document.getElementById('timer-status-badge');
-        const statusText = document.getElementById('timer-status-text');
-        const display = document.getElementById('timer-display');
 
-        if (statusBadge && statusText) {
-          statusBadge.className = 'mt-1.5 px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[8.5px] font-bold border border-blue-300 flex items-center gap-1';
-          statusText.textContent = 'SIAPKAN AIR...';
-        }
+        document.getElementById('running-view')?.classList.add('hidden');
+        document.getElementById('finished-view')?.classList.add('hidden');
+        document.getElementById('prep-view')?.classList.remove('hidden');
+        document.getElementById('prep-view')?.classList.add('flex');
 
+        const prepNumEl = document.getElementById('prep-number');
+        if (prepNumEl) prepNumEl.textContent = '3';
         audio.playTick();
-        if (display) display.textContent = `00:0${prepSeconds}`;
 
         const prepInterval = setInterval(() => {
           prepSeconds--;
           if (prepSeconds > 0) {
             audio.playTick();
-            if (display) display.textContent = `00:0${prepSeconds}`;
+            if (prepNumEl) prepNumEl.textContent = String(prepSeconds);
           } else {
             clearInterval(prepInterval);
             isPreparing = false;
+            document.getElementById('prep-view')?.classList.add('hidden');
+            document.getElementById('prep-view')?.classList.remove('flex');
+            document.getElementById('running-view')?.classList.remove('hidden');
             audio.playTransition();
             startMainBrew();
           }
         }, 1000);
+
+        // Skip prep handler
+        document.getElementById('btn-skip-prep')?.addEventListener('click', () => {
+          clearInterval(prepInterval);
+          isPreparing = false;
+          document.getElementById('prep-view')?.classList.add('hidden');
+          document.getElementById('prep-view')?.classList.remove('flex');
+          document.getElementById('running-view')?.classList.remove('hidden');
+          audio.playTransition();
+          startMainBrew();
+        }, { once: true });
       }
 
       function startMainBrew() {
@@ -1046,7 +1790,7 @@ const initialRecipe = trialRecipes[0];
         const playLabel = document.getElementById('play-pause-label');
 
         if (statusBadge && statusText) {
-          statusBadge.className = 'mt-1.5 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[8.5px] font-bold border border-emerald-300 flex items-center gap-1';
+          statusBadge.className = 'mt-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-bold border border-emerald-300 flex items-center gap-1.5';
           statusText.textContent = 'LIVE SEDUH';
         }
         if (playLabel) playLabel.textContent = 'Jeda';
@@ -1056,7 +1800,7 @@ const initialRecipe = trialRecipes[0];
             elapsedSeconds++;
             updateTimerDisplay();
 
-            // Sound cues check
+            // Sound cue triggers
             currentRecipe.steps.forEach((step) => {
               const remaining = step.end - elapsedSeconds;
               if (remaining <= 3 && remaining > 0) {
@@ -1081,7 +1825,7 @@ const initialRecipe = trialRecipes[0];
         const playLabel = document.getElementById('play-pause-label');
 
         if (statusBadge && statusText) {
-          statusBadge.className = 'mt-1.5 px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[8.5px] font-bold border border-amber-300 flex items-center gap-1';
+          statusBadge.className = 'mt-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[9px] font-bold border border-amber-300 flex items-center gap-1.5';
           statusText.textContent = 'DIJEDA';
         }
         if (playLabel) playLabel.textContent = 'Lanjutkan';
@@ -1093,6 +1837,12 @@ const initialRecipe = trialRecipes[0];
         clearInterval(timerInterval);
         audio.stopBgm();
         elapsedSeconds = 0;
+
+        document.getElementById('prep-view')?.classList.add('hidden');
+        document.getElementById('prep-view')?.classList.remove('flex');
+        document.getElementById('finished-view')?.classList.add('hidden');
+        document.getElementById('running-view')?.classList.remove('hidden');
+
         updateTimerDisplay();
 
         const statusBadge = document.getElementById('timer-status-badge');
@@ -1100,7 +1850,7 @@ const initialRecipe = trialRecipes[0];
         const playLabel = document.getElementById('play-pause-label');
 
         if (statusBadge && statusText) {
-          statusBadge.className = 'mt-1.5 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-[8.5px] font-bold border border-amber-200 flex items-center gap-1';
+          statusBadge.className = 'mt-1.5 px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-800 text-[9px] font-bold border border-amber-200 flex items-center gap-1.5';
           statusText.textContent = 'SIAP SEDUH';
         }
         if (playLabel) playLabel.textContent = 'Mulai Seduh';
@@ -1112,6 +1862,10 @@ const initialRecipe = trialRecipes[0];
         audio.stopBgm();
         audio.playEnjoy();
 
+        document.getElementById('running-view')?.classList.add('hidden');
+        document.getElementById('finished-view')?.classList.remove('hidden');
+        document.getElementById('finished-view')?.classList.add('flex');
+
         const modal = document.getElementById('brew-completed-modal');
         const timeStat = document.getElementById('finish-time-stat');
         const waterStat = document.getElementById('finish-water-stat');
@@ -1120,95 +1874,137 @@ const initialRecipe = trialRecipes[0];
         const s = String(elapsedSeconds % 60).padStart(2, '0');
 
         if (timeStat) timeStat.textContent = `Waktu: ${m}:${s}`;
-        if (waterStat) waterStat.textContent = `Air: ${currentRecipe.water}`;
+        if (waterStat) waterStat.textContent = `Air: ${currentRecipe.water}ml`;
         if (modal) modal.classList.remove('hidden');
       }
 
-      // Play/Pause button event
-      const playPauseBtn = document.getElementById('btn-play-pause-timer');
-      if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', () => {
-          audio.playClick();
-          if (isRunning) {
-            pauseTimer();
-          } else {
-            if (elapsedSeconds === 0) {
-              startPreparation();
-            } else {
-              startMainBrew();
-            }
-          }
-        });
-      }
-
-      // Reset button event
-      const resetBtn = document.getElementById('btn-reset-timer');
-      if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-          audio.playClick();
-          resetTimer();
-        });
-      }
-
-      // Skip step button event
-      const skipBtn = document.getElementById('btn-skip-step');
-      if (skipBtn) {
-        skipBtn.addEventListener('click', () => {
-          audio.playClick();
-          let currentStep = currentRecipe.steps.find((s) => elapsedSeconds >= s.start && elapsedSeconds < s.end);
-          if (currentStep) {
-            elapsedSeconds = currentStep.end;
-            updateTimerDisplay();
-            audio.playTransition();
-          }
-        });
-      }
-
-      // Recipe card click handlers
-      recipeCards.forEach((card) => {
-        card.addEventListener('click', () => {
-          audio.playClick();
-          const recipeId = card.getAttribute('data-recipe-id');
-          const found = trialRecipes.find((r) => r.id === recipeId);
-          if (found) {
-            loadRecipeToBrew(found);
-          }
-        });
+      // Play / Pause Button
+      document.getElementById('btn-play-pause-timer')?.addEventListener('click', () => {
+        audio.playClick();
+        if (isRunning) {
+          pauseTimer();
+        } else {
+          if (elapsedSeconds === 0) startPreparation();
+          else startMainBrew();
+        }
       });
 
-      // Back to recipes button in brew tab
-      const backToRecipesBtn = document.getElementById('brew-back-to-recipes');
-      if (backToRecipesBtn) {
-        backToRecipesBtn.addEventListener('click', () => {
-          audio.playClick();
-          switchTab('recipes');
-        });
+      // Reset Button
+      document.getElementById('btn-reset-timer')?.addEventListener('click', () => {
+        audio.playClick();
+        resetTimer();
+      });
+
+      // +10s Button
+      document.getElementById('btn-add-10s')?.addEventListener('click', () => {
+        audio.playClick();
+        currentRecipe.totalSeconds += 10;
+        // Extend last step by 10s
+        if (currentRecipe.steps.length > 0) {
+          currentRecipe.steps[currentRecipe.steps.length - 1].end += 10;
+        }
+        updateTimerDisplay();
+      });
+
+      // Skip step button
+      document.getElementById('btn-skip-step')?.addEventListener('click', () => {
+        audio.playClick();
+        const curStep = currentRecipe.steps.find((s) => elapsedSeconds >= s.start && elapsedSeconds < s.end);
+        if (curStep) {
+          elapsedSeconds = curStep.end;
+          updateTimerDisplay();
+          audio.playTransition();
+        }
+      });
+
+      // Back to recipes button
+      document.getElementById('brew-back-to-recipes')?.addEventListener('click', () => {
+        audio.playClick();
+        switchTab('recipes');
+      });
+
+      // ============================================================
+      // THERMAL RECEIPT SHEET LOGIC
+      // ============================================================
+      const thermalModal = document.getElementById('thermal-receipt-modal');
+
+      function openThermalReceipt(recipe) {
+        const titleEl = document.getElementById('receipt-title');
+        const ratioEl = document.getElementById('receipt-ratio');
+        const dosesEl = document.getElementById('receipt-doses');
+        const tempEl = document.getElementById('receipt-temp');
+        const stagesContainer = document.getElementById('receipt-stages');
+
+        if (titleEl) titleEl.textContent = recipe.title;
+        if (ratioEl) ratioEl.textContent = `Rasio: ${recipe.ratio}`;
+        if (dosesEl) dosesEl.textContent = `${recipe.coffee}g kopi / ${recipe.water}ml air`;
+        if (tempEl) tempEl.textContent = `Suhu: ${recipe.temp}°C`;
+
+        if (stagesContainer) {
+          stagesContainer.innerHTML = '';
+          recipe.steps.forEach((s) => {
+            const row = document.createElement('div');
+            row.className = 'flex justify-between';
+            row.innerHTML = `
+              <span class="truncate max-w-[140px]">${s.name}</span>
+              <span>+${s.waterAdded}g (${s.time})</span>
+            `;
+            stagesContainer.appendChild(row);
+          });
+        }
+
+        if (thermalModal) thermalModal.classList.remove('hidden');
       }
 
-      // Modal buttons
-      const modalBrewAgain = document.getElementById('btn-modal-brew-again');
-      const modalBackRecipes = document.getElementById('btn-modal-back-recipes');
-      const modal = document.getElementById('brew-completed-modal');
+      document.getElementById('btn-open-thermal-sheet')?.addEventListener('click', () => {
+        audio.playClick();
+        openThermalReceipt(currentRecipe);
+      });
 
-      if (modalBrewAgain) {
-        modalBrewAgain.addEventListener('click', () => {
-          audio.playClick();
-          if (modal) modal.classList.add('hidden');
-          resetTimer();
-          startPreparation();
-        });
-      }
+      document.getElementById('btn-close-receipt')?.addEventListener('click', () => {
+        audio.playClick();
+        if (thermalModal) thermalModal.classList.add('hidden');
+      });
 
-      if (modalBackRecipes) {
-        modalBackRecipes.addEventListener('click', () => {
-          audio.playClick();
-          if (modal) modal.classList.add('hidden');
-          resetTimer();
-          switchTab('recipes');
-        });
-      }
+      document.getElementById('btn-modal-print-receipt')?.addEventListener('click', () => {
+        audio.playClick();
+        document.getElementById('brew-completed-modal')?.classList.add('hidden');
+        openThermalReceipt(currentRecipe);
+      });
 
-      // Initial Steps Render
+      // ============================================================
+      // BREW DOCTOR SHEET LOGIC
+      // ============================================================
+      const doctorModal = document.getElementById('brew-doctor-modal');
+
+      document.getElementById('btn-open-brew-doctor-sheet')?.addEventListener('click', () => {
+        audio.playClick();
+        if (doctorModal) doctorModal.classList.remove('hidden');
+      });
+
+      document.getElementById('btn-close-brew-doctor')?.addEventListener('click', () => {
+        audio.playClick();
+        if (doctorModal) doctorModal.classList.add('hidden');
+      });
+
+      // ============================================================
+      // CELEBRATION FINISH MODAL BUTTONS
+      // ============================================================
+      document.getElementById('btn-modal-brew-again')?.addEventListener('click', () => {
+        audio.playClick();
+        document.getElementById('brew-completed-modal')?.classList.add('hidden');
+        resetTimer();
+        startPreparation();
+      });
+
+      document.getElementById('btn-modal-back-recipes')?.addEventListener('click', () => {
+        audio.playClick();
+        document.getElementById('brew-completed-modal')?.classList.add('hidden');
+        resetTimer();
+        switchTab('recipes');
+      });
+
+      // Initialize with first recipe
       renderBrewSteps(currentRecipe);
     </script>
 
