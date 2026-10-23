@@ -14,8 +14,11 @@ const trialRecipes = [
     category: 'V60',
     beanName: 'Jawa Puntang Natural (Single Origin)',
     variety: 'Typica / Ateng',
-    process: 'Natural Process',
-    roast: 'Light to Medium',
+    process: 'Natural Process (Dry)',
+    roast: 'Light to Medium Roast',
+    roastery: 'Klasik Beans Cooperative, Puntang',
+    filterPaper: 'Hario V60 02 Tabbed White Filter',
+    waterSpec: 'Lotus Mineral Water (85 PPM, 60 GH / 25 KH)',
     coffee: 15,
     water: 225,
     temp: 92,
@@ -32,6 +35,11 @@ const trialRecipes = [
     avatar: '/images/characters/char_avatar_1.jpg',
     totalSeconds: 135,
     description: 'Resep andalan harian dengan rasio 1:15. Mengekstraksi keasaman buah peach manis di tuangan awal, disusul kepekatan rasa brown sugar karamel yang halus dan aftertaste floral panjang.',
+    prepChecklist: [
+      'Bilas kertas saringan V60 dengan air panas & panaskan server',
+      'Timbang 15g biji kopi Jawa Puntang & giling di 22 klik Comandante',
+      'Pastikan kettle stabil di suhu 92°C'
+    ],
     steps: [
       { order: 1, name: 'Blooming & Swirl', time: '00:00 - 00:35', start: 0, end: 35, duration: 35, waterAdded: 45, waterTarget: 45, desc: 'Tuang melingkar pelan dari tengah, swirl 2x lembut.' },
       { order: 2, name: 'Sweetness Center Pour', time: '00:35 - 01:15', start: 35, end: 75, duration: 40, waterAdded: 90, waterTarget: 135, desc: 'Tuang tenang di titik tengah untuk melarutkan gula alami.' },
@@ -46,10 +54,13 @@ const trialRecipes = [
     title: 'Metode Multi-Pour Neo Brew (2026)',
     subtitle: "Tetsu Kasuya's 10th Anniversary Recipe",
     category: 'V60',
-    beanName: 'Light Roast Single Origin Geisha',
-    variety: 'Panama Geisha',
+    beanName: 'Panama Geisha (Boquete Washed)',
+    variety: 'Panama Geisha 1931',
     process: 'Washed Process',
     roast: 'Light Roast',
+    roastery: 'Philocoffea Roastery, Funabashi, Japan',
+    filterPaper: 'Hario V60 02 Untabbed White Filter',
+    waterSpec: 'Lotus Water (60 PPM, Soft Water)',
     coffee: 20,
     water: 300,
     temp: 96,
@@ -66,6 +77,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/tetsu_kasuya.jpg',
     totalSeconds: 210,
     description: 'Resep ulang tahun ke-10 (2026) Tetsu Kasuya. Menggunakan gilingan super kasar dan tuangan multi-pulse untuk menghasilkan tekstur sangat kental (syrupy), manis maksimal, dan minim rasa pahit.',
+    prepChecklist: [
+      'Bilas kertas saringan & panaskan dripper keramik Kasuya',
+      'Timbang 20g biji kopi Panama Geisha & giling kasar (45 klik)',
+      'Gunakan air mendidih bersuhu tinggi 96°C untuk ekstraksi cepat'
+    ],
     steps: [
       { order: 1, name: '40% Rasa (Bloom 1)', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Menentukan balance acidity awal seduhan kopi.' },
       { order: 2, name: '40% Rasa (Bloom 2)', time: '00:45 - 01:30', start: 45, end: 90, duration: 45, waterAdded: 70, waterTarget: 120, desc: 'Menentukan tingkat rasa manis dan kepekatan body.' },
@@ -84,8 +100,11 @@ const trialRecipes = [
     category: 'V60',
     beanName: 'Ninety Plus Nekisse (Ethiopia)',
     variety: 'Ethiopian Heirloom',
-    process: 'Natural Process',
-    roast: 'Light Cinnamon',
+    process: 'Natural Process (Dry)',
+    roast: 'Light Cinnamon Roast',
+    roastery: 'Supreme Roastworks, Oslo, Norway',
+    filterPaper: 'Hario V60 02 Tabbed White Filter',
+    waterSpec: 'Oslo Soft Mountain Water (45 PPM)',
     coffee: 20,
     water: 300,
     temp: 92,
@@ -102,6 +121,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/odd_steinar_tollefsen.jpg',
     totalSeconds: 210,
     description: 'Mendobrak dogma dengan kopi proses natural murni. Ekstraksi dimulai dengan blooming panjang 45 detik disusul single continuous pour stabil untuk tekstur luar biasa bersih bebas sepat.',
+    prepChecklist: [
+      'Bilas filter paper secara merata untuk membuang sisa rasa kertas',
+      'Timbang 20g kopi Ethiopia Natural & giling di 24 klik',
+      'Siapkan air bersuhu 92°C untuk profil blooming 45 detik'
+    ],
     steps: [
       { order: 1, name: 'Long Extended Bloom', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Pra-infusi lambat meratakan pelepasan gas CO2.' },
       { order: 2, name: 'Single Continuous Center Pour', time: '00:45 - 03:30', start: 45, end: 210, duration: 165, waterAdded: 250, waterTarget: 300, desc: 'Penuangan kontinu perlahan di tengah dengan flow rate rendah.' },
@@ -118,7 +142,10 @@ const trialRecipes = [
     beanName: 'Finca Deborah Geisha Nitrogen Macerated',
     variety: 'Green Tip Geisha',
     process: 'Anaerobic Washed',
-    roast: 'Light Filter',
+    roast: 'Light Filter Roast',
+    roastery: 'So So Good Coffee Company, Jakarta',
+    filterPaper: 'Cafec Abaca V60 Filter Paper',
+    waterSpec: 'Custom Mineral Water 75 PPM (Ca 50 / Mg 25)',
     coffee: 15,
     water: 240,
     temp: 93,
@@ -135,6 +162,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/mikael_jasin.jpg',
     totalSeconds: 150,
     description: 'Profil kejuaraan dunia Mikael Jasin 2024. Aliran lembut di awal, agitasi agresif di tengah untuk membuka kompleksitas rasa, dan diakhiri tuangan rendah menjaga kejernihan rasa.',
+    prepChecklist: [
+      'Bilas kertas Cafec Abaca & pre-heat server kaca',
+      'Timbang 15g biji Finca Deborah Geisha & giling di 20 klik',
+      'Jaga suhu kettle konstan di 93°C dengan gooseneck kettle'
+    ],
     steps: [
       { order: 1, name: 'Gentle Low-Height Blooming', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 45, waterTarget: 45, desc: 'Aliran air sangat lembut 4g/detik melingkar dari tengah ke luar.' },
       { order: 2, name: 'High Agitation Pulse', time: '00:40 - 01:25', start: 40, end: 85, duration: 45, waterAdded: 95, waterTarget: 140, desc: 'Spiral agresif dari ketinggian sedang melarutkan asam buah aromatik.' },
@@ -151,8 +183,11 @@ const trialRecipes = [
     category: 'Japanese',
     beanName: 'Mount Halu Banana Fermentation',
     variety: 'Sigararutang',
-    process: 'Carbonic Maceration',
-    roast: 'Omni Light',
+    process: 'Carbonic Maceration Natural',
+    roast: 'Omni Light Roast',
+    roastery: 'So So Good Coffee Company, Jakarta',
+    filterPaper: 'Hario V60 02 White Filter Paper',
+    waterSpec: 'Filtered Clean Water 90 PPM',
     coffee: 18,
     water: 170, // 170ml air panas + 100g es = 270g total
     ice: 100,
@@ -170,6 +205,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/mikael_jasin.jpg',
     totalSeconds: 140,
     description: 'Kopi seduh dingin segar Jepang. Ekstraksi langsung menetes ke atas bongkahan es batu di server, mengunci molekul aroma harum dan mencegah oksidasi rasa.',
+    prepChecklist: [
+      'Timbang 100g es batu jernih dan masukkan ke dalam server',
+      'Bilas kertas filter terpisah di wastafel lalu pasang ke corong',
+      'Timbang 18g biji kopi Gunung Halu & giling di 18 klik'
+    ],
     steps: [
       { order: 1, name: 'Es di Server & Bloom', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 50, waterTarget: 50, desc: 'Siapkan 100g es di server. Tuang 50g air panas ke bubuk kopi.' },
       { order: 2, name: 'Center Extraction Pulse', time: '00:40 - 01:20', start: 40, end: 80, duration: 40, waterAdded: 60, waterTarget: 110, desc: 'Tuang tegak lurus di tengah untuk melarutkan aroma buah segar.' },
@@ -184,10 +224,13 @@ const trialRecipes = [
     title: 'The Ultimate 1-Cup V60 Technique',
     subtitle: 'Teknik Standar Emas Solo Brewer',
     category: 'V60',
-    beanName: 'Washed Yirgacheffe Ethiopia',
-    variety: 'Heirloom',
-    process: 'Washed Process',
-    roast: 'Light Roast',
+    beanName: 'Washed Yirgacheffe Ethiopia G1',
+    variety: 'Kurume & Dega Heirloom',
+    process: 'Washed Process (Clean)',
+    roast: 'Light Filter Roast',
+    roastery: 'Square Mile Coffee Roasters, London',
+    filterPaper: 'Hario V60 02 Untabbed White Filter',
+    waterSpec: 'Third Wave Water (110 PPM, SCA Standard)',
     coffee: 15,
     water: 250,
     temp: 95,
@@ -204,6 +247,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/james_hoffmann.jpg',
     totalSeconds: 180,
     description: 'Metode 1-Cup V60 legendaris James Hoffmann. Dosis 15g untuk 250ml air dengan 5 tahap penuangan 50g setiap 30 detik untuk ekstraksi manis yang merata.',
+    prepChecklist: [
+      'Bilas kertas saringan dengan air panas mendidih & panaskan server',
+      'Timbang 15g Ethiopian Washed & giling di 19 klik Comandante',
+      'Gunakan air bersuhu tinggi 95°C'
+    ],
     steps: [
       { order: 1, name: 'Bloom & Gentle Swirl', time: '00:00 - 00:45', start: 0, end: 45, duration: 45, waterAdded: 50, waterTarget: 50, desc: 'Tuang 50g air, swirl dripper lembut agar seluruh bubuk basah.' },
       { order: 2, name: 'Second Pour (+50g)', time: '00:45 - 01:15', start: 45, end: 75, duration: 30, waterAdded: 50, waterTarget: 100, desc: 'Tuang spiral melingkar halus hingga timbangan 100g.' },
@@ -221,9 +269,12 @@ const trialRecipes = [
     subtitle: 'World Brewers Cup 2023 Champion',
     category: 'Origami',
     beanName: 'Café de Finca Sidra Anaerobic',
-    variety: 'Sidra',
-    process: 'Anaerobic Natural',
-    roast: 'Very Light',
+    variety: 'Sidra Heirloom',
+    process: 'Anaerobic Natural (72h)',
+    roast: 'Very Light Roast',
+    roastery: 'Café de Finca, Chile & Barcelona',
+    filterPaper: 'Kalita Wave 155 Filter Bleached',
+    waterSpec: 'Competition Water 110 PPM (Balanced Buffer)',
     coffee: 15,
     water: 225,
     temp: 91,
@@ -240,6 +291,11 @@ const trialRecipes = [
     avatar: '/images/avatars/portraits/carlos_medina.jpg',
     totalSeconds: 165,
     description: 'Resep juara dunia Origami Dripper asal Chili. Menggunakan kertas saringan Kalita Wave di dalam Origami Dripper untuk aliran air yang sangat seragam dan rasa peach manis.',
+    prepChecklist: [
+      'Letakkan kertas Kalita Wave di dalam Origami Dripper & bilas merata',
+      'Timbang 15g biji Sidra Anaerobic & giling di 28 klik (Coarse)',
+      'Siapkan air bersuhu 91°C untuk ekstraksi fruity floral'
+    ],
     steps: [
       { order: 1, name: 'Pre-Infusion Bloom', time: '00:00 - 00:40', start: 0, end: 40, duration: 40, waterAdded: 50, waterTarget: 50, desc: 'Penuangan tengah melingkar kecil dengan flow rate lambat.' },
       { order: 2, name: 'Sweetness Extraction', time: '00:40 - 01:15', start: 40, end: 75, duration: 35, waterAdded: 60, waterTarget: 110, desc: 'Tuang melingkar sedang untuk mengekstrak rasa manis buah.' },
@@ -502,10 +558,17 @@ const initialRecipe = trialRecipes[0];
                   </div>
                 </div>
 
-                <!-- 5. Description snippet (10px, 2 lines) -->
-                <p class="text-[9.5px] text-[#8F857D] leading-tight line-clamp-2 min-h-[22px] mb-2">
-                  {r.description}
-                </p>
+                <!-- 5. Rich Coffee Bean, Variety & Process Chip (Mobile Parity) -->
+                <div class="bg-[#F6EFEA] rounded-xl p-2 my-1.5 border border-[#6B4423]/10 space-y-1">
+                  <div class="font-bold text-[#6B4423] truncate flex items-center gap-1.5 text-[10.5px]">
+                    <span class="text-xs">☕</span>
+                    <span class="truncate">{r.beanName}</span>
+                  </div>
+                  <div class="flex items-center justify-between text-[9.5px] text-[#6F655D] pt-0.5 border-t border-[#6B4423]/10">
+                    <span class="truncate max-w-[90px]">🌱 {r.variety}</span>
+                    <span class="truncate max-w-[85px] font-semibold text-[#8F857D]">☀️ {r.process}</span>
+                  </div>
+                </div>
 
                 <!-- 6. Category on left & Short Grind on right -->
                 <div class="flex items-center justify-between text-[10px] pb-2 border-b border-[#E8DFD8]">
@@ -560,6 +623,36 @@ const initialRecipe = trialRecipes[0];
               <button id="btn-open-brew-doctor-sheet" class="p-1.5 rounded-lg hover:bg-black/5 text-[#ECA400] cursor-pointer" title="Brew Doctor (Koreksi Rasa)">
                 <Icon name="lightbulb" size={16} color="#ECA400" />
               </button>
+            </div>
+          </div>
+
+          <!-- Coffee Bean & Brewing Parameters Bar (Tap to view full detail) -->
+          <div id="brew-bean-bar" class="bg-white/90 hover:bg-white rounded-xl p-2 border border-[#E8DFD8] flex items-center justify-between cursor-pointer transition-colors shadow-2xs shrink-0 my-0.5 group" title="Lihat Profil Biji Kopi & Parameter Lengkap">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="w-7 h-7 rounded-lg bg-[#6B4423]/10 text-[#6B4423] flex items-center justify-center text-xs shrink-0 font-bold group-hover:scale-105 transition-transform">
+                ☕
+              </div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <span id="brew-bar-bean" class="text-xs font-bold text-[#332B25] truncate">
+                    {initialRecipe.beanName}
+                  </span>
+                  <span id="brew-bar-roast" class="text-[9px] font-semibold text-[#8F857D] px-1.5 py-0.2 rounded bg-[#F9F6F0] shrink-0">
+                    {initialRecipe.roast}
+                  </span>
+                </div>
+                <div class="flex items-center gap-1.5 text-[9.5px] text-[#6F655D] truncate">
+                  <span id="brew-bar-variety" class="truncate">🌱 {initialRecipe.variety}</span>
+                  <span>·</span>
+                  <span id="brew-bar-process" class="truncate">☀️ {initialRecipe.process}</span>
+                  <span>·</span>
+                  <span id="brew-bar-temp" class="shrink-0 font-bold text-[#6B4423]">🌡️ {initialRecipe.temp}°C ({initialRecipe.ratio})</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 shrink-0 ml-1">
+              <span class="text-[9.5px] text-[#ECA400] font-bold">Detail</span>
+              <svg class="w-3 h-3 text-[#ECA400]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
             </div>
           </div>
 
@@ -661,7 +754,7 @@ const initialRecipe = trialRecipes[0];
           </div>
 
           <!-- ONLY THIS CONTAINER SCROLLS: Step Cards List (flex-1 min-h-0 overflow-y-auto) -->
-          <div id="brew-steps-container" class="flex-1 min-h-0 overflow-y-auto no-scrollbar space-y-2 pb-6 relative">
+          <div id="brew-steps-container" class="flex-1 min-h-0 overflow-y-auto no-scrollbar space-y-2 pb-36 relative">
             <!-- Dynamically populated via script -->
           </div>
 
@@ -901,11 +994,51 @@ const initialRecipe = trialRecipes[0];
               </div>
             </div>
 
-            <!-- Bean & Grind Details Card + Grinder Converter Trigger -->
-            <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
+            <!-- 1. Rich Coffee Bean Profile Card (Mobile Parity) -->
+            <div class="p-3.5 rounded-2xl bg-white border border-[#E8DFD8] space-y-2.5">
+              <div class="flex items-center gap-1.5 text-xs font-black text-[#6B4423]">
+                <span>☕</span>
+                <span>Profil Biji Kopi & Roastery</span>
+              </div>
+              
+              <div class="space-y-2 text-[11px]">
+                <div class="p-2.5 rounded-xl bg-[#F6EFEA] border border-[#6B4423]/10">
+                  <span class="text-[9.5px] text-[#8F857D] block font-semibold">Nama Origin / Single Origin:</span>
+                  <span id="detail-modal-bean" class="font-bold text-xs text-[#332B25] block mt-0.5">Jawa Puntang Natural</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                    <span class="text-[#8F857D] text-[9.5px] block font-semibold">Varietas Tanaman</span>
+                    <span id="detail-modal-variety" class="font-bold text-[#6B4423] block mt-0.5 truncate">Typica / Ateng</span>
+                  </div>
+                  <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                    <span class="text-[#8F857D] text-[9.5px] block font-semibold">Metode Pasca-Panen</span>
+                    <span id="detail-modal-process" class="font-bold text-[#6B4423] block mt-0.5 truncate">Natural Process</span>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                  <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                    <span class="text-[#8F857D] text-[9.5px] block font-semibold">Tingkat Sangrai (Roast)</span>
+                    <span id="detail-modal-roast" class="font-bold text-[#6B4423] block mt-0.5 truncate">Light to Medium</span>
+                  </div>
+                  <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                    <span class="text-[#8F857D] text-[9.5px] block font-semibold">Roastery Asal</span>
+                    <span id="detail-modal-roastery" class="font-bold text-[#6B4423] block mt-0.5 truncate">Klasik Beans</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Extraction & Equipment Parameters Card -->
+            <div class="p-3.5 rounded-2xl bg-white border border-[#E8DFD8] space-y-2.5">
               <div class="flex items-center justify-between">
-                <span class="font-bold text-xs text-[#332B25]">Gilingan & Biji Kopi</span>
-                <button id="btn-open-grinder-sheet" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-[#ECA400]/20 text-[#6B4423] text-[10px] font-bold hover:bg-[#ECA400]/30 transition-colors cursor-pointer">
+                <span class="font-bold text-xs text-[#332B25] flex items-center gap-1.5">
+                  <span>⚙️</span>
+                  <span>Parameter Ekstraksi & Grinder</span>
+                </span>
+                <button id="btn-open-grinder-sheet" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#ECA400]/20 text-[#6B4423] text-[10px] font-bold hover:bg-[#ECA400]/30 transition-colors cursor-pointer">
                   <Icon name="wrench" size={11} color="#6B4423" />
                   <span>Konversi Grinder</span>
                 </button>
@@ -913,27 +1046,52 @@ const initialRecipe = trialRecipes[0];
               
               <div class="grid grid-cols-2 gap-2 text-[11px]">
                 <div class="p-2 rounded-xl bg-[#F9F6F0]">
-                  <span class="text-[#8F857D] text-[9.5px] block">Level Gilingan</span>
-                  <span id="detail-modal-grind" class="font-bold text-[#6B4423]">Medium (22 Klik)</span>
+                  <span class="text-[#8F857D] text-[9.5px] block font-semibold">Level Gilingan</span>
+                  <span id="detail-modal-grind" class="font-bold text-[#6B4423] block mt-0.5">Medium (22 Klik)</span>
                 </div>
                 <div class="p-2 rounded-xl bg-[#F9F6F0]">
-                  <span class="text-[#8F857D] text-[9.5px] block">Suhu Air Ideal</span>
-                  <span id="detail-modal-temp" class="font-bold text-[#6B4423]">92°C</span>
+                  <span class="text-[#8F857D] text-[9.5px] block font-semibold">Suhu Air Ideal</span>
+                  <span id="detail-modal-temp" class="font-bold text-[#6B4423] block mt-0.5">92°C</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2 text-[11px]">
+                <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                  <span class="text-[#8F857D] text-[9.5px] block font-semibold">Kertas Saringan</span>
+                  <span id="detail-modal-filter" class="font-bold text-[#332B25] block mt-0.5 truncate">Hario V60 02</span>
+                </div>
+                <div class="p-2 rounded-xl bg-[#F9F6F0]">
+                  <span class="text-[#8F857D] text-[9.5px] block font-semibold">Spesifikasi Air</span>
+                  <span id="detail-modal-water-spec" class="font-bold text-[#332B25] block mt-0.5 truncate">85 PPM</span>
                 </div>
               </div>
 
               <!-- Tasting Notes Pills -->
-              <div class="pt-1">
-                <span class="text-[10px] text-[#8F857D] block mb-1 font-semibold">Tasting Notes Karakteristik:</span>
+              <div class="pt-1 border-t border-[#E8DFD8]/60">
+                <span class="text-[10px] text-[#8F857D] block mb-1.5 font-semibold">Tasting Notes Karakteristik:</span>
                 <div id="detail-modal-notes" class="flex flex-wrap gap-1.5">
                   <!-- Populated via script -->
                 </div>
               </div>
             </div>
 
-            <!-- Steps Preview List -->
+            <!-- 3. Barista Preparation Checklist (Mobile Parity) -->
             <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
-              <span class="font-bold text-xs text-[#332B25] block">Rincian Tahapan Seduh</span>
+              <span class="font-bold text-xs text-[#332B25] flex items-center gap-1.5">
+                <span>📋</span>
+                <span>Checklist Persiapan Seduh</span>
+              </span>
+              <div id="detail-modal-prep-checklist" class="space-y-1.5 text-[11px] text-[#6F655D]">
+                <!-- Populated via script -->
+              </div>
+            </div>
+
+            <!-- 4. Steps Preview List -->
+            <div class="p-3 rounded-2xl bg-white border border-[#E8DFD8] space-y-2">
+              <span class="font-bold text-xs text-[#332B25] flex items-center gap-1.5">
+                <span>⏱️</span>
+                <span>Rincian Tahapan Seduh</span>
+              </span>
               <div id="detail-modal-steps" class="space-y-1.5">
                 <!-- Populated via script -->
               </div>
@@ -1417,6 +1575,16 @@ const initialRecipe = trialRecipes[0];
         const ratioEl = document.getElementById('detail-scale-ratio');
         const notesContainer = document.getElementById('detail-modal-notes');
 
+        // Detailed Coffee Profile Elements
+        const beanEl = document.getElementById('detail-modal-bean');
+        const varietyEl = document.getElementById('detail-modal-variety');
+        const processEl = document.getElementById('detail-modal-process');
+        const roastEl = document.getElementById('detail-modal-roast');
+        const roasteryEl = document.getElementById('detail-modal-roastery');
+        const filterEl = document.getElementById('detail-modal-filter');
+        const waterSpecEl = document.getElementById('detail-modal-water-spec');
+        const prepContainer = document.getElementById('detail-modal-prep-checklist');
+
         if (avatarEl) avatarEl.src = recipe.avatar;
         if (authorEl) authorEl.textContent = recipe.author;
         if (flagEl) flagEl.textContent = recipe.flag;
@@ -1425,6 +1593,33 @@ const initialRecipe = trialRecipes[0];
         if (grindEl) grindEl.textContent = recipe.grindSize;
         if (tempEl) tempEl.textContent = `${recipe.temp}°C`;
         if (ratioEl) ratioEl.textContent = `Rasio ${recipe.ratio}`;
+
+        if (beanEl) beanEl.textContent = recipe.beanName || 'Single Origin Specialty';
+        if (varietyEl) varietyEl.textContent = recipe.variety || '-';
+        if (processEl) processEl.textContent = recipe.process || '-';
+        if (roastEl) roastEl.textContent = recipe.roast || '-';
+        if (roasteryEl) roasteryEl.textContent = recipe.roastery || '-';
+        if (filterEl) filterEl.textContent = recipe.filterPaper || 'Hario V60 02 Filter';
+        if (waterSpecEl) waterSpecEl.textContent = recipe.waterSpec || 'Lotus Water 85 PPM';
+
+        // Render Prep Checklist
+        if (prepContainer) {
+          prepContainer.innerHTML = '';
+          const checklist = recipe.prepChecklist || [
+            'Bilas kertas filter (Paper Rinse) & panaskan server',
+            `Timbang & giling ${recipe.coffee}g kopi (${recipe.grindSize})`,
+            `Siapkan air bersuhu ${recipe.temp}°C`
+          ];
+          checklist.forEach((item) => {
+            const row = document.createElement('div');
+            row.className = 'flex items-start gap-2 p-1.5 rounded-lg bg-[#F9F6F0]';
+            row.innerHTML = `
+              <span class="w-4 h-4 rounded bg-[#6B4423]/10 text-[#6B4423] flex items-center justify-center text-[10px] font-black shrink-0 mt-0.5">✓</span>
+              <span class="leading-snug">${item}</span>
+            `;
+            prepContainer.appendChild(row);
+          });
+        }
 
         if (notesContainer) {
           notesContainer.innerHTML = '';
@@ -1807,6 +2002,12 @@ const initialRecipe = trialRecipes[0];
 
           container.appendChild(card);
         });
+
+        // Extra bottom spacer so the last step can scroll completely to the top without being cut off
+        const bottomSpacer = document.createElement('div');
+        bottomSpacer.className = 'h-48 shrink-0 pointer-events-none';
+        bottomSpacer.setAttribute('aria-hidden', 'true');
+        container.appendChild(bottomSpacer);
       }
 
       function updateStepHighlights() {
@@ -1930,6 +2131,19 @@ const initialRecipe = trialRecipes[0];
           if (recipe.isIced) icedBanner.classList.remove('hidden');
           else icedBanner.classList.add('hidden');
         }
+
+        // Update Coffee Bean & Brewing Parameters Bar (#brew-bean-bar)
+        const barBean = document.getElementById('brew-bar-bean');
+        const barRoast = document.getElementById('brew-bar-roast');
+        const barVariety = document.getElementById('brew-bar-variety');
+        const barProcess = document.getElementById('brew-bar-process');
+        const barTemp = document.getElementById('brew-bar-temp');
+
+        if (barBean) barBean.textContent = recipe.beanName || 'Biji Kopi Spesialti';
+        if (barRoast) barRoast.textContent = recipe.roast || 'Medium Light';
+        if (barVariety) barVariety.textContent = `🌱 ${recipe.variety || 'Arabica'}`;
+        if (barProcess) barProcess.textContent = `☀️ ${recipe.process || 'Washed'}`;
+        if (barTemp) barTemp.textContent = `🌡️ ${recipe.temp}°C (${recipe.ratio})`;
 
         renderBrewSteps(recipe);
         drawSegmentedTimer();
@@ -2122,6 +2336,12 @@ const initialRecipe = trialRecipes[0];
       document.getElementById('brew-back-to-recipes')?.addEventListener('click', () => {
         audio.playClick();
         switchTab('recipes');
+      });
+
+      // Tap bean bar to open full Recipe Details modal
+      document.getElementById('brew-bean-bar')?.addEventListener('click', () => {
+        audio.playClick();
+        if (currentRecipe) openRecipeDetail(currentRecipe);
       });
 
       // ============================================================
