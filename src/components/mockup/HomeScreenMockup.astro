@@ -1,0 +1,146 @@
+---
+// Flutter UI replication for Home Dashboard Screen
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+  
+  <div class="p-3.5 space-y-3 overflow-y-auto no-scrollbar flex-1">
+    
+    <!-- Header with user profile -->
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-full bg-[#ECA400]/20 border border-[#ECA400] overflow-hidden flex items-center justify-center font-bold text-xs text-[#6B4423]">
+          <Icon name="coffee" size={16} color="#6B4423" />
+        </div>
+        <div>
+          <div class="text-[9.5px] text-[#8F857D] font-medium leading-none">Selamat pagi,</div>
+          <div class="text-[12px] font-bold text-[#332B25] leading-tight">Rusdi Barista</div>
+        </div>
+      </div>
+      <div class="w-7 h-7 rounded-full bg-[#6B4423]/10 flex items-center justify-center text-[#6B4423]">
+        <Icon name="heart" size={13} color="#6B4423" />
+      </div>
+    </div>
+
+    <!-- Headline -->
+    <div>
+      <h3 class="text-[17px] font-extrabold text-[#332B25] leading-[1.15]">
+        Mau brew<br/>apa hari ini?
+      </h3>
+      <p class="text-[9.5px] text-[#8F857D] mt-0.5">Eksplorasi resep presisi & kreasi rasa terbaik.</p>
+    </div>
+
+    <!-- Barista Spotlight -->
+    <div>
+      <div class="text-[11px] font-bold text-[#332B25] mb-1.5 flex items-center justify-between">
+        <span>Barista Spotlight</span>
+        <span class="text-[9px] text-[#6B4423] font-semibold flex items-center gap-0.5">
+          <span>Lihat Semua</span>
+          <Icon name="arrow-right" size={10} color="#6B4423" />
+        </span>
+      </div>
+      <div class="flex gap-2 overflow-x-hidden pb-1">
+        <!-- Barista 1 -->
+        <div class="flex flex-col items-center w-12 shrink-0 text-center">
+          <div class="w-10 h-10 rounded-full border-2 border-[#ECA400] overflow-hidden shadow-xs bg-amber-100 flex items-center justify-center">
+            <img src="/images/avatars/portraits/tetsu_kasuya.jpg" alt="Tetsu Kasuya" class="w-full h-full object-cover" />
+          </div>
+          <span class="text-[8.5px] font-semibold mt-1 truncate w-full">Tetsu</span>
+        </div>
+        <!-- Barista 2 -->
+        <div class="flex flex-col items-center w-12 shrink-0 text-center">
+          <div class="w-10 h-10 rounded-full border-2 border-white shadow-xs bg-amber-50 flex items-center justify-center overflow-hidden">
+            <img src="/images/avatars/portraits/chad_wang.jpg" alt="Chad Wang" class="w-full h-full object-cover" />
+          </div>
+          <span class="text-[8.5px] font-semibold mt-1 truncate w-full">Chad W.</span>
+        </div>
+        <!-- Barista 3 -->
+        <div class="flex flex-col items-center w-12 shrink-0 text-center">
+          <div class="w-10 h-10 rounded-full border-2 border-white shadow-xs bg-amber-50 flex items-center justify-center overflow-hidden">
+            <img src="/images/avatars/portraits/dody_samsura.jpg" alt="Dody Samsura" class="w-full h-full object-cover" />
+          </div>
+          <span class="text-[8.5px] font-semibold mt-1 truncate w-full">Dody S.</span>
+        </div>
+        <!-- Barista 4 -->
+        <div class="flex flex-col items-center w-12 shrink-0 text-center">
+          <div class="w-10 h-10 rounded-full border-2 border-white shadow-xs bg-amber-50 flex items-center justify-center overflow-hidden">
+            <img src="/images/avatars/portraits/emi_fukahori.jpg" alt="Emi Fukahori" class="w-full h-full object-cover" />
+          </div>
+          <span class="text-[8.5px] font-semibold mt-1 truncate w-full">Emi F.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paling Sering Dipakai -->
+    <div>
+      <div class="text-[11px] font-bold text-[#332B25] mb-1.5">Paling Sering Dipakai</div>
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex gap-2.5 items-center">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-[#6B4423] to-amber-600 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow-xs">
+          V60
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1 text-[8.5px] text-[#ECA400] font-bold">
+            <Icon name="flame" size={9} color="#D97706" />
+            <span>4:6 Method</span>
+          </div>
+          <div class="font-bold text-[11px] text-[#332B25] truncate">Metode Multi-Pour Neo</div>
+          <div class="text-[9px] text-[#8F857D]">Tetsu Kasuya 🇯🇵 • 20g / 300g</div>
+          <div class="flex items-center gap-2 mt-1 text-[8.5px] text-[#6F655D]">
+            <span class="flex items-center gap-0.5">
+              <Icon name="timer" size={8} color="#6F655D" />
+              <span>02:30</span>
+            </span>
+            <span>•</span>
+            <span>92°C</span>
+          </div>
+        </div>
+        <div class="w-6 h-6 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-[9px] shrink-0 font-bold">
+          <Icon name="play" size={8} color="#FFFFFF" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Baru Dicoba (History) -->
+    <div>
+      <div class="text-[11px] font-bold text-[#332B25] mb-1.5">Baru Dicoba</div>
+      <div class="space-y-1.5">
+        <div class="bg-white px-2.5 py-1.5 rounded-lg border border-[#E8DFD8] flex items-center justify-between text-[9.5px]">
+          <div>
+            <div class="font-bold text-[#332B25]">Flash-Chilled Iced V60</div>
+            <div class="text-[#8F857D] text-[8.5px]">18 Klik Comandante • 18g</div>
+          </div>
+          <span class="text-emerald-700 font-bold bg-emerald-50 px-1.5 py-0.5 rounded text-[8.5px]">90.5 pt</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Flutter Bottom Navigation Bar -->
+  <div class="bg-white border-t border-[#E8DFD8] py-1.5 px-3 flex items-center justify-between text-[8px] font-medium text-[#8F857D] shrink-0">
+    <div class="flex flex-col items-center text-[#6B4423] font-bold">
+      <Icon name="home" size={13} color="#6B4423" />
+      <span>Home</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="book" size={13} color="#8F857D" />
+      <span>Recipes</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
+        <Icon name="timer" size={13} color="#FFFFFF" />
+      </div>
+      <span class="mt-0.5">Brew</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="wrench" size={13} color="#8F857D" />
+      <span>Toolkit</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="user" size={13} color="#8F857D" />
+      <span>Profile</span>
+    </div>
+  </div>
+
+</div>

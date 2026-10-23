@@ -1,0 +1,92 @@
+---
+import Icon from '../ui/Icon.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import BrewTimerScreenMockup from '../mockup/BrewTimerScreenMockup.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="guided-brew" class="py-12 sm:py-16 bg-white border-t border-[#E8DFD8]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Left: Copywriting and Stage Timeline (7 cols) -->
+      <div class="lg:col-span-7 space-y-5">
+        
+        <div class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-amber-100 text-[#6B4423] text-xs font-bold uppercase tracking-wider">
+          <Icon name="timer" size={13} color="#6B4423" />
+          <span>GUIDED BREWING EXPERIENCE</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#332B25] tracking-tight leading-tight">
+          Setiap tuangan, <br />
+          <span class="text-[#6B4423] font-serif italic">tepat waktu & tepat gramasi.</span>
+        </h2>
+
+        <p class="text-xs sm:text-base text-[#6F655D] leading-relaxed">
+          Jangan biarkan air seduhan Anda mengalir sembarangan. Coffee Labs membagi setiap resep ke dalam tahapan presisi. Anda tahu persis kapan harus menuang, berapa gram air yang harus ditambahkan, dan kapan harus berhenti.
+        </p>
+
+        <!-- 4 Stage Step List with Water Target -->
+        <div class="space-y-2 pt-1">
+          {landingData.guidedBrewStages.map((stage) => (
+            <div class="p-3 rounded-xl bg-[#F9F6F0] border border-[#E8DFD8] hover:border-[#6B4423]/40 transition-colors flex items-start gap-3">
+              <div class="w-6 h-6 rounded-md bg-[#6B4423] text-white font-mono font-bold text-xs flex items-center justify-center shrink-0 shadow-xs mt-0.5">
+                0{stage.step}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex flex-wrap items-center justify-between gap-1">
+                  <span class="font-extrabold text-xs sm:text-sm text-[#332B25]">{stage.name}</span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-mono text-[10px] font-bold text-[#ECA400] bg-amber-50 px-2 py-0.5 rounded border border-amber-200">{stage.time}</span>
+                    <span class="font-mono text-[10px] font-bold text-[#6B4423] bg-[#F1E8E0] px-2 py-0.5 rounded border border-[#6B4423]/20">{stage.water} → {stage.target}</span>
+                  </div>
+                </div>
+                <p class="text-xs text-[#6F655D] mt-0.5 leading-snug">
+                  {stage.note}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- 3 Feature Badges -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-1">
+          <div class="p-2.5 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] text-center">
+            <div class="flex justify-center mb-1">
+              <Icon name="timer" size={18} color="#6B4423" />
+            </div>
+            <span class="text-xs font-bold text-[#332B25] block">Timer Presisi</span>
+            <span class="text-[10px] text-[#8F857D]">Hitung mundur per tahap</span>
+          </div>
+
+          <div class="p-3 bg-[#F9F6F0] rounded-xl border border-[#E8DFD8] text-center">
+            <div class="flex justify-center mb-1">
+              <Icon name="plus" size={18} color="#ECA400" />
+            </div>
+            <span class="text-xs font-bold text-[#332B25] block">Tombol +10s Ekstra</span>
+            <span class="text-[10px] text-[#8F857D]">Bila air kopi lambat turun</span>
+          </div>
+
+          <div class="p-3 bg-[#F9F6F0] rounded-xl border border-[#E8DFD8] text-center">
+            <div class="flex justify-center mb-1">
+              <Icon name="sliders" size={18} color="#00796B" />
+            </div>
+            <span class="text-xs font-bold text-[#332B25] block">Auto-Scale Dosis</span>
+            <span class="text-[10px] text-[#8F857D]">Semua gramasi otomatis pas</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: Dedicated Guided Brew Phone (5 cols) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <PhoneMockup size="md" tilt="right" glow={true}>
+          <BrewTimerScreenMockup />
+        </PhoneMockup>
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,41 @@
+---
+import { landingData } from '../../data/landingData';
+---
+
+<section class="border-y border-[#E8DFD8] bg-white py-8 sm:py-12 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- 4 Key Numbers Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-[#E8DFD8]">
+      {landingData.stats.map((stat, i) => (
+        <div class={`space-y-1 ${i > 1 ? 'pt-6 sm:pt-0' : ''}`}>
+          <div class="text-3xl sm:text-5xl font-extrabold text-[#6B4423] tracking-tight font-mono">
+            {stat.value}
+          </div>
+          <div class="text-sm sm:text-base font-bold text-[#332B25]">
+            {stat.label}
+          </div>
+          <div class="text-xs text-[#8F857D] font-medium max-w-[200px] mx-auto">
+            {stat.sub}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Supported Brewers Marquee -->
+    <div class="mt-8 pt-6 border-t border-[#E8DFD8]/80 text-center">
+      <span class="text-xs font-bold uppercase tracking-widest text-[#8F857D] mb-3 block">
+        METODE & DRIPPER RESMI DIDUKUNG
+      </span>
+
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-semibold text-[#6F655D]">
+        {landingData.methods.map((method) => (
+          <span class="px-3.5 py-1.5 rounded-full bg-[#F9F6F0] border border-[#E8DFD8] hover:border-[#6B4423]/40 transition-colors">
+            {method}
+          </span>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

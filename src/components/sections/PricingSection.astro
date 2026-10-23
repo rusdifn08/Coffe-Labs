@@ -1,0 +1,191 @@
+---
+import Icon from '../ui/Icon.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="harga" class="py-12 sm:py-16 bg-[#1E1612] text-[#F9F6F0] relative overflow-hidden">
+  
+  <!-- Ambient background glow -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-amber-500/10 blur-[160px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-extrabold uppercase tracking-widest">
+        <Icon name="tag" size={13} color="#D4AF37" />
+        <span>INVESTASI RASA KOPI ANDA</span>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-[#F9F6F0] tracking-tight">
+        Pilihan paket fleksibel, mulai dari gratis selamanya.
+      </h2>
+
+      <p class="text-xs sm:text-base text-white/70">
+        Nikmati seluruh 159 resep juara dunia dan diagnosis Brew Doctor dengan biaya terjangkau.
+      </p>
+
+      <!-- Monthly / Yearly Toggle -->
+      <div class="pt-3 flex items-center justify-center gap-3">
+        <span class="text-xs sm:text-sm font-semibold text-white/70" id="monthly-label">Bulanan</span>
+        
+        <button
+          id="billing-toggle"
+          class="w-14 h-8 rounded-full bg-[#3A2B22] p-1 border border-white/20 relative transition-colors focus:outline-none cursor-pointer"
+          role="switch"
+          aria-checked="true"
+          aria-label="Toggle paket tahunan"
+        >
+          <div id="toggle-handle" class="w-6 h-6 rounded-full bg-[#ECA400] transition-transform translate-x-6"></div>
+        </button>
+
+        <span class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+          <span>Tahunan</span>
+          <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-bold">
+            Hemat 28%
+          </span>
+        </span>
+      </div>
+    </div>
+
+    <!-- 3 Pricing Cards Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
+      
+      {landingData.pricing.plans.map((plan) => (
+        <div class={`rounded-xl p-5 sm:p-6 flex flex-col justify-between border relative transition-all duration-300 ${
+          plan.popular
+            ? 'bg-gradient-to-b from-[#2E2018] to-[#1E1612] border-[#ECA400] shadow-xl scale-100 lg:scale-105 z-20 ring-1 ring-[#ECA400]/50'
+            : 'bg-[#2A1F19]/60 border-[#3A2B22] hover:bg-[#2A1F19]'
+        }`}>
+          
+          {plan.popular && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-md bg-[#ECA400] text-[#1E1612] text-[10px] font-extrabold tracking-wider uppercase shadow-md">
+              PALING POPULER
+            </div>
+          )}
+
+          <div>
+            <!-- Header Plan -->
+            <div class="flex items-center justify-between mb-1.5">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">
+                {plan.badge}
+              </span>
+            </div>
+
+            <h3 class="text-xl sm:text-2xl font-extrabold text-white">{plan.name}</h3>
+            <p class="text-xs text-white/60 mt-1 leading-relaxed min-h-[32px]">
+              {plan.desc}
+            </p>
+
+            <!-- Price Display -->
+            <div class="my-5 pb-5 border-b border-white/10">
+              <div class="flex items-baseline gap-1">
+                <span
+                  class="text-3xl sm:text-4xl font-extrabold text-white font-mono plan-price"
+                  data-monthly={plan.priceMonthly}
+                  data-yearly={plan.priceYearly}
+                >
+                  {plan.priceYearly}
+                </span>
+                <span class="text-xs text-white/60 font-semibold plan-period" data-monthly={plan.period} data-yearly="per tahun">
+                  per tahun
+                </span>
+              </div>
+              {plan.priceYearlyPerMonth && (
+                <div class="text-xs text-[#ECA400] font-bold mt-1 yearly-note">
+                  Setara {plan.priceYearlyPerMonth}
+                </div>
+              )}
+            </div>
+
+            <!-- Features Checklist with crisp SVGs -->
+            <ul class="space-y-2.5 text-xs leading-relaxed">
+              {plan.features.map((f) => (
+                <li class={`flex items-start gap-2.5 ${f.included ? 'text-white' : 'text-white/40 line-through'}`}>
+                  <span class={`mt-0.5 shrink-0`}>
+                    {f.included ? (
+                      <Icon name="check" size={12} color="#ECA400" />
+                    ) : (
+                      <Icon name="x" size={12} color="#71717A" />
+                    )}
+                  </span>
+                  <span>{f.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- CTA Button -->
+          <div class="mt-6 pt-3">
+            <a
+              href={plan.ctaHref}
+              class={`w-full py-3 px-5 rounded-xl font-bold text-xs sm:text-sm text-center block transition-all active:scale-95 shadow-md ${
+                plan.popular
+                  ? 'bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612]'
+                  : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'
+              }`}
+            >
+              {plan.ctaText}
+            </a>
+          </div>
+
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Guarantee & Security strip with SVGs -->
+    <div class="pt-2 border-t border-white/10 text-center flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-white/60">
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name="lock" size={13} color="#D4AF37" />
+        <span>Pembayaran Aman & Terverifikasi</span>
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name="refresh" size={13} color="#D4AF37" />
+        <span>Batalkan Kapan Saja</span>
+      </span>
+      <span class="inline-flex items-center gap-1.5">
+        <Icon name="message-square" size={13} color="#D4AF37" />
+        <span>Bantuan WhatsApp 7 Hari</span>
+      </span>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const toggle = document.getElementById('billing-toggle');
+  const handle = document.getElementById('toggle-handle');
+  const prices = document.querySelectorAll('.plan-price');
+  const periods = document.querySelectorAll('.plan-period');
+  const yearlyNotes = document.querySelectorAll('.yearly-note');
+
+  let isYearly = true;
+
+  if (toggle && handle) {
+    toggle.addEventListener('click', () => {
+      isYearly = !isYearly;
+      toggle.setAttribute('aria-checked', isYearly ? 'true' : 'false');
+
+      if (isYearly) {
+        handle.classList.add('translate-x-6');
+        handle.classList.remove('translate-x-0');
+        yearlyNotes.forEach((n) => ((n as HTMLElement).style.display = 'block'));
+      } else {
+        handle.classList.add('translate-x-0');
+        handle.classList.remove('translate-x-6');
+        yearlyNotes.forEach((n) => ((n as HTMLElement).style.display = 'none'));
+      }
+
+      prices.forEach((p) => {
+        const val = isYearly ? p.getAttribute('data-yearly') : p.getAttribute('data-monthly');
+        if (val) p.textContent = val;
+      });
+
+      periods.forEach((p) => {
+        const val = isYearly ? p.getAttribute('data-yearly') : p.getAttribute('data-monthly');
+        if (val) p.textContent = val;
+      });
+    });
+  }
+</script>

@@ -1,0 +1,206 @@
+---
+import Icon from '../ui/Icon.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import BrewTimerScreenMockup from '../mockup/BrewTimerScreenMockup.astro';
+import HomeScreenMockup from '../mockup/HomeScreenMockup.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="hero" class="relative overflow-hidden pt-6 pb-12 lg:pt-12 lg:pb-16 bg-gradient-to-b from-[#F9F6F0] via-[#F3EDE3]/70 to-[#F9F6F0]">
+  
+  <!-- Subtle background ambient coffee aura -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-amber-400/10 blur-[130px] rounded-full pointer-events-none -z-10"></div>
+  <div class="absolute top-10 left-10 w-72 h-72 bg-espresso-600/5 blur-[90px] rounded-full pointer-events-none -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+      
+      <!-- Left Column: Copywriting & CTAs (6 cols) -->
+      <div class="lg:col-span-6 space-y-5 text-center lg:text-left">
+        
+        <!-- Eyebrow Pill -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#6B4423]/10 border border-[#6B4423]/20 text-[#6B4423] text-[11px] font-bold tracking-wider uppercase shadow-xs">
+          <span class="w-2 h-2 rounded-full bg-[#ECA400] animate-pulse"></span>
+          <span>SPECIALTY COFFEE BREWING LABS</span>
+        </div>
+
+        <!-- Main Headline (h1: Ultra-Professional & Compelling) -->
+        <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-black text-[#332B25] tracking-tight leading-[1.12]">
+          Seduh Kopi Presisi, <br class="hidden sm:inline" />
+          <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6B4423] via-[#8C542A] to-[#C98C00]">
+            Standar Barista Juara Dunia.
+          </span>
+        </h1>
+
+        <!-- Subheadline -->
+        <p class="text-sm sm:text-base text-[#6F655D] leading-relaxed max-w-xl mx-auto lg:mx-0">
+          Bukan sekadar stopwatch biasa. Panduan rasio baku, kalkulasi gramasi otomatis, <strong>159+ resep resmi brewer juara dunia</strong>, dan evaluasi <strong>Brew Doctor</strong> untuk cangkir sempurna tanpa tebakan.
+        </p>
+
+        <!-- CTA Buttons Group -->
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-1">
+          <a
+            href="/trial"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 rounded-lg bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612] font-extrabold text-sm sm:text-base shadow-md hover:shadow-lg transition-all active:scale-95"
+            title="Uji coba aplikasi via browser gratis"
+          >
+            <span>Uji Coba Versi Web Gratis</span>
+            <Icon name="arrow-right" size={14} color="#1E1612" />
+          </a>
+
+          <a
+            href="#aplikasi"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white hover:bg-[#F9F6F0] text-[#6B4423] border border-[#E8DFD8] font-bold text-sm sm:text-base shadow-xs hover:border-[#6B4423]/40 transition-all"
+          >
+            <Icon name="play" size={12} color="#6B4423" />
+            <span>Lihat Aplikasi</span>
+          </a>
+        </div>
+
+        <!-- Microcopy & Guarantee (Multi-Platform: iOS, Android & Web) -->
+        <div class="flex items-center justify-center lg:justify-start gap-3 text-xs font-semibold text-[#8F857D] pt-1">
+          <span class="flex items-center gap-1">
+            <Icon name="check" size={12} color="#15803D" />
+            <span>Mode Trial 10 Resep Gratis</span>
+          </span>
+          <span>•</span>
+          <span class="flex items-center gap-1">
+            <Icon name="check" size={12} color="#15803D" />
+            <span>Tanpa Kartu Kredit</span>
+          </span>
+          <span>•</span>
+          <span class="flex items-center gap-1">
+            <Icon name="check" size={12} color="#15803D" />
+            <span>iOS, Android & Web</span>
+          </span>
+        </div>
+
+        <!-- App Store & Download Badges (Multi-platform with iOS) -->
+        <div class="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+          <!-- Apple App Store (iOS) Badge -->
+          <a
+            href="https://github.com/rusdifn08/coffe-labs-mobile/actions/runs/39809056131/artifacts/12439017056"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-lg shadow-xs hover:scale-105 transition-transform border border-white/10"
+            title="Download Coffee Labs untuk iOS (iPhone & iPad)"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.86c.62-.77 1.05-1.84.93-2.92-.91.04-2.02.61-2.67 1.38-.57.66-.99 1.74-.86 2.8 1.02.08 2.05-.53 2.6-1.26z"/>
+            </svg>
+            <div class="text-left">
+              <div class="text-[7.5px] uppercase tracking-wider text-zinc-400 leading-none">Unduh di</div>
+              <div class="text-[11px] font-bold leading-tight">iOS (App Store)</div>
+            </div>
+          </a>
+
+          <!-- Google Play Badge Style -->
+          <a
+            href="https://github.com/rusdifn08/coffe-labs-mobile/actions/runs/39809056131/artifacts/12439526766"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-black text-white rounded-lg shadow-xs hover:scale-105 transition-transform"
+            title="Download Coffee Labs untuk Android"
+          >
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path d="M3.609 1.814L13.793 12 3.61 22.186A1.94 1.94 0 0 1 3 20.771V3.229c0-.55.228-1.047.609-1.415zm11.603 11.604l2.585 2.585-11.83 6.786 9.245-9.371zm0-2.836L5.967 1.21l11.83 6.786-2.585 2.586zm1.414 1.418l3.666 2.1a1.296 1.296 0 0 0 0-2.25l-3.666-2.1v2.25z" />
+            </svg>
+            <div class="text-left">
+              <div class="text-[7.5px] uppercase tracking-wider text-zinc-400 leading-none">Tersedia di</div>
+              <div class="text-[11px] font-bold leading-tight">Android (Google Play)</div>
+            </div>
+          </a>
+
+          <!-- Direct APK Download Badge -->
+          <a
+            href="https://github.com/rusdifn08/coffe-labs-mobile/actions/runs/39809056131/artifacts/12439526766"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-1.5 bg-[#6B4423] text-white rounded-lg shadow-xs hover:bg-[#563519] transition-all"
+            title="Download file APK Android langsung"
+          >
+            <Icon name="package" size={14} color="#FFFFFF" />
+            <div class="text-left">
+              <div class="text-[7.5px] uppercase tracking-wider text-amber-200 leading-none">Unduh Langsung</div>
+              <div class="text-[11px] font-bold leading-tight">Android APK</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Barista Social Proof Strip -->
+        <div class="pt-3 border-t border-[#E8DFD8] flex items-center justify-center lg:justify-start gap-3">
+          <div class="flex -space-x-2 overflow-hidden">
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#F9F6F0] object-cover" src="/images/avatars/portraits/tetsu_kasuya.jpg" alt="Barista 1" />
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#F9F6F0] object-cover" src="/images/avatars/portraits/chad_wang.jpg" alt="Barista 2" />
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#F9F6F0] object-cover" src="/images/avatars/portraits/dody_samsura.jpg" alt="Barista 3" />
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#F9F6F0] object-cover" src="/images/avatars/portraits/bayu_prawiro.jpg" alt="Barista 4" />
+            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-[#F9F6F0] object-cover" src="/images/avatars/portraits/emi_fukahori.jpg" alt="Barista 5" />
+          </div>
+          <div class="text-left">
+            <div class="flex text-amber-500 gap-0.5">
+              <Icon name="star" size={12} color="#F59E0B" />
+              <Icon name="star" size={12} color="#F59E0B" />
+              <Icon name="star" size={12} color="#F59E0B" />
+              <Icon name="star" size={12} color="#F59E0B" />
+              <Icon name="star" size={12} color="#F59E0B" />
+            </div>
+            <div class="text-[11px] font-bold text-[#332B25]">Dipercaya 10.000+ sesi seduhan di Indonesia</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Phone Mockups & Floating Widgets (6 cols) -->
+      <div class="lg:col-span-6 relative flex items-center justify-center pt-2 lg:pt-0">
+        
+        <!-- Back Phone (Home Screen, tilted left) -->
+        <div class="hidden sm:block absolute -left-4 sm:left-4 -top-4 opacity-75 scale-90 -rotate-6 z-0 pointer-events-none transition-transform hover:opacity-100">
+          <PhoneMockup size="sm" tilt="none" glow={false}>
+            <HomeScreenMockup />
+          </PhoneMockup>
+        </div>
+
+        <!-- Main Front Phone (Brew Timer Guided Screen, hero focus) -->
+        <div class="relative z-10">
+          <PhoneMockup size="md" tilt="none" glow={true}>
+            <BrewTimerScreenMockup />
+          </PhoneMockup>
+        </div>
+
+        <!-- Floating Badge 1: Sweet Spot (Right Top) -->
+        <div class="absolute -right-2 sm:right-4 top-10 z-20 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-warm-sm border border-emerald-200/80 text-[#332B25] flex items-center gap-2 animate-bounce-slow">
+          <div class="w-6 h-6 rounded-md bg-emerald-100 flex items-center justify-center text-emerald-800">
+            <Icon name="target" size={13} color="#15803D" />
+          </div>
+          <div>
+            <div class="text-[10px] font-extrabold text-emerald-900 leading-tight">Sweet Spot!</div>
+            <div class="text-[8.5px] text-emerald-700 font-semibold">Ekstraksi Seimbang</div>
+          </div>
+        </div>
+
+        <!-- Floating Badge 2: Parameters (Left Bottom) -->
+        <div class="absolute -left-2 sm:left-6 bottom-12 z-20 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl shadow-warm-sm border border-[#E8DFD8] text-[#332B25] hidden sm:flex items-center gap-2">
+          <div class="w-6 h-6 rounded-md bg-amber-100 flex items-center justify-center text-amber-700">
+            <Icon name="droplet" size={12} color="#B45309" />
+          </div>
+          <div class="text-left font-mono">
+            <div class="text-[10px] font-bold text-[#6B4423]">92°C • 15g • 1:15</div>
+            <div class="text-[8px] text-[#8F857D]">Presisi Rasio Seduh</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bounce-slow {
+    animation: bounceSlow 4s ease-in-out infinite;
+  }
+</style>

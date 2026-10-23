@@ -1,0 +1,276 @@
+---
+import Icon from '../ui/Icon.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import BrewDoctorScreenMockup from '../mockup/BrewDoctorScreenMockup.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="brew-doctor" class="py-8 sm:py-12 bg-[#1E1612] text-[#F9F6F0] relative overflow-hidden">
+  
+  <!-- Ambient background glow in dark section -->
+  <div class="absolute -top-40 right-10 w-80 h-80 bg-[#ECA400]/10 blur-[130px] rounded-full pointer-events-none"></div>
+  <div class="absolute -bottom-40 left-10 w-80 h-80 bg-[#6B4423]/25 blur-[130px] rounded-full pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Section Header (Compact & High Contrast) -->
+    <div class="text-center max-w-2xl mx-auto space-y-1.5 mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-[11px] font-extrabold uppercase tracking-wider">
+        <Icon name="stethoscope" size={12} color="#D4AF37" />
+        <span>SISTEM KOREKSI RASA OTOMATIS</span>
+      </div>
+
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#F9F6F0] tracking-tight">
+        Kopi terlalu asam atau pahit? <br class="hidden sm:inline" />
+        <span class="text-[#ECA400] font-serif italic">Brew Doctor tahu jawabannya.</span>
+      </h2>
+
+      <p class="text-xs sm:text-sm text-white/70 max-w-xl mx-auto leading-relaxed">
+        Jangan buang biji kopi Anda. Nilai sensori rasa di lidah, sistem langsung memberikan instruksi presisi klik grinder, suhu air, dan teknik tuang.
+      </p>
+    </div>
+
+    <!-- Main Layout: Interactive Diagnosis Console (7 cols) + Phone Mockup (5 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+      
+      <!-- Left: Interactive Diagnosis Console (7 cols) -->
+      <div class="lg:col-span-7 space-y-3">
+        
+        <!-- Case Selector Tabs (4 Buttons in 2x2 grid or horizontal flex) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="tablist" aria-label="Kategori Diagnosa">
+          {landingData.brewDoctorCases.map((c, idx) => (
+            <button
+              class={`doctor-tab-btn text-left p-2 rounded-lg border transition-all duration-200 cursor-pointer ${
+                idx === 0
+                  ? 'bg-[#2E2018] border-emerald-500/80 shadow-xs ring-1 ring-emerald-500/40 active-doctor-tab'
+                  : 'bg-[#2A1F19]/50 border-white/10 hover:border-white/20'
+              }`}
+              data-case-index={idx}
+              role="tab"
+              aria-selected={idx === 0 ? "true" : "false"}
+            >
+              <div class="flex items-center gap-1.5 mb-1">
+                <span class="w-5 h-5 rounded-md bg-white/10 flex items-center justify-center shrink-0">
+                  <Icon
+                    name={idx === 0 ? 'target' : idx === 1 ? 'alert-circle' : idx === 2 ? 'coffee' : 'droplet'}
+                    size={11}
+                    color={idx === 0 ? '#34D399' : idx === 1 ? '#FB923C' : idx === 2 ? '#F87171' : '#60A5FA'}
+                  />
+                </span>
+                <span class={`text-[9px] font-bold uppercase tracking-wider ${
+                  idx === 0 ? 'text-emerald-400' : 'text-amber-400'
+                }`}>
+                  {idx === 0 ? 'Ideal' : 'Koreksi'}
+                </span>
+              </div>
+              <div class="font-bold text-[11px] text-white truncate leading-tight">
+                {idx === 0 ? 'Sweet Spot' : idx === 1 ? 'Terlalu Asam' : idx === 2 ? 'Terlalu Pahit' : 'Terlalu Encer'}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        <!-- Dynamic Diagnosis Content Cards (High Contrast & Compact) -->
+        <div class="relative min-h-[220px]">
+          {landingData.brewDoctorCases.map((c, idx) => (
+            <div
+              id={`doctor-card-${idx}`}
+              class={`doctor-case-panel p-4 sm:p-5 rounded-xl border bg-[#2A1F19] border-white/10 shadow-lg space-y-3 transition-opacity duration-200 ${
+                idx === 0 ? 'block' : 'hidden'
+              }`}
+            >
+              <!-- Card Header -->
+              <div class="flex flex-wrap items-center justify-between gap-2 pb-2.5 border-b border-white/10">
+                <div class="flex items-center gap-2">
+                  <div class={`w-7 h-7 rounded-lg flex items-center justify-center ${
+                    idx === 0 ? 'bg-emerald-500/20 text-emerald-400' : idx === 1 ? 'bg-orange-500/20 text-orange-400' : idx === 2 ? 'bg-red-500/20 text-red-400' : 'bg-blue-500/20 text-blue-400'
+                  }`}>
+                    <Icon
+                      name={idx === 0 ? 'target' : idx === 1 ? 'alert-circle' : idx === 2 ? 'coffee' : 'droplet'}
+                      size={14}
+                      color={idx === 0 ? '#34D399' : idx === 1 ? '#FB923C' : idx === 2 ? '#F87171' : '#60A5FA'}
+                    />
+                  </div>
+                  <div>
+                    <h3 class="font-extrabold text-sm sm:text-base text-white leading-tight">{c.name}</h3>
+                    <span class="text-[10px] text-white/50">Status Evaluasi Sensorik</span>
+                  </div>
+                </div>
+
+                <span class={`text-[10px] font-bold px-2 py-0.5 rounded border uppercase tracking-wider ${
+                  idx === 0
+                    ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40'
+                    : 'bg-amber-500/15 text-amber-300 border-amber-500/30'
+                }`}>
+                  {idx === 0 ? 'Optimal (18-22% Yield)' : 'Perlu Koreksi Ekstraksi'}
+                </span>
+              </div>
+
+              <!-- 2-Column Specs: Sensori vs Diagnosis -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+                <!-- Sensori di Lidah -->
+                <div class="p-2.5 rounded-lg bg-black/30 border border-white/5 space-y-0.5">
+                  <span class="text-[10px] font-bold text-[#ECA400] uppercase tracking-wider block">Sensori di Lidah:</span>
+                  <p class="text-[11px] text-white/90 leading-snug">{c.condition}</p>
+                </div>
+
+                <!-- Diagnosis Sains -->
+                <div class="p-2.5 rounded-lg bg-black/30 border border-white/5 space-y-0.5">
+                  <span class="text-[10px] font-bold text-[#ECA400] uppercase tracking-wider block">Diagnosis Sains:</span>
+                  <p class="text-[11px] text-white/80 leading-snug">{c.diagnosis}</p>
+                </div>
+              </div>
+
+              <!-- Solusi Presisi Barista -->
+              <div class="p-3 rounded-lg bg-black/50 border border-emerald-500/30 space-y-1">
+                <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-400">
+                  <Icon name="sparkles" size={12} color="#34D399" />
+                  <span>Rekomendasi Tindakan Koreksi Barista:</span>
+                </div>
+                <div class="text-[11px] text-white/90 font-mono leading-relaxed whitespace-pre-line pl-4">
+                  {c.action}
+                </div>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+        <!-- Bottom Helper Micro-copy -->
+        <div class="flex items-center justify-between text-[11px] text-white/50 px-1 pt-1">
+          <span class="flex items-center gap-1">
+            <Icon name="check" size={11} color="#34D399" />
+            <span>Mendukung 29 Model Grinder Manual & Elektrik</span>
+          </span>
+          <span class="text-[#ECA400] font-semibold">Klik 4 tab di atas untuk simulasi</span>
+        </div>
+
+      </div>
+
+      <!-- Right: Phone Mockup Displaying Brew Doctor Screen (5 cols, Compact Size) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <PhoneMockup size="sm" tilt="none" glow={true}>
+          <BrewDoctorScreenMockup />
+        </PhoneMockup>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const doctorButtons = document.querySelectorAll('.doctor-tab-btn');
+  const doctorPanels = document.querySelectorAll('.doctor-case-panel');
+
+  const casesData = [
+    {
+      sweet: '4.5 / 5.0', sweetPct: '85%',
+      acid: '3.5 / 5.0', acidPct: '70%',
+      bitter: '1.8 / 5.0', bitterPct: '36%',
+      body: '4.0 / 5.0', bodyPct: '80%',
+      title: 'Sweet Spot! Ekstraksi Seimbang',
+      desc: 'Keseimbangan rasa manis dan asam buah sangat harmonis. Aftertaste bersih dan aroma seduhan terekstraksi maksimal.',
+      boxClass: 'p-2.5 rounded-xl bg-[#E8F5E9] border border-emerald-300 text-emerald-950 shadow-xs',
+      titleColor: 'text-emerald-800',
+      rx: 'Pertahankan settingan 22 klik Comandante C40 dan suhu 92°C untuk biji sangrai ini. Simpan ke Jurnal Brew untuk referensi seduh esok hari.'
+    },
+    {
+      sweet: '1.5 / 5.0', sweetPct: '30%',
+      acid: '4.8 / 5.0', acidPct: '96%',
+      bitter: '1.2 / 5.0', bitterPct: '24%',
+      body: '2.2 / 5.0', bodyPct: '44%',
+      title: 'Under-Extracted (Asam Tajam)',
+      desc: 'Air mengalir terlalu cepat melewati bubuk kopi kasar, senyawa manis gula belum sempat larut sempurna.',
+      boxClass: 'p-2.5 rounded-xl bg-orange-50 border border-orange-300 text-orange-950 shadow-xs',
+      titleColor: 'text-orange-800',
+      rx: 'Putar grinder 1-2 klik lebih halus (finer), naikkan suhu +2°C (misal 91°C → 93°C), dan tambah waktu blooming +10s.'
+    },
+    {
+      sweet: '2.0 / 5.0', sweetPct: '40%',
+      acid: '1.5 / 5.0', acidPct: '30%',
+      bitter: '4.9 / 5.0', bitterPct: '98%',
+      body: '4.5 / 5.0', bodyPct: '90%',
+      title: 'Over-Extracted (Pahit Sepat)',
+      desc: 'Ekstraksi berlebih mengekstrak zat tanin pahit berat dari bubuk kopi halus. Tenggorokan terasa kering.',
+      boxClass: 'p-2.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-950 shadow-xs',
+      titleColor: 'text-rose-800',
+      rx: 'Putar grinder 1-2 klik lebih kasar (coarser), turunkan suhu -2°C (misal 94°C → 92°C), dan tuang pelan tanpa agitasi keras.'
+    },
+    {
+      sweet: '2.5 / 5.0', sweetPct: '50%',
+      acid: '2.0 / 5.0', acidPct: '40%',
+      bitter: '1.5 / 5.0', bitterPct: '30%',
+      body: '1.4 / 5.0', bodyPct: '28%',
+      title: 'Under-Dosed (Encer / Kurang Body)',
+      desc: 'Air terlalu banyak dibanding massa kopi atau kontak air terlalu singkat, tekstur terasa hambar seperti air mineral.',
+      boxClass: 'p-2.5 rounded-xl bg-sky-50 border border-sky-300 text-sky-950 shadow-xs',
+      titleColor: 'text-sky-800',
+      rx: 'Perkecil rasio seduh (misal dari 1:16 menjadi 1:14.5), tambah dosis bubuk kopi +1.5 gram, tuang dengan debit air lebih stabil.'
+    }
+  ];
+
+  doctorButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.getAttribute('data-case-index') || '0', 10);
+
+      // Update button state
+      doctorButtons.forEach((b) => {
+        b.classList.remove('bg-[#2E2018]', 'border-emerald-500/80', 'shadow-xs', 'ring-1', 'ring-emerald-500/40', 'active-doctor-tab');
+        b.classList.add('bg-[#2A1F19]/50', 'border-white/10');
+        b.setAttribute('aria-selected', 'false');
+      });
+
+      btn.classList.remove('bg-[#2A1F19]/50', 'border-white/10');
+      btn.classList.add('bg-[#2E2018]', 'border-emerald-500/80', 'shadow-xs', 'ring-1', 'ring-emerald-500/40', 'active-doctor-tab');
+      btn.setAttribute('aria-selected', 'true');
+
+      // Update panel visibility
+      doctorPanels.forEach((p) => {
+        p.classList.add('hidden');
+        p.classList.remove('block');
+      });
+
+      const activePanel = document.getElementById(`doctor-card-${idx}`);
+      if (activePanel) {
+        activePanel.classList.remove('hidden');
+        activePanel.classList.add('block');
+      }
+
+      // Sync with Phone Mockup on the right!
+      const mockup = document.querySelector('.brew-doctor-mockup');
+      if (mockup && casesData[idx]) {
+        const c = casesData[idx];
+        const valSweet = mockup.querySelector('.doc-val-sweet');
+        const barSweet = mockup.querySelector('.doc-bar-sweet') as HTMLElement;
+        const valAcid = mockup.querySelector('.doc-val-acid');
+        const barAcid = mockup.querySelector('.doc-bar-acid') as HTMLElement;
+        const valBitter = mockup.querySelector('.doc-val-bitter');
+        const barBitter = mockup.querySelector('.doc-bar-bitter') as HTMLElement;
+        const valBody = mockup.querySelector('.doc-val-body');
+        const barBody = mockup.querySelector('.doc-bar-body') as HTMLElement;
+        const diagBox = mockup.querySelector('.doc-diag-box');
+        const diagTitle = mockup.querySelector('.doc-diag-title');
+        const diagDesc = mockup.querySelector('.doc-diag-desc');
+        const rxText = mockup.querySelector('.doc-rx-text');
+
+        if (valSweet) valSweet.textContent = c.sweet;
+        if (barSweet) barSweet.style.width = c.sweetPct;
+        if (valAcid) valAcid.textContent = c.acid;
+        if (barAcid) barAcid.style.width = c.acidPct;
+        if (valBitter) valBitter.textContent = c.bitter;
+        if (barBitter) barBitter.style.width = c.bitterPct;
+        if (valBody) valBody.textContent = c.body;
+        if (barBody) barBody.style.width = c.bodyPct;
+
+        if (diagBox) diagBox.className = c.boxClass;
+        if (diagTitle) {
+          diagTitle.className = `flex items-center gap-1.5 font-bold text-[10.5px] ${c.titleColor} doc-diag-title`;
+          diagTitle.innerHTML = `<span>${c.title}</span>`;
+        }
+        if (diagDesc) diagDesc.textContent = c.desc;
+        if (rxText) rxText.textContent = c.rx;
+      }
+    });
+  });
+</script>

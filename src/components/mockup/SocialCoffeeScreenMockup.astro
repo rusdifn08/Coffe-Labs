@@ -1,0 +1,109 @@
+---
+// Flutter UI replication for Social Coffee Screen
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+  
+  <div class="p-3.5 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
+    
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between pb-1">
+      <div>
+        <div class="text-[8px] font-bold text-[#ECA400] uppercase tracking-wider">KOMUNITAS SEDUH</div>
+        <div class="font-extrabold text-[13px] text-[#332B25]">Social Coffee</div>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <span class="px-2 py-0.5 rounded-full bg-[#FCE4EC] text-[#E91E63] font-bold text-[8.5px] flex items-center gap-1">
+          <Icon name="users" size={10} color="#E91E63" />
+          <span>Basecamp</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Feed Filters -->
+    <div class="flex gap-1.5 text-[8.5px] font-bold">
+      <span class="px-2 py-1 rounded-full bg-[#6B4423] text-white">Semua Feed</span>
+      <span class="px-2 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Terpopuler</span>
+      <span class="px-2 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Resep Kopi</span>
+    </div>
+
+    <!-- Social Post Card -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-2">
+      <!-- Author info -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-amber-100 overflow-hidden border border-amber-200">
+            <img src="/images/avatars/portraits/bayu_prawiro.jpg" alt="Bayu" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <div class="font-bold text-[10.5px] text-[#332B25] leading-tight">Bayu Prawiro</div>
+            <div class="text-[8px] text-[#8F857D]">Barista • 2 jam lalu</div>
+          </div>
+        </div>
+        <span class="text-[9px] text-[#E91E63] font-bold">#Origami</span>
+      </div>
+
+      <!-- Post content -->
+      <p class="text-[9.5px] text-[#332B25] leading-snug">
+        Eksplorasi beans Puntang Natural dengan resep ini di Origami Air S. Rasa peach manis dan aroma floral-nya keluar maksimal!
+      </p>
+
+      <!-- Attached Recipe Card with Quick Copy -->
+      <div class="p-2 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] flex items-center justify-between">
+        <div class="min-w-0 pr-2">
+          <div class="font-bold text-[9.5px] text-[#6B4423] truncate">Puntang Sweet Floral 4:6</div>
+          <div class="text-[8px] text-[#8F857D]">Origami • 15g / 225g • 92°C</div>
+        </div>
+        <button class="px-2 py-1 bg-[#6B4423] text-white rounded-lg text-[8.5px] font-bold shrink-0 shadow-xs flex items-center gap-1">
+          <Icon name="copy" size={9} color="#FFFFFF" />
+          <span>Copy Resep</span>
+        </button>
+      </div>
+
+      <!-- Interaction stats -->
+      <div class="flex items-center justify-between pt-1 border-t border-[#E8DFD8]/60 text-[8.5px] text-[#8F857D] font-medium">
+        <span class="flex items-center gap-1">
+          <Icon name="heart" size={10} color="#E11D48" />
+          <span>48 Suka</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="message-square" size={10} color="#8F857D" />
+          <span>12 Diskusi</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="coffee" size={10} color="#6B4423" />
+          <span>19 Seduhan</span>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bg-white border-t border-[#E8DFD8] py-1.5 px-3 flex items-center justify-between text-[8px] font-medium text-[#8F857D] shrink-0">
+    <div class="flex flex-col items-center">
+      <Icon name="home" size={13} color="#8F857D" />
+      <span>Home</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="book" size={13} color="#8F857D" />
+      <span>Recipes</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
+        <Icon name="timer" size={13} color="#FFFFFF" />
+      </div>
+      <span class="mt-0.5">Brew</span>
+    </div>
+    <div class="flex flex-col items-center text-[#6B4423] font-bold">
+      <Icon name="wrench" size={13} color="#6B4423" />
+      <span>Toolkit</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="user" size={13} color="#8F857D" />
+      <span>Profile</span>
+    </div>
+  </div>
+
+</div>

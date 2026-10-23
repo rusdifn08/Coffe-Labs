@@ -1,0 +1,128 @@
+---
+// Flutter UI replication for Barista Toolkit Screen
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+  
+  <div class="p-3.5 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
+    
+    <!-- Top Bar -->
+    <div class="text-center font-bold text-[13px] text-[#332B25] pb-1">
+      Barista Toolkit
+    </div>
+
+    <!-- Professional Suite Banner (Exact AppTheme Gradient) -->
+    <div class="p-2.5 rounded-xl bg-gradient-to-r from-[#6B4423] to-[#563519] text-white shadow-sm">
+      <div class="flex items-center justify-between">
+        <span class="px-1.5 py-0.5 bg-amber-400/20 text-[#D4AF37] text-[8px] font-extrabold tracking-wider rounded">
+          PROFESSIONAL SUITE
+        </span>
+        <Icon name="sparkles" size={13} color="#D4AF37" />
+      </div>
+      <div class="font-extrabold text-[12px] mt-1 text-white">Peralatan Presisi Barista</div>
+      <div class="text-[8.5px] text-white/80 leading-tight mt-0.5">
+        Akses cepat cupping SCA, radar lokasi, dan katalog 50 roastery nasional.
+      </div>
+    </div>
+
+    <!-- 2-Column Grid of 6 Cards -->
+    <div class="grid grid-cols-2 gap-2 pt-0.5">
+      
+      <!-- 1. Favorite -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FFEBEE] to-[#FFCDD2] flex items-center justify-center text-[#D32F2F]">
+          <Icon name="heart" size={12} color="#D32F2F" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Favorite</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Koleksi resep favorit</div>
+        </div>
+      </div>
+
+      <!-- 2. Cupping Flavour -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FFF3E0] to-[#FFE0B2] flex items-center justify-center text-[#E65100]">
+          <Icon name="disc" size={12} color="#E65100" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Cupping Flavour</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">SCA wheel & sensori</div>
+        </div>
+      </div>
+
+      <!-- 3. Coffee Roastery -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#EFEBE9] to-[#D7CCC8] flex items-center justify-center text-[#5D4037]">
+          <Icon name="store" size={12} color="#5D4037" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Coffee Roastery</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">50 Roastery & lineup</div>
+        </div>
+      </div>
+
+      <!-- 4. Beans Radar -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#E0F2F1] to-[#B2DFDB] flex items-center justify-center text-[#00796B]">
+          <Icon name="radar" size={12} color="#00796B" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Beans Radar</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Cari beans via GPS</div>
+        </div>
+      </div>
+
+      <!-- 5. Jurnal Brew -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#E8EAF6] to-[#C5CAE9] flex items-center justify-center text-[#303F9F]">
+          <Icon name="book" size={12} color="#303F9F" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Jurnal Brew</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Log & rating harian</div>
+        </div>
+      </div>
+
+      <!-- 6. Social Coffee -->
+      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
+        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FCE4EC] to-[#F8BBD0] flex items-center justify-center text-[#E91E63]">
+          <Icon name="users" size={12} color="#E91E63" />
+        </div>
+        <div>
+          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Social Coffee</div>
+          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Komunitas barista</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Bar -->
+  <div class="bg-white border-t border-[#E8DFD8] py-1.5 px-3 flex items-center justify-between text-[8px] font-medium text-[#8F857D] shrink-0">
+    <div class="flex flex-col items-center">
+      <Icon name="home" size={13} color="#8F857D" />
+      <span>Home</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="book" size={13} color="#8F857D" />
+      <span>Recipes</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
+        <Icon name="timer" size={13} color="#FFFFFF" />
+      </div>
+      <span class="mt-0.5">Brew</span>
+    </div>
+    <div class="flex flex-col items-center text-[#6B4423] font-bold">
+      <Icon name="wrench" size={13} color="#6B4423" />
+      <span>Toolkit</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="user" size={13} color="#8F857D" />
+      <span>Profile</span>
+    </div>
+  </div>
+
+</div>

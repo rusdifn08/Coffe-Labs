@@ -1,0 +1,70 @@
+---
+import Icon from '../ui/Icon.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section class="py-10 sm:py-14 bg-[#F9F6F0] border-t border-[#E8DFD8]">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Compact Header -->
+    <div class="text-center max-w-2xl mx-auto mb-6 sm:mb-8 space-y-1.5">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-red-50 border border-red-200 text-red-700 text-[11px] font-bold uppercase tracking-wider">
+        <Icon name="alert-circle" size={13} color="#B91C1C" />
+        <span>Tantangan Home Brewer</span>
+      </div>
+      <h2 class="text-xl sm:text-2xl font-extrabold text-[#332B25] tracking-tight">
+        Kopi kafe selalu nikmat, di rumah sering gagal?
+      </h2>
+      <p class="text-xs sm:text-sm text-[#6F655D]">
+        Menyeduh specialty coffee manual butuh parameter presisi. Coffee Labs mengubah tebakan menjadi kepastian.
+      </p>
+    </div>
+
+    <!-- Compact Professional Table / Card Matrix -->
+    <div class="bg-white rounded-xl border border-[#E8DFD8] shadow-xs overflow-hidden">
+      
+      <!-- Table Header (Hidden on small mobile, visible sm+) -->
+      <div class="hidden sm:grid grid-cols-2 bg-[#F6F1EC] border-b border-[#E8DFD8] text-xs font-extrabold">
+        <div class="p-3.5 pl-6 text-[#8F857D] uppercase tracking-wider flex items-center gap-2">
+          <Icon name="x" size={14} color="#DC2626" />
+          <span>Kendala Seduhan Manual Biasa</span>
+        </div>
+        <div class="p-3.5 pl-6 text-[#6B4423] uppercase tracking-wider border-l border-[#E8DFD8] flex items-center gap-2 bg-[#FAF5EE]">
+          <Icon name="check" size={14} color="#15803D" />
+          <span>Solusi Presisi Coffee Labs</span>
+        </div>
+      </div>
+
+      <!-- Compact Rows -->
+      <div class="divide-y divide-[#E8DFD8]">
+        {landingData.problemSolution.map((item) => (
+          <div class="grid grid-cols-1 sm:grid-cols-2 text-xs hover:bg-amber-50/15 transition-colors">
+            
+            <!-- Left Problem -->
+            <div class="p-3.5 sm:px-6 flex items-start gap-2.5 bg-red-50/20 sm:bg-transparent">
+              <span class="w-5 h-5 rounded-full bg-red-100/80 text-red-600 flex items-center justify-center shrink-0 mt-0.5">
+                <Icon name="x" size={11} color="#DC2626" />
+              </span>
+              <p class="font-medium text-[#332B25] leading-snug">
+                {item.problem}
+              </p>
+            </div>
+
+            <!-- Right Solution -->
+            <div class="p-3.5 sm:px-6 flex items-start gap-2.5 border-t sm:border-t-0 sm:border-l border-[#E8DFD8] bg-[#F7FAF8] sm:bg-[#FAF5EE]/40">
+              <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                <Icon name="check" size={11} color="#15803D" />
+              </span>
+              <p class="font-bold text-[#332B25] leading-snug">
+                {item.solution}
+              </p>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+</section>

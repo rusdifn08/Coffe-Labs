@@ -1,0 +1,215 @@
+---
+import Icon from '../ui/Icon.astro';
+import ThermalReceiptSheetMockup from '../mockup/ThermalReceiptSheetMockup.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import SocialCoffeeScreenMockup from '../mockup/SocialCoffeeScreenMockup.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="fitur" class="py-12 sm:py-16 bg-white border-t border-[#E8DFD8]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Simplified & 1 line as requested) -->
+    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-1.5">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-amber-100 text-[#6B4423] text-xs font-bold uppercase tracking-wider">
+        <Icon name="sparkles" size={13} color="#6B4423" />
+        <span>Fitur Unggulan</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#332B25] tracking-tight">
+        Semua yang Anda butuhkan untuk seduhan sempurna di setiap cangkir.
+      </h2>
+      <p class="text-xs sm:text-sm text-[#6F655D] truncate max-w-2xl mx-auto">
+        Studio seduhan presisi dengan algoritma kalkulasi rasio, 159 resep juara, dan evaluasi sensori profesional.
+      </p>
+    </div>
+
+    <!-- Bento Grid (12-columns) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 sm:gap-5">
+      
+      <!-- Tile 1: Guided Brew Timer (7 cols on lg) -->
+      <div class="lg:col-span-7 bg-[#F9F6F0] rounded-xl p-5 sm:p-6 border border-[#E8DFD8] shadow-xs flex flex-col justify-between overflow-hidden relative group hover:shadow-warm-sm transition-shadow">
+        <div class="space-y-1.5 z-10">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-[#6B4423] text-white flex items-center justify-center">
+              <Icon name="timer" size={14} color="#FFFFFF" />
+            </span>
+            <span class="px-2 py-0.5 rounded bg-[#6B4423]/10 text-[#6B4423] text-[10px] font-extrabold tracking-wider uppercase">
+              PANDUAN TAHAPAN
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-extrabold text-[#332B25] tracking-tight">
+            Guided Brew Timer Presisi
+          </h3>
+          <p class="text-xs text-[#6F655D] leading-relaxed max-w-md">
+            Mata Anda tetap fokus pada timbangan dan gooseneck kettle. Layar memandu detik dan gramasi air target setiap kali tuangan secara otomatis.
+          </p>
+        </div>
+
+        <!-- Simulated interactive brewing display inside card -->
+        <div class="mt-4 p-3 bg-white rounded-lg border border-[#E8DFD8] shadow-xs flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-amber-500/15 text-[#6B4423] flex items-center justify-center font-bold">
+              <Icon name="timer" size={16} color="#6B4423" />
+            </div>
+            <div>
+              <div class="text-[10px] text-[#8F857D] font-bold uppercase tracking-wider">Tahap 1: Blooming</div>
+              <div class="text-base font-black text-[#6B4423] font-mono leading-none">00:30 <span class="text-[11px] font-normal text-zinc-500">• +30g Air</span></div>
+            </div>
+          </div>
+          <div class="flex gap-1.5">
+            <span class="px-2 py-1 bg-[#F1E8E0] text-[#6B4423] rounded-md text-[10px] font-bold flex items-center gap-1">
+              <Icon name="plus" size={11} color="#6B4423" />
+              <span>+10s Fleksibel</span>
+            </span>
+            <span class="px-2 py-1 bg-emerald-50 text-emerald-800 rounded-md text-[10px] font-bold flex items-center gap-1">
+              <Icon name="check" size={11} color="#15803D" />
+              <span>Target 30g</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tile 2: World Recipes (5 cols on lg) -->
+      <div class="lg:col-span-5 bg-gradient-to-br from-[#6B4423] to-[#4A2D15] text-white rounded-xl p-5 sm:p-6 shadow-xs flex flex-col justify-between relative overflow-hidden group">
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-[#ECA400] text-[#332B25] flex items-center justify-center">
+              <Icon name="book" size={14} color="#332B25" />
+            </span>
+            <span class="px-2 py-0.5 rounded bg-[#ECA400] text-[#332B25] text-[10px] font-extrabold tracking-wider uppercase">
+              159+ RESEP RESMI
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-extrabold text-white tracking-tight">
+            Pustaka Resep Barista Dunia
+          </h3>
+          <p class="text-xs text-white/80 leading-relaxed">
+            Metode 4:6 Tetsu Kasuya, Single-Pour James Hoffmann, resep kompetisi Mikael Jasin, hingga racikan Japanese Iced.
+          </p>
+        </div>
+
+        <div class="mt-4 pt-3 border-t border-white/15 flex items-center justify-between text-xs font-bold text-amber-200">
+          <span>Filter Dripper & Rasa</span>
+          <span class="flex items-center gap-1">
+            <span>Surprise Me</span>
+            <Icon name="arrow-right" size={12} color="#FDE68A" />
+          </span>
+        </div>
+      </div>
+
+      <!-- Tile 3: Brew Doctor (4 cols) -->
+      <div class="lg:col-span-4 bg-[#F9F6F0] rounded-xl p-4 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
+        <div class="space-y-1.5">
+          <div class="w-7 h-7 rounded-lg bg-amber-100 text-[#ECA400] flex items-center justify-center font-bold">
+            <Icon name="stethoscope" size={15} color="#ECA400" />
+          </div>
+          <h4 class="text-sm font-bold text-[#332B25]">
+            Brew Doctor & Sensori
+          </h4>
+          <p class="text-xs text-[#6F655D] leading-relaxed">
+            Kopi terlalu asam tajam atau pahit sepet? Evaluasi cangkir Anda, sistem mendiagnosis dan memberi saran klik grinder & suhu.
+          </p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#E8DFD8] flex items-center gap-1.5 text-[11px] font-bold text-emerald-800">
+          <Icon name="target" size={13} color="#15803D" />
+          <span>Sweet Spot Detection</span>
+        </div>
+      </div>
+
+      <!-- Tile 4: Auto-Scale & Grinder Converter 29 Model (4 cols) -->
+      <div class="lg:col-span-4 bg-[#F9F6F0] rounded-xl p-4 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
+        <div class="space-y-1.5">
+          <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+            <Icon name="sliders" size={15} color="#00796B" />
+          </div>
+          <h4 class="text-sm font-bold text-[#332B25]">
+            Auto-Scale & 29 Grinder
+          </h4>
+          <p class="text-xs text-[#6F655D] leading-relaxed">
+            Ketik gram kopi yang Anda punya (misal 18g), semua tuangan air otomatis dihitung ulang. Dilengkapi konversi 29 model grinder.
+          </p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#E8DFD8] flex items-center gap-1.5 text-[11px] font-bold text-[#6B4423]">
+          <Icon name="wrench" size={13} color="#6B4423" />
+          <span>29 Model Grinder Manual & Elektrik</span>
+        </div>
+      </div>
+
+      <!-- Tile 5: Cupping SCA & 92 Flavor Notes (4 cols) -->
+      <div class="lg:col-span-4 bg-[#F9F6F0] rounded-xl p-4 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
+        <div class="space-y-1.5">
+          <div class="w-7 h-7 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center font-bold">
+            <Icon name="disc" size={15} color="#E65100" />
+          </div>
+          <h4 class="text-sm font-bold text-[#332B25]">
+            Cupping SCA & Flavor Wheel
+          </h4>
+          <p class="text-xs text-[#6F655D] leading-relaxed">
+            Form cupping standar Specialty Coffee Association. Skoring Clean Cup, Acidity, Sweetness, 30+ varietas kopi, dan 92 flavor notes.
+          </p>
+        </div>
+        <div class="mt-3 pt-2.5 border-t border-[#E8DFD8] flex items-center gap-1.5 text-[11px] font-bold text-orange-800">
+          <Icon name="sparkles" size={13} color="#C2410C" />
+          <span>Sampel Skor Demo 90.75 Point</span>
+        </div>
+      </div>
+
+      <!-- Tile 6: Social Coffee & Basecamp (WITH REAL PHONE MOCKUP PREVIEW) -->
+      <div class="lg:col-span-7 bg-[#F9F6F0] rounded-xl p-5 sm:p-6 border border-[#E8DFD8] shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 overflow-hidden">
+        <div class="space-y-2 sm:max-w-xs text-center sm:text-left">
+          <div class="flex items-center justify-center sm:justify-start gap-2">
+            <span class="w-7 h-7 rounded-lg bg-[#E91E63] text-white flex items-center justify-center">
+              <Icon name="users" size={14} color="#FFFFFF" />
+            </span>
+            <span class="px-2 py-0.5 rounded bg-[#FCE4EC] text-[#E91E63] text-[10px] font-extrabold tracking-wider uppercase">
+              KOMUNITAS BARISTA
+            </span>
+          </div>
+
+          <h3 class="text-lg sm:text-xl font-extrabold text-[#332B25] tracking-tight">
+            Social Coffee & Basecamp Grup
+          </h3>
+
+          <p class="text-xs text-[#6F655D] leading-relaxed">
+            Unggah resep racikan Anda, beri ulasan beans roastery favorit, dan gunakan fitur satu-klik <strong>'Copy Resep'</strong> untuk langsung menyeduh resep teman Anda di rumah.
+          </p>
+
+          <div class="flex flex-wrap gap-1.5 justify-center sm:justify-start text-[10px] font-bold text-[#E91E63]">
+            <span class="px-2 py-0.5 bg-[#FCE4EC] rounded">#V60</span>
+            <span class="px-2 py-0.5 bg-[#FCE4EC] rounded">#Origami</span>
+            <span class="px-2 py-0.5 bg-[#FCE4EC] rounded">#JapaneseIced</span>
+            <span class="px-2 py-0.5 bg-[#FCE4EC] rounded">#Puntang</span>
+          </div>
+        </div>
+
+        <!-- Phone Mockup Preview for Social Coffee inside this Tile -->
+        <div class="shrink-0 w-full sm:w-auto flex justify-center">
+          <PhoneMockup size="sm" tilt="none" glow={false} class="scale-90 sm:scale-95 origin-center">
+            <SocialCoffeeScreenMockup />
+          </PhoneMockup>
+        </div>
+      </div>
+
+      <!-- Tile 7: Thermal Receipt Bluetooth (5 cols with real thermal paper mockup) -->
+      <div class="lg:col-span-5 bg-zinc-900 text-white rounded-xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 overflow-hidden">
+        <div class="space-y-2 sm:max-w-[190px] text-center sm:text-left">
+          <span class="px-2 py-0.5 rounded bg-amber-400 text-zinc-950 text-[9px] font-extrabold tracking-wider uppercase">
+            BAR & CAFÉ
+          </span>
+          <h3 class="text-base sm:text-lg font-extrabold text-white tracking-tight">
+            Cetak Struk Bluetooth
+          </h3>
+          <p class="text-xs text-zinc-300 leading-relaxed">
+            Terhubung ke printer thermal kasir 58mm/80mm standar POS untuk slow bar.
+          </p>
+        </div>
+
+        <div class="shrink-0 w-full sm:w-auto scale-90 sm:scale-95 origin-center">
+          <ThermalReceiptSheetMockup />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

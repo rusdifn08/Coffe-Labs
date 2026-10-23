@@ -1,0 +1,513 @@
+---
+import Icon from '../ui/Icon.astro';
+
+// Exact 4 recipes matching the mobile screenshot (Image 1)
+const recipes = [
+  {
+    id: 'recipe-rusdi',
+    author: 'Rusdi',
+    flag: '🇮🇩',
+    title: 'Resep V60 Pour Over Saya',
+    subtitle: 'Resep seduh V60 Pour...',
+    coffee: '15g',
+    water: '225ml',
+    temp: '92°C',
+    ratio: '1:15',
+    isIced: false,
+    pours: '3x Pour',
+    category: 'V60',
+    grind: 'Medium',
+    grindDetail: 'Comandante: 22 klik • Timemore: 16 klik • Vesper: 65 klik',
+    notes: ['Peach', 'Brown Sugar', 'Floral'],
+    avatar: '/images/characters/char_avatar_1.jpg',
+    dot1: { bg: 'bg-[#FED7AA]', icon: 'flame', color: '#EA580C' },
+    dot2: { bg: 'bg-[#FFEDD5]', icon: 'disc', color: '#D97706' },
+    steps: [
+      { name: '1. Blooming & Swirl', time: '00:00 - 00:35', water: '+45g (Target: 45g)', desc: 'Tuang melingkar pelan, swirl 2x.' },
+      { name: '2. Sweetness Center Pour', time: '00:35 - 01:15', water: '+90g (Target: 135g)', desc: 'Tuang di tengah untuk ekstraksi gula alami.' },
+      { name: '3. Final Clarity Pour', time: '01:15 - 02:15', water: '+90g (Target: 225g)', desc: 'Tuang spiral melingkar sampai 225g.' },
+    ]
+  },
+  {
+    id: 'recipe-tetsu',
+    author: 'Tetsu Kasuya',
+    flag: '🇯🇵',
+    title: 'Metode Multi-Pour Neo Brew (...',
+    subtitle: "Tetsu Kasuya's 10th...",
+    coffee: '20g',
+    water: '300ml',
+    temp: '90°C',
+    ratio: '1:15',
+    isIced: false,
+    pours: '10x Pour',
+    category: 'V60',
+    grind: 'Super Coarse',
+    grindDetail: 'Comandante: 28 klik • Timemore: 22 klik • Vesper: 85 klik',
+    notes: ['Cherry', 'Black Tea', 'Clean Sweet'],
+    avatar: '/images/avatars/portraits/tetsu_kasuya.jpg',
+    dot1: { bg: 'bg-[#FCE7F3]', icon: 'heart', color: '#DB2777' },
+    dot2: { bg: 'bg-[#E0F2FE]', icon: 'sparkles', color: '#0284C7' },
+    steps: [
+      { name: '1. 40% Rasa (Bloom 1)', time: '00:00 - 00:45', water: '+50g (Target: 50g)', desc: 'Menentukan balance acidity.' },
+      { name: '2. 40% Rasa (Bloom 2)', time: '00:45 - 01:30', water: '+70g (Target: 120g)', desc: 'Menentukan level sweetness.' },
+      { name: '3. 60% Strength (3x Pour)', time: '01:30 - 03:00', water: '+180g (Target: 300g)', desc: 'Dibagi 3 tuangan sama rata 60g.' },
+    ]
+  },
+  {
+    id: 'recipe-mikael-v60',
+    author: 'Mikael Jasin',
+    flag: '🇮🇩',
+    title: 'V60 Signature Sensory Clarity ...',
+    subtitle: '2024 World Barista...',
+    coffee: '15g',
+    water: '240ml',
+    temp: '93°C',
+    ratio: '1:16',
+    isIced: false,
+    pours: '3x Pour',
+    category: 'V60',
+    grind: 'Medium-Fine',
+    grindDetail: 'Comandante: 20 klik • Timemore: 15 klik • Vesper: 58 klik',
+    notes: ['Jasmine', 'Meyer Lemon', 'Tropical Fruit'],
+    avatar: '/images/avatars/portraits/mikael_jasin.jpg',
+    dot1: { bg: 'bg-[#FED7AA]', icon: 'disc', color: '#EA580C' },
+    dot2: { bg: 'bg-[#FCE7F3]', icon: 'sparkles', color: '#EC4899' },
+    steps: [
+      { name: '1. Gentle Blooming', time: '00:00 - 00:40', water: '+45g (Target: 45g)', desc: 'Aliran air lembut 4g/detik.' },
+      { name: '2. High Agitation Pulse', time: '00:40 - 01:25', water: '+95g (Target: 140g)', desc: 'Spiral agresif melarutkan asam buah.' },
+      { name: '3. Melodrip Finish', time: '01:25 - 02:30', water: '+100g (Target: 240g)', desc: 'Ketinggian rendah menjaga body lembut.' },
+    ]
+  },
+  {
+    id: 'recipe-mikael-iced',
+    author: 'Mikael Jasin',
+    flag: '🇮🇩',
+    title: 'Japanese Iced V60 Flash Arom...',
+    subtitle: 'Resep Japanese Iced...',
+    coffee: '18g',
+    water: '270g',
+    temp: '94°C',
+    ratio: '1:15',
+    isIced: true,
+    pours: '3x Pour',
+    category: 'Japanese',
+    grind: 'Fine-Medium',
+    grindDetail: 'Comandante: 18 klik • Timemore: 13 klik • Vesper: 52 klik',
+    notes: ['Yellow Flower', 'Strawberry', 'Iced Crisp'],
+    avatar: '/images/avatars/portraits/mikael_jasin.jpg',
+    dot1: { bg: 'bg-[#FEF9C3]', icon: 'sparkles', color: '#CA8A04' },
+    dot2: { bg: 'bg-[#FFE4E6]', icon: 'heart', color: '#E11D48' },
+    steps: [
+      { name: '1. Prep Server', time: 'Sebelum Mulai', water: '100g Es Batu di Server', desc: 'Siapkan es batu di bawah dripper.' },
+      { name: '2. Hot Bloom Flash', time: '00:00 - 00:40', water: '+50g Air Panas (94°C)', desc: 'Ekstraksi panas ke atas es batu.' },
+      { name: '3. Intensive Pulse', time: '00:40 - 02:00', water: '+120g Air Panas (94°C)', desc: 'Tuang konsisten sampai total 170g air panas.' },
+    ]
+  },
+];
+---
+
+<div class="recipe-mockup-wrapper flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs relative overflow-hidden h-full">
+  
+  <!-- RECIPE FEED VIEW (Default View) -->
+  <div class="recipe-feed-view flex-1 flex flex-col justify-between overflow-hidden">
+    
+    <div class="p-2.5 space-y-2 overflow-y-auto no-scrollbar flex-1 relative">
+      
+      <!-- Top App Bar (Exact replica of Image 1) -->
+      <div class="flex items-center justify-between pt-0.5">
+        <!-- Pill with count -->
+        <span class="px-2.5 py-0.5 rounded-full bg-[#F2ECE4] border border-[#E5DDD5] text-[#6B4423] font-bold text-[10px]">
+          162
+        </span>
+
+        <!-- Title -->
+        <h3 class="text-[14px] font-extrabold text-[#332B25] leading-tight">World Recipes</h3>
+
+        <!-- Sparkle & Plus icons -->
+        <div class="flex items-center gap-2 text-[#332B25]">
+          <Icon name="sparkles" size={15} color="#332B25" />
+          <Icon name="plus" size={16} color="#332B25" />
+        </div>
+      </div>
+
+      <!-- Search Input & Filter Button Row -->
+      <div class="flex items-center gap-1.5 pt-0.5">
+        <div class="flex-1 flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-xl border border-[#E8DFD8] shadow-xs">
+          <Icon name="search" size={11} color="#8F857D" />
+          <span class="text-[9.5px] text-[#8F857D]">Search barista, bean...</span>
+        </div>
+        <button class="flex items-center gap-1 bg-white px-2.5 py-1.5 rounded-xl border border-[#E8DFD8] text-[9.5px] font-bold text-[#332B25] shadow-xs">
+          <Icon name="filter" size={10} color="#332B25" />
+          <span>Filter</span>
+        </button>
+      </div>
+
+      <!-- Category Filter Pills (Horizontal Scroll) -->
+      <div class="flex gap-1.5 overflow-x-auto no-scrollbar text-[9.5px] font-bold py-0.5">
+        <span class="px-3 py-1 rounded-full bg-[#5D4037] text-white shrink-0 shadow-xs">All</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#332B25] shrink-0">V60</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#332B25] shrink-0">Japanese</span>
+        <span class="px-3 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#332B25] shrink-0">AeroPress</span>
+      </div>
+
+      <!-- 2-COLUMN RECIPE GRID (Clicking any card opens interactive detail!) -->
+      <div class="grid grid-cols-2 gap-1.5 pt-0.5">
+        {recipes.map((r, i) => (
+          <div
+            class="recipe-card-btn bg-white p-2 rounded-2xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between hover:border-[#6B4423]/60 hover:shadow-md transition-all cursor-pointer group"
+            data-recipe-id={r.id}
+          >
+            <div>
+              <!-- Row 1: Avatar Left + Dosage Chips Right -->
+              <div class="flex items-center justify-between gap-1">
+                <div class="w-6 h-6 rounded-full overflow-hidden border border-[#E8DFD8] shrink-0 bg-amber-50 group-hover:scale-105 transition-transform">
+                  <img src={r.avatar} alt={r.author} class="w-full h-full object-cover" />
+                </div>
+                <div class="flex items-center gap-1 text-[7.5px] font-bold">
+                  <!-- Coffee Chip -->
+                  <span class="px-1 py-0.5 rounded bg-[#F7F1EC] text-[#6B4423] border border-[#E8DFD8] flex items-center gap-0.5">
+                    <Icon name="coffee" size={7} color="#6B4423" />
+                    <span>{r.coffee}</span>
+                  </span>
+                  <!-- Water Chip (or Ice Chip for Iced) -->
+                  {r.isIced ? (
+                    <span class="px-1 py-0.5 rounded bg-[#E0F2FE] text-[#0284C7] border border-sky-200 flex items-center gap-0.5">
+                      <Icon name="snowflake" size={7} color="#0284C7" />
+                      <span>{r.water}</span>
+                    </span>
+                  ) : (
+                    <span class="px-1 py-0.5 rounded bg-[#E8F4FD] text-[#1976D2] border border-blue-100 flex items-center gap-0.5">
+                      <Icon name="droplet" size={7} color="#1976D2" />
+                      <span>{r.water}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <!-- Row 2: Author Name & Country Flag -->
+              <div class="flex items-center justify-between mt-1.5">
+                <span class="font-bold text-[9px] text-[#332B25] truncate">{r.author}</span>
+                <span class="text-[8.5px] shrink-0">{r.flag}</span>
+              </div>
+
+              <!-- Row 3: Recipe Title -->
+              <h4 class="font-extrabold text-[9.5px] text-[#332B25] group-hover:text-[#6B4423] transition-colors leading-snug mt-0.5 line-clamp-2 min-h-[24px]">
+                {r.title}
+              </h4>
+
+              <!-- Row 4: Tasting Notes Badges + Pour Count Pill -->
+              <div class="flex items-center gap-1 mt-1">
+                <div class="flex items-center gap-0.5">
+                  <span class={`w-3.5 h-3.5 rounded-full ${r.dot1.bg} flex items-center justify-center shadow-2xs`}>
+                    <Icon name={r.dot1.icon} size={7} color={r.dot1.color} />
+                  </span>
+                  <span class={`w-3.5 h-3.5 rounded-full ${r.dot2.bg} flex items-center justify-center shadow-2xs`}>
+                    <Icon name={r.dot2.icon} size={7} color={r.dot2.color} />
+                  </span>
+                </div>
+                <span class="px-1.5 py-0.2 rounded-full bg-[#F5F2EB] text-[#6F655D] text-[7.5px] font-semibold">
+                  {r.pours}
+                </span>
+              </div>
+
+              <!-- Row 5: Recipe Subtitle Description -->
+              <p class="text-[7.5px] text-[#8F857D] truncate mt-1">
+                {r.subtitle}
+              </p>
+
+              <!-- Row 6: Dripper Category & Grinder Label -->
+              <div class="flex items-center justify-between text-[7.5px] text-[#8F857D] mt-1 pt-0.5">
+                <span class="font-semibold text-[#6F655D]">{r.category}</span>
+                <div class="flex items-center gap-0.5 font-bold text-[#6B4423]">
+                  <Icon name="gear" size={7} color="#6B4423" />
+                  <span class="truncate max-w-[42px]">{r.grind}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 7: Full-width Brew Button (Clicking opens details!) -->
+            <button class="mt-2 w-full py-1 rounded-lg bg-[#6B4423] hover:bg-[#563519] text-white text-[9.5px] font-bold flex items-center justify-center gap-1 shadow-xs transition-colors cursor-pointer">
+              <Icon name="play" size={8} color="#FFFFFF" />
+              <span>Brew</span>
+            </button>
+
+          </div>
+        ))}
+      </div>
+
+      <!-- Floating Social Coffee Pill (Image 1) -->
+      <div class="absolute bottom-2 right-2 z-20">
+        <div class="px-2.5 py-1 rounded-2xl bg-[#5D4037] text-white shadow-md flex items-center gap-1 text-[8.5px] font-bold cursor-pointer hover:bg-[#4E342E]">
+          <Icon name="message-square" size={9} color="#FFFFFF" />
+          <span>Social Coffee</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation Bar (Recipes tab highlighted in brown!) -->
+    <div class="border-t border-[#E8DFD8] bg-white px-3 py-1.5 grid grid-cols-5 items-center text-[9px] text-[#8F857D] shrink-0 z-30">
+      <div class="flex flex-col items-center">
+        <Icon name="home" size={13} color="#8F857D" />
+        <span>Home</span>
+      </div>
+      <div class="flex flex-col items-center text-[#6B4423] font-bold">
+        <Icon name="book" size={13} color="#6B4423" />
+        <span>Recipes</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
+          <Icon name="timer" size={13} color="#FFFFFF" />
+        </div>
+        <span class="mt-0.5">Brew</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <Icon name="wrench" size={13} color="#8F857D" />
+        <span>Toolkit</span>
+      </div>
+      <div class="flex flex-col items-center">
+        <Icon name="user" size={13} color="#8F857D" />
+        <span>Profile</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- INTERACTIVE RECIPE DETAIL OVERLAY (Slides up when a card is clicked!) -->
+  <div class="recipe-detail-overlay hidden absolute inset-0 bg-[#F9F6F0] z-50 flex flex-col justify-between">
+    
+    <!-- Detail Header -->
+    <div class="flex items-center justify-between px-3 pt-2 pb-1.5 bg-white border-b border-[#E8DFD8] shrink-0">
+      <button class="detail-back-btn flex items-center gap-1 text-[#6B4423] font-bold text-[11px] p-1 -ml-1 rounded-md hover:bg-amber-50 cursor-pointer">
+        <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Kembali</span>
+      </button>
+
+      <span class="font-extrabold text-[11.5px] text-[#332B25]">Detail Resep</span>
+
+      <div class="flex items-center gap-1.5 text-[#6B4423]">
+        <button class="p-1 hover:bg-amber-50 rounded" title="Simpan Favorit">
+          <Icon name="heart" size={13} color="#6B4423" />
+        </button>
+        <button class="p-1 hover:bg-amber-50 rounded" title="Cetak Struk">
+          <Icon name="printer" size={13} color="#6B4423" />
+        </button>
+      </div>
+    </div>
+
+    <!-- Detail Scrollable Body -->
+    <div class="flex-1 overflow-y-auto no-scrollbar p-3 space-y-2.5">
+      
+      <!-- Author & Recipe Title Card -->
+      <div class="bg-white p-3 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-full overflow-hidden border border-[#ECA400] shadow-xs shrink-0">
+            <img class="detail-author-avatar w-full h-full object-cover" src="/images/characters/char_avatar_1.jpg" alt="Author" />
+          </div>
+          <div>
+            <div class="flex items-center gap-1">
+              <span class="detail-author-name font-bold text-[11px] text-[#332B25]">Rusdi</span>
+              <span class="detail-author-flag text-[10px]">🇮🇩</span>
+              <span class="px-1.5 py-0.2 rounded bg-amber-100 text-[#6B4423] text-[7.5px] font-bold">Barista</span>
+            </div>
+            <div class="text-[8.5px] text-[#8F857D]">Terkurasi di Pustaka Coffee Labs</div>
+          </div>
+        </div>
+
+        <h3 class="detail-recipe-title font-extrabold text-[13px] text-[#332B25] leading-snug">
+          Resep V60 Pour Over Saya
+        </h3>
+
+        <!-- 4 Quick Parameter Pills -->
+        <div class="grid grid-cols-4 gap-1 pt-1 text-center">
+          <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60">
+            <span class="block text-[7px] text-[#8F857D] font-bold">KOPI</span>
+            <span class="detail-coffee font-extrabold text-[10px] text-[#6B4423]">15g</span>
+          </div>
+          <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60">
+            <span class="block text-[7px] text-[#8F857D] font-bold">AIR</span>
+            <span class="detail-water font-extrabold text-[10px] text-[#1976D2]">225ml</span>
+          </div>
+          <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60">
+            <span class="block text-[7px] text-[#8F857D] font-bold">SUHU</span>
+            <span class="detail-temp font-extrabold text-[10px] text-[#6B4423]">92°C</span>
+          </div>
+          <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60">
+            <span class="block text-[7px] text-[#8F857D] font-bold">RASIO</span>
+            <span class="detail-ratio font-extrabold text-[10px] text-[#6B4423]">1:15</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grinder Recommendation Card -->
+      <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1">
+        <div class="flex items-center gap-1 text-[9px] font-bold text-[#6B4423]">
+          <Icon name="gear" size={10} color="#6B4423" />
+          <span>Panduan Klik Grinder:</span>
+        </div>
+        <p class="detail-grind text-[8.5px] text-[#332B25] font-mono leading-tight pl-3.5">
+          Comandante: 22 klik • Timemore: 16 klik • Vesper: 65 klik
+        </p>
+      </div>
+
+      <!-- Tasting Notes Tags -->
+      <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1">
+        <span class="text-[8.5px] font-bold text-[#8F857D] uppercase tracking-wider block">Catatan Rasa:</span>
+        <div class="detail-notes flex flex-wrap gap-1">
+          <span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[8.5px] font-bold">Peach</span>
+          <span class="px-2 py-0.5 rounded-md bg-rose-100 text-rose-900 text-[8.5px] font-bold">Floral</span>
+        </div>
+      </div>
+
+      <!-- Step by Step Breakdown -->
+      <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+        <div class="flex items-center justify-between">
+          <span class="text-[9px] font-bold text-[#332B25] uppercase tracking-wider">Tahapan Tuangan Seduh</span>
+          <span class="text-[8px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded">3 Tahap</span>
+        </div>
+        
+        <div class="detail-steps space-y-1.5">
+          <!-- Dynamically populated or default -->
+          <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[8.5px]">
+            <div class="flex justify-between font-bold text-[#332B25]">
+              <span>1. Blooming & Swirl</span>
+              <span class="text-[#ECA400]">00:00 - 00:35</span>
+            </div>
+            <div class="text-[7.5px] text-[#6F655D] mt-0.5">+45g Water (Target: 45g) • Tuang melingkar pelan.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Modal Action Bar -->
+    <div class="p-2.5 bg-white border-t border-[#E8DFD8] flex gap-2 shrink-0">
+      <button class="detail-close-btn flex-1 py-2 rounded-xl border border-[#E8DFD8] text-[#332B25] font-bold text-[10px] hover:bg-[#F9F6F0] transition-colors cursor-pointer">
+        Tutup
+      </button>
+      <button class="detail-brew-now-btn flex-1 py-2 rounded-xl bg-[#6B4423] hover:bg-[#563519] text-white font-bold text-[10px] flex items-center justify-center gap-1 shadow-md transition-colors cursor-pointer">
+        <Icon name="play" size={10} color="#FFFFFF" />
+        <span>Mulai Seduh Sekarang</span>
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<script define:vars={{ recipes }}>
+  function initRecipeFeed() {
+    const wrappers = document.querySelectorAll('.recipe-mockup-wrapper');
+
+    wrappers.forEach((wrapper) => {
+      if (wrapper.hasAttribute('data-recipe-inited')) return;
+      wrapper.setAttribute('data-recipe-inited', 'true');
+
+      const overlay = wrapper.querySelector('.recipe-detail-overlay');
+      const backBtn = wrapper.querySelector('.detail-back-btn');
+      const closeBtn = wrapper.querySelector('.detail-close-btn');
+      const brewNowBtn = wrapper.querySelector('.detail-brew-now-btn');
+      const cardBtns = wrapper.querySelectorAll('.recipe-card-btn');
+
+      // Elements inside detail modal
+      const avatarEl = wrapper.querySelector('.detail-author-avatar');
+      const nameEl = wrapper.querySelector('.detail-author-name');
+      const flagEl = wrapper.querySelector('.detail-author-flag');
+      const titleEl = wrapper.querySelector('.detail-recipe-title');
+      const coffeeEl = wrapper.querySelector('.detail-coffee');
+      const waterEl = wrapper.querySelector('.detail-water');
+      const tempEl = wrapper.querySelector('.detail-temp');
+      const ratioEl = wrapper.querySelector('.detail-ratio');
+      const grindEl = wrapper.querySelector('.detail-grind');
+      const notesEl = wrapper.querySelector('.detail-notes');
+      const stepsEl = wrapper.querySelector('.detail-steps');
+
+      function showRecipeDetail(recipeId) {
+        const found = recipes.find((r) => r.id === recipeId) || recipes[0];
+        if (!found || !overlay) return;
+
+        if (avatarEl) avatarEl.setAttribute('src', found.avatar);
+        if (nameEl) nameEl.textContent = found.author;
+        if (flagEl) flagEl.textContent = found.flag;
+        if (titleEl) titleEl.textContent = found.title;
+        if (coffeeEl) coffeeEl.textContent = found.coffee;
+        if (waterEl) waterEl.textContent = found.water;
+        if (tempEl) tempEl.textContent = found.temp;
+        if (ratioEl) ratioEl.textContent = found.ratio;
+        if (grindEl) grindEl.textContent = found.grindDetail;
+
+        if (notesEl) {
+          notesEl.innerHTML = found.notes
+            .map((n) => `<span class="px-2 py-0.5 rounded-md bg-amber-100 text-amber-900 text-[8.5px] font-bold">${n}</span>`)
+            .join('');
+        }
+
+        if (stepsEl) {
+          stepsEl.innerHTML = found.steps
+            .map(
+              (s) => `
+            <div class="p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[8.5px]">
+              <div class="flex justify-between font-bold text-[#332B25]">
+                <span>${s.name}</span>
+                <span class="text-[#ECA400] font-mono">${s.time}</span>
+              </div>
+              <div class="text-[7.5px] text-[#6F655D] mt-0.5">${s.water} • ${s.desc}</div>
+            </div>
+          `
+            )
+            .join('');
+        }
+
+        overlay.classList.remove('hidden');
+        overlay.classList.add('flex');
+      }
+
+      function hideRecipeDetail() {
+        if (!overlay) return;
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+      }
+
+      cardBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const rId = btn.getAttribute('data-recipe-id');
+          showRecipeDetail(rId);
+        });
+      });
+
+      if (backBtn) backBtn.addEventListener('click', hideRecipeDetail);
+      if (closeBtn) closeBtn.addEventListener('click', hideRecipeDetail);
+      if (brewNowBtn) {
+        brewNowBtn.addEventListener('click', () => {
+          // Visual feedback
+          brewNowBtn.innerHTML = '<span>Menyiapkan Timer...</span>';
+          setTimeout(() => {
+            hideRecipeDetail();
+            // Switch to brew tab if in app tour
+            const brewTab = document.querySelector('[data-target="brew"]');
+            if (brewTab) (brewTab as HTMLElement).click();
+            brewNowBtn.innerHTML = '<span>Mulai Seduh Sekarang</span>';
+          }, 400);
+        });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initRecipeFeed);
+  } else {
+    initRecipeFeed();
+  }
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

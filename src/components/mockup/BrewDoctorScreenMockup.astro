@@ -1,0 +1,102 @@
+---
+// Flutter UI replication for Brew Doctor & Sensory Evaluation Screen with live sync
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="brew-doctor-mockup flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs h-full">
+  
+  <div class="p-3 space-y-2 overflow-y-auto no-scrollbar flex-1">
+    
+    <!-- Top Bar -->
+    <div class="flex items-center justify-between pb-1.5 border-b border-[#E8DFD8]">
+      <div class="flex items-center gap-1.5 font-bold text-[12px] text-[#332B25]">
+        <Icon name="stethoscope" size={14} color="#ECA400" />
+        <span>Brew Doctor</span>
+      </div>
+      <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-[8.5px] font-bold rounded-full">
+        Evaluasi Rasa
+      </span>
+    </div>
+
+    <!-- Sliders Mockup (Dynamically updated via simulation!) -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+      
+      <!-- Sweetness -->
+      <div>
+        <div class="flex justify-between text-[8.5px] font-bold">
+          <span class="text-[#6F655D]">Kemanisan (Sweetness)</span>
+          <span class="doc-val-sweet text-[#ECA400]">4.5 / 5.0</span>
+        </div>
+        <div class="w-full bg-[#E8DFD8] h-1.5 rounded-full overflow-hidden mt-0.5">
+          <div class="doc-bar-sweet bg-[#ECA400] h-full w-[85%] rounded-full transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Acidity -->
+      <div>
+        <div class="flex justify-between text-[8.5px] font-bold">
+          <span class="text-[#6F655D]">Keasaman (Acidity)</span>
+          <span class="doc-val-acid text-[#6B4423]">3.5 / 5.0</span>
+        </div>
+        <div class="w-full bg-[#E8DFD8] h-1.5 rounded-full overflow-hidden mt-0.5">
+          <div class="doc-bar-acid bg-[#6B4423] h-full w-[70%] rounded-full transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Bitterness -->
+      <div>
+        <div class="flex justify-between text-[8.5px] font-bold">
+          <span class="text-[#6F655D]">Kepahitan (Bitterness)</span>
+          <span class="doc-val-bitter text-[#6F655D]">1.8 / 5.0</span>
+        </div>
+        <div class="w-full bg-[#E8DFD8] h-1.5 rounded-full overflow-hidden mt-0.5">
+          <div class="doc-bar-bitter bg-[#8F857D] h-full w-[36%] rounded-full transition-all duration-300"></div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div>
+        <div class="flex justify-between text-[8.5px] font-bold">
+          <span class="text-[#6F655D]">Ketebalan (Body)</span>
+          <span class="doc-val-body text-[#6B4423]">4.0 / 5.0</span>
+        </div>
+        <div class="w-full bg-[#E8DFD8] h-1.5 rounded-full overflow-hidden mt-0.5">
+          <div class="doc-bar-body bg-[#6B4423] h-full w-[80%] rounded-full transition-all duration-300"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Diagnosis Banner (Dynamically syncs!) -->
+    <div class="doc-diag-box p-2.5 rounded-xl bg-[#E8F5E9] border border-emerald-300 text-emerald-950 shadow-xs transition-colors duration-300">
+      <div class="flex items-center gap-1.5 font-bold text-[10.5px] text-emerald-800 doc-diag-title">
+        <Icon name="target" size={13} color="currentColor" />
+        <span>Sweet Spot! Ekstraksi Seimbang</span>
+      </div>
+      <p class="doc-diag-desc text-[8.5px] text-emerald-900 mt-1 leading-snug">
+        Keseimbangan rasa manis dan asam buah sangat harmonis. Aftertaste bersih dan aroma seduhan terekstraksi maksimal.
+      </p>
+    </div>
+
+    <!-- Doctor Prescription Card -->
+    <div class="p-2.5 rounded-xl bg-white border border-[#E8DFD8] shadow-xs">
+      <div class="flex items-center gap-1 text-[9.5px] font-bold text-[#6B4423]">
+        <Icon name="sparkles" size={11} color="#6B4423" />
+        <span>Rekomendasi Barista:</span>
+      </div>
+      <p class="doc-rx-text text-[8.5px] text-[#6F655D] mt-1 leading-snug">
+        Pertahankan settingan 22 klik Comandante C40 dan suhu 92°C untuk biji sangrai ini. Simpan ke Jurnal Brew untuk referensi seduh esok hari.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- Bottom CTA in App -->
+  <div class="p-2.5 bg-white border-t border-[#E8DFD8] shrink-0">
+    <button class="w-full py-1.5 bg-[#6B4423] text-white rounded-lg text-center font-bold text-[9.5px] shadow-xs flex items-center justify-center gap-1 hover:bg-[#563519] transition-colors cursor-pointer">
+      <Icon name="book" size={11} color="#FFFFFF" />
+      <span>Simpan ke Jurnal Brew</span>
+    </button>
+  </div>
+
+</div>

@@ -1,0 +1,157 @@
+---
+import Icon from '../ui/Icon.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import HomeScreenMockup from '../mockup/HomeScreenMockup.astro';
+import RecipeFeedScreenMockup from '../mockup/RecipeFeedScreenMockup.astro';
+import BrewTimerScreenMockup from '../mockup/BrewTimerScreenMockup.astro';
+import ToolkitScreenMockup from '../mockup/ToolkitScreenMockup.astro';
+import ProfileScreenMockup from '../mockup/ProfileScreenMockup.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="aplikasi" class="py-8 sm:py-12 bg-[#F9F6F0] border-t border-[#E8DFD8] relative">
+  <!-- Anchor alias -->
+  <div id="tur-aplikasi" class="absolute -top-20"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Section Header (Ultra Compact & Professional) -->
+    <div class="text-center max-w-2xl mx-auto space-y-1.5 mb-6">
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#6B4423]/10 text-[#6B4423] text-[11px] font-bold uppercase tracking-wider">
+        <Icon name="sparkles" size={12} color="#6B4423" />
+        <span>JELAJAHI TAMPILAN APLIKASI</span>
+      </div>
+      <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#332B25] tracking-tight">
+        Lihat Coffee Labs beraksi di setiap sentuhan jari Anda.
+      </h2>
+      <p class="text-xs sm:text-sm text-[#6F655D]">
+        Sentuh tab di bawah untuk melihat simulasi layar asli dari 5 navigasi utama aplikasi:
+      </p>
+    </div>
+
+    <!-- Main App Screens Layout: Left Tabs Controller, Right Live Phone Mockup -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+      
+      <!-- Left: Interactive Tab Buttons (7 cols) -->
+      <div class="lg:col-span-7 space-y-2" role="tablist" aria-label="Tab Navigasi Aplikasi">
+        
+        {landingData.appTourTabs.map((tab, idx) => (
+          <button
+            class={`w-full text-left p-2.5 sm:p-3 rounded-xl border transition-all duration-200 flex items-start gap-3 tour-tab-btn cursor-pointer ${
+              idx === 0
+                ? 'bg-white border-[#ECA400] shadow-sm ring-1 ring-[#ECA400]/40 active-tab'
+                : 'bg-white/60 hover:bg-white border-[#E8DFD8] shadow-xs'
+            }`}
+            data-target={tab.id}
+            role="tab"
+            aria-selected={idx === 0 ? "true" : "false"}
+          >
+            <!-- Number / Icon Box with clean custom SVG -->
+            <div class="w-8 h-8 rounded-lg bg-[#F1E8E0] text-[#6B4423] font-bold flex items-center justify-center shrink-0 shadow-xs tab-icon-box mt-0.5">
+              <Icon name={tab.icon === 'home' ? 'home' : tab.icon === 'book-open' ? 'book' : tab.icon === 'timer' ? 'timer' : tab.icon === 'wrench' ? 'wrench' : 'user'} size={16} color="#6B4423" />
+            </div>
+
+            <!-- Tab Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-xs sm:text-sm text-[#332B25] tracking-tight">{tab.label} — {tab.subtitle}</span>
+                <span class="text-[10px] font-bold text-[#6B4423] bg-[#ECA400]/25 px-1.5 py-0.5 rounded tab-indicator">{idx === 0 ? '● Aktif' : ''}</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-[#6F655D] mt-0.5 leading-snug">
+                {tab.description}
+              </p>
+            </div>
+          </button>
+        ))}
+
+      </div>
+
+      <!-- Right: Phone Mockup Displaying Active Screen (5 cols) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative">
+          
+          <PhoneMockup size="md" tilt="none" glow={true}>
+            
+            <!-- Tab Screen 1: Home -->
+            <div id="screen-home" class="tour-screen w-full h-full flex flex-col">
+              <HomeScreenMockup />
+            </div>
+
+            <!-- Tab Screen 2: Recipes (Real 2-column mobile grid) -->
+            <div id="screen-recipes" class="tour-screen hidden w-full h-full flex flex-col">
+              <RecipeFeedScreenMockup />
+            </div>
+
+            <!-- Tab Screen 3: Brew -->
+            <div id="screen-brew" class="tour-screen hidden w-full h-full flex flex-col">
+              <BrewTimerScreenMockup />
+            </div>
+
+            <!-- Tab Screen 4: Toolkit -->
+            <div id="screen-toolkit" class="tour-screen hidden w-full h-full flex flex-col">
+              <ToolkitScreenMockup />
+            </div>
+
+            <!-- Tab Screen 5: Profile (True Mobile Profile Screen!) -->
+            <div id="screen-profile" class="tour-screen hidden w-full h-full flex flex-col">
+              <ProfileScreenMockup />
+            </div>
+
+          </PhoneMockup>
+
+          <!-- Floating Helper Note -->
+          <div class="mt-2.5 text-center">
+            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#E8DFD8] text-[10px] font-semibold text-[#8F857D] shadow-xs">
+              <Icon name="sparkles" size={10} color="#6B4423" />
+              <span>Klik tab navigasi di sebelah kiri untuk simulasi</span>
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll('.tour-tab-btn');
+  const screens = document.querySelectorAll('.tour-screen');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+
+      // Update button styles
+      buttons.forEach((b) => {
+        b.classList.remove('bg-white', 'border-[#ECA400]', 'shadow-sm', 'ring-1', 'ring-[#ECA400]/40', 'active-tab');
+        b.classList.add('bg-white/60', 'border-[#E8DFD8]', 'shadow-xs');
+        b.setAttribute('aria-selected', 'false');
+        const ind = b.querySelector('.tab-indicator');
+        if (ind) {
+          ind.textContent = '';
+          ind.classList.add('hidden');
+        }
+      });
+
+      btn.classList.remove('bg-white/60', 'border-[#E8DFD8]', 'shadow-xs');
+      btn.classList.add('bg-white', 'border-[#ECA400]', 'shadow-sm', 'ring-1', 'ring-[#ECA400]/40', 'active-tab');
+      btn.setAttribute('aria-selected', 'true');
+      const ind = btn.querySelector('.tab-indicator');
+      if (ind) {
+        ind.textContent = '● Aktif';
+        ind.classList.remove('hidden');
+      }
+
+      // Update active phone screen
+      screens.forEach((s) => {
+        s.classList.add('hidden');
+      });
+
+      const activeScreen = document.getElementById(`screen-${target}`);
+      if (activeScreen) {
+        activeScreen.classList.remove('hidden');
+      }
+    });
+  });
+</script>

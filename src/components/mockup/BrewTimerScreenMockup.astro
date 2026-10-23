@@ -1,0 +1,421 @@
+---
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="brew-timer-mockup flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs relative overflow-hidden h-full">
+  
+  <!-- Top App Bar (Image 2) -->
+  <div class="flex items-center justify-between px-3.5 pt-2 pb-1.5 shrink-0 bg-transparent z-20">
+    <button class="w-6 h-6 flex items-center justify-center text-[#332B25] hover:bg-black/5 rounded-full transition-colors cursor-pointer" title="Kembali">
+      <svg class="w-4 h-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    
+    <h3 class="font-bold text-[12px] text-[#332B25] truncate max-w-[170px]">
+      V60 Signature Sensory ...
+    </h3>
+
+    <div class="flex items-center gap-2 text-[#332B25]">
+      <button class="hover:opacity-75 transition-opacity" title="Print Struk">
+        <Icon name="printer" size={14} color="#332B25" />
+      </button>
+      <button class="hover:opacity-75 transition-opacity" title="Brew Doctor">
+        <Icon name="lightbulb" size={15} color="#332B25" />
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Scrollable Body with Live Simulation -->
+  <div class="flex-1 overflow-y-auto no-scrollbar px-3 space-y-2 pb-24 relative">
+    
+    <!-- Circular Segmented Progress Timer (Image 2) -->
+    <div class="flex justify-center pt-1 pb-1">
+      <div class="relative w-40 h-40 sm:w-44 sm:h-44 flex items-center justify-center">
+        <!-- Multi-segment SVG circular ring with active rotation -->
+        <svg class="w-full h-full -rotate-90 timer-ring" viewBox="0 0 100 100">
+          <!-- Segment 1: Soft Beige/Cream (Bloom 0-40s) -->
+          <circle
+            cx="50"
+            cy="50"
+            r="42"
+            fill="none"
+            stroke="#EFE5D8"
+            stroke-width="7"
+            stroke-dasharray="70 264"
+            stroke-dashoffset="0"
+            class="seg-1 transition-all duration-300"
+          />
+          <!-- Segment 2: Soft Blue (Sweetness 40-85s) -->
+          <circle
+            cx="50"
+            cy="50"
+            r="42"
+            fill="none"
+            stroke="#BFDBFE"
+            stroke-width="7"
+            stroke-dasharray="80 264"
+            stroke-dashoffset="-70"
+            class="seg-2 transition-all duration-300"
+          />
+          <!-- Segment 3: Soft Green (Clarity Finish 85-150s) -->
+          <circle
+            cx="50"
+            cy="50"
+            r="42"
+            fill="none"
+            stroke="#BBF7D0"
+            stroke-width="7"
+            stroke-dasharray="114 264"
+            stroke-dashoffset="-150"
+            class="seg-3 transition-all duration-300"
+          />
+        </svg>
+
+        <!-- Live Timer Display Inside Ring -->
+        <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+          <span class="timer-display text-[34px] sm:text-[38px] font-bold text-[#5D4037] tracking-tight leading-none font-mono">
+            00:15
+          </span>
+          <span class="timer-subtext text-[10px] font-semibold text-[#8F857D] mt-1 transition-all">
+            Target 02:30 · 45g
+          </span>
+          <!-- Live pulse dot -->
+          <div class="timer-live-badge inline-flex items-center gap-1 mt-1 px-1.5 py-0.2 bg-emerald-50 rounded text-[7.5px] font-bold text-emerald-700">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>LIVE SEDUH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable Steps List: Active step dynamically turns rich brown #6B4423 with white text! -->
+    <div class="step-cards-container space-y-2">
+      
+      <!-- Stage Card 1: Blooming & Gentle Swirl (00:00 - 00:40) -->
+      <div
+        class="step-card p-2.5 rounded-xl border transition-all duration-300 cursor-pointer bg-[#6B4423] text-white border-[#6B4423] shadow-md ring-1 ring-[#6B4423]/40"
+        data-step-index="0"
+        data-start="0"
+        data-end="40"
+        data-target="45g"
+      >
+        <div class="flex items-start justify-between gap-1.5">
+          <div class="flex items-center gap-2">
+            <span class="step-num-badge w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 transition-colors bg-amber-400 text-[#1E1612]">
+              1
+            </span>
+            <span class="step-title font-bold text-[10.5px] leading-tight text-white">
+              1. Blooming & Gentle Swirl
+            </span>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="step-dur font-bold text-[10.5px] leading-none text-amber-300">00:40</div>
+            <div class="step-range text-[7.5px] mt-0.5 text-white/70">00:00-00:40</div>
+          </div>
+        </div>
+        <div class="step-water flex items-center gap-1 text-[8.5px] font-medium pl-7 text-amber-200 mt-1">
+          <Icon name="droplet" size={8} color="currentColor" />
+          <span>+45g Water (Target: 45g)</span>
+        </div>
+        <p class="step-desc text-[8px] leading-snug pl-7 mt-0.5 text-white/85">
+          Tuang 45g air melingkar dari tengah ke luar dalam 8 detik, lalu goyangkan dripper (swirl) 2 kali secara lembut.
+        </p>
+      </div>
+
+      <!-- Stage Card 2: First Sweetness Pour (00:40 - 01:25) -->
+      <div
+        class="step-card p-2.5 rounded-xl border transition-all duration-300 cursor-pointer bg-white text-[#332B25] border-[#E8DFD8] shadow-xs"
+        data-step-index="1"
+        data-start="40"
+        data-end="85"
+        data-target="140g"
+      >
+        <div class="flex items-start justify-between gap-1.5">
+          <div class="flex items-center gap-2">
+            <span class="step-num-badge w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 transition-colors bg-[#DCFCE7] text-[#16A34A]">
+              2
+            </span>
+            <span class="step-title font-bold text-[10.5px] leading-tight text-[#332B25]">
+              2. First Sweetness Pour
+            </span>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="step-dur font-bold text-[10.5px] leading-none text-[#332B25]">00:45</div>
+            <div class="step-range text-[7.5px] mt-0.5 text-[#8F857D]">00:40-01:25</div>
+          </div>
+        </div>
+        <div class="step-water flex items-center gap-1 text-[8.5px] font-medium pl-7 text-[#6F655D] mt-1">
+          <Icon name="droplet" size={8} color="#16A34A" />
+          <span>+95g Water (Target: 140g)</span>
+        </div>
+        <p class="step-desc text-[8px] leading-snug pl-7 mt-0.5 text-[#6F655D]">
+          Tuang spiral stabil dengan aliran 5g/detik until scale reads mencapai 140g untuk melarutkan asam buah dan gula.
+        </p>
+      </div>
+
+      <!-- Stage Card 3: Melodrip Clarity Pour (01:25 - 02:30) -->
+      <div
+        class="step-card p-2.5 rounded-xl border transition-all duration-300 cursor-pointer bg-white text-[#332B25] border-[#E8DFD8] shadow-xs"
+        data-step-index="2"
+        data-start="85"
+        data-end="150"
+        data-target="240g"
+      >
+        <div class="flex items-start justify-between gap-1.5">
+          <div class="flex items-center gap-2">
+            <span class="step-num-badge w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 transition-colors bg-[#FEF3C7] text-[#D97706]">
+              3
+            </span>
+            <span class="step-title font-bold text-[10.5px] leading-tight text-[#332B25]">
+              3. Melodrip Clarity Pour
+            </span>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="step-dur font-bold text-[10.5px] leading-none text-[#332B25]">01:05</div>
+            <div class="step-range text-[7.5px] mt-0.5 text-[#8F857D]">01:25-02:30</div>
+          </div>
+        </div>
+        <div class="step-water flex items-center gap-1 text-[8.5px] font-medium pl-7 text-[#6F655D] mt-1">
+          <Icon name="droplet" size={8} color="#D97706" />
+          <span>+100g Water (Target: 240g)</span>
+        </div>
+        <p class="step-desc text-[8px] leading-snug pl-7 mt-0.5 text-[#6F655D]">
+          Gunakan Melodrip atau tuang sangat rendah di tengah until 240g. Biarkan air turun tuntas.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom Floating Interactive Control Panel (Exact match with Image 2) -->
+  <div class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-sm border-t border-[#E8DFD8] px-3.5 py-2 flex items-center justify-between rounded-t-2xl shadow-lg z-30">
+    <!-- Prev Step -->
+    <button class="timer-prev-btn text-[#6B4423] p-1.5 hover:bg-[#F9F6F0] rounded-lg transition-colors cursor-pointer active:scale-90" title="Step Sebelumnya">
+      <Icon name="backward-end" size={15} color="#6B4423" />
+    </button>
+
+    <!-- Reset Timer -->
+    <button class="timer-reset-btn w-8 h-8 rounded-full bg-[#F5F2EB] flex items-center justify-center text-[#6B4423] hover:bg-[#EFE5D8] transition-colors cursor-pointer active:scale-90" title="Reset Timer">
+      <Icon name="refresh" size={13} color="#6B4423" />
+    </button>
+
+    <!-- Big Center Play/Pause Button -->
+    <button class="timer-play-btn w-12 h-12 rounded-xl bg-[#6B4423] text-white flex items-center justify-center shadow-md hover:bg-[#563519] transition-transform active:scale-95 cursor-pointer" title="Jeda / Lanjut Seduh">
+      <!-- Play Icon -->
+      <svg class="timer-icon-play hidden w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24">
+        <polygon points="5 3 19 12 5 21 5 3" />
+      </svg>
+      <!-- Pause Icon -->
+      <svg class="timer-icon-pause block w-4 h-4 fill-current" viewBox="0 0 24 24">
+        <rect x="6" y="4" width="4" height="16" rx="1" />
+        <rect x="14" y="4" width="4" height="16" rx="1" />
+      </svg>
+    </button>
+
+    <!-- +10s Quick Add Button -->
+    <button class="timer-add10-btn px-2.5 py-1 rounded-lg bg-[#F5F2EB] text-[#6B4423] text-[10px] font-bold hover:bg-[#EFE5D8] transition-colors cursor-pointer active:scale-90" title="Tambah 10 Detik">
+      +10s
+    </button>
+
+    <!-- Next Step -->
+    <button class="timer-next-btn text-[#6B4423] p-1.5 hover:bg-[#F9F6F0] rounded-lg transition-colors cursor-pointer active:scale-90" title="Step Berikutnya">
+      <Icon name="forward-end" size={15} color="#6B4423" />
+    </button>
+  </div>
+
+</div>
+
+<script>
+  // Initialize all brew timer mockups on the page
+  function initBrewTimers() {
+    const mockups = document.querySelectorAll('.brew-timer-mockup');
+
+    mockups.forEach((mockup) => {
+      // Prevent multiple initialization on the same element
+      if (mockup.hasAttribute('data-timer-inited')) return;
+      mockup.setAttribute('data-timer-inited', 'true');
+
+      let elapsedSeconds = 15; // Starts in Step 1 Blooming for instant live feel
+      let isRunning = true;
+      let intervalId: any = null;
+
+      const display = mockup.querySelector('.timer-display');
+      const subtext = mockup.querySelector('.timer-subtext');
+      const playBtn = mockup.querySelector('.timer-play-btn');
+      const iconPlay = mockup.querySelector('.timer-icon-play');
+      const iconPause = mockup.querySelector('.timer-icon-pause');
+      const prevBtn = mockup.querySelector('.timer-prev-btn');
+      const nextBtn = mockup.querySelector('.timer-next-btn');
+      const resetBtn = mockup.querySelector('.timer-reset-btn');
+      const add10Btn = mockup.querySelector('.timer-add10-btn');
+      const cards = mockup.querySelectorAll('.step-card');
+
+      function formatTime(sec: number) {
+        const m = Math.floor(sec / 60).toString().padStart(2, '0');
+        const s = (sec % 60).toString().padStart(2, '0');
+        return `${m}:${s}`;
+      }
+
+      function updateUI() {
+        if (display) {
+          display.textContent = formatTime(elapsedSeconds);
+        }
+
+        // Determine active step index
+        let activeIdx = 0;
+        if (elapsedSeconds < 40) {
+          activeIdx = 0;
+        } else if (elapsedSeconds < 85) {
+          activeIdx = 1;
+        } else {
+          activeIdx = 2;
+        }
+
+        // Update subtext
+        if (subtext) {
+          const activeCard = cards[activeIdx];
+          const targetWater = activeCard ? activeCard.getAttribute('data-target') : '45g';
+          subtext.textContent = `Target 02:30 · ${targetWater}`;
+        }
+
+        // Highlight active card with #6B4423 brown & white text, like in mobile app!
+        cards.forEach((card, idx) => {
+          const numBadge = card.querySelector('.step-num-badge');
+          const title = card.querySelector('.step-title');
+          const dur = card.querySelector('.step-dur');
+          const range = card.querySelector('.step-range');
+          const water = card.querySelector('.step-water');
+          const desc = card.querySelector('.step-desc');
+
+          if (idx === activeIdx) {
+            // Active step card: rich brown #6B4423
+            card.className = 'step-card p-2.5 rounded-xl border transition-all duration-300 cursor-pointer bg-[#6B4423] text-white border-[#6B4423] shadow-md ring-1 ring-[#6B4423]/40';
+            if (numBadge) numBadge.className = 'step-num-badge w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 transition-colors bg-amber-400 text-[#1E1612]';
+            if (title) title.className = 'step-title font-bold text-[10.5px] leading-tight text-white';
+            if (dur) dur.className = 'step-dur font-bold text-[10.5px] leading-none text-amber-300';
+            if (range) range.className = 'step-range text-[7.5px] mt-0.5 text-white/70';
+            if (water) water.className = 'step-water flex items-center gap-1 text-[8.5px] font-medium pl-7 text-amber-200 mt-1';
+            if (desc) desc.className = 'step-desc text-[8px] leading-snug pl-7 mt-0.5 text-white/85';
+          } else {
+            // Inactive step card: crisp white
+            card.className = 'step-card p-2.5 rounded-xl border transition-all duration-300 cursor-pointer bg-white text-[#332B25] border-[#E8DFD8] shadow-xs';
+            if (numBadge) {
+              const bg = idx === 0 ? 'bg-[#DBEAFE] text-[#2563EB]' : idx === 1 ? 'bg-[#DCFCE7] text-[#16A34A]' : 'bg-[#FEF3C7] text-[#D97706]';
+              numBadge.className = `step-num-badge w-5 h-5 rounded-full font-bold text-[10px] flex items-center justify-center shrink-0 transition-colors ${bg}`;
+            }
+            if (title) title.className = 'step-title font-bold text-[10.5px] leading-tight text-[#332B25]';
+            if (dur) dur.className = 'step-dur font-bold text-[10.5px] leading-none text-[#332B25]';
+            if (range) range.className = 'step-range text-[7.5px] mt-0.5 text-[#8F857D]';
+            if (water) water.className = 'step-water flex items-center gap-1 text-[8.5px] font-medium pl-7 text-[#6F655D] mt-1';
+            if (desc) desc.className = 'step-desc text-[8px] leading-snug pl-7 mt-0.5 text-[#6F655D]';
+          }
+        });
+
+        // Update play/pause button icon
+        if (iconPlay && iconPause) {
+          if (isRunning) {
+            iconPlay.classList.add('hidden');
+            iconPlay.classList.remove('block');
+            iconPause.classList.remove('hidden');
+            iconPause.classList.add('block');
+          } else {
+            iconPlay.classList.remove('hidden');
+            iconPlay.classList.add('block');
+            iconPause.classList.add('hidden');
+            iconPause.classList.remove('block');
+          }
+        }
+      }
+
+      function startTimer() {
+        if (intervalId) clearInterval(intervalId);
+        isRunning = true;
+        updateUI();
+        intervalId = setInterval(() => {
+          elapsedSeconds++;
+          if (elapsedSeconds > 150) {
+            elapsedSeconds = 0; // Loop back for perpetual live demo
+          }
+          updateUI();
+        }, 1000);
+      }
+
+      function pauseTimer() {
+        isRunning = false;
+        if (intervalId) clearInterval(intervalId);
+        intervalId = null;
+        updateUI();
+      }
+
+      // Event Listeners
+      if (playBtn) {
+        playBtn.addEventListener('click', () => {
+          if (isRunning) pauseTimer();
+          else startTimer();
+        });
+      }
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          elapsedSeconds = 0;
+          updateUI();
+        });
+      }
+
+      if (add10Btn) {
+        add10Btn.addEventListener('click', () => {
+          elapsedSeconds = Math.min(150, elapsedSeconds + 10);
+          updateUI();
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          if (elapsedSeconds < 40) elapsedSeconds = 40;
+          else if (elapsedSeconds < 85) elapsedSeconds = 85;
+          else elapsedSeconds = 0;
+          updateUI();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          if (elapsedSeconds >= 85) elapsedSeconds = 40;
+          else elapsedSeconds = 0;
+          updateUI();
+        });
+      }
+
+      // Clicking any card directly jumps timer to that stage!
+      cards.forEach((card) => {
+        card.addEventListener('click', () => {
+          const start = parseInt(card.getAttribute('data-start') || '0', 10);
+          elapsedSeconds = start;
+          updateUI();
+        });
+      });
+
+      // Start ticking right away
+      startTimer();
+    });
+  }
+
+  // Run on mount
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBrewTimers);
+  } else {
+    initBrewTimers();
+  }
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

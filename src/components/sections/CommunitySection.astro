@@ -1,0 +1,82 @@
+---
+import Icon from '../ui/Icon.astro';
+import PhoneMockup from '../mockup/PhoneMockup.astro';
+import SocialCoffeeScreenMockup from '../mockup/SocialCoffeeScreenMockup.astro';
+---
+
+<section class="py-12 sm:py-16 bg-[#F9F6F0] border-t border-[#E8DFD8]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      
+      <!-- Left: Phone Mockup with Social Coffee (5 cols) -->
+      <div class="lg:col-span-5 flex justify-center order-2 lg:order-1">
+        <PhoneMockup size="md" tilt="left" glow={true}>
+          <SocialCoffeeScreenMockup />
+        </PhoneMockup>
+      </div>
+
+      <!-- Right: Copywriting & Feature points (7 cols) -->
+      <div class="lg:col-span-7 space-y-5 order-1 lg:order-2">
+        
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E91E63]/10 text-[#E91E63] text-xs font-bold uppercase tracking-wider">
+          <Icon name="users" size={13} color="#E91E63" />
+          <span>KOMUNITAS PENIKMAT SPESIALTI</span>
+        </div>
+
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#332B25] tracking-tight leading-tight">
+          Berbagi resep, diskusi beans, <br />
+          <span class="text-[#E91E63] font-serif italic">dan seduh bersama.</span>
+        </h2>
+
+        <p class="text-xs sm:text-base text-[#6F655D] leading-relaxed">
+          Kopi terasa lebih berharga saat dinikmati bersama komunitas. Social Coffee adalah wadah bagi home brewer dan barista di seluruh Indonesia untuk membagikan catatan rasa, eksplorasi beans nusantara, dan saling menduplikasi resep seduhan terbaik.
+        </p>
+
+        <!-- Feature Points -->
+        <div class="space-y-2.5 pt-1">
+          
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#E8DFD8] shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-pink-100 text-[#E91E63] flex items-center justify-center shrink-0">
+              <Icon name="copy" size={15} color="#E91E63" />
+            </div>
+            <div>
+              <h4 class="font-extrabold text-xs sm:text-sm text-[#332B25]">Fitur Satu-Klik 'Copy Resep'</h4>
+              <p class="text-xs text-[#6F655D] mt-0.5 leading-snug">
+                Melihat postingan teman yang menarik? Tekan tombol 'Copy Resep' dan resep tersebut otomatis tersimpan di HP Anda lengkap dengan timer dan rasio yang siap diseduh.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#E8DFD8] shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-[#6B4423] flex items-center justify-center shrink-0">
+              <Icon name="users" size={15} color="#6B4423" />
+            </div>
+            <div>
+              <h4 class="font-extrabold text-xs sm:text-sm text-[#332B25]">Basecamp Grup Privat</h4>
+              <p class="text-xs text-[#6F655D] mt-0.5 leading-snug">
+                Bentuk kelompok slow bar atau komunitas lokal Anda. Sangat cocok bagi pemilik coffee shop untuk menyatukan SOP seduh antar barista secara rahasia dan privat.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-white border border-[#E8DFD8] shadow-xs">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+              <Icon name="tag" size={15} color="#1D4ED8" />
+            </div>
+            <div>
+              <h4 class="font-extrabold text-xs sm:text-sm text-[#332B25]">Topik & Tag Spesifik</h4>
+              <p class="text-xs text-[#6F655D] mt-0.5 leading-snug">
+                Temukan diskusi spesifik dripper favorit Anda: #HarioV60, #Origami, #Aeropress, #JapaneseIced, atau bahas varietas biji kopi lokal seperti Kamojang, Puntang, dan Gayo.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

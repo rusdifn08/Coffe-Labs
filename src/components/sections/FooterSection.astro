@@ -1,0 +1,97 @@
+---
+import Icon from '../ui/Icon.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<footer class="bg-[#140E0B] text-white/70 border-t border-white/10 text-xs sm:text-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-10">
+    
+    <!-- 4 Columns Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      
+      <!-- Col 1: Brand Info (2 cols on lg) -->
+      <div class="lg:col-span-2 space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#6B4423] to-amber-600 p-0.5 shadow-sm flex items-center justify-center">
+            <img src="/icon.png" alt="Coffee Labs" class="w-full h-full object-cover rounded-[10px]" />
+          </div>
+          <div>
+            <span class="font-extrabold text-lg text-white tracking-tight">
+              Coffee <span class="text-[#ECA400]">Labs</span>
+            </span>
+            <span class="block text-[9.5px] text-[#D4AF37] font-semibold tracking-wider uppercase">
+              Master Your Brew
+            </span>
+          </div>
+        </div>
+
+        <p class="text-xs text-white/60 leading-relaxed max-w-sm">
+          Aplikasi specialty coffee brewing labs terdepan di Indonesia. Multi-platform untuk iOS, Android, dan Web. Menggabungkan 159 resep barista dunia, guided timer interaktif, diagnosis sensori Brew Doctor, dan direktori roastery nusantara.
+        </p>
+
+        <div class="flex items-center gap-4 text-white/70 pt-1">
+          <a href="#" class="hover:text-[#ECA400] transition-colors" title="Social">
+            <Icon name="message-square" size={15} color="currentColor" />
+          </a>
+          <a href="#" class="hover:text-[#ECA400] transition-colors" title="Komunitas">
+            <Icon name="users" size={15} color="currentColor" />
+          </a>
+          <a href="#" class="hover:text-[#ECA400] transition-colors" title="Resep">
+            <Icon name="book" size={15} color="currentColor" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Fitur Utama -->
+      <div class="space-y-2.5">
+        <h4 class="font-extrabold text-white text-xs uppercase tracking-wider">Fitur Utama</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#guided-brew" class="hover:text-white transition-colors">Guided Brew Timer</a></li>
+          <li><a href="#brew-doctor" class="hover:text-white transition-colors">Brew Doctor & Sensori</a></li>
+          <li><a href="#fitur" class="hover:text-white transition-colors">Auto-Scale Dosis</a></li>
+          <li><a href="#fitur" class="hover:text-white transition-colors">Konverter 29 Grinder</a></li>
+          <li><a href="#toolkit" class="hover:text-white transition-colors">Cupping SCA & Flavor Wheel</a></li>
+          <li><a href="#fitur" class="hover:text-white transition-colors">Cetak Struk Bluetooth</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Komunitas & Konten -->
+      <div class="space-y-2.5">
+        <h4 class="font-extrabold text-white text-xs uppercase tracking-wider">Pustaka & Roastery</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#aplikasi" class="hover:text-white transition-colors">159+ Resep Dunia</a></li>
+          <li><a href="#aplikasi" class="hover:text-white transition-colors">97 Barista Spotlight</a></li>
+          <li><a href="#toolkit" class="hover:text-white transition-colors">50 Roastery Indonesia</a></li>
+          <li><a href="#toolkit" class="hover:text-white transition-colors">Beans Radar GPS</a></li>
+          <li><a href="#toolkit" class="hover:text-white transition-colors">Social Coffee Feed</a></li>
+          <li><a href="#toolkit" class="hover:text-white transition-colors">Basecamp Barista Tim</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Dukungan & Akun -->
+      <div class="space-y-2.5">
+        <h4 class="font-extrabold text-white text-xs uppercase tracking-wider">Dukungan & Legal</h4>
+        <ul class="space-y-1.5 text-xs">
+          <li><a href="#faq" class="hover:text-white transition-colors">Pusat Bantuan (FAQ)</a></li>
+          <li><a href="#harga" class="hover:text-white transition-colors">Paket Barista Pro & Café</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Kebijakan Privasi</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Syarat Layanan</a></li>
+          <li><a href="mailto:admin@coffeelabs.app" class="hover:text-white transition-colors">Kontak Admin (rusdifn08)</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright -->
+    <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
+      <div>
+        © 2026 Coffee Labs. Seluruh hak cipta dilindungi undang-undang.
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="coffee" size={13} color="#D4AF37" />
+        <span>Dibuat untuk komunitas specialty coffee Indonesia</span>
+      </div>
+    </div>
+
+  </div>
+</footer>

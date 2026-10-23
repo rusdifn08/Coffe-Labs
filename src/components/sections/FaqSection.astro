@@ -1,0 +1,45 @@
+---
+import Icon from '../ui/Icon.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section id="faq" class="py-12 sm:py-16 bg-white border-t border-[#E8DFD8]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+    
+    <!-- Section Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-[#6B4423] text-xs font-bold uppercase tracking-wider">
+        <Icon name="help-circle" size={13} color="#6B4423" />
+        <span>PERTANYAAN UMUM</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-[#332B25] tracking-tight">
+        Kerap ditanyakan seputar aplikasi Coffee Labs.
+      </h2>
+      <p class="text-xs sm:text-sm text-[#6F655D]">
+        Masih punya pertanyaan yang belum terjawab? Temukan jawaban lengkapnya di bawah ini atau hubungi tim kami langsung.
+      </p>
+    </div>
+
+    <!-- Native Accordion List (<details name="faq">) -->
+    <div class="space-y-2.5">
+      {landingData.faqs.map((faq, i) => (
+        <details
+          name="faq"
+          class="group rounded-xl border border-[#E8DFD8] bg-[#F9F6F0] p-3.5 sm:p-4 transition-all duration-200 open:bg-white open:border-[#ECA400] open:shadow-warm-sm"
+          open={i === 0}
+        >
+          <summary class="flex cursor-pointer items-center justify-between font-extrabold text-xs sm:text-sm text-[#332B25] list-none select-none">
+            <span class="pr-3 leading-snug">{faq.q}</span>
+            <div class="w-6 h-6 rounded-md bg-white border border-[#E8DFD8] flex items-center justify-center text-[#6B4423] shrink-0 transition-transform duration-300 group-open:rotate-180 group-open:bg-[#6B4423] group-open:text-white">
+              <Icon name="chevron-down" size={13} color="currentColor" />
+            </div>
+          </summary>
+          <div class="mt-2.5 pt-2 border-t border-[#E8DFD8]/60 text-xs sm:text-sm text-[#6F655D] leading-relaxed">
+            {faq.a}
+          </div>
+        </details>
+      ))}
+    </div>
+
+  </div>
+</section>

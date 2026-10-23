@@ -1,0 +1,113 @@
+---
+import Icon from '../ui/Icon.astro';
+---
+
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+  
+  <div class="p-3 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
+    
+    <!-- Top Header -->
+    <div class="flex items-center justify-between pt-0.5 pb-1">
+      <div class="flex items-center gap-1.5">
+        <div class="w-6 h-6 rounded-lg bg-white border border-[#E8DFD8] flex items-center justify-center text-[#6B4423]">
+          <Icon name="user" size={13} color="#6B4423" />
+        </div>
+        <h3 class="text-[13px] font-extrabold text-[#332B25] leading-tight">Pengaturan Profil</h3>
+      </div>
+      <span class="px-2 py-0.5 rounded-md bg-[#6B4423]/10 text-[#6B4423] text-[9px] font-bold">Pro Member</span>
+    </div>
+
+    <!-- Avatar Section -->
+    <div class="flex flex-col items-center justify-center py-1">
+      <div class="relative">
+        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm ring-2 ring-[#6B4423]/20">
+          <img src="/images/avatars/portraits/bayu_prawiro.jpg" alt="Avatar" class="w-full h-full object-cover" />
+        </div>
+        <div class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-[#6B4423] text-white flex items-center justify-center border-2 border-white shadow-xs">
+          <Icon name="sparkles" size={9} color="#FFFFFF" />
+        </div>
+      </div>
+      <span class="font-extrabold text-[12px] text-[#332B25] mt-1.5">Bayu Prawiro</span>
+      <span class="text-[9px] text-[#8F857D] font-medium">Head Brewer @ Coffee Labs</span>
+      <button class="mt-1.5 px-2.5 py-1 rounded-lg border border-[#6B4423]/30 bg-white text-[#6B4423] text-[9px] font-bold inline-flex items-center gap-1 hover:bg-[#F1E8E0] transition-colors">
+        <Icon name="sparkles" size={9} color="#6B4423" />
+        <span>Ganti Karakter Avatar</span>
+      </button>
+    </div>
+
+    <!-- Section 1: Identitas Barista -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+      <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Identitas Barista</span>
+      <div class="flex items-center gap-2 p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[11px]">
+        <Icon name="user" size={12} color="#6B4423" />
+        <span class="font-medium text-[#332B25] flex-1">Bayu Prawiro</span>
+        <span class="text-[9px] text-[#8F857D]">Tersimpan</span>
+      </div>
+    </div>
+
+    <!-- Section 2: Bahasa & Wilayah -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+      <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Bahasa & Wilayah</span>
+      <div class="flex items-center justify-between p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[11px]">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xs">🇮🇩</span>
+          <span class="font-semibold text-[#332B25]">Bahasa Indonesia</span>
+        </div>
+        <span class="text-[9px] font-bold text-[#6B4423] bg-[#6B4423]/10 px-1.5 py-0.5 rounded">Aktif</span>
+      </div>
+    </div>
+
+    <!-- Section 3: Pembaruan Sistem OTA -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+      <div class="flex items-center justify-between">
+        <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Sistem & Pembaruan</span>
+        <span class="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">v1.4.2</span>
+      </div>
+      <div class="flex items-center justify-between p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[10px]">
+        <div class="flex items-center gap-1.5">
+          <Icon name="shield-check" size={12} color="#16A34A" />
+          <span class="font-medium text-[#332B25]">Sistem Terkini (OTA Ready)</span>
+        </div>
+        <button class="px-2 py-0.5 rounded bg-[#6B4423] text-white text-[9px] font-bold">Cek OTA</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Bar (Profile tab highlighted!) -->
+  <div class="border-t border-[#E8DFD8] bg-white px-3 py-1.5 grid grid-cols-5 items-center text-[9px] text-[#8F857D] shrink-0">
+    <div class="flex flex-col items-center">
+      <Icon name="home" size={13} color="#8F857D" />
+      <span>Home</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="book" size={13} color="#8F857D" />
+      <span>Recipes</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
+        <Icon name="timer" size={13} color="#FFFFFF" />
+      </div>
+      <span class="mt-0.5">Brew</span>
+    </div>
+    <div class="flex flex-col items-center">
+      <Icon name="wrench" size={13} color="#8F857D" />
+      <span>Toolkit</span>
+    </div>
+    <div class="flex flex-col items-center text-[#6B4423] font-bold">
+      <Icon name="user" size={13} color="#6B4423" />
+      <span>Profile</span>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>

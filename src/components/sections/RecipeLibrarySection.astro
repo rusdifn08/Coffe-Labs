@@ -1,0 +1,145 @@
+---
+import Icon from '../ui/Icon.astro';
+import { landingData } from '../../data/landingData';
+---
+
+<section class="py-12 sm:py-16 bg-white border-t border-[#E8DFD8]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+    
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-2">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-[#6B4423] text-xs font-bold uppercase tracking-wider">
+        <Icon name="book" size={13} color="#6B4423" />
+        <span>ARSIP RESEP JUARA DUNIA</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-[#332B25] tracking-tight">
+        159+ Resep dari 97 Barista Dunia, <br class="hidden sm:inline" />
+        <span class="text-[#6B4423]">termasuk juara World Brewers Cup.</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-[#6F655D]">
+        Tak perlu lagi mencatat acak dari video YouTube. Setiap resep telah diuji, memiliki dosis rasio baku, suhu air terukur, dan panduan klik grinder.
+      </p>
+    </div>
+
+    <!-- Featured Recipe Cards Grid (4 Cards) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {landingData.recipes.map((r) => (
+        <div class="bg-[#F9F6F0] rounded-xl p-4 border border-[#E8DFD8] shadow-xs hover:shadow-warm-sm hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
+          <div class="space-y-2">
+            <!-- Cover / Category pill -->
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded bg-[#6B4423] text-white text-[9.5px] font-extrabold uppercase tracking-wide">
+                {r.category}
+              </span>
+              <span class="text-xs font-mono font-bold text-[#6B4423]">
+                {r.ratio}
+              </span>
+            </div>
+
+            <!-- Title & Author -->
+            <div>
+              <h3 class="font-extrabold text-xs sm:text-sm text-[#332B25] leading-snug line-clamp-2">
+                {r.title}
+              </h3>
+              <div class="flex items-center gap-2 mt-1.5">
+                <div class="w-5 h-5 rounded-full overflow-hidden border border-[#E8DFD8] shrink-0">
+                  <img src={r.avatar} alt={r.author} class="w-full h-full object-cover" />
+                </div>
+                <span class="text-xs font-bold text-[#6F655D] truncate">{r.author}</span>
+              </div>
+            </div>
+
+            <!-- Brew Parameters -->
+            <div class="grid grid-cols-3 gap-1 py-1.5 px-2 rounded-lg bg-white border border-[#E8DFD8] text-center text-xs">
+              <div>
+                <span class="block text-[8.5px] text-[#8F857D] font-bold">KOPI</span>
+                <span class="font-bold text-[#332B25]">{r.coffeeWeight}g</span>
+              </div>
+              <div>
+                <span class="block text-[8.5px] text-[#8F857D] font-bold">AIR</span>
+                <span class="font-bold text-[#332B25]">{r.waterWeight}g</span>
+              </div>
+              <div>
+                <span class="block text-[8.5px] text-[#8F857D] font-bold">SUHU</span>
+                <span class="font-bold text-[#332B25]">{r.temp}°C</span>
+              </div>
+            </div>
+
+            <!-- Grind Note -->
+            <div class="text-[11px] font-medium text-[#6F655D] bg-white/70 p-1.5 rounded-md border border-[#E8DFD8] flex items-center gap-1">
+              <Icon name="sliders" size={11} color="#6F655D" />
+              <span><strong class="text-[#332B25]">Grind:</strong> {r.grindNote}</span>
+            </div>
+
+            <!-- Flavor Notes Tags -->
+            <div class="flex flex-wrap gap-1 pt-0.5">
+              {r.notes.map((note) => (
+                <span class="px-1.5 py-0.5 rounded bg-amber-100/70 text-amber-900 text-[9px] font-bold">
+                  {note}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-3 pt-2 border-t border-[#E8DFD8] flex items-center justify-between text-xs font-bold text-[#6B4423]">
+            <span>Guided Timer Tersedia</span>
+            <span class="flex items-center gap-1 text-[11px]">
+              <Icon name="play" size={10} color="#6B4423" />
+              <span>Mulai</span>
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Barista Spotlight Strip -->
+    <div class="bg-[#F9F6F0] p-4 sm:p-5 rounded-xl border border-[#E8DFD8]">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+        <div>
+          <span class="text-[11px] font-extrabold uppercase tracking-widest text-[#ECA400]">BARISTA SPOTLIGHT</span>
+          <h3 class="text-lg sm:text-xl font-extrabold text-[#332B25]">Kurasi Tokoh & Juara Kopi Dunia</h3>
+        </div>
+        <span class="text-xs font-bold text-[#6B4423] flex items-center gap-1">
+          <span>90+ Juara Lainnya di Dalam Aplikasi</span>
+          <Icon name="arrow-right" size={12} color="#6B4423" />
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 text-center">
+        {landingData.baristas.map((b) => (
+          <div class="bg-white p-2.5 rounded-lg border border-[#E8DFD8] shadow-xs flex flex-col items-center">
+            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-[#ECA400] shadow-sm mb-1 bg-amber-50">
+              <img src={b.avatar} alt={b.name} class="w-full h-full object-cover" />
+            </div>
+            <span class="font-extrabold text-xs text-[#332B25] truncate w-full">{b.name}</span>
+            <span class="text-[9px] text-[#8F857D] font-medium">{b.country}</span>
+            <span class="text-[9px] text-[#6B4423] font-bold mt-1 bg-[#F1E8E0] px-1.5 py-0.5 rounded">{b.recipesCount} Resep</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Grinder Models Supported (Image Carousel/Grid) -->
+    <div class="space-y-3">
+      <div class="text-center">
+        <span class="text-[11px] font-bold text-[#8F857D] uppercase tracking-widest block">KONVERTER 29 MODEL GRINDER</span>
+        <h3 class="text-base sm:text-lg font-bold text-[#332B25] mt-0.5">Konversi Klik Presisi Antar Grinder</h3>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5">
+        {landingData.grinderModels.map((g) => (
+          <div class="bg-[#F9F6F0] p-2.5 rounded-lg border border-[#E8DFD8] text-center flex flex-col items-center justify-between hover:border-[#6B4423]/40 transition-colors">
+            <div class="w-16 h-16 flex items-center justify-center p-1.5 mb-1">
+              <img src={g.image} alt={g.name} class="max-h-full max-w-full object-contain filter drop-shadow-sm" />
+            </div>
+            <div class="font-bold text-[11px] text-[#332B25] leading-tight">{g.name}</div>
+            <div class="text-[9.5px] font-mono font-semibold text-[#6B4423] mt-1 bg-white px-2 py-0.5 rounded-md border border-[#E8DFD8]">
+              {g.clicksRange}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
