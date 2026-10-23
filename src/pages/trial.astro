@@ -377,7 +377,7 @@ const initialRecipe = trialRecipes[0];
       </div>
 
       <!-- SCROLLABLE TAB CONTENT PAGES -->
-      <div class="flex-1 overflow-y-auto no-scrollbar relative bg-[#F9F6F0]">
+      <div id="phone-main-scroll" class="flex-1 overflow-y-auto no-scrollbar relative bg-[#F9F6F0]">
         
         <!-- ========================================== -->
         <!-- TAB 1: HOME / RECIPES CATALOG (ACTIVE)    -->
@@ -569,27 +569,15 @@ const initialRecipe = trialRecipes[0];
             <span>Japanese Iced: Siapkan 100g Es di Server + 170g Air Panas (94°C)</span>
           </div>
 
-          <!-- Circular Segmented Timer Ring Mockup -->
+          <!-- Circular Segmented Timer Ring (Multi-Color matching Flutter SegmentedTimerPainter) -->
           <div class="flex justify-center py-1">
             <div class="relative w-48 h-48 sm:w-52 sm:h-52 flex items-center justify-center">
-              <svg class="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <!-- Background Ring Track -->
-                <circle cx="50" cy="50" r="42" fill="none" stroke="#EFE5D8" stroke-width="7" />
-                <!-- Dynamic Progress Ring -->
-                <circle
-                  id="timer-svg-circle"
-                  cx="50"
-                  cy="50"
-                  r="42"
-                  fill="none"
-                  stroke="#ECA400"
-                  stroke-width="7"
-                  stroke-dasharray="264"
-                  stroke-dashoffset="264"
-                  stroke-linecap="round"
-                  class="transition-all duration-300"
-                />
-              </svg>
+              <canvas
+                id="segmented-timer-canvas"
+                class="w-full h-full pointer-events-none"
+                width="320"
+                height="320"
+              ></canvas>
 
               <!-- Central Timer Readout -->
               <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
@@ -1294,6 +1282,12 @@ const initialRecipe = trialRecipes[0];
             tabContents[tab]?.classList.remove('block');
           }
         });
+
+        if (targetTab === 'brew' && typeof drawSegmentedTimer === 'function') {
+          setTimeout(() => {
+            drawSegmentedTimer();
+          }, 30);
+        }
       }
 
       tabButtons.forEach((btn) => {
@@ -1606,6 +1600,155 @@ const initialRecipe = trialRecipes[0];
       let isRunning = false;
       let isPreparing = false;
       let prepSeconds = 3;
+      let lastScrolledStepIndex = -1;
+
+      // Multi-Color Step Palette matching Flutter brew_timer_screen.dart SegmentedTimerPainter
+      const STEP_COLORS = [
+        '#3B82F6', // Blue Accent (Flutter Colors.blueAccent)
+        '#22C55E', // Green (Flutter Colors.green)
+        '#F97316', // Orange Accent (Flutter Colors.orangeAccent)
+        '#EC4899', // Pink Accent (Flutter Colors.pinkAccent)
+        '#A855F7', // Purple Accent (Flutter Colors.purpleAccent)
+        '#ECA400', // Amber (Flutter AppTheme.accentAmber)
+        '#EF4444', // Red Accent (Flutter Colors.redAccent)
+      ];
+
+      function getStepColor(index) {
+        return STEP_COLORS[index % STEP_COLORS.length];
+      }
+
+      function hexToRgba(hex, alpha) {
+        const cleanHex = hex.replace('#', '');
+        const r = parseInt(cleanHex.substring(0, 2), 16);
+        const g = parseInt(cleanHex.substring(2, 4), 16);
+        const b = parseInt(cleanHex.substring(4, 6), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      }
+
+      // Draw multi-color segmented circular timer matching Flutter CustomPainter
+      function drawSegmentedTimer() {
+        const canvas = document.getElementById('segmented-timer-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        const dpr = window.devicePixelRatio || 2;
+        const displaySize = canvas.clientWidth || 208;
+        const targetPx = Math.round(displaySize * dpr);
+        if (canvas.width !== targetPx || canvas.height !== targetPx) {
+          canvas.width = targetPx;
+          canvas.height = targetPx;
+        }
+
+        ctx.save();
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.scale(dpr, dpr);
+
+        const cx = displaySize / 2;
+        const cy = displaySize / 2;
+        const strokeWidth = 14;
+        const radius = cx - strokeWidth / 2 - 4;
+
+        const steps = currentRecipe?.steps || [];
+        const totalSeconds = currentRecipe?.totalSeconds || 1;
+
+        // Base soft track background ring
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = '#EFE5D8';
+        ctx.lineWidth = strokeWidth;
+        ctx.stroke();
+
+        if (steps.length === 0 || totalSeconds <= 0) {
+          ctx.restore();
+          return;
+        }
+
+        let startAngle = -Math.PI / 2; // 12 o'clock (-90 deg)
+        let currentElapsed = elapsedSeconds;
+
+        for (let i = 0; i < steps.length; i++) {
+          const step = steps[i];
+          const stepSecs = (step.duration || (step.end - step.start) || 1);
+          const sweepAngle = (stepSecs / totalSeconds) * 2 * Math.PI;
+          const stepColor = getStepColor(i);
+
+          // Small gap between step segments (matching Flutter sweepAngle - 0.05)
+          const gap = steps.length > 1 ? 0.045 : 0;
+          const segmentSweep = Math.max(0.01, sweepAngle - gap);
+
+          // 1. Faint step track segment background
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, startAngle, startAngle + segmentSweep);
+          ctx.strokeStyle = hexToRgba(stepColor, 0.22);
+          ctx.lineWidth = strokeWidth;
+          ctx.lineCap = 'butt';
+          ctx.stroke();
+
+          // 2. Filled progress arc for this step
+          if (currentElapsed > 0) {
+            const filledSecs = Math.min(currentElapsed, stepSecs);
+            const filledSweepAngle = (filledSecs / totalSeconds) * 2 * Math.PI;
+
+            if (filledSweepAngle > 0) {
+              ctx.beginPath();
+              const actualFilled = Math.min(filledSweepAngle, segmentSweep);
+              ctx.arc(cx, cy, radius, startAngle, startAngle + actualFilled);
+              ctx.strokeStyle = stepColor;
+              ctx.lineWidth = strokeWidth + 2;
+              ctx.lineCap = filledSecs >= stepSecs ? 'butt' : 'round';
+              ctx.stroke();
+            }
+            currentElapsed -= filledSecs;
+          }
+
+          startAngle += sweepAngle;
+        }
+
+        ctx.restore();
+      }
+
+      window.addEventListener('resize', () => {
+        drawSegmentedTimer();
+      });
+
+      function scrollToStep(index) {
+        const container = document.getElementById('brew-steps-container');
+        if (!container) return;
+        const cards = container.querySelectorAll('.step-item');
+        const targetCard = cards[index];
+        if (!targetCard) return;
+
+        const scrollParent = document.getElementById('phone-main-scroll');
+        if (scrollParent) {
+          if (index === 0) {
+            scrollParent.scrollTo({ top: 0, behavior: 'smooth' });
+          } else {
+            const parentRect = scrollParent.getBoundingClientRect();
+            const cardRect = targetCard.getBoundingClientRect();
+            const relativeTop = cardRect.top - parentRect.top;
+            const targetScroll = scrollParent.scrollTop + relativeTop - 120;
+            scrollParent.scrollTo({
+              top: Math.max(0, targetScroll),
+              behavior: 'smooth'
+            });
+          }
+        }
+
+        try {
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } catch (e) {}
+      }
+
+      function jumpToStep(targetIndex) {
+        if (!currentRecipe || !currentRecipe.steps || currentRecipe.steps.length === 0) return;
+        const clamped = Math.max(0, Math.min(targetIndex, currentRecipe.steps.length - 1));
+        const startSec = currentRecipe.steps[clamped].start || 0;
+        elapsedSeconds = startSec;
+        updateTimerDisplay();
+        lastScrolledStepIndex = clamped;
+        scrollToStep(clamped);
+      }
 
       function renderBrewSteps(recipe) {
         const container = document.getElementById('brew-steps-container');
@@ -1614,29 +1757,47 @@ const initialRecipe = trialRecipes[0];
 
         recipe.steps.forEach((step, idx) => {
           const isActive = idx === 0;
+          const stepColor = getStepColor(idx);
           const card = document.createElement('div');
-          card.className = `step-item p-2.5 rounded-xl border transition-all duration-300 ${
+          card.className = `step-item p-3 rounded-2xl border transition-all duration-300 cursor-pointer ${
             isActive
-              ? 'bg-[#6B4423] text-white border-[#6B4423] shadow-md ring-1 ring-[#6B4423]/40'
-              : 'bg-white text-[#332B25] border-[#E8DFD8] shadow-xs'
+              ? 'bg-[#6B4423] text-white border-[#ECA400] shadow-md ring-2 ring-[#ECA400]/40'
+              : 'bg-white text-[#332B25] border-[#E8DFD8] shadow-xs hover:border-[#6B4423]/30'
           }`;
           card.setAttribute('data-step-idx', idx);
 
           card.innerHTML = `
-            <div class="flex items-center justify-between">
-              <span class="font-bold text-xs truncate max-w-[170px]">${step.name}</span>
-              <span class="step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md ${
-                isActive ? 'bg-white/20 text-white' : 'bg-[#F9F6F0] text-[#6F655D]'
-              }">${step.time}</span>
-            </div>
-            <p class="step-desc text-[10.5px] mt-1 ${isActive ? 'text-amber-100/90' : 'text-[#6F655D]'}">${step.desc}</p>
-            <div class="flex items-center justify-between text-[10.5px] font-bold mt-1.5 pt-1.5 border-t ${
-              isActive ? 'border-white/20 text-amber-200' : 'border-[#E8DFD8] text-[#6B4423]'
-            }">
-              <span>+${step.waterAdded}g air</span>
-              <span>Target: ${step.waterTarget}g</span>
+            <div class="flex items-start gap-3">
+              <!-- Step Number Indicator matching Segment Color -->
+              <div class="step-num-badge w-7 h-7 rounded-full flex items-center justify-center font-black text-xs shrink-0 transition-colors shadow-xs ${
+                isActive ? 'bg-[#ECA400] text-[#1E1612]' : ''
+              }" style="${!isActive ? `background-color: ${hexToRgba(stepColor, 0.15)}; color: ${stepColor};` : ''}">
+                ${idx + 1}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between gap-1">
+                  <span class="step-title font-bold text-xs truncate ${isActive ? 'text-white' : 'text-[#332B25]'}">${step.name}</span>
+                  <span class="step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md shrink-0 ${
+                    isActive ? 'bg-white/20 text-white' : 'bg-[#F9F6F0] text-[#6F655D]'
+                  }">${step.time}</span>
+                </div>
+                <p class="step-desc text-[11px] mt-1 leading-snug ${isActive ? 'text-amber-100/90' : 'text-[#6F655D]'}">${step.desc}</p>
+                <div class="step-water-row flex items-center justify-between text-[11px] font-bold mt-2 pt-1.5 border-t ${
+                  isActive ? 'border-white/20 text-amber-300' : 'border-[#E8DFD8] text-[#6B4423]'
+                }">
+                  <span>+${step.waterAdded}g air</span>
+                  <span>Target: ${step.waterTarget}g</span>
+                </div>
+              </div>
             </div>
           `;
+
+          // Tap card to jump to this step
+          card.addEventListener('click', () => {
+            audio.playClick();
+            jumpToStep(idx);
+          });
+
           container.appendChild(card);
         });
       }
@@ -1653,32 +1814,64 @@ const initialRecipe = trialRecipes[0];
           }
         });
 
+        const isFinished = elapsedSeconds >= currentRecipe.totalSeconds && currentRecipe.totalSeconds > 0;
+
         cards.forEach((card, idx) => {
+          const badge = card.querySelector('.step-num-badge');
+          const title = card.querySelector('.step-title');
           const desc = card.querySelector('.step-desc');
           const timeBadge = card.querySelector('.step-time-badge');
-          const bottomRow = card.lastElementChild;
+          const waterRow = card.querySelector('.step-water-row');
+          const stepColor = getStepColor(idx);
 
-          if (idx === activeIdx) {
-            card.className = 'step-item p-2.5 rounded-xl border transition-all duration-300 bg-[#6B4423] text-white border-[#6B4423] shadow-md ring-1 ring-[#6B4423]/40';
-            if (desc) desc.className = 'step-desc text-[10.5px] mt-1 text-amber-100/90';
-            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white/20 text-white';
-            if (bottomRow) bottomRow.className = 'flex items-center justify-between text-[10.5px] font-bold mt-1.5 pt-1.5 border-t border-white/20 text-amber-200';
-          } else if (idx < activeIdx) {
-            card.className = 'step-item p-2.5 rounded-xl border transition-all duration-300 bg-[#F1E8E0]/70 text-[#6F655D] border-[#E8DFD8] opacity-80';
-            if (desc) desc.className = 'step-desc text-[10.5px] mt-1 text-[#8F857D]';
-            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white text-[#8F857D]';
-            if (bottomRow) bottomRow.className = 'flex items-center justify-between text-[10.5px] font-bold mt-1.5 pt-1.5 border-t border-[#E8DFD8] text-[#8F857D]';
+          if (!isFinished && idx === activeIdx) {
+            card.className = 'step-item p-3 rounded-2xl border transition-all duration-300 cursor-pointer bg-[#6B4423] text-white border-[#ECA400] shadow-md ring-2 ring-[#ECA400]/40';
+            if (badge) {
+              badge.className = 'step-num-badge w-7 h-7 rounded-full flex items-center justify-center font-black text-xs shrink-0 transition-colors shadow-xs bg-[#ECA400] text-[#1E1612]';
+              badge.textContent = String(idx + 1);
+              badge.style.backgroundColor = '';
+              badge.style.color = '';
+            }
+            if (title) title.className = 'step-title font-bold text-xs truncate text-white';
+            if (desc) desc.className = 'step-desc text-[11px] mt-1 leading-snug text-amber-100/90';
+            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md shrink-0 bg-white/20 text-white';
+            if (waterRow) waterRow.className = 'step-water-row flex items-center justify-between text-[11px] font-bold mt-2 pt-1.5 border-t border-white/20 text-amber-300';
+          } else if (isFinished || idx < activeIdx) {
+            card.className = 'step-item p-3 rounded-2xl border transition-all duration-300 cursor-pointer bg-[#F1E8E0]/70 text-[#6F655D] border-[#E8DFD8] opacity-85';
+            if (badge) {
+              badge.className = 'step-num-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-colors shadow-xs bg-[#16A34A] text-white';
+              badge.innerHTML = '✓';
+              badge.style.backgroundColor = '';
+              badge.style.color = '';
+            }
+            if (title) title.className = 'step-title font-bold text-xs truncate text-[#332B25]';
+            if (desc) desc.className = 'step-desc text-[11px] mt-1 leading-snug text-[#8F857D]';
+            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md shrink-0 bg-white text-[#8F857D]';
+            if (waterRow) waterRow.className = 'step-water-row flex items-center justify-between text-[11px] font-bold mt-2 pt-1.5 border-t border-[#E8DFD8] text-[#8F857D]';
           } else {
-            card.className = 'step-item p-2.5 rounded-xl border transition-all duration-300 bg-white text-[#332B25] border-[#E8DFD8] shadow-xs';
-            if (desc) desc.className = 'step-desc text-[10.5px] mt-1 text-[#6F655D]';
-            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md bg-[#F9F6F0] text-[#6F655D]';
-            if (bottomRow) bottomRow.className = 'flex items-center justify-between text-[10.5px] font-bold mt-1.5 pt-1.5 border-t border-[#E8DFD8] text-[#6B4423]';
+            card.className = 'step-item p-3 rounded-2xl border transition-all duration-300 cursor-pointer bg-white text-[#332B25] border-[#E8DFD8] shadow-xs hover:border-[#6B4423]/30';
+            if (badge) {
+              badge.className = 'step-num-badge w-7 h-7 rounded-full flex items-center justify-center font-bold text-xs shrink-0 transition-colors shadow-xs';
+              badge.textContent = String(idx + 1);
+              badge.style.backgroundColor = hexToRgba(stepColor, 0.15);
+              badge.style.color = stepColor;
+            }
+            if (title) title.className = 'step-title font-bold text-xs truncate text-[#332B25]';
+            if (desc) desc.className = 'step-desc text-[11px] mt-1 leading-snug text-[#6F655D]';
+            if (timeBadge) timeBadge.className = 'step-time-badge text-[10px] font-semibold px-2 py-0.5 rounded-md shrink-0 bg-[#F9F6F0] text-[#6F655D]';
+            if (waterRow) waterRow.className = 'step-water-row flex items-center justify-between text-[11px] font-bold mt-2 pt-1.5 border-t border-[#E8DFD8] text-[#6B4423]';
           }
         });
 
         const counter = document.getElementById('current-step-counter');
         if (counter) {
           counter.textContent = `Tahap ${activeIdx + 1} dari ${currentRecipe.steps.length}`;
+        }
+
+        // Auto-scroll when active step changes
+        if (activeIdx !== lastScrolledStepIndex) {
+          lastScrolledStepIndex = activeIdx;
+          scrollToStep(activeIdx);
         }
       }
 
@@ -1703,13 +1896,8 @@ const initialRecipe = trialRecipes[0];
           }
         }
 
-        // SVG Circular Ring
-        const circle = document.getElementById('timer-svg-circle');
-        if (circle && currentRecipe.totalSeconds > 0) {
-          const totalLength = 264;
-          const ratio = Math.min(1, elapsedSeconds / currentRecipe.totalSeconds);
-          circle.style.strokeDashoffset = String(totalLength - (totalLength * ratio));
-        }
+        // Segmented multi-color circle drawing
+        drawSegmentedTimer();
 
         updateStepHighlights();
       }
@@ -1737,7 +1925,9 @@ const initialRecipe = trialRecipes[0];
         }
 
         renderBrewSteps(recipe);
+        drawSegmentedTimer();
         switchTab('brew');
+        scrollToStep(0);
       }
 
       function startPreparation() {
@@ -1837,6 +2027,7 @@ const initialRecipe = trialRecipes[0];
         clearInterval(timerInterval);
         audio.stopBgm();
         elapsedSeconds = 0;
+        lastScrolledStepIndex = 0;
 
         document.getElementById('prep-view')?.classList.add('hidden');
         document.getElementById('prep-view')?.classList.remove('flex');
@@ -1854,6 +2045,8 @@ const initialRecipe = trialRecipes[0];
           statusText.textContent = 'SIAP SEDUH';
         }
         if (playLabel) playLabel.textContent = 'Mulai Seduh';
+
+        scrollToStep(0);
       }
 
       function finishBrew() {
@@ -1906,14 +2099,15 @@ const initialRecipe = trialRecipes[0];
         updateTimerDisplay();
       });
 
-      // Skip step button
+      // Skip step button (Advances directly to next step and auto-scrolls)
       document.getElementById('btn-skip-step')?.addEventListener('click', () => {
         audio.playClick();
-        const curStep = currentRecipe.steps.find((s) => elapsedSeconds >= s.start && elapsedSeconds < s.end);
-        if (curStep) {
-          elapsedSeconds = curStep.end;
-          updateTimerDisplay();
+        const curIdx = currentRecipe.steps.findIndex((s) => elapsedSeconds >= s.start && elapsedSeconds < s.end);
+        if (curIdx >= 0 && curIdx < currentRecipe.steps.length - 1) {
+          jumpToStep(curIdx + 1);
           audio.playTransition();
+        } else if (curIdx === currentRecipe.steps.length - 1 || elapsedSeconds >= currentRecipe.totalSeconds) {
+          finishBrew();
         }
       });
 
@@ -2006,6 +2200,8 @@ const initialRecipe = trialRecipes[0];
 
       // Initialize with first recipe
       renderBrewSteps(currentRecipe);
+      drawSegmentedTimer();
+      updateTimerDisplay();
     </script>
 
   </body>
