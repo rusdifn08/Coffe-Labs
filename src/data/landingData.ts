@@ -55,22 +55,32 @@ export const landingData = {
 
   problemSolution: [
     {
+      tag: "Konsistensi",
+      icon: "target",
       problem: "Rasa kopi tidak konsisten, sering terlalu asam atau pahit sepet.",
       solution: "Guided Brew memandu gram air dan detik tuangan secara presisi cangkir demi cangkir.",
     },
     {
+      tag: "Koreksi Rasa",
+      icon: "stethoscope",
       problem: "Bingung apa yang salah saat hasil seduhan gagal.",
       solution: "Brew Doctor menganalisis sensori lidah dan langsung merekomendasikan klik grinder & suhu air.",
     },
     {
+      tag: "Resep Juara",
+      icon: "book",
       problem: "Resep juara bertebaran di medsos dan catatan sering hilang.",
       solution: "200+ resep terkurasi dari 100+ brewer dunia tersusun rapi dengan parameter lengkap.",
     },
     {
+      tag: "50+ Grinder",
+      icon: "sliders",
       problem: "Resep memakai grinder berbeda dari alat di rumah.",
       solution: "Grinder Converter otomatis mengonversi klik antar 50+ tipe grinder berbeda.",
     },
     {
+      tag: "Jurnal & SCA",
+      icon: "disc",
       problem: "Catatan seduhan dan cupping tercecer tidak terorganisir.",
       solution: "Jurnal Brew & Cupping SCA digital terintegrasi langsung di smartphone Anda.",
     },
