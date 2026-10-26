@@ -27,17 +27,17 @@ const navItems = [
     <a
       href="#hero"
       id="brand-logo"
-      class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-xl p-1 transition-transform active:scale-95"
+      class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-xl p-1 transition-transform active:scale-95 shrink-0"
       title="Kembali ke atas (Beranda)"
     >
-      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-[#6B4423] to-amber-600 p-0.5 shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center">
+      <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-[#6B4423] to-amber-600 p-0.5 shadow-sm group-hover:scale-105 transition-transform flex items-center justify-center shrink-0">
         <img src="/icon.png" alt="Coffee Labs Logo" class="w-full h-full object-cover rounded-[10px]" />
       </div>
-      <div class="flex flex-col">
-        <span class="font-extrabold text-lg sm:text-xl text-[#332B25] tracking-tight group-hover:text-[#6B4423] transition-colors leading-tight">
+      <div class="flex flex-col shrink-0">
+        <span class="font-extrabold text-lg sm:text-xl text-[#332B25] tracking-tight group-hover:text-[#6B4423] transition-colors leading-tight whitespace-nowrap">
           Coffee <span class="text-[#ECA400]">Labs</span>
         </span>
-        <span class="text-[9.5px] text-[#8F857D] font-semibold tracking-wider uppercase -mt-0.5 hidden sm:block">
+        <span class="text-[9.5px] text-[#8F857D] font-semibold tracking-wider uppercase -mt-0.5 hidden sm:block whitespace-nowrap">
           Master Your Brew
         </span>
       </div>
@@ -78,10 +78,11 @@ const navItems = [
       </div>
 
       <!-- CTA Button (Navigates to Web Trial App) -->
+      <!-- Di smartphone / mobile, tombol ini disembunyikan agar tulisan Coffee Labs tetap 1 baris utuh -->
       <a
         id="nav-cta-btn"
         href="/trial"
-        class="group inline-flex items-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-xs sm:text-sm shadow-sm hover:shadow-md hover:shadow-[#ECA400]/30 transition-all duration-200 active:scale-95 cursor-pointer"
+        class="hidden sm:inline-flex group items-center gap-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-xs sm:text-sm shadow-sm hover:shadow-md hover:shadow-[#ECA400]/30 transition-all duration-200 active:scale-95 cursor-pointer whitespace-nowrap"
         title="Uji coba aplikasi Coffee Labs gratis via browser"
       >
         <span class="font-bold">Coba Gratis</span>
@@ -107,8 +108,17 @@ const navItems = [
   <!-- Mobile Menu Drawer (Dialog-style slide down) -->
   <div
     id="mobile-menu"
-    class="hidden md:hidden border-t border-[#E8DFD8] bg-[#F9F6F0]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2 shadow-xl transition-all duration-300"
+    class="hidden md:hidden border-t border-[#E8DFD8] bg-[#F9F6F0]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 shadow-xl transition-all duration-300"
   >
+    <!-- Quick CTA inside mobile drawer -->
+    <a
+      href="/trial"
+      class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-sm shadow-sm active:scale-98 transition-all"
+    >
+      <span>Coba Gratis Sekarang</span>
+      <Icon name="arrow-right" size={14} color="#332B25" />
+    </a>
+
     <div class="flex flex-col space-y-1">
       {navItems.map((item) => (
         <a
