@@ -8,7 +8,7 @@ import { landingData } from '../../data/landingData';
   <!-- Ambient background glow -->
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-amber-500/10 blur-[160px] rounded-full pointer-events-none"></div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-8 sm:space-y-10">
     
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto space-y-2">
@@ -21,12 +21,30 @@ import { landingData } from '../../data/landingData';
         Pilihan paket fleksibel, mulai dari gratis selamanya.
       </h2>
 
-      <p class="text-xs sm:text-base text-white/70">
-        Nikmati seluruh 159 resep juara dunia dan diagnosis Brew Doctor dengan biaya terjangkau.
+      <p class="hidden sm:block text-xs sm:text-base text-white/70">
+        Nikmati seluruh 200+ resep juara dunia dan diagnosis Brew Doctor dengan biaya terjangkau.
       </p>
 
-      <!-- Monthly / Yearly Toggle -->
-      <div class="pt-3 flex items-center justify-center gap-3">
+      <!-- Plan Category Switch (Kiri = Plan Harga / Personal, Kanan = Bisnis & Café) -->
+      <div class="pt-2 flex items-center justify-center">
+        <div class="inline-flex p-1 rounded-xl bg-[#2A1F19] border border-white/10 shadow-inner">
+          <button
+            id="switch-btn-personal"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer bg-[#ECA400] text-[#1E1612] shadow-xs active-cat-btn"
+          >
+            ← Plan Harga (Personal)
+          </button>
+          <button
+            id="switch-btn-business"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-white/70 hover:text-white"
+          >
+            Bisnis & Café →
+          </button>
+        </div>
+      </div>
+
+      <!-- Monthly / Yearly Billing Toggle -->
+      <div class="pt-1 flex items-center justify-center gap-3">
         <span class="text-xs sm:text-sm font-semibold text-white/70" id="monthly-label">Bulanan</span>
         
         <button
@@ -48,90 +66,128 @@ import { landingData } from '../../data/landingData';
       </div>
     </div>
 
-    <!-- 3 Pricing Cards Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
-      
-      {landingData.pricing.plans.map((plan) => (
-        <div class={`rounded-xl p-5 sm:p-6 flex flex-col justify-between border relative transition-all duration-300 ${
-          plan.popular
-            ? 'bg-gradient-to-b from-[#2E2018] to-[#1E1612] border-[#ECA400] shadow-xl scale-100 lg:scale-105 z-20 ring-1 ring-[#ECA400]/50'
-            : 'bg-[#2A1F19]/60 border-[#3A2B22] hover:bg-[#2A1F19]'
-        }`}>
-          
-          {plan.popular && (
-            <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-md bg-[#ECA400] text-[#1E1612] text-[10px] font-extrabold tracking-wider uppercase shadow-md">
-              PALING POPULER
-            </div>
-          )}
+    <!-- Pricing Cards Container: Swipeable on Mobile, 3-Cols Grid on Desktop -->
+    <div class="relative">
+      <div
+        id="pricing-slider"
+        class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar scroll-smooth gap-4 pb-2 md:grid md:grid-cols-3 md:gap-5 items-stretch"
+      >
+        {landingData.pricing.plans.map((plan, idx) => (
+          <div
+            id={`pricing-card-${idx}`}
+            data-plan-index={idx}
+            data-plan-type={plan.id === 'cafe' ? 'business' : 'personal'}
+            class={`w-[85vw] sm:w-[360px] md:w-auto shrink-0 snap-center rounded-xl p-5 sm:p-6 flex flex-col justify-between border relative transition-all duration-300 ${
+              plan.popular
+                ? 'bg-gradient-to-b from-[#2E2018] to-[#1E1612] border-[#ECA400] shadow-xl scale-100 md:scale-105 z-20 ring-1 ring-[#ECA400]/50'
+                : 'bg-[#2A1F19]/60 border-[#3A2B22] hover:bg-[#2A1F19]'
+            }`}
+          >
+            
+            {plan.popular && (
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-md bg-[#ECA400] text-[#1E1612] text-[10px] font-extrabold tracking-wider uppercase shadow-md">
+                PALING POPULER
+              </div>
+            )}
 
-          <div>
-            <!-- Header Plan -->
-            <div class="flex items-center justify-between mb-1.5">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">
-                {plan.badge}
-              </span>
-            </div>
-
-            <h3 class="text-xl sm:text-2xl font-extrabold text-white">{plan.name}</h3>
-            <p class="text-xs text-white/60 mt-1 leading-relaxed min-h-[32px]">
-              {plan.desc}
-            </p>
-
-            <!-- Price Display -->
-            <div class="my-5 pb-5 border-b border-white/10">
-              <div class="flex items-baseline gap-1">
-                <span
-                  class="text-3xl sm:text-4xl font-extrabold text-white font-mono plan-price"
-                  data-monthly={plan.priceMonthly}
-                  data-yearly={plan.priceYearly}
-                >
-                  {plan.priceYearly}
+            <div>
+              <!-- Header Plan -->
+              <div class="flex items-center justify-between mb-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">
+                  {plan.badge}
                 </span>
-                <span class="text-xs text-white/60 font-semibold plan-period" data-monthly={plan.period} data-yearly="per tahun">
-                  per tahun
+                <span class="text-[10px] font-mono text-white/40 md:hidden">
+                  {idx + 1} / 3
                 </span>
               </div>
-              {plan.priceYearlyPerMonth && (
-                <div class="text-xs text-[#ECA400] font-bold mt-1 yearly-note">
-                  Setara {plan.priceYearlyPerMonth}
+
+              <h3 class="text-xl sm:text-2xl font-extrabold text-white">{plan.name}</h3>
+              <p class="text-xs text-white/60 mt-1 leading-relaxed min-h-[32px]">
+                {plan.desc}
+              </p>
+
+              <!-- Price Display -->
+              <div class="my-5 pb-5 border-b border-white/10">
+                <div class="flex items-baseline gap-1">
+                  <span
+                    class="text-3xl sm:text-4xl font-extrabold text-white font-mono plan-price"
+                    data-monthly={plan.priceMonthly}
+                    data-yearly={plan.priceYearly}
+                  >
+                    {plan.priceYearly}
+                  </span>
+                  <span class="text-xs text-white/60 font-semibold plan-period" data-monthly={plan.period} data-yearly="per tahun">
+                    per tahun
+                  </span>
                 </div>
-              )}
+                {plan.priceYearlyPerMonth && (
+                  <div class="text-xs text-[#ECA400] font-bold mt-1 yearly-note">
+                    Setara {plan.priceYearlyPerMonth}
+                  </div>
+                )}
+              </div>
+
+              <!-- Features Checklist with crisp SVGs -->
+              <ul class="space-y-2.5 text-xs leading-relaxed">
+                {plan.features.map((f) => (
+                  <li class={`flex items-start gap-2.5 ${f.included ? 'text-white' : 'text-white/40 line-through'}`}>
+                    <span class={`mt-0.5 shrink-0`}>
+                      {f.included ? (
+                        <Icon name="check" size={12} color="#ECA400" />
+                      ) : (
+                        <Icon name="x" size={12} color="#71717A" />
+                      )}
+                    </span>
+                    <span>{f.text}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <!-- Features Checklist with crisp SVGs -->
-            <ul class="space-y-2.5 text-xs leading-relaxed">
-              {plan.features.map((f) => (
-                <li class={`flex items-start gap-2.5 ${f.included ? 'text-white' : 'text-white/40 line-through'}`}>
-                  <span class={`mt-0.5 shrink-0`}>
-                    {f.included ? (
-                      <Icon name="check" size={12} color="#ECA400" />
-                    ) : (
-                      <Icon name="x" size={12} color="#71717A" />
-                    )}
-                  </span>
-                  <span>{f.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+            <!-- CTA Button -->
+            <div class="mt-6 pt-3">
+              <a
+                href={plan.ctaHref}
+                class={`w-full py-3 px-5 rounded-xl font-bold text-xs sm:text-sm text-center block transition-all active:scale-95 shadow-md ${
+                  plan.popular
+                    ? 'bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612]'
+                    : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'
+                }`}
+              >
+                {plan.ctaText}
+              </a>
+            </div>
 
-          <!-- CTA Button -->
-          <div class="mt-6 pt-3">
-            <a
-              href={plan.ctaHref}
-              class={`w-full py-3 px-5 rounded-xl font-bold text-xs sm:text-sm text-center block transition-all active:scale-95 shadow-md ${
-                plan.popular
-                  ? 'bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612]'
-                  : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'
-              }`}
-            >
-              {plan.ctaText}
-            </a>
           </div>
+        ))}
+      </div>
 
+      <!-- Mobile Navigation Buttons & Dots Indicator (md:hidden) -->
+      <div class="flex md:hidden items-center justify-between gap-3 mt-4 px-2">
+        <button
+          id="btn-prev-plan"
+          class="px-3 py-1.5 rounded-lg bg-[#2A1F19] border border-white/15 text-xs font-bold text-white flex items-center gap-1 shadow-xs hover:bg-[#3A2B22] active:scale-95 transition-all cursor-pointer"
+          aria-label="Kembali ke Plan Harga"
+        >
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+          <span>Plan Harga</span>
+        </button>
+
+        <div class="flex items-center gap-1.5" id="pricing-dots">
+          <span class="h-1.5 rounded-full transition-all duration-300 pricing-dot w-4 bg-[#ECA400]" data-idx="0"></span>
+          <span class="h-1.5 rounded-full transition-all duration-300 pricing-dot w-1.5 bg-white/30" data-idx="1"></span>
+          <span class="h-1.5 rounded-full transition-all duration-300 pricing-dot w-1.5 bg-white/30" data-idx="2"></span>
         </div>
-      ))}
 
+        <button
+          id="btn-next-plan"
+          class="px-3 py-1.5 rounded-lg bg-[#2A1F19] border border-white/15 text-xs font-bold text-[#ECA400] flex items-center gap-1 shadow-xs hover:bg-[#3A2B22] active:scale-95 transition-all cursor-pointer"
+          aria-label="Lanjut ke Paket Bisnis"
+        >
+          <span>Ke Bisnis</span>
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
 
     <!-- Guarantee & Security strip with SVGs -->
@@ -154,6 +210,7 @@ import { landingData } from '../../data/landingData';
 </section>
 
 <script>
+  // Billing Toggle (Bulanan vs Tahunan)
   const toggle = document.getElementById('billing-toggle');
   const handle = document.getElementById('toggle-handle');
   const prices = document.querySelectorAll('.plan-price');
@@ -188,4 +245,92 @@ import { landingData } from '../../data/landingData';
       });
     });
   }
+
+  // Plan Category Switch & Slider Navigation (Kiri = Plan Harga, Kanan = Bisnis)
+  const btnPersonal = document.getElementById('switch-btn-personal');
+  const btnBusiness = document.getElementById('switch-btn-business');
+  const slider = document.getElementById('pricing-slider');
+  const dots = document.querySelectorAll('.pricing-dot');
+  const btnPrevPlan = document.getElementById('btn-prev-plan');
+  const btnNextPlan = document.getElementById('btn-next-plan');
+
+  let currentCardIndex = 1; // Start on Barista Pro (popular)
+
+  function setActiveCategoryUI(type: 'personal' | 'business') {
+    if (type === 'personal') {
+      btnPersonal?.classList.add('bg-[#ECA400]', 'text-[#1E1612]', 'shadow-xs');
+      btnPersonal?.classList.remove('text-white/70');
+      btnBusiness?.classList.remove('bg-[#ECA400]', 'text-[#1E1612]', 'shadow-xs');
+      btnBusiness?.classList.add('text-white/70');
+    } else {
+      btnBusiness?.classList.add('bg-[#ECA400]', 'text-[#1E1612]', 'shadow-xs');
+      btnBusiness?.classList.remove('text-white/70');
+      btnPersonal?.classList.remove('bg-[#ECA400]', 'text-[#1E1612]', 'shadow-xs');
+      btnPersonal?.classList.add('text-white/70');
+    }
+  }
+
+  function scrollToCard(index: number) {
+    if (!slider) return;
+    const cards = slider.children;
+    if (cards[index]) {
+      (cards[index] as HTMLElement).scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+    updateDots(index);
+    currentCardIndex = index;
+    if (index >= 2) {
+      setActiveCategoryUI('business');
+    } else {
+      setActiveCategoryUI('personal');
+    }
+  }
+
+  function updateDots(activeIdx: number) {
+    dots.forEach((dot, i) => {
+      if (i === activeIdx) {
+        dot.className = 'h-1.5 rounded-full transition-all duration-300 pricing-dot w-4 bg-[#ECA400]';
+      } else {
+        dot.className = 'h-1.5 rounded-full transition-all duration-300 pricing-dot w-1.5 bg-white/30';
+      }
+    });
+  }
+
+  // Click Switch Left (Personal / Plan Harga) -> Scroll to Barista Pro / Trial
+  btnPersonal?.addEventListener('click', () => {
+    scrollToCard(1); // Barista Pro
+  });
+
+  // Click Switch Right (Business) -> Scroll to Café & Business
+  btnBusiness?.addEventListener('click', () => {
+    scrollToCard(2); // Café & Business
+  });
+
+  // Mobile Prev / Next Buttons
+  btnPrevPlan?.addEventListener('click', () => {
+    const nextIdx = Math.max(0, currentCardIndex - 1);
+    scrollToCard(nextIdx);
+  });
+
+  btnNextPlan?.addEventListener('click', () => {
+    const nextIdx = Math.min(2, currentCardIndex + 1);
+    scrollToCard(nextIdx);
+  });
+
+  // Sync Switch button and Dots on natural touch swipe scroll
+  slider?.addEventListener('scroll', () => {
+    const scrollLeft = slider.scrollLeft;
+    const card = slider.children[0] as HTMLElement;
+    if (!card) return;
+    const cardWidth = card.offsetWidth + 16; // card width + gap
+    const activeIdx = Math.min(2, Math.max(0, Math.round(scrollLeft / cardWidth)));
+    if (activeIdx !== currentCardIndex) {
+      currentCardIndex = activeIdx;
+      updateDots(activeIdx);
+      if (activeIdx >= 2) {
+        setActiveCategoryUI('business');
+      } else {
+        setActiveCategoryUI('personal');
+      }
+    }
+  }, { passive: true });
 </script>
