@@ -6,11 +6,11 @@ import SocialCoffeeScreenMockup from '../mockup/SocialCoffeeScreenMockup.astro';
 import { landingData } from '../../data/landingData';
 ---
 
-<section id="fitur" class="py-12 sm:py-16 bg-white border-t border-[#E8DFD8]">
+<section id="fitur" class="py-8 sm:py-12 lg:py-14 bg-white border-t border-[#E8DFD8]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header (Simplified & 1 line as requested) -->
-    <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-10 space-y-1.5">
+    <div class="text-center max-w-3xl mx-auto mb-6 sm:mb-8 space-y-1.5">
       <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-amber-100 text-[#6B4423] text-xs font-bold uppercase tracking-wider">
         <Icon name="sparkles" size={13} color="#6B4423" />
         <span>Fitur Unggulan</span>
@@ -23,11 +23,11 @@ import { landingData } from '../../data/landingData';
       </p>
     </div>
 
-    <!-- Bento Grid (Compact 2-grid on mobile, 12-cols on desktop) -->
-    <div class="grid grid-cols-2 lg:grid-cols-12 gap-2.5 sm:gap-5">
+    <!-- Bento Grid (Compact 2-grid on mobile, 1x4 12-cols row on desktop) -->
+    <div class="grid grid-cols-2 lg:grid-cols-12 gap-2.5 sm:gap-4 lg:gap-4">
       
-      <!-- Tile 1: Guided Brew Timer -->
-      <div class="col-span-1 lg:col-span-6 bg-[#F9F6F0] rounded-xl p-3 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between hover:shadow-warm-sm transition-shadow">
+      <!-- Tile 1: Guided Brew Timer (1x4 on desktop: lg:col-span-3) -->
+      <div class="col-span-1 lg:col-span-3 bg-[#F9F6F0] rounded-xl p-3 sm:p-4 border border-[#E8DFD8] shadow-xs flex flex-col justify-between hover:shadow-warm-sm transition-shadow">
         <div class="space-y-1 sm:space-y-1.5">
           <div class="flex items-center gap-1.5 sm:gap-2">
             <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#6B4423] text-white flex items-center justify-center shrink-0">
@@ -50,8 +50,8 @@ import { landingData } from '../../data/landingData';
         </div>
       </div>
 
-      <!-- Tile 2: Resep Barista Dunia -->
-      <div class="col-span-1 lg:col-span-6 bg-gradient-to-br from-[#6B4423] to-[#4A2D15] text-white rounded-xl p-3 sm:p-5 shadow-xs flex flex-col justify-between">
+      <!-- Tile 2: Resep Barista Dunia (1x4 on desktop: lg:col-span-3) -->
+      <div class="col-span-1 lg:col-span-3 bg-gradient-to-br from-[#6B4423] to-[#4A2D15] text-white rounded-xl p-3 sm:p-4 shadow-xs flex flex-col justify-between">
         <div class="space-y-1 sm:space-y-1.5">
           <div class="flex items-center gap-1.5 sm:gap-2">
             <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-[#ECA400] text-[#332B25] flex items-center justify-center shrink-0">
@@ -74,8 +74,8 @@ import { landingData } from '../../data/landingData';
         </div>
       </div>
 
-      <!-- Tile 3: Brew Doctor -->
-      <div class="col-span-1 lg:col-span-6 bg-[#F9F6F0] rounded-xl p-3 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
+      <!-- Tile 3: Brew Doctor (1x4 on desktop: lg:col-span-3) -->
+      <div class="col-span-1 lg:col-span-3 bg-[#F9F6F0] rounded-xl p-3 sm:p-4 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
         <div class="space-y-1 sm:space-y-1.5">
           <div class="flex items-center gap-1.5 sm:gap-2">
             <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-amber-100 text-[#ECA400] flex items-center justify-center shrink-0 font-bold">
@@ -98,8 +98,8 @@ import { landingData } from '../../data/landingData';
         </div>
       </div>
 
-      <!-- Tile 4: Cupping SCA -->
-      <div class="col-span-1 lg:col-span-6 bg-[#F9F6F0] rounded-xl p-3 sm:p-5 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
+      <!-- Tile 4: Cupping SCA (1x4 on desktop: lg:col-span-3) -->
+      <div class="col-span-1 lg:col-span-3 bg-[#F9F6F0] rounded-xl p-3 sm:p-4 border border-[#E8DFD8] shadow-xs flex flex-col justify-between">
         <div class="space-y-1 sm:space-y-1.5">
           <div class="flex items-center gap-1.5 sm:gap-2">
             <span class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-orange-100 text-orange-700 flex items-center justify-center shrink-0 font-bold">
