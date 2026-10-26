@@ -5,7 +5,6 @@ import HomeScreenMockup from '../mockup/HomeScreenMockup.astro';
 import RecipeFeedScreenMockup from '../mockup/RecipeFeedScreenMockup.astro';
 import BrewTimerScreenMockup from '../mockup/BrewTimerScreenMockup.astro';
 import ToolkitScreenMockup from '../mockup/ToolkitScreenMockup.astro';
-import ProfileScreenMockup from '../mockup/ProfileScreenMockup.astro';
 import { landingData } from '../../data/landingData';
 ---
 
@@ -31,12 +30,12 @@ import { landingData } from '../../data/landingData';
     <!-- Main App Screens Layout: Left Tabs Controller, Right Live Phone Mockup -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
       
-      <!-- Left: Interactive Tab Buttons (7 cols) -->
-      <div class="lg:col-span-7 space-y-2" role="tablist" aria-label="Tab Navigasi Aplikasi">
+      <!-- Left: Interactive Tab Buttons (4 Cards in compact 2x2 grid on mobile, stacked on lg) -->
+      <div class="lg:col-span-7 grid grid-cols-2 lg:grid-cols-1 gap-2" role="tablist" aria-label="Tab Navigasi Aplikasi">
         
         {landingData.appTourTabs.map((tab, idx) => (
           <button
-            class={`w-full text-left p-2.5 sm:p-3 rounded-xl border transition-all duration-200 flex items-start gap-3 tour-tab-btn cursor-pointer ${
+            class={`text-left p-2 sm:p-3 rounded-xl border transition-all duration-200 flex items-start gap-2 sm:gap-3 tour-tab-btn cursor-pointer ${
               idx === 0
                 ? 'bg-white border-[#ECA400] shadow-sm ring-1 ring-[#ECA400]/40 active-tab'
                 : 'bg-white/60 hover:bg-white border-[#E8DFD8] shadow-xs'
@@ -45,18 +44,19 @@ import { landingData } from '../../data/landingData';
             role="tab"
             aria-selected={idx === 0 ? "true" : "false"}
           >
-            <!-- Number / Icon Box with clean custom SVG -->
-            <div class="w-8 h-8 rounded-lg bg-[#F1E8E0] text-[#6B4423] font-bold flex items-center justify-center shrink-0 shadow-xs tab-icon-box mt-0.5">
-              <Icon name={tab.icon === 'home' ? 'home' : tab.icon === 'book-open' ? 'book' : tab.icon === 'timer' ? 'timer' : tab.icon === 'wrench' ? 'wrench' : 'user'} size={16} color="#6B4423" />
+            <!-- Number / Icon Box -->
+            <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#F1E8E0] text-[#6B4423] font-bold flex items-center justify-center shrink-0 shadow-xs tab-icon-box mt-0.5">
+              <Icon name={tab.icon === 'home' ? 'home' : tab.icon === 'book-open' ? 'book' : tab.icon === 'timer' ? 'timer' : 'wrench'} size={15} color="#6B4423" />
             </div>
 
             <!-- Tab Content -->
             <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between">
-                <span class="font-extrabold text-xs sm:text-sm text-[#332B25] tracking-tight">{tab.label} — {tab.subtitle}</span>
-                <span class="text-[10px] font-bold text-[#6B4423] bg-[#ECA400]/25 px-1.5 py-0.5 rounded tab-indicator">{idx === 0 ? '● Aktif' : ''}</span>
+              <div class="flex items-center justify-between gap-1">
+                <span class="font-extrabold text-xs sm:text-sm text-[#332B25] tracking-tight truncate">{tab.label}</span>
+                <span class="text-[9px] font-bold text-[#6B4423] bg-[#ECA400]/25 px-1 py-0.2 rounded tab-indicator shrink-0">{idx === 0 ? '● Aktif' : ''}</span>
               </div>
-              <p class="text-[11px] sm:text-xs text-[#6F655D] mt-0.5 leading-snug">
+              <span class="text-[10px] text-[#8F857D] font-semibold truncate block">{tab.subtitle}</span>
+              <p class="hidden sm:block text-[11px] sm:text-xs text-[#6F655D] mt-0.5 leading-snug">
                 {tab.description}
               </p>
             </div>
@@ -89,11 +89,6 @@ import { landingData } from '../../data/landingData';
             <!-- Tab Screen 4: Toolkit -->
             <div id="screen-toolkit" class="tour-screen hidden w-full h-full flex flex-col">
               <ToolkitScreenMockup />
-            </div>
-
-            <!-- Tab Screen 5: Profile (True Mobile Profile Screen!) -->
-            <div id="screen-profile" class="tour-screen hidden w-full h-full flex flex-col">
-              <ProfileScreenMockup />
             </div>
 
           </PhoneMockup>

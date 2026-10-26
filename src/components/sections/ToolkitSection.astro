@@ -25,18 +25,18 @@ import { landingData } from '../../data/landingData';
     <!-- 2 Column Layout: Toolkit Cards (7 cols), Phone Mockup (5 cols) -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
       
-      <!-- Left: 6 Toolkit Items Grid (7 cols) -->
+      <!-- Left: 6 Toolkit Items Grid (Compact 3x2 on mobile, 2-cols/3-cols on desktop) -->
       <div class="lg:col-span-7">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div class="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
           {landingData.toolkitItems.map((item, idx) => (
-            <div class="p-3.5 rounded-xl bg-white border border-[#E8DFD8] shadow-xs hover:shadow-warm-sm hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between">
+            <div class="p-2 sm:p-3.5 rounded-xl bg-white border border-[#E8DFD8] shadow-xs hover:shadow-warm-sm hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between text-center sm:text-left">
               <div>
-                <div class={`w-8 h-8 rounded-lg bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-2 shadow-xs`}>
-                  <Icon name={idx === 0 ? 'heart' : idx === 1 ? 'disc' : idx === 2 ? 'store' : idx === 3 ? 'radar' : idx === 4 ? 'book' : 'users'} size={15} color={item.primaryColor} />
+                <div class={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-1.5 mx-auto sm:mx-0 shadow-xs`}>
+                  <Icon name={idx === 0 ? 'heart' : idx === 1 ? 'disc' : idx === 2 ? 'store' : idx === 3 ? 'radar' : idx === 4 ? 'book' : 'users'} size={14} color={item.primaryColor} />
                 </div>
-                <h4 class="font-bold text-xs sm:text-sm text-[#332B25]">{item.title}</h4>
-                <div class="text-[10px] font-semibold text-[#6B4423] mt-0.5">{item.subtitle}</div>
-                <p class="text-[11px] sm:text-xs text-[#6F655D] mt-1 leading-snug">
+                <h4 class="font-bold text-[10.5px] sm:text-sm text-[#332B25] truncate">{item.title}</h4>
+                <div class="text-[8.5px] sm:text-[10px] font-semibold text-[#6B4423] mt-0.5 truncate">{item.subtitle}</div>
+                <p class="hidden sm:block text-[11px] sm:text-xs text-[#6F655D] mt-1 leading-snug">
                   {item.desc}
                 </p>
               </div>

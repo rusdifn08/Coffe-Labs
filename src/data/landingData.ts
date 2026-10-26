@@ -33,10 +33,10 @@ export const landingData = {
   },
 
   stats: [
-    { value: "159+", label: "Resep Seduh Dunia", sub: "V60, Origami, Aeropress, Hybrid" },
-    { value: "97", label: "Barista & Juara Dunia", sub: "Dari Jepang, Norwegia hingga Indonesia" },
+    { value: "200+", label: "Resep Seduh Dunia", sub: "V60, Origami, Aeropress, Hybrid" },
+    { value: "100+", label: "Barista & Juara Dunia", sub: "Dari Jepang, Norwegia hingga Indonesia" },
     { value: "50", label: "Roastery Indonesia", sub: "Katalog & lineup biji kopi nusantara" },
-    { value: "29", label: "Model Grinder", sub: "Konverter klik presisi real-time" },
+    { value: "50+", label: "Model Grinder", sub: "Konverter klik presisi real-time" },
   ],
 
   methods: [
@@ -64,11 +64,11 @@ export const landingData = {
     },
     {
       problem: "Resep juara bertebaran di medsos dan catatan sering hilang.",
-      solution: "159 resep terkurasi dari 97 brewer dunia tersusun rapi dengan parameter lengkap.",
+      solution: "200+ resep terkurasi dari 100+ brewer dunia tersusun rapi dengan parameter lengkap.",
     },
     {
       problem: "Resep memakai grinder berbeda dari alat di rumah.",
-      solution: "Grinder Converter otomatis mengonversi klik antar 29 tipe grinder berbeda.",
+      solution: "Grinder Converter otomatis mengonversi klik antar 50+ tipe grinder berbeda.",
     },
     {
       problem: "Catatan seduhan dan cupping tercecer tidak terorganisir.",
@@ -154,7 +154,7 @@ export const landingData = {
       id: "recipes",
       label: "Recipes",
       icon: "book-open",
-      subtitle: "159+ Resep Dunia Terkurasi",
+      subtitle: "200+ Resep Dunia Terkurasi",
       description: "Eksplorasi resep seduh dalam 2 grid kolom berdasarkan dripper, metode, nama brewer, level gilingan, dan tasting notes. Tombol Surprise Me siap memilihkan resep acak.",
     },
     {
@@ -170,13 +170,6 @@ export const landingData = {
       icon: "wrench",
       subtitle: "Professional Suite Barista",
       description: "Kumpulan alat profesional: Cupping SCA 92 flavor notes, direktori 50 Roastery, Beans Radar lokasi peta, Jurnal Seduh harian, dan Social Coffee feed.",
-    },
-    {
-      id: "profile",
-      label: "Profile",
-      icon: "user",
-      subtitle: "Identitas & Pengaturan",
-      description: "Atur nama barista, pilih avatar karakter, ganti bahasa (Indonesia / English), serta periksa pembaruan sistem OTA secara instan.",
     },
   ],
 
@@ -358,14 +351,14 @@ export const landingData = {
   ],
 
   comparisonTable: [
-    { feature: "Koleksi Resep Juara Dunia Terkurasi", coffeeLabs: "159+ Resep Lengkap", stopwatch: "Tidak Ada", otherApp: "5 - 15 Resep Terbatas" },
-    { feature: "Guided Brew dengan Target Gram & Detik", coffeeLabs: "Presisi Tahap per Tahap", stopwatch: "Hanya Detik Manual", otherApp: "Hanya Timer Garis" },
-    { feature: "Diagnosis & Koreksi Rasa (Brew Doctor)", coffeeLabs: "Tersedia Otomatis", stopwatch: "Tidak Ada", otherApp: "Tidak Ada" },
-    { feature: "Konversi Klik Grinder Otomatis (29 Model)", coffeeLabs: "Tersedia Real-time", stopwatch: "Hitung Manual Sendiri", otherApp: "Jarang / Tidak Ada" },
-    { feature: "Cupping SCA & Flavor Wheel 92 Notes", coffeeLabs: "Lengkap Terintegrasi", stopwatch: "Tidak Ada", otherApp: "Perlu App Berbeda" },
-    { feature: "Direktori Roastery & Beans Radar Indonesia", coffeeLabs: "50 Roastery + Peta GPS", stopwatch: "Tidak Ada", otherApp: "Hanya Luar Negeri" },
-    { feature: "Cetak Struk Resep Thermal Bluetooth", coffeeLabs: "Tersedia (Siap Kafe)", stopwatch: "Tidak Ada", otherApp: "Tidak Ada" },
-    { feature: "Dukungan Penuh Bahasa Indonesia", coffeeLabs: "100% Bahasa Indonesia", stopwatch: "Universal", otherApp: "Hanya Bahasa Inggris" },
+    { feature: "Koleksi Resep Juara Dunia Terkurasi", coffeeLabs: "200+ Resep Lengkap", otherApp: "5 - 15 Resep Terbatas" },
+    { feature: "Guided Brew dengan Target Gram & Detik", coffeeLabs: "Presisi Tahap per Tahap", otherApp: "Hanya Timer Garis" },
+    { feature: "Diagnosis & Koreksi Rasa (Brew Doctor)", coffeeLabs: "Tersedia Otomatis", otherApp: "Tidak Ada" },
+    { feature: "Konversi Klik Grinder Otomatis (50+ Model)", coffeeLabs: "Tersedia Real-time", otherApp: "Jarang / Tidak Ada" },
+    { feature: "Cupping SCA & Flavor Wheel 92 Notes", coffeeLabs: "Lengkap Terintegrasi", otherApp: "Perlu App Berbeda" },
+    { feature: "Direktori Roastery & Beans Radar Indonesia", coffeeLabs: "50 Roastery + Peta GPS", otherApp: "Hanya Luar Negeri" },
+    { feature: "Cetak Struk Resep Thermal Bluetooth", coffeeLabs: "Tersedia (Siap Kafe)", otherApp: "Tidak Ada" },
+    { feature: "Dukungan Penuh Bahasa Indonesia", coffeeLabs: "100% Bahasa Indonesia", otherApp: "Hanya Bahasa Inggris" },
   ],
 
   howItWorks: [
@@ -409,7 +402,7 @@ export const landingData = {
           { text: "10× sesi seduhan dengan Guided Timer", included: true },
           { text: "Siklus reset otomatis setiap 7 hari", included: true },
           { text: "Brew Doctor koreksi rasa dasar", included: true },
-          { text: "Akses seluruh 159+ resep dunia", included: false },
+          { text: "Akses seluruh 200+ resep dunia", included: false },
           { text: "Guided brew tanpa batasan kuota", included: false },
           { text: "Cetak struk resep kasir Bluetooth", included: false },
           { text: "Basecamp grup privat tim barista", included: false },
@@ -429,10 +422,10 @@ export const landingData = {
         ctaHref: "#download",
         ctaVariant: "primary",
         features: [
-          { text: "Akses tanpa batas ke seluruh 159+ resep", included: true },
+          { text: "Akses tanpa batas ke seluruh 200+ resep", included: true },
           { text: "Guided Brew timer tanpa kuota & tanpa jeda", included: true },
           { text: "Brew Doctor & Sensory Evaluator lengkap", included: true },
-          { text: "Auto-Scale & Grinder Converter 29 tipe", included: true },
+          { text: "Auto-Scale & Grinder Converter 50+ tipe", included: true },
           { text: "Jurnal Seduh & Cupping SCA tanpa batas", included: true },
           { text: "Buat resep kustom & posting ke Social Coffee", included: true },
           { text: "Cetak struk resep ke printer kasir Bluetooth", included: true },
@@ -499,10 +492,10 @@ export const landingData = {
     },
     {
       q: "Apakah aplikasi Coffee Labs bisa digunakan saat offline (tanpa sinyal internet)?",
-      a: "Tentu bisa! Seluruh 159 resep, panduan seduh, timer, dan konverter grinder tersimpan secara lokal di dalam aplikasi ponsel Anda. Anda hanya membutuhkan koneksi internet saat ingin membuka Social Coffee, melihat peta Beans Radar, atau sinkronisasi pembaruan.",
+      a: "Tentu bisa! Seluruh 200+ resep, panduan seduh, timer, dan konverter grinder tersimpan secara lokal di dalam aplikasi ponsel Anda. Anda hanya membutuhkan koneksi internet saat ingin membuka Social Coffee, melihat peta Beans Radar, atau sinkronisasi pembaruan.",
     },
     {
-      q: "Bagaimana jika merk atau tipe grinder saya tidak ada di daftar 29 grinder?",
+      q: "Bagaimana jika merk atau tipe grinder saya tidak ada di daftar 50+ grinder?",
       a: "Di dalam aplikasi tersedia opsi 'Universal Manual Grinder' dengan acuan mikron dan referensi klik Comandante C40. Anda juga bisa mengusulkan tipe grinder Anda melalui menu Beri Masukan (Feedback) agar kami tambahkan di pembaruan berikutnya.",
     },
     {

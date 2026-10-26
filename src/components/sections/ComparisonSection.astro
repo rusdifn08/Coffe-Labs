@@ -20,22 +20,19 @@ import { landingData } from '../../data/landingData';
       </p>
     </div>
 
-    <!-- Comparison Table -->
+    <!-- Comparison Table (2 Perbandingan: Coffee Labs vs Aplikasi Lain) -->
     <div class="overflow-x-auto rounded-xl border border-[#E8DFD8] shadow-xs">
       <table class="w-full text-left border-collapse text-xs sm:text-sm">
         <thead>
           <tr class="bg-[#F9F6F0] text-[#332B25] border-b border-[#E8DFD8]">
-            <th class="p-3.5 sm:p-4 font-extrabold w-2/5">Fitur & Kemampuan</th>
-            <th class="p-3.5 sm:p-4 font-extrabold text-center bg-amber-100/60 text-[#6B4423] border-x border-[#E8DFD8] w-1/5">
+            <th class="p-3.5 sm:p-4 font-extrabold w-1/2">Fitur & Kemampuan</th>
+            <th class="p-3.5 sm:p-4 font-extrabold text-center bg-amber-100/60 text-[#6B4423] border-x border-[#E8DFD8] w-1/4">
               <span class="inline-flex items-center gap-1.5">
                 <Icon name="coffee" size={14} color="#6B4423" />
                 <span>Coffee Labs</span>
               </span>
             </th>
-            <th class="p-3.5 sm:p-4 font-bold text-center text-[#8F857D] w-1/5">
-              Stopwatch Biasa
-            </th>
-            <th class="p-3.5 sm:p-4 font-bold text-center text-[#8F857D] w-1/5">
+            <th class="p-3.5 sm:p-4 font-bold text-center text-[#8F857D] w-1/4">
               Aplikasi Timer Lain
             </th>
           </tr>
@@ -51,16 +48,6 @@ import { landingData } from '../../data/landingData';
                   <Icon name="check" size={13} color="#15803D" />
                   <span>{row.coffeeLabs}</span>
                 </div>
-              </td>
-              <td class="p-3 sm:p-4 text-center font-medium text-[#8F857D]">
-                {row.stopwatch === 'Tidak Ada' ? (
-                  <span class="text-red-500 font-bold inline-flex items-center gap-1 justify-center">
-                    <Icon name="x" size={12} color="#EF4444" />
-                    <span>Tidak Ada</span>
-                  </span>
-                ) : (
-                  row.stopwatch
-                )}
               </td>
               <td class="p-3 sm:p-4 text-center font-medium text-[#8F857D]">
                 {row.otherApp === 'Tidak Ada' ? (

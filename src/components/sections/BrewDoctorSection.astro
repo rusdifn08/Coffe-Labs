@@ -70,8 +70,8 @@ import { landingData } from '../../data/landingData';
           ))}
         </div>
 
-        <!-- Dynamic Diagnosis Content Cards (High Contrast & Compact) -->
-        <div class="relative min-h-[220px]">
+        <!-- Dynamic Diagnosis Content Cards (Hidden on mobile as requested, visible on lg) -->
+        <div class="hidden lg:block relative min-h-[220px]">
           {landingData.brewDoctorCases.map((c, idx) => (
             <div
               id={`doctor-card-${idx}`}
@@ -137,10 +137,10 @@ import { landingData } from '../../data/landingData';
         </div>
 
         <!-- Bottom Helper Micro-copy -->
-        <div class="flex items-center justify-between text-[11px] text-white/50 px-1 pt-1">
+        <div class="hidden lg:flex items-center justify-between text-[11px] text-white/50 px-1 pt-1">
           <span class="flex items-center gap-1">
             <Icon name="check" size={11} color="#34D399" />
-            <span>Mendukung 29 Model Grinder Manual & Elektrik</span>
+            <span>Mendukung 50+ Model Grinder Manual & Elektrik</span>
           </span>
           <span class="text-[#ECA400] font-semibold">Klik 4 tab di atas untuk simulasi</span>
         </div>
