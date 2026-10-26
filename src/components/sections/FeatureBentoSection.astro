@@ -158,8 +158,8 @@ import { landingData } from '../../data/landingData';
         </div>
       </div>
 
-      <!-- Tile 7: Thermal Receipt Bluetooth (5 cols with real thermal paper mockup) -->
-      <div class="lg:col-span-5 bg-zinc-900 text-white rounded-xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-5 overflow-hidden">
+      <!-- Tile 6: Thermal Receipt Bluetooth (Full 2-cols on mobile, 5 cols on lg) -->
+      <div class="col-span-2 lg:col-span-5 bg-zinc-900 text-white rounded-xl p-4 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-5 overflow-hidden w-full">
         <div class="space-y-2 sm:max-w-[190px] text-center sm:text-left">
           <span class="px-2 py-0.5 rounded bg-amber-400 text-zinc-950 text-[9px] font-extrabold tracking-wider uppercase">
             BAR & CAFÉ
@@ -172,7 +172,7 @@ import { landingData } from '../../data/landingData';
           </p>
         </div>
 
-        <div class="shrink-0 w-full sm:w-auto scale-90 sm:scale-95 origin-center">
+        <div class="shrink-0 w-full sm:w-auto flex justify-center scale-90 sm:scale-95 origin-center">
           <ThermalReceiptSheetMockup />
         </div>
       </div>

@@ -487,8 +487,8 @@ export const landingData = {
       a: "Ya! Anda dapat langsung menggunakan Mode Trial gratis tanpa kartu kredit. Mode Trial memberikan akses ke 10 resep terpopuler dan 10 sesi Guided Brew. Setelah batas 10 seduhan tercapai, sistem akan mengunci timer selama 7 hari lalu meresetnya kembali secara otomatis.",
     },
     {
-      q: "Mengapa akun baru membutuhkan persetujuan (approval) Admin?",
-      a: "Pendaftaran akun penuh ditinjau oleh Admin (rusdifn08) untuk menjaga kualitas komunitas Social Coffee serta mencegah bot spam. Selagi menunggu persetujuan, Anda tetap bisa langsung menyeduh menggunakan Mode Trial.",
+      q: "Apakah aplikasi Coffee Labs tersedia untuk iPhone / iOS?",
+      a: "Tentu saja! Coffee Labs mendukung penuh multi-platform: tersedia secara resmi untuk perangkat iOS (iPhone & iPad) melalui Apple App Store, Android via Google Play Store & unduhan langsung APK, serta Web Browser untuk akses dari laptop atau komputer tanpa instalasi. Semua data dan resep tersinkronisasi otomatis antar-perangkat Anda.",
     },
     {
       q: "Apakah aplikasi Coffee Labs bisa digunakan saat offline (tanpa sinyal internet)?",
@@ -499,20 +499,8 @@ export const landingData = {
       a: "Di dalam aplikasi tersedia opsi 'Universal Manual Grinder' dengan acuan mikron dan referensi klik Comandante C40. Anda juga bisa mengusulkan tipe grinder Anda melalui menu Beri Masukan (Feedback) agar kami tambahkan di pembaruan berikutnya.",
     },
     {
-      q: "Apakah aplikasi Coffee Labs tersedia untuk iPhone / iOS?",
-      a: "Tentu saja! Coffee Labs mendukung penuh multi-platform: tersedia secara resmi untuk perangkat iOS (iPhone & iPad) melalui Apple App Store, Android via Google Play Store & unduhan langsung APK, serta Web Browser untuk akses dari laptop atau komputer tanpa instalasi. Semua data dan resep tersinkronisasi otomatis antar-perangkat Anda.",
-    },
-    {
       q: "Bagaimana cara kerja fitur cetak struk resep Bluetooth?",
       a: "Aplikasi Coffee Labs dapat terhubung langsung ke printer thermal kasir portable Bluetooth 58mm/80mm standar ESC/POS. Anda dapat mencetak detail dosis, gram tuangan per tahap, rasio, dan catatan rasa kopi untuk diberikan kepada pelanggan kedai kopi Anda.",
-    },
-    {
-      q: "Apakah resep di dalam aplikasi dijamin akurat?",
-      a: "Semua resep merupakan metode seduhan resmi yang didokumentasikan dari kompetisi World Brewers Cup, World Barista Championship, serta buku rujukan barista terkemuka seperti Tetsu Kasuya, James Hoffmann, dan Mikael Jasin.",
-    },
-    {
-      q: "Bagaimana cara melakukan pembaruan (update) aplikasi?",
-      a: "Aplikasi dilengkapi teknologi Shorebird Code Push OTA (Over-The-Air). Saat tim pengembang merilis resep atau fitur baru, aplikasi akan memperbarui dirinya sendiri secara langsung di latar belakang tanpa perlu mengunduh ulang APK.",
     },
   ],
 };
