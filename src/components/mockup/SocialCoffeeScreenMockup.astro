@@ -28,12 +28,12 @@ import Icon from '../ui/Icon.astro';
       <span class="px-2 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Resep Kopi</span>
     </div>
 
-    <!-- Social Post Card -->
+    <!-- Social Post Card 1: Bayu Prawiro -->
     <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-2">
       <!-- Author info -->
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-2">
-          <div class="w-7 h-7 rounded-full bg-amber-100 overflow-hidden border border-amber-200">
+          <div class="w-7 h-7 rounded-full bg-amber-100 overflow-hidden border border-amber-200 shrink-0">
             <img src="/images/avatars/portraits/bayu_prawiro.jpg" alt="Bayu" class="w-full h-full object-cover" />
           </div>
           <div>
@@ -50,12 +50,12 @@ import Icon from '../ui/Icon.astro';
       </p>
 
       <!-- Attached Recipe Card with Quick Copy -->
-      <div class="p-2 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] flex items-center justify-between">
-        <div class="min-w-0 pr-2">
+      <div class="p-2 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] flex items-center justify-between gap-1.5">
+        <div class="min-w-0 pr-1">
           <div class="font-bold text-[9.5px] text-[#6B4423] truncate">Puntang Sweet Floral 4:6</div>
           <div class="text-[8px] text-[#8F857D]">Origami • 15g / 225g • 92°C</div>
         </div>
-        <button class="px-2 py-1 bg-[#6B4423] text-white rounded-lg text-[8.5px] font-bold shrink-0 shadow-xs flex items-center gap-1">
+        <button class="px-2 py-1 bg-[#6B4423] text-white rounded-lg text-[8.5px] font-bold shrink-0 shadow-xs flex items-center gap-1 active:scale-95 transition-transform">
           <Icon name="copy" size={9} color="#FFFFFF" />
           <span>Copy Resep</span>
         </button>
@@ -74,6 +74,106 @@ import Icon from '../ui/Icon.astro';
         <span class="flex items-center gap-1">
           <Icon name="coffee" size={10} color="#6B4423" />
           <span>19 Seduhan</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Social Post Card 2: Dody Samsura -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-2">
+      <!-- Author info -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-amber-100 overflow-hidden border border-amber-200 shrink-0">
+            <img src="/images/avatars/portraits/dody_samsura.jpg" alt="Dody" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <div class="font-bold text-[10.5px] text-[#332B25] leading-tight">Dody Samsura</div>
+            <div class="text-[8px] text-[#8F857D]">Head Barista • 4 jam lalu</div>
+          </div>
+        </div>
+        <span class="text-[9px] text-[#1D4ED8] font-bold">#HarioV60</span>
+      </div>
+
+      <!-- Post content -->
+      <p class="text-[9.5px] text-[#332B25] leading-snug">
+        Seduh Kamojang Anaerobic Slow Drip. Rasio 1:15, acidity strawberry winey dan aftertaste brown sugar linger panjang!
+      </p>
+
+      <!-- Attached Recipe Card with Quick Copy -->
+      <div class="p-2 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] flex items-center justify-between gap-1.5">
+        <div class="min-w-0 pr-1">
+          <div class="font-bold text-[9.5px] text-[#6B4423] truncate">Wanoja Kamojang Drip</div>
+          <div class="text-[8px] text-[#8F857D]">Hario V60 • 16g / 240g • 91°C</div>
+        </div>
+        <button class="px-2 py-1 bg-[#6B4423] text-white rounded-lg text-[8.5px] font-bold shrink-0 shadow-xs flex items-center gap-1 active:scale-95 transition-transform">
+          <Icon name="copy" size={9} color="#FFFFFF" />
+          <span>Copy Resep</span>
+        </button>
+      </div>
+
+      <!-- Interaction stats -->
+      <div class="flex items-center justify-between pt-1 border-t border-[#E8DFD8]/60 text-[8.5px] text-[#8F857D] font-medium">
+        <span class="flex items-center gap-1">
+          <Icon name="heart" size={10} color="#E11D48" />
+          <span>64 Suka</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="message-square" size={10} color="#8F857D" />
+          <span>19 Diskusi</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="coffee" size={10} color="#6B4423" />
+          <span>31 Seduhan</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Social Post Card 3: Elysia Tan -->
+    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-2">
+      <!-- Author info -->
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-amber-100 overflow-hidden border border-amber-200 shrink-0">
+            <img src="/images/avatars/portraits/elysia_tan.jpg" alt="Elysia" class="w-full h-full object-cover" />
+          </div>
+          <div>
+            <div class="font-bold text-[10.5px] text-[#332B25] leading-tight">Elysia Tan</div>
+            <div class="text-[8px] text-[#8F857D]">WBC Finalist • 6 jam lalu</div>
+          </div>
+        </div>
+        <span class="text-[9px] text-[#059669] font-bold">#JapaneseIced</span>
+      </div>
+
+      <!-- Post content -->
+      <p class="text-[9.5px] text-[#332B25] leading-snug">
+        Siang terik paling pas Japanese Flash Brew pakai beans Yirgacheffe Washed. Floral melati dan aroma citrus menyegarkan!
+      </p>
+
+      <!-- Attached Recipe Card with Quick Copy -->
+      <div class="p-2 bg-[#F9F6F0] rounded-lg border border-[#E8DFD8] flex items-center justify-between gap-1.5">
+        <div class="min-w-0 pr-1">
+          <div class="font-bold text-[9.5px] text-[#6B4423] truncate">Crisp Summer Flash Brew</div>
+          <div class="text-[8px] text-[#8F857D]">Kalita 155 • 18g / 130g + 110g Es</div>
+        </div>
+        <button class="px-2 py-1 bg-[#6B4423] text-white rounded-lg text-[8.5px] font-bold shrink-0 shadow-xs flex items-center gap-1 active:scale-95 transition-transform">
+          <Icon name="copy" size={9} color="#FFFFFF" />
+          <span>Copy Resep</span>
+        </button>
+      </div>
+
+      <!-- Interaction stats -->
+      <div class="flex items-center justify-between pt-1 border-t border-[#E8DFD8]/60 text-[8.5px] text-[#8F857D] font-medium">
+        <span class="flex items-center gap-1">
+          <Icon name="heart" size={10} color="#E11D48" />
+          <span>89 Suka</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="message-square" size={10} color="#8F857D" />
+          <span>27 Diskusi</span>
+        </span>
+        <span class="flex items-center gap-1">
+          <Icon name="coffee" size={10} color="#6B4423" />
+          <span>45 Seduhan</span>
         </span>
       </div>
     </div>
