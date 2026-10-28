@@ -29,21 +29,21 @@ import { landingData } from '../../data/landingData';
               <line x1="14" x2="14" y1="2" y2="4" />
             </svg>
           </span>
-          <span class="text-[10px] sm:text-[11px] font-extrabold tracking-[0.14em] text-[#5A381E] uppercase">
+          <span class="text-[10px] sm:text-[11px] font-extrabold tracking-[0.14em] text-[#5A381E] uppercase" data-i18n="hero.eyebrow">
             SPECIALTY COFFEE BREWING LABS
           </span>
         </div>
 
         <!-- Main Headline (h1: Ultra-Professional & Compelling) -->
         <h1 class="text-3xl sm:text-5xl lg:text-[54px] font-black text-[#332B25] tracking-tight leading-[1.12]">
-          Seduh Kopi Presisi, <br class="hidden sm:inline" />
-          <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6B4423] via-[#8C542A] to-[#C98C00]">
+          <span data-i18n="hero.title_p1">Seduh Kopi Presisi,</span> <br class="hidden sm:inline" />
+          <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6B4423] via-[#8C542A] to-[#C98C00]" data-i18n="hero.title_p2">
             Standar Barista Juara Dunia.
           </span>
         </h1>
 
         <!-- Subheadline -->
-        <p class="text-sm sm:text-base text-[#6F655D] leading-relaxed max-w-xl mx-auto lg:mx-0">
+        <p class="text-sm sm:text-base text-[#6F655D] leading-relaxed max-w-xl mx-auto lg:mx-0" data-i18n-html="hero.subheadline">
           Bukan sekadar stopwatch biasa. Panduan rasio baku, kalkulasi gramasi otomatis, <strong>200+ resep resmi brewer juara dunia</strong>, dan evaluasi <strong>Brew Doctor</strong> untuk cangkir sempurna tanpa tebakan.
         </p>
 
@@ -54,8 +54,8 @@ import { landingData } from '../../data/landingData';
             class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-7 py-3 rounded-xl bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612] font-black text-xs sm:text-base shadow-md hover:shadow-lg transition-all active:scale-95 text-center cursor-pointer"
             title="Uji coba aplikasi via browser gratis"
           >
-            <span class="sm:hidden">Free Trial</span>
-            <span class="hidden sm:inline">Uji Coba Versi Web Gratis</span>
+            <span class="sm:hidden" data-i18n="hero.cta_trial_mobile">Free Trial</span>
+            <span class="hidden sm:inline" data-i18n="hero.cta_trial_desktop">Uji Coba Versi Web Gratis</span>
             <Icon name="arrow-right" size={13} color="#1E1612" />
           </a>
 
@@ -64,27 +64,10 @@ import { landingData } from '../../data/landingData';
             class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-6 py-3 rounded-xl bg-white hover:bg-[#F9F6F0] text-[#6B4423] border border-[#E8DFD8] font-bold text-xs sm:text-base shadow-xs hover:border-[#6B4423]/40 transition-all text-center cursor-pointer"
           >
             <Icon name="play" size={12} color="#6B4423" />
-            <span>Lihat Aplikasi</span>
+            <span data-i18n="hero.cta_explore">Lihat Aplikasi</span>
           </a>
         </div>
 
-        <!-- Microcopy & Guarantee (Multi-Platform: iOS, Android & Web) -->
-        <div class="flex items-center justify-center lg:justify-start gap-3 text-xs font-semibold text-[#8F857D] pt-1">
-          <span class="flex items-center gap-1">
-            <Icon name="check" size={12} color="#15803D" />
-            <span>Free Plan 10 Resep Gratis</span>
-          </span>
-          <span>•</span>
-          <span class="flex items-center gap-1">
-            <Icon name="check" size={12} color="#15803D" />
-            <span>Tanpa Kartu Kredit</span>
-          </span>
-          <span>•</span>
-          <span class="flex items-center gap-1">
-            <Icon name="check" size={12} color="#15803D" />
-            <span>iOS, Android & Web</span>
-          </span>
-        </div>
 
         <!-- 3 Download Buttons Side-by-Side (Compact, removed App Store & Play Store words) -->
         <div class="pt-1 grid grid-cols-3 gap-1.5 sm:gap-2.5 max-w-sm sm:max-w-md mx-auto lg:mx-0">
@@ -155,7 +138,7 @@ import { landingData } from '../../data/landingData';
               <Icon name="star" size={12} color="#F59E0B" />
               <Icon name="star" size={12} color="#F59E0B" />
             </div>
-            <div class="text-[11px] font-bold text-[#332B25]">Dipercaya 10.000+ sesi seduhan di Indonesia</div>
+            <div class="text-[11px] font-bold text-[#332B25]" data-i18n="hero.proof">Dipercaya 10.000+ sesi seduhan di Indonesia</div>
           </div>
         </div>
 

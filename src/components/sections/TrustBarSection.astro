@@ -12,10 +12,16 @@ import { landingData } from '../../data/landingData';
           <div class="text-3xl sm:text-5xl font-extrabold text-[#6B4423] tracking-tight font-mono">
             {stat.value}
           </div>
-          <div class="text-sm sm:text-base font-bold text-[#332B25]">
+          <div
+            class="text-sm sm:text-base font-bold text-[#332B25]"
+            data-i18n={i === 0 ? 'trust.recipes_num' : i === 1 ? 'trust.baristas_num' : i === 2 ? 'trust.grinders_num' : 'trust.sensory_num'}
+          >
             {stat.label}
           </div>
-          <div class="text-xs text-[#8F857D] font-medium max-w-[200px] mx-auto">
+          <div
+            class="text-xs text-[#8F857D] font-medium max-w-[200px] mx-auto"
+            data-i18n={i === 0 ? 'trust.recipes_sub' : i === 1 ? 'trust.baristas_sub' : i === 2 ? 'trust.grinders_sub' : 'trust.sensory_sub'}
+          >
             {stat.sub}
           </div>
         </div>

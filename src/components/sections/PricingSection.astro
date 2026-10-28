@@ -14,14 +14,14 @@ import { landingData } from '../../data/landingData';
     <div class="text-center max-w-3xl mx-auto space-y-2.5">
       <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/30 text-[#D4AF37] text-xs font-extrabold uppercase tracking-widest">
         <Icon name="tag" size={13} color="#D4AF37" />
-        <span>INVESTASI RASA KOPI ANDA</span>
+        <span data-i18n="pricing.badge">INVESTASI RASA KOPI ANDA</span>
       </div>
 
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-[#F9F6F0] tracking-tight">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-[#F9F6F0] tracking-tight" data-i18n="pricing.title">
         Pilihan paket fleksibel, mulai dari gratis selamanya.
       </h2>
 
-      <p class="hidden sm:block text-xs sm:text-base text-white/70">
+      <p class="hidden sm:block text-xs sm:text-base text-white/70" data-i18n="pricing.desc">
         Nikmati seluruh 200+ resep juara dunia dan diagnosis Brew Doctor dengan lisensi seumur hidup (Lifetime).
       </p>
     </div>
@@ -53,7 +53,7 @@ import { landingData } from '../../data/landingData';
             <div>
               <!-- Header Plan -->
               <div class="flex items-center justify-between mb-1.5">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-[#D4AF37]" data-i18n={idx === 0 ? 'pricing.free_badge' : idx === 1 ? 'pricing.pro_badge' : 'pricing.cafe_badge'}>
                   {plan.badge}
                 </span>
                 <span class="text-[10px] font-mono text-white/40 md:hidden">
@@ -61,8 +61,8 @@ import { landingData } from '../../data/landingData';
                 </span>
               </div>
 
-              <h3 class="text-xl sm:text-2xl font-extrabold text-white">{plan.name}</h3>
-              <p class="text-xs text-white/60 mt-1 leading-relaxed min-h-[32px]">
+              <h3 class="text-xl sm:text-2xl font-extrabold text-white" data-i18n={idx === 0 ? 'pricing.free_name' : idx === 1 ? 'pricing.pro_name' : 'pricing.cafe_name'}>{plan.name}</h3>
+              <p class="text-xs text-white/60 mt-1 leading-relaxed min-h-[32px]" data-i18n={idx === 0 ? 'pricing.free_desc' : idx === 1 ? 'pricing.pro_desc' : 'pricing.cafe_desc'}>
                 {plan.desc}
               </p>
 
@@ -74,7 +74,7 @@ import { landingData } from '../../data/landingData';
                       {plan.originalPrice}
                     </span>
                     {plan.discountBadge && (
-                      <span class="px-2 py-0.5 rounded text-[10px] font-black bg-[#ECA400]/20 text-[#ECA400] border border-[#ECA400]/40">
+                      <span class="px-2 py-0.5 rounded text-[10px] font-black bg-[#ECA400]/20 text-[#ECA400] border border-[#ECA400]/40" data-i18n={idx === 1 ? 'pricing.pro_discount' : 'pricing.cafe_discount'}>
                         {plan.discountBadge}
                       </span>
                     )}
@@ -91,7 +91,7 @@ import { landingData } from '../../data/landingData';
                   <span class="text-3xl sm:text-4xl font-extrabold text-white font-mono">
                     {plan.price}
                   </span>
-                  <span class="text-xs text-white/60 font-semibold">
+                  <span class="text-xs text-white/60 font-semibold" data-i18n={idx === 0 ? 'pricing.free_period' : idx === 1 ? 'pricing.pro_period' : 'pricing.cafe_period'}>
                     {plan.period}
                   </span>
                 </div>
@@ -123,6 +123,7 @@ import { landingData } from '../../data/landingData';
                     ? 'bg-[#ECA400] hover:bg-[#C98C00] text-[#1E1612]'
                     : 'bg-white/10 hover:bg-white/20 text-white border border-white/15'
                 }`}
+                data-i18n={idx === 0 ? 'pricing.free_cta' : idx === 1 ? 'pricing.pro_cta' : 'pricing.cafe_cta'}
               >
                 {plan.ctaText}
               </a>
@@ -140,7 +141,7 @@ import { landingData } from '../../data/landingData';
           aria-label="Paket Sebelumnya"
         >
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
-          <span>Sebelumnya</span>
+          <span data-i18n="pricing.btn_prev">Sebelumnya</span>
         </button>
 
         <div class="flex items-center gap-1.5" id="pricing-dots">
@@ -154,7 +155,7 @@ import { landingData } from '../../data/landingData';
           class="px-3 py-1.5 rounded-lg bg-[#2A1F19] border border-white/15 text-xs font-bold text-[#ECA400] flex items-center gap-1 shadow-xs hover:bg-[#3A2B22] active:scale-95 transition-all cursor-pointer"
           aria-label="Paket Berikutnya"
         >
-          <span>Berikutnya</span>
+          <span data-i18n="pricing.btn_next">Berikutnya</span>
           <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
@@ -164,15 +165,15 @@ import { landingData } from '../../data/landingData';
     <div class="pt-2 border-t border-white/10 text-center flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-white/60">
       <span class="inline-flex items-center gap-1.5">
         <Icon name="lock" size={13} color="#D4AF37" />
-        <span>Sekali Bayar • Lisensi Lifetime</span>
+        <span data-i18n="pricing.guarantee_lifetime">Sekali Bayar • Lisensi Lifetime</span>
       </span>
       <span class="inline-flex items-center gap-1.5">
         <Icon name="refresh" size={13} color="#D4AF37" />
-        <span>Update Resep Gratis Selamanya</span>
+        <span data-i18n="pricing.guarantee_updates">Update Resep Gratis Selamanya</span>
       </span>
       <span class="inline-flex items-center gap-1.5">
         <Icon name="message-square" size={13} color="#D4AF37" />
-        <span>Bantuan WhatsApp Barista</span>
+        <span data-i18n="pricing.guarantee_support">Bantuan WhatsApp Barista</span>
       </span>
     </div>
 

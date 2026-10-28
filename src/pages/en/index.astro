@@ -1,0 +1,112 @@
+---
+import '../../styles/global.css';
+import Navbar from '../../components/sections/Navbar.astro';
+import HeroSection from '../../components/sections/HeroSection.astro';
+import TrustBarSection from '../../components/sections/TrustBarSection.astro';
+import ProblemSolutionSection from '../../components/sections/ProblemSolutionSection.astro';
+import FeatureBentoSection from '../../components/sections/FeatureBentoSection.astro';
+import AppTourSection from '../../components/sections/AppTourSection.astro';
+import GuidedBrewSection from '../../components/sections/GuidedBrewSection.astro';
+import BrewDoctorSection from '../../components/sections/BrewDoctorSection.astro';
+import ToolkitSection from '../../components/sections/ToolkitSection.astro';
+import RecipeLibrarySection from '../../components/sections/RecipeLibrarySection.astro';
+import CommunitySection from '../../components/sections/CommunitySection.astro';
+import ComparisonSection from '../../components/sections/ComparisonSection.astro';
+import PricingSection from '../../components/sections/PricingSection.astro';
+import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import FinalCtaSection from '../../components/sections/FinalCtaSection.astro';
+import FooterSection from '../../components/sections/FooterSection.astro';
+
+const pageTitle = "Coffee Labs — Specialty Coffee Brewing Labs & Precision Brew Guide";
+const pageDesc = "200+ brew recipes from 100+ world champions, Guided Brew precision timer, Brew Doctor sensory diagnosis, SCA cupping & 50+ roastery catalog. Multi-platform for iOS, Android & Web.";
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{pageTitle}</title>
+    <meta name="title" content={pageTitle} />
+    <meta name="description" content={pageDesc} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/icon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://coffeelabs.app/en" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDesc} />
+    <meta property="og:image" content="/icon.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={pageTitle} />
+    <meta property="twitter:description" content={pageDesc} />
+    <meta property="twitter:image" content="/icon.png" />
+  </head>
+  
+  <body class="bg-[#F9F6F0] text-[#332B25] antialiased selection:bg-[#ECA400] selection:text-[#1E1612]">
+    <!-- 0. Sticky Navbar -->
+    <Navbar />
+
+    <main id="main-content">
+      <!-- 1. Hero Section with Real Phone Mockup -->
+      <HeroSection />
+
+      <!-- 2. Trust Bar & Stats Strip -->
+      <TrustBarSection />
+
+      <!-- 3. Problem vs Solution (Compact & Professional) -->
+      <ProblemSolutionSection />
+
+      <!-- 4. Feature Bento Grid -->
+      <FeatureBentoSection />
+
+      <!-- 5. Interactive App Tour -->
+      <AppTourSection />
+
+      <!-- 6. Guided Brew Deep-Dive -->
+      <GuidedBrewSection />
+
+      <!-- 7. Brew Doctor & Sensory Evaluation -->
+      <BrewDoctorSection />
+
+      <!-- 8. Barista Toolkit -->
+      <ToolkitSection />
+
+      <!-- 9. Recipe Library -->
+      <RecipeLibrarySection />
+
+      <!-- 10. Social Coffee & Basecamp -->
+      <CommunitySection />
+
+      <!-- 11. Comparison Table -->
+      <ComparisonSection />
+
+      <!-- 12. Pricing Section -->
+      <PricingSection />
+
+      <!-- 14. Testimonials -->
+      <TestimonialsSection />
+
+      <!-- 15. FAQ Accordion -->
+      <FaqSection />
+
+      <!-- 16. Final CTA -->
+      <FinalCtaSection />
+    </main>
+
+    <!-- 17. Footer -->
+    <FooterSection />
+
+    <!-- Ensure English is initialized immediately for /en -->
+    <script>
+      import { setLanguage } from '../../scripts/i18n';
+      setLanguage('en');
+    </script>
+  </body>
+</html>
