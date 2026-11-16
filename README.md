@@ -1,7 +1,7 @@
 # Coffee Labs — Specialty Coffee Brewing Labs
 
 <div align="center">
-  <img src="./public/icon.png" alt="Coffee Labs Logo" width="100" style="border-radius: 24px;" />
+  <img src="./public/icon.png" alt="Coffee Labs Logo" width="100" />
   <h3>Master Your Brew — Panduan Seduh Kopi Manual Presisi</h3>
   <p>159+ Resep Barista Dunia • Guided Timer Interaktif • Koreksi Sensori Brew Doctor • Multi-Platform</p>
 
