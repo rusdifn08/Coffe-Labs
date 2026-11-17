@@ -1,5 +1,6 @@
 ---
 import Icon from '../ui/Icon.astro';
+import MobileBottomNav from './MobileBottomNav.astro';
 
 // Exact 4 recipes matching the mobile screenshot (Image 1)
 const recipes = [
@@ -117,7 +118,7 @@ const recipes = [
       <div class="flex items-center justify-between pt-0.5">
         <!-- Pill with count -->
         <span class="px-2.5 py-0.5 rounded-full bg-[#F2ECE4] border border-[#E5DDD5] text-[#6B4423] font-bold text-[10px]">
-          162
+          500+
         </span>
 
         <!-- Title -->
@@ -246,30 +247,7 @@ const recipes = [
     </div>
 
     <!-- Bottom Navigation Bar (Recipes tab highlighted in brown!) -->
-    <div class="border-t border-[#E8DFD8] bg-white px-3 py-1.5 grid grid-cols-5 items-center text-[9px] text-[#8F857D] shrink-0 z-30">
-      <div class="flex flex-col items-center">
-        <Icon name="home" size={13} color="#8F857D" />
-        <span>Home</span>
-      </div>
-      <div class="flex flex-col items-center text-[#6B4423] font-bold">
-        <Icon name="book" size={13} color="#6B4423" />
-        <span>Recipes</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
-          <Icon name="timer" size={13} color="#FFFFFF" />
-        </div>
-        <span class="mt-0.5">Brew</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <Icon name="wrench" size={13} color="#8F857D" />
-        <span>Toolkit</span>
-      </div>
-      <div class="flex flex-col items-center">
-        <Icon name="user" size={13} color="#8F857D" />
-        <span>Profile</span>
-      </div>
-    </div>
+    <MobileBottomNav activeTab="recipes" />
 
   </div>
 

@@ -364,16 +364,16 @@ export const translations: TranslationDict = {
 
   // TOOLKIT
   "toolkit.badge": {
-    id: "PERALATAN BARISTA",
-    en: "BARISTA TOOLKIT",
+    id: "PROFESSIONAL PRO SUITE • 4 KATEGORI & 21 FITUR",
+    en: "PROFESSIONAL PRO SUITE • 4 CATEGORIES & 21 TOOLS",
   },
   "toolkit.title": {
     id: "Peralatan presisi barista, selalu siap di saku Anda.",
     en: "Precision barista tools, always ready in your pocket.",
   },
   "toolkit.desc": {
-    id: "Dirancang khusus untuk home brewer, barista slow bar, hingga profesional coffee evaluator.",
-    en: "Designed specifically for home brewers, slow bar baristas, and coffee evaluators.",
+    id: "Sama persis seperti di aplikasi mobile: 21 instrumen presisi terbagi dalam Learning Brew, Lab Ekstraksi & AI, Sains Kopi & Kesegaran, serta Ekosistem & Komunitas.",
+    en: "Identical to the mobile app: 21 precision instruments organized into Learning Brew, Extraction & AI Lab, Coffee Science & Freshness, and Ecosystem & Community.",
   },
 
   // RECIPES

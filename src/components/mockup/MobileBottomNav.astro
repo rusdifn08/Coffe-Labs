@@ -1,0 +1,106 @@
+---
+import Icon from '../ui/Icon.astro';
+
+interface Props {
+  activeTab: 'home' | 'recipes' | 'brew' | 'toolkit' | 'profile';
+}
+
+const { activeTab } = Astro.props;
+---
+
+<div class="relative h-[50px] bg-white border-t border-[#EDE5DE] px-2 flex items-center justify-between text-[8px] select-none shrink-0 z-30 shadow-[0_-2px_10px_rgba(51,43,37,0.03)]">
+  <!-- Home -->
+  <button
+    type="button"
+    data-tour-nav="home"
+    class={`flex-1 flex flex-col items-center justify-center py-1 cursor-pointer transition-colors ${
+      activeTab === 'home' ? 'text-[#6B4423] font-bold' : 'text-[#8F857D] font-medium hover:text-[#332B25]'
+    }`}
+  >
+    <div class={`px-2 py-0.5 rounded-lg transition-colors ${activeTab === 'home' ? 'bg-[#6B4423]/10' : ''}`}>
+      <Icon name="home" size={14} color={activeTab === 'home' ? '#6B4423' : '#8F857D'} />
+    </div>
+    <span class="mt-0.5 leading-none">Home</span>
+  </button>
+
+  <!-- Recipes -->
+  <button
+    type="button"
+    data-tour-nav="recipes"
+    class={`flex-1 flex flex-col items-center justify-center py-1 cursor-pointer transition-colors ${
+      activeTab === 'recipes' ? 'text-[#6B4423] font-bold' : 'text-[#8F857D] font-medium hover:text-[#332B25]'
+    }`}
+  >
+    <div class={`px-2 py-0.5 rounded-lg transition-colors ${activeTab === 'recipes' ? 'bg-[#6B4423]/10' : ''}`}>
+      <Icon name="book" size={14} color={activeTab === 'recipes' ? '#6B4423' : '#8F857D'} />
+    </div>
+    <span class="mt-0.5 leading-none">Recipes</span>
+  </button>
+
+  <!-- Elevated Center Brew Button (Exact match with MainLayout _buildElevatedBrewButton & BrewDripperGlassIcon) -->
+  <div class="w-14 flex flex-col items-center justify-end pb-1 relative">
+    <button
+      type="button"
+      data-tour-nav="brew"
+      class="group flex flex-col items-center cursor-pointer focus:outline-none"
+      title="Mulai Guided Brew"
+    >
+      <div
+        class={`w-10 h-10 -mt-5 rounded-full flex items-center justify-center border-[3px] border-white transition-transform group-hover:scale-105 ${
+          activeTab === 'brew'
+            ? 'bg-gradient-to-br from-[#C67C4E] to-[#E5A65D] shadow-[0_4px_12px_rgba(198,124,78,0.4)]'
+            : 'bg-gradient-to-br from-[#6B3A19] to-[#8D4925] shadow-[0_4px_10px_rgba(107,58,25,0.32)]'
+        }`}
+      >
+        <!-- Exact 1:1 SVG conversion of BrewDripperGlassIcon -->
+        <svg class="w-5 h-5" viewBox="0 0 100 100" fill="none">
+          <!-- Top Rim & V60 Cone -->
+          <path d="M18 13 H82" stroke="white" stroke-width="7.5" stroke-linecap="round" />
+          <path d="M22 13 L46 43 H54 L78 13" stroke="white" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M32 44 H68" stroke="white" stroke-width="7.5" stroke-linecap="round" />
+          <!-- 3 Spiral Ribs -->
+          <path d="M34 18 C38 26 44 34 47 40" stroke="white" stroke-opacity="0.85" stroke-width="5" stroke-linecap="round" />
+          <line x1="50" y1="17" x2="50" y2="35" stroke="white" stroke-opacity="0.85" stroke-width="5" stroke-linecap="round" />
+          <path d="M66 18 C62 26 56 34 53 40" stroke="white" stroke-opacity="0.85" stroke-width="5" stroke-linecap="round" />
+          <!-- Coffee Drop -->
+          <path d="M50 48 C43 53 43 58 50 58 C57 58 57 53 50 48 Z" fill="white" />
+          <!-- Glass Server & Handle -->
+          <path d="M34 65 H66" stroke="white" stroke-width="7.5" stroke-linecap="round" />
+          <path d="M36 65 L28 85 C28 92 72 92 72 85 L64 65" stroke="white" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M67 69 H76 C81 69 81 82 75 82 H70" stroke="white" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <span class={`mt-0.5 leading-none ${activeTab === 'brew' ? 'text-[#C67C4E] font-extrabold' : 'text-[#8F857D] font-semibold'}`}>
+        Brew
+      </span>
+    </button>
+  </div>
+
+  <!-- Toolkit -->
+  <button
+    type="button"
+    data-tour-nav="toolkit"
+    class={`flex-1 flex flex-col items-center justify-center py-1 cursor-pointer transition-colors ${
+      activeTab === 'toolkit' ? 'text-[#6B4423] font-bold' : 'text-[#8F857D] font-medium hover:text-[#332B25]'
+    }`}
+  >
+    <div class={`px-2 py-0.5 rounded-lg transition-colors ${activeTab === 'toolkit' ? 'bg-[#6B4423]/10' : ''}`}>
+      <Icon name="wrench" size={14} color={activeTab === 'toolkit' ? '#6B4423' : '#8F857D'} />
+    </div>
+    <span class="mt-0.5 leading-none">Toolkit</span>
+  </button>
+
+  <!-- Profile -->
+  <button
+    type="button"
+    data-tour-nav="profile"
+    class={`flex-1 flex flex-col items-center justify-center py-1 cursor-pointer transition-colors ${
+      activeTab === 'profile' ? 'text-[#6B4423] font-bold' : 'text-[#8F857D] font-medium hover:text-[#332B25]'
+    }`}
+  >
+    <div class={`px-2 py-0.5 rounded-lg transition-colors ${activeTab === 'profile' ? 'bg-[#6B4423]/10' : ''}`}>
+      <Icon name="user" size={14} color={activeTab === 'profile' ? '#6B4423' : '#8F857D'} />
+    </div>
+    <span class="mt-0.5 leading-none">Profile</span>
+  </button>
+</div>

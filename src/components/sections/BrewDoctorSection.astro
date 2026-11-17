@@ -168,9 +168,11 @@ import { landingData } from '../../data/landingData';
       acid: '3.5 / 5.0', acidPct: '70%',
       bitter: '1.8 / 5.0', bitterPct: '36%',
       body: '4.0 / 5.0', bodyPct: '80%',
+      eyTds: 'EY 20.1% • TDS 1.38%',
+      dotLeft: '50%', dotTop: '50%', dotColor: '#2E7D32',
       title: 'Sweet Spot! Ekstraksi Seimbang',
       desc: 'Keseimbangan rasa manis dan asam buah sangat harmonis. Aftertaste bersih dan aroma seduhan terekstraksi maksimal.',
-      boxClass: 'p-2.5 rounded-xl bg-[#E8F5E9] border border-emerald-300 text-emerald-950 shadow-xs',
+      boxClass: 'p-2 rounded-xl bg-[#E8F5E9] border border-emerald-300 text-emerald-950 shadow-2xs',
       titleColor: 'text-emerald-800',
       rx: 'Pertahankan settingan 22 klik Comandante C40 dan suhu 92°C untuk biji sangrai ini. Simpan ke Jurnal Brew untuk referensi seduh esok hari.'
     },
@@ -179,9 +181,11 @@ import { landingData } from '../../data/landingData';
       acid: '4.8 / 5.0', acidPct: '96%',
       bitter: '1.2 / 5.0', bitterPct: '24%',
       body: '2.2 / 5.0', bodyPct: '44%',
+      eyTds: 'EY 16.4% • TDS 1.24%',
+      dotLeft: '24%', dotTop: '58%', dotColor: '#EA580C',
       title: 'Under-Extracted (Asam Tajam)',
       desc: 'Air mengalir terlalu cepat melewati bubuk kopi kasar, senyawa manis gula belum sempat larut sempurna.',
-      boxClass: 'p-2.5 rounded-xl bg-orange-50 border border-orange-300 text-orange-950 shadow-xs',
+      boxClass: 'p-2 rounded-xl bg-orange-50 border border-orange-300 text-orange-950 shadow-2xs',
       titleColor: 'text-orange-800',
       rx: 'Putar grinder 1-2 klik lebih halus (finer), naikkan suhu +2°C (misal 91°C → 93°C), dan tambah waktu blooming +10s.'
     },
@@ -190,9 +194,11 @@ import { landingData } from '../../data/landingData';
       acid: '1.5 / 5.0', acidPct: '30%',
       bitter: '4.9 / 5.0', bitterPct: '98%',
       body: '4.5 / 5.0', bodyPct: '90%',
+      eyTds: 'EY 23.6% • TDS 1.52%',
+      dotLeft: '78%', dotTop: '34%', dotColor: '#DC2626',
       title: 'Over-Extracted (Pahit Sepat)',
       desc: 'Ekstraksi berlebih mengekstrak zat tanin pahit berat dari bubuk kopi halus. Tenggorokan terasa kering.',
-      boxClass: 'p-2.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-950 shadow-xs',
+      boxClass: 'p-2 rounded-xl bg-rose-50 border border-rose-300 text-rose-950 shadow-2xs',
       titleColor: 'text-rose-800',
       rx: 'Putar grinder 1-2 klik lebih kasar (coarser), turunkan suhu -2°C (misal 94°C → 92°C), dan tuang pelan tanpa agitasi keras.'
     },
@@ -201,9 +207,11 @@ import { landingData } from '../../data/landingData';
       acid: '2.0 / 5.0', acidPct: '40%',
       bitter: '1.5 / 5.0', bitterPct: '30%',
       body: '1.4 / 5.0', bodyPct: '28%',
+      eyTds: 'EY 19.2% • TDS 1.08%',
+      dotLeft: '48%', dotTop: '78%', dotColor: '#0284C7',
       title: 'Under-Dosed (Encer / Kurang Body)',
       desc: 'Air terlalu banyak dibanding massa kopi atau kontak air terlalu singkat, tekstur terasa hambar seperti air mineral.',
-      boxClass: 'p-2.5 rounded-xl bg-sky-50 border border-sky-300 text-sky-950 shadow-xs',
+      boxClass: 'p-2 rounded-xl bg-sky-50 border border-sky-300 text-sky-950 shadow-2xs',
       titleColor: 'text-sky-800',
       rx: 'Perkecil rasio seduh (misal dari 1:16 menjadi 1:14.5), tambah dosis bubuk kopi +1.5 gram, tuang dengan debit air lebih stabil.'
     }
@@ -264,11 +272,20 @@ import { landingData } from '../../data/landingData';
 
         if (diagBox) diagBox.className = c.boxClass;
         if (diagTitle) {
-          diagTitle.className = `flex items-center gap-1.5 font-bold text-[10.5px] ${c.titleColor} doc-diag-title`;
+          diagTitle.className = `flex items-center gap-1.5 font-bold text-[10px] ${c.titleColor} doc-diag-title`;
           diagTitle.innerHTML = `<span>${c.title}</span>`;
         }
         if (diagDesc) diagDesc.textContent = c.desc;
         if (rxText) rxText.textContent = c.rx;
+
+        const eyTds = mockup.querySelector('.doc-ey-tds');
+        const compassDot = mockup.querySelector('.doc-compass-dot') as HTMLElement;
+        if (eyTds) eyTds.textContent = c.eyTds;
+        if (compassDot) {
+          compassDot.style.left = c.dotLeft;
+          compassDot.style.top = c.dotTop;
+          compassDot.style.backgroundColor = c.dotColor;
+        }
       }
     });
   });

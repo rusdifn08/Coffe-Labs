@@ -2,57 +2,387 @@
 import Icon from '../ui/Icon.astro';
 import PhoneMockup from '../mockup/PhoneMockup.astro';
 import ToolkitScreenMockup from '../mockup/ToolkitScreenMockup.astro';
-import { landingData } from '../../data/landingData';
+
+const toolkitCategories = [
+  { id: 'featured', label: '★ Unggulan (9)', mockupTarget: 'learning' },
+  { id: 'extraction', label: 'Lab Ekstraksi & AI (6)', mockupTarget: 'extraction' },
+  { id: 'learning', label: 'Learning Brew (4)', mockupTarget: 'learning' },
+  { id: 'science', label: 'Sains Kopi (4)', mockupTarget: 'science' },
+  { id: 'ecosystem', label: 'Ekosistem & Komunitas (7)', mockupTarget: 'ecosystem' },
+];
+
+const allToolkitCards = [
+  // Learning Brew (4)
+  {
+    title: 'Game Brew V60',
+    subtitle: 'Simulasi tuang ketel V60 & cerita',
+    desc: 'Latih kestabilan flow-rate tuangan ketel gooseneck 60fps dengan misi cerita barista.',
+    category: 'learning',
+    catBadge: 'Learning Brew',
+    featured: true,
+    icon: 'play',
+    primaryColor: '#7B3F00',
+    gradient: 'from-[#FFF3E0] to-[#FFE0B2]',
+  },
+  {
+    title: 'Pustaka E-Book DRM',
+    subtitle: '5 buku kopi terenkripsi AES-256',
+    desc: 'Koleksi literatur sains ekstraksi, water chemistry, dan panduan roasting eksklusif.',
+    category: 'learning',
+    catBadge: 'Learning Brew',
+    featured: false,
+    icon: 'book',
+    primaryColor: '#4E342E',
+    gradient: 'from-[#EFEBE9] to-[#D7CCC8]',
+  },
+  {
+    title: 'Akademi Barista LMS',
+    subtitle: 'Kursus video HLS & kuis 100-bit',
+    desc: 'Kurikulum video streaming adaptif dengan ujian sertifikasi kompetensi seduh manual.',
+    category: 'learning',
+    catBadge: 'Learning Brew',
+    featured: true,
+    icon: 'award',
+    primaryColor: '#0369A1',
+    gradient: 'from-[#E0F2FE] to-[#BAE6FD]',
+  },
+  {
+    title: 'Brew Doctor & Kompas',
+    subtitle: 'Diagnosa asam, pahit & kompas SCA',
+    desc: 'Plot 2D Extraction Yield vs TDS secara visual dan kalibrasi otomatis resep berikutnya.',
+    category: 'learning',
+    catBadge: 'Learning Brew',
+    featured: true,
+    icon: 'stethoscope',
+    primaryColor: '#2E7D32',
+    gradient: 'from-[#E8F5E9] to-[#C8E6C9]',
+  },
+
+  // Lab Ekstraksi & AI (6)
+  {
+    title: 'Smart Brew AI',
+    subtitle: 'Kalkulator Smart Brew & profil rasa',
+    desc: 'Rekomendasi suhu, rasio, dan kurva tuangan otomatis dari 230+ profil biji kopi roastery.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: true,
+    icon: 'sparkles',
+    primaryColor: '#6B4423',
+    gradient: 'from-[#FAF3EC] to-[#F3E7DC]',
+  },
+  {
+    title: 'Studio AI (Bean Vision)',
+    subtitle: 'Latih AI kenali kemasan kopi baru',
+    desc: 'Deteksi bungkus kopi via kamera (MobileNetV4 Hybrid & OCR) untuk instan dial-in.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: true,
+    icon: 'target',
+    primaryColor: '#D4AF37',
+    gradient: 'from-[#FFF8E1] to-[#FFECB3]',
+  },
+  {
+    title: 'Asisten Dial-In',
+    subtitle: 'Solusi asam, pahit & channeling',
+    desc: 'Koreksi cepat klik grinder, suhu air, dan agitasi untuk filter maupun espresso.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: false,
+    icon: 'sliders',
+    primaryColor: '#C2185B',
+    gradient: 'from-[#FCE4EC] to-[#F8BBD0]',
+  },
+  {
+    title: 'Matriks 100+ Grinder',
+    subtitle: 'Konversi klik C40, 1Zpresso, Ode',
+    desc: 'Konversi presisi klik & mikron real-time antar 100+ model grinder manual dan elektrik.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: true,
+    icon: 'gear',
+    primaryColor: '#4527A0',
+    gradient: 'from-[#EDE7F6] to-[#D1C4E9]',
+  },
+  {
+    title: 'Kalkulator 4:6 Kasuya',
+    subtitle: 'Metode Kasuya 40% rasa & 60% body',
+    desc: 'Kustomisasi keseimbangan manis-asam (40% awal) dan ketebalan body (60% akhir) otomatis.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: false,
+    icon: 'sliders',
+    primaryColor: '#E65100',
+    gradient: 'from-[#FFF3E0] to-[#FFE0B2]',
+  },
+  {
+    title: 'Ekstraksi & TDS SCA',
+    subtitle: 'Kalkulator EY (%) & Golden Cup SCA',
+    desc: 'Hitung persentase Extraction Yield (18–22%) dari refraktometer TDS dan rasio seduh.',
+    category: 'extraction',
+    catBadge: 'Lab AI',
+    featured: true,
+    icon: 'target',
+    primaryColor: '#2E7D32',
+    gradient: 'from-[#E8F5E9] to-[#C8E6C9]',
+  },
+
+  // Sains Kopi & Kesegaran (4)
+  {
+    title: 'Kimia Air Seduh',
+    subtitle: 'Resep mineral air SCA & Lotus',
+    desc: 'Racik mineral GH/KH (Magnesium, Kalsium, Bikarbonat) standar SCA, Rao & Lotus Drops.',
+    category: 'science',
+    catBadge: 'Sains Kopi',
+    featured: true,
+    icon: 'droplet',
+    primaryColor: '#00838F',
+    gradient: 'from-[#E0F7FA] to-[#B2EBF2]',
+  },
+  {
+    title: 'Kesegaran Biji (Degassing)',
+    subtitle: 'Kurva degassing CO2 & puncak rasa',
+    desc: 'Pantau hari pasca-sangrai (resting date) agar menyeduh tepat di fase peak flavor.',
+    category: 'science',
+    catBadge: 'Sains Kopi',
+    featured: false,
+    icon: 'flame',
+    primaryColor: '#D84315',
+    gradient: 'from-[#FBE9E7] to-[#FFCCBC]',
+  },
+  {
+    title: 'Smart Scale Bluetooth',
+    subtitle: 'Timbangan BLE & grafik flow-rate',
+    desc: 'Koneksi langsung ke timbangan pintar Bluetooth untuk telemetri gramasi & debit air.',
+    category: 'science',
+    catBadge: 'Sains Kopi',
+    featured: false,
+    icon: 'timer',
+    primaryColor: '#00796B',
+    gradient: 'from-[#E0F2F1] to-[#B2DFDB]',
+  },
+  {
+    title: 'Cupping Flavour SCA',
+    subtitle: '10 parameter & 110 atribut wheel',
+    desc: 'Form cupping resmi 10 parameter SCA dilengkapi roda rasa 110 atribut standar dunia.',
+    category: 'science',
+    catBadge: 'Sains Kopi',
+    featured: true,
+    icon: 'disc',
+    primaryColor: '#F57C00',
+    gradient: 'from-[#FFF8E1] to-[#FFECB3]',
+  },
+
+  // Ekosistem & Komunitas (7)
+  {
+    title: 'Marketplace Kopi',
+    subtitle: 'Katalog 50+ roastery & checkout',
+    desc: 'Beli biji kopi spesialti segar langsung dari kurasi roastery terbaik seluruh Indonesia.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'store',
+    primaryColor: '#8D4925',
+    gradient: 'from-[#EFEBE9] to-[#D7CCC8]',
+  },
+  {
+    title: 'Coffee Roastery',
+    subtitle: 'Katalog 50 roastery & lineup kopi',
+    desc: 'Jelajahi profil sangrai, origin, proses pascapanen, dan harga per 100g/200g.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'flame',
+    primaryColor: '#5D4037',
+    gradient: 'from-[#EFEBE9] to-[#D7CCC8]',
+  },
+  {
+    title: 'Beans Radar GPS',
+    subtitle: 'Cari biji kopi terdekat via lokasi',
+    desc: 'Peta interaktif untuk menemukan coffee shop & roastery terdekat beserta rute navigasi.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'radar',
+    primaryColor: '#1565C0',
+    gradient: 'from-[#E3F2FD] to-[#BBDEFB]',
+  },
+  {
+    title: 'Jurnal Brew',
+    subtitle: 'Catatan ekstraksi & log seduh',
+    desc: 'Rekam histori seduhan, klik grinder, suhu, dan rating sensori setiap cangkir.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'book',
+    primaryColor: '#303F9F',
+    gradient: 'from-[#E8EAF6] to-[#C5CAE9]',
+  },
+  {
+    title: 'Social Coffee',
+    subtitle: 'Komunitas barista & diskusi resep',
+    desc: 'Feed ala Threads untuk berbagi resep, diskusi beans, chat barista, dan 1-klik Copy Resep.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'users',
+    primaryColor: '#AD1457',
+    gradient: 'from-[#FCE4EC] to-[#F8BBD0]',
+  },
+  {
+    title: 'Favorite',
+    subtitle: 'Koleksi resep seduh favorit Anda',
+    desc: 'Simpan resep juara dunia andalan Anda agar siap diseduh kapan saja dalam satu ketukan.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'heart',
+    primaryColor: '#D32F2F',
+    gradient: 'from-[#FFEBEE] to-[#FFCDD2]',
+  },
+  {
+    title: 'Live Brew QR',
+    subtitle: 'Lacak seduhan barista live via QR',
+    desc: 'Tamu kafe dapat memindai QR untuk melihat kurva seduhan barista secara real-time.',
+    category: 'ecosystem',
+    catBadge: 'Ekosistem',
+    featured: false,
+    icon: 'sparkles',
+    primaryColor: '#8D4E00',
+    gradient: 'from-[#FFF8E1] to-[#FFE082]',
+  },
+];
 ---
 
-<section id="toolkit" class="py-8 sm:py-12 bg-[#F9F6F0] border-t border-[#E8DFD8]">
+<section id="toolkit" class="py-10 sm:py-14 bg-[#F9F6F0] border-t border-[#E8DFD8]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- Section Header -->
-    <div class="text-center max-w-2xl mx-auto space-y-1.5 mb-6 sm:mb-8">
-      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#6B4423]/10 text-[#6B4423] text-[11px] font-bold uppercase tracking-wider">
+    <div class="text-center max-w-3xl mx-auto space-y-2 mb-6 sm:mb-8">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#6B4423]/10 text-[#6B4423] text-[11px] font-extrabold uppercase tracking-wider">
         <Icon name="wrench" size={12} color="#6B4423" />
-        <span data-i18n="toolkit.badge">PROFESSIONAL SUITE</span>
+        <span data-i18n="toolkit.badge">PROFESSIONAL PRO SUITE • 4 KATEGORI & 21 FITUR</span>
       </div>
-      <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#332B25] tracking-tight" data-i18n="toolkit.title">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#332B25] tracking-tight" data-i18n="toolkit.title">
         Peralatan presisi barista, selalu siap di saku Anda.
       </h2>
-      <p class="hidden sm:block text-xs sm:text-sm text-[#6F655D]" data-i18n="toolkit.desc">
-        Dirancang khusus untuk home brewer, barista slow bar, hingga profesional coffee evaluator.
+      <p class="text-xs sm:text-sm text-[#6F655D] max-w-2xl mx-auto" data-i18n="toolkit.desc">
+        Sama persis seperti di aplikasi mobile: 21 instrumen presisi terbagi dalam Learning Brew, Lab Ekstraksi & AI, Sains Kopi & Kesegaran, serta Ekosistem & Komunitas.
       </p>
     </div>
 
-    <!-- 2 Column Layout: Toolkit Cards (7 cols), Phone Mockup (5 cols) -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-8 items-center">
+    <!-- 2 Column Layout: Left Categorized Toolkit Showcase (7 cols), Right Live Phone Mockup (5 cols) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
       
-      <!-- Left: 6 Toolkit Items Grid (Compact 3x2 on mobile, 2-cols/3-cols on desktop) -->
-      <div class="lg:col-span-7">
-        <div class="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
-          {landingData.toolkitItems.map((item, idx) => (
-            <div class="p-2 sm:p-3.5 rounded-xl bg-white border border-[#E8DFD8] shadow-xs hover:shadow-warm-sm hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between text-center sm:text-left">
+      <!-- Left: Category Filter Pills + Toolkit Cards Grid (7 cols) -->
+      <div class="lg:col-span-7 space-y-4">
+        
+        <!-- Interactive Category Tabs -->
+        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-1.5" role="tablist" aria-label="Kategori Barista Toolkit">
+          {toolkitCategories.map((cat, idx) => (
+            <button
+              type="button"
+              data-tk-cat={cat.id}
+              data-tk-scroll={cat.mockupTarget}
+              class={`tk-cat-btn px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
+                idx === 0
+                  ? 'bg-[#6B4423] text-white border-[#6B4423] shadow-xs'
+                  : 'bg-white text-[#6F655D] border-[#E8DFD8] hover:border-[#6B4423]/40 hover:text-[#332B25]'
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        <!-- Cards Grid (Matches Flutter ToolkitCard design: Icon top-left, category badge/chevron top-right, title & subtitle) -->
+        <div id="tk-cards-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3">
+          {allToolkitCards.map((item) => (
+            <div
+              data-card-cat={item.category}
+              data-card-featured={item.featured ? 'true' : 'false'}
+              class={`tk-feature-card p-3 rounded-2xl bg-white border border-[#ECE2D6] shadow-xs hover:shadow-warm-sm hover:-translate-y-0.5 hover:border-[#6B4423]/40 transition-all duration-200 flex flex-col justify-between ${
+                item.featured ? '' : 'hidden'
+              }`}
+            >
               <div>
-                <div class={`w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr ${item.gradient} flex items-center justify-center mb-1.5 mx-auto sm:mx-0 shadow-xs`}>
-                  <Icon name={idx === 0 ? 'heart' : idx === 1 ? 'disc' : idx === 2 ? 'store' : idx === 3 ? 'radar' : idx === 4 ? 'book' : 'users'} size={14} color={item.primaryColor} />
+                <div class="flex items-center justify-between gap-1.5 mb-2">
+                  <div class={`w-8 h-8 rounded-[10px] bg-gradient-to-br ${item.gradient} flex items-center justify-center shrink-0 shadow-2xs`}>
+                    <Icon name={item.icon} size={15} color={item.primaryColor} />
+                  </div>
+                  <span class="px-1.5 py-0.5 rounded-md bg-[#F9F6F0] border border-[#E8DFD8] text-[9px] font-bold text-[#6B4423] truncate">
+                    {item.catBadge}
+                  </span>
                 </div>
-                <h4 class="font-bold text-[10.5px] sm:text-sm text-[#332B25] truncate">{item.title}</h4>
-                <div class="text-[8.5px] sm:text-[10px] font-semibold text-[#6B4423] mt-0.5 truncate">{item.subtitle}</div>
-                <p class="hidden sm:block text-[11px] sm:text-xs text-[#6F655D] mt-1 leading-snug">
+                <h4 class="font-extrabold text-xs sm:text-[13px] text-[#332B25] leading-snug truncate">{item.title}</h4>
+                <div class="text-[10px] font-semibold text-[#6B4423] mt-0.5 truncate">{item.subtitle}</div>
+                <p class="hidden sm:block text-[11px] text-[#6F655D] mt-1 leading-relaxed line-clamp-2">
                   {item.desc}
                 </p>
               </div>
             </div>
           ))}
         </div>
+
       </div>
 
-      <!-- Right: Phone Mockup showing Toolkit Screen (5 cols, Compact Size) -->
-      <div class="lg:col-span-5 flex justify-center">
-        <PhoneMockup size="sm" tilt="none" glow={true}>
+      <!-- Right: Phone Mockup showing full scrollable 4-section Toolkit Screen (5 cols) -->
+      <div class="lg:col-span-5 flex flex-col items-center">
+        <PhoneMockup size="md" tilt="none" glow={true}>
           <ToolkitScreenMockup />
         </PhoneMockup>
+        <div class="mt-2.5 text-center">
+          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white border border-[#E8DFD8] text-[10px] font-semibold text-[#8F857D] shadow-xs">
+            <Icon name="sparkles" size={10} color="#6B4423" />
+            <span>Scroll layar HP atau klik tab kategori di kiri untuk menjelajahi 21 fitur</span>
+          </span>
+        </div>
       </div>
 
     </div>
 
   </div>
 </section>
+
+<script>
+  const catButtons = document.querySelectorAll('.tk-cat-btn');
+  const featureCards = document.querySelectorAll<HTMLElement>('.tk-feature-card');
+
+  catButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.getAttribute('data-tk-cat');
+      const scrollTarget = btn.getAttribute('data-tk-scroll');
+
+      // Update active button state
+      catButtons.forEach((b) => {
+        b.classList.remove('bg-[#6B4423]', 'text-white', 'border-[#6B4423]', 'shadow-xs');
+        b.classList.add('bg-white', 'text-[#6F655D]', 'border-[#E8DFD8]');
+      });
+      btn.classList.remove('bg-white', 'text-[#6F655D]', 'border-[#E8DFD8]');
+      btn.classList.add('bg-[#6B4423]', 'text-white', 'border-[#6B4423]', 'shadow-xs');
+
+      // Filter cards
+      featureCards.forEach((card) => {
+        const cardCat = card.getAttribute('data-card-cat');
+        const isFeatured = card.getAttribute('data-card-featured') === 'true';
+        if (cat === 'featured') {
+          card.classList.toggle('hidden', !isFeatured);
+        } else {
+          card.classList.toggle('hidden', cardCat !== cat);
+        }
+      });
+
+      // Scroll inside toolkit phone mockup(s)
+      if (scrollTarget) {
+        document.querySelectorAll('.toolkit-mockup-scroll').forEach((scrollContainer) => {
+          const secEl = scrollContainer.querySelector<HTMLElement>(`[data-mockup-section="${scrollTarget}"]`);
+          if (secEl) {
+            scrollContainer.scrollTo({
+              top: Math.max(0, secEl.offsetTop - 12),
+              behavior: 'smooth',
+            });
+          }
+        });
+      }
+    });
+  });
+</script>

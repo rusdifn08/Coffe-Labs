@@ -1,31 +1,56 @@
 ---
-// Flutter UI replication for Social Coffee Screen
+// Exact 1:1 Flutter UI replication for Social Coffee Screen (social_coffee_screen.dart)
 import Icon from '../ui/Icon.astro';
+import MobileBottomNav from './MobileBottomNav.astro';
 ---
 
-<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs h-full overflow-hidden">
   
-  <div class="p-3.5 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
+  <div class="p-3 space-y-2 overflow-y-auto no-scrollbar flex-1">
     
-    <!-- Top Bar -->
-    <div class="flex items-center justify-between pb-1">
-      <div>
-        <div class="text-[8px] font-bold text-[#ECA400] uppercase tracking-wider">KOMUNITAS SEDUH</div>
-        <div class="font-extrabold text-[13px] text-[#332B25]">Social Coffee</div>
+    <!-- Top Bar (Matches SocialThreadsHeaderWidgets: Emblem + Title + Chat Bolt Icon + Menu) -->
+    <div class="flex items-center justify-between pb-1 border-b border-[#EDE5DE]">
+      <div class="flex items-center gap-1.5">
+        <img src="/images/coffee_labs_emblem.png" alt="Coffee Labs" class="w-5 h-5 object-contain" />
+        <div>
+          <div class="font-extrabold text-[12px] text-[#332B25] leading-none">Social Coffee</div>
+          <div class="text-[7.5px] font-semibold text-[#8F857D] mt-0.5">@coffeelabs.app</div>
+        </div>
       </div>
       <div class="flex items-center gap-1.5">
-        <span class="px-2 py-0.5 rounded-full bg-[#FCE4EC] text-[#E91E63] font-bold text-[8.5px] flex items-center gap-1">
-          <Icon name="users" size={10} color="#E91E63" />
-          <span>Basecamp</span>
+        <!-- Direct Chat Messenger Icon -->
+        <div class="relative w-6 h-6 rounded-full bg-white border border-[#E8DFD8] flex items-center justify-center text-[#332B25]">
+          <Icon name="message-square" size={11} color="#332B25" />
+          <span class="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#ECA400] border border-white"></span>
+        </div>
+        <!-- Basecamp / Club Pill -->
+        <span class="px-2 py-0.5 rounded-full bg-[#FCE4EC] text-[#E91E63] font-bold text-[8px] flex items-center gap-1">
+          <Icon name="users" size={9} color="#E91E63" />
+          <span>Clubs</span>
         </span>
       </div>
     </div>
 
-    <!-- Feed Filters -->
-    <div class="flex gap-1.5 text-[8.5px] font-bold">
-      <span class="px-2 py-1 rounded-full bg-[#6B4423] text-white">Semua Feed</span>
-      <span class="px-2 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Terpopuler</span>
-      <span class="px-2 py-1 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Resep Kopi</span>
+    <!-- Threads-Style Inline Composer Header (SocialThreadsComposerHeader) -->
+    <div class="bg-white p-2 rounded-xl border border-[#ECE2D6] shadow-2xs flex items-center gap-2">
+      <div class="w-7 h-7 rounded-full overflow-hidden border border-[#E8DFD8] shrink-0">
+        <img src="/images/characters/char_avatar_1.jpg" alt="User" class="w-full h-full object-cover" />
+      </div>
+      <div class="flex-1 min-w-0">
+        <div class="text-[8.5px] font-bold text-[#332B25] leading-none">rusdi.barista</div>
+        <div class="text-[8px] text-[#8F857D] truncate mt-0.5">Apa seduhan barumu? Bagikan resep...</div>
+      </div>
+      <span class="px-2 py-0.5 rounded-full bg-[#6B4423]/10 text-[#6B4423] text-[7.5px] font-extrabold shrink-0">
+        + Posting
+      </span>
+    </div>
+
+    <!-- Feed Filters (For You, Following, Recipes) -->
+    <div class="flex gap-1 text-[8px] font-bold">
+      <span class="px-2 py-0.5 rounded-full bg-[#6B4423] text-white">Untuk Anda</span>
+      <span class="px-2 py-0.5 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Mengikuti</span>
+      <span class="px-2 py-0.5 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Resep Kopi</span>
+      <span class="px-2 py-0.5 rounded-full bg-white border border-[#E8DFD8] text-[#6F655D]">Basecamp</span>
     </div>
 
     <!-- Social Post Card 1: Bayu Prawiro -->
@@ -180,30 +205,7 @@ import Icon from '../ui/Icon.astro';
 
   </div>
 
-  <!-- Bottom Navigation Bar -->
-  <div class="bg-white border-t border-[#E8DFD8] py-1.5 px-3 flex items-center justify-between text-[8px] font-medium text-[#8F857D] shrink-0">
-    <div class="flex flex-col items-center">
-      <Icon name="home" size={13} color="#8F857D" />
-      <span>Home</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="book" size={13} color="#8F857D" />
-      <span>Recipes</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
-        <Icon name="timer" size={13} color="#FFFFFF" />
-      </div>
-      <span class="mt-0.5">Brew</span>
-    </div>
-    <div class="flex flex-col items-center text-[#6B4423] font-bold">
-      <Icon name="wrench" size={13} color="#6B4423" />
-      <span>Toolkit</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="user" size={13} color="#8F857D" />
-      <span>Profile</span>
-    </div>
-  </div>
+  <!-- Custom Elevated Notched Bottom Navigation Bar -->
+  <MobileBottomNav activeTab="toolkit" />
 
 </div>

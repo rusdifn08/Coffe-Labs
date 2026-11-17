@@ -1,128 +1,267 @@
 ---
-// Flutter UI replication for Barista Toolkit Screen
+// Exact 1:1 Flutter UI replication for Barista Toolkit Screen (toolkit_screen.dart + toolkit_card.dart)
 import Icon from '../ui/Icon.astro';
+import MobileBottomNav from './MobileBottomNav.astro';
+
+const sections = [
+  {
+    id: 'learning',
+    title: 'Learning Brew',
+    subtitle: 'Game V60, E-Book DRM, Video LMS & Brew Doctor',
+    badgeText: '4 MODUL',
+    badgeClass: 'bg-[#FFF8E1] border-[#FFD54F] text-[#8D4E00]',
+    headerBoxClass: 'bg-[#FFF8E1] border-[#FFE082] text-[#5C3A21]',
+    headerIcon: 'book',
+    items: [
+      {
+        title: 'Game Brew V60',
+        subtitle: 'Simulasi tuang ketel V60 & cerita',
+        icon: 'play',
+        color: '#7B3F00',
+        grad: 'from-[#FFF3E0] to-[#FFE0B2]',
+      },
+      {
+        title: 'Pustaka E-Book DRM',
+        subtitle: '5 buku kopi terenkripsi AES-256',
+        icon: 'book',
+        color: '#4E342E',
+        grad: 'from-[#EFEBE9] to-[#D7CCC8]',
+      },
+      {
+        title: 'Akademi Barista LMS',
+        subtitle: 'Kursus video HLS & kuis 100-bit',
+        icon: 'award',
+        color: '#0369A1',
+        grad: 'from-[#E0F2FE] to-[#BAE6FD]',
+      },
+      {
+        title: 'Brew Doctor & Kompas',
+        subtitle: 'Diagnosa asam, pahit & kompas SCA',
+        icon: 'stethoscope',
+        color: '#2E7D32',
+        grad: 'from-[#E8F5E9] to-[#C8E6C9]',
+      },
+    ],
+  },
+  {
+    id: 'ecosystem',
+    title: 'Ekosistem & Komunitas',
+    subtitle: 'Marketplace, roastery, radar & komunitas',
+    badgeText: 'AKSES BEBAS',
+    badgeClass: 'bg-[#E8F5E9] border-[#A5D6A7] text-[#2E7D32]',
+    headerBoxClass: 'bg-[#EFEBE9] border-[#D7CCC8] text-[#5D4037]',
+    headerIcon: 'store',
+    items: [
+      {
+        title: 'Marketplace Kopi',
+        subtitle: 'Katalog 50+ roastery & checkout',
+        icon: 'store',
+        color: '#8D4925',
+        grad: 'from-[#EFEBE9] to-[#D7CCC8]',
+      },
+      {
+        title: 'Coffee Roastery',
+        subtitle: 'Katalog 50 roastery & lineup kopi',
+        icon: 'flame',
+        color: '#5D4037',
+        grad: 'from-[#EFEBE9] to-[#D7CCC8]',
+      },
+      {
+        title: 'Beans Radar',
+        subtitle: 'Cari biji kopi terdekat via lokasi',
+        icon: 'radar',
+        color: '#1565C0',
+        grad: 'from-[#E3F2FD] to-[#BBDEFB]',
+      },
+      {
+        title: 'Jurnal Brew',
+        subtitle: 'Catatan ekstraksi & log seduh',
+        icon: 'book',
+        color: '#303F9F',
+        grad: 'from-[#E8EAF6] to-[#C5CAE9]',
+      },
+      {
+        title: 'Social Coffee',
+        subtitle: 'Komunitas barista & diskusi resep',
+        icon: 'users',
+        color: '#AD1457',
+        grad: 'from-[#FCE4EC] to-[#F8BBD0]',
+      },
+      {
+        title: 'Favorite',
+        subtitle: 'Koleksi resep seduh favorit Anda',
+        icon: 'heart',
+        color: '#D32F2F',
+        grad: 'from-[#FFEBEE] to-[#FFCDD2]',
+      },
+      {
+        title: 'Live Brew QR',
+        subtitle: 'Lacak seduhan barista live via QR',
+        icon: 'sparkles',
+        color: '#8D4E00',
+        grad: 'from-[#FFF8E1] to-[#FFE082]',
+      },
+    ],
+  },
+  {
+    id: 'extraction',
+    title: 'Lab Ekstraksi & AI',
+    subtitle: 'Smart AI, kalibrasi rasa & yield',
+    badgeText: 'BARISTA PRO',
+    badgeClass: 'bg-[#FFF3E0] border-[#FFB74D] text-[#E65100]',
+    headerBoxClass: 'bg-[#FCE4EC] border-[#F8BBD0] text-[#C2185B]',
+    headerIcon: 'sparkles',
+    items: [
+      {
+        title: 'Smart Brew AI',
+        subtitle: 'Kalkulator Smart Brew & profil rasa',
+        icon: 'sparkles',
+        color: '#6B4423',
+        grad: 'from-[#FAF3EC] to-[#F3E7DC]',
+      },
+      {
+        title: 'Studio AI',
+        subtitle: 'Latih AI kenali kemasan kopi baru',
+        icon: 'target',
+        color: '#D4AF37',
+        grad: 'from-[#FFF8E1] to-[#FFECB3]',
+      },
+      {
+        title: 'Asisten Dial-In',
+        subtitle: 'Solusi asam, pahit & channeling',
+        icon: 'sliders',
+        color: '#C2185B',
+        grad: 'from-[#FCE4EC] to-[#F8BBD0]',
+      },
+      {
+        title: 'Matriks Grinder',
+        subtitle: 'Konversi klik C40, 1Zpresso, Ode',
+        icon: 'gear',
+        color: '#4527A0',
+        grad: 'from-[#EDE7F6] to-[#D1C4E9]',
+      },
+      {
+        title: 'Kalkulator 4:6',
+        subtitle: 'Metode Kasuya 40% rasa & 60% body',
+        icon: 'sliders',
+        color: '#E65100',
+        grad: 'from-[#FFF3E0] to-[#FFE0B2]',
+      },
+      {
+        title: 'Ekstraksi & TDS',
+        subtitle: 'Kalkulator EY (%) & Golden Cup SCA',
+        icon: 'target',
+        color: '#2E7D32',
+        grad: 'from-[#E8F5E9] to-[#C8E6C9]',
+      },
+    ],
+  },
+  {
+    id: 'science',
+    title: 'Sains Kopi & Kesegaran',
+    subtitle: 'Mineral air, degassing & sensorik',
+    badgeText: 'BARISTA PRO',
+    badgeClass: 'bg-[#FFF3E0] border-[#FFB74D] text-[#E65100]',
+    headerBoxClass: 'bg-[#E0F7FA] border-[#B2EBF2] text-[#00838F]',
+    headerIcon: 'droplet',
+    items: [
+      {
+        title: 'Kimia Air Seduh',
+        subtitle: 'Resep mineral air SCA & Lotus',
+        icon: 'droplet',
+        color: '#00838F',
+        grad: 'from-[#E0F7FA] to-[#B2EBF2]',
+      },
+      {
+        title: 'Kesegaran Biji',
+        subtitle: 'Kurva degassing & puncak rasa',
+        icon: 'flame',
+        color: '#D84315',
+        grad: 'from-[#FBE9E7] to-[#FFCCBC]',
+      },
+      {
+        title: 'Smart Scale Brew',
+        subtitle: 'Timbangan Bluetooth & flow-rate',
+        icon: 'timer',
+        color: '#00796B',
+        grad: 'from-[#E0F2F1] to-[#B2DFDB]',
+      },
+      {
+        title: 'Cupping Flavour',
+        subtitle: 'Roda rasa SCA & profil sensorik',
+        icon: 'disc',
+        color: '#F57C00',
+        grad: 'from-[#FFF8E1] to-[#FFECB3]',
+      },
+    ],
+  },
+];
 ---
 
-<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+<div class="toolkit-mockup-root flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs h-full overflow-hidden">
   
-  <div class="p-3.5 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
+  <div class="toolkit-mockup-scroll p-3 space-y-3 overflow-y-auto no-scrollbar flex-1 scroll-smooth">
     
-    <!-- Top Bar -->
-    <div class="text-center font-bold text-[13px] text-[#332B25] pb-1">
+    <!-- AppBar Title -->
+    <div class="text-center font-extrabold text-[13px] text-[#332B25] pb-0.5">
       Barista Toolkit
     </div>
 
-    <!-- Professional Suite Banner (Exact AppTheme Gradient) -->
-    <div class="p-2.5 rounded-xl bg-gradient-to-r from-[#6B4423] to-[#563519] text-white shadow-sm">
-      <div class="flex items-center justify-between">
-        <span class="px-1.5 py-0.5 bg-amber-400/20 text-[#D4AF37] text-[8px] font-extrabold tracking-wider rounded">
-          PROFESSIONAL SUITE
+    <!-- Header Card (Exact match with toolkit_screen.dart Lines 347-413) -->
+    <div class="px-3 py-2.5 rounded-2xl bg-gradient-to-br from-[#6B4423] to-[#563519] text-white shadow-sm flex items-center justify-between gap-2">
+      <div>
+        <span class="inline-block px-1.5 py-0.5 bg-[#D4AF37]/22 text-[#D4AF37] text-[7.5px] font-extrabold tracking-wider rounded">
+          PROFESSIONAL PRO SUITE
         </span>
-        <Icon name="sparkles" size={13} color="#D4AF37" />
+        <div class="font-extrabold text-[12.5px] mt-1 text-white leading-tight">
+          Peralatan Presisi Barista
+        </div>
       </div>
-      <div class="font-extrabold text-[12px] mt-1 text-white">Peralatan Presisi Barista</div>
-      <div class="text-[8.5px] text-white/80 leading-tight mt-0.5">
-        Akses cepat cupping SCA, radar lokasi, dan katalog 50 roastery nasional.
+      <div class="w-8 h-8 rounded-full bg-white/12 flex items-center justify-center shrink-0">
+        <Icon name="sparkles" size={14} color="#D4AF37" />
       </div>
     </div>
 
-    <!-- 2-Column Grid of 6 Cards -->
-    <div class="grid grid-cols-2 gap-2 pt-0.5">
-      
-      <!-- 1. Favorite -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FFEBEE] to-[#FFCDD2] flex items-center justify-center text-[#D32F2F]">
-          <Icon name="heart" size={12} color="#D32F2F" />
+    <!-- 4 Categorized Toolkit Sections (21 Tools Total) -->
+    {sections.map((sec) => (
+      <div class="space-y-1.5 pt-0.5" data-mockup-section={sec.id}>
+        <!-- ToolkitSectionHeader -->
+        <div class="flex items-center gap-2">
+          <div class={`w-6 h-6 rounded-[8px] border flex items-center justify-center shrink-0 ${sec.headerBoxClass}`}>
+            <Icon name={sec.headerIcon} size={12} color="currentColor" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="font-extrabold text-[10.5px] text-[#332B25] leading-tight truncate">{sec.title}</div>
+            <div class="text-[8px] text-[#8F857D] truncate">{sec.subtitle}</div>
+          </div>
+          <span class={`px-1.5 py-0.5 rounded-[6px] border text-[7px] font-extrabold tracking-wide shrink-0 ${sec.badgeClass}`}>
+            {sec.badgeText}
+          </span>
         </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Favorite</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Koleksi resep favorit</div>
+
+        <!-- 2-Column Grid of ToolkitCards -->
+        <div class="grid grid-cols-2 gap-1.5">
+          {sec.items.map((item) => (
+            <div class="bg-white p-2 rounded-[13px] border border-[#ECE2D6] shadow-2xs flex flex-col justify-between min-h-[74px] hover:border-[#6B4423]/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <div class={`w-6 h-6 rounded-[7px] bg-gradient-to-br ${item.grad} flex items-center justify-center`}>
+                  <Icon name={item.icon} size={12} color={item.color} />
+                </div>
+                <span class="text-[10px] text-[#8F857D]/60 font-bold leading-none">›</span>
+              </div>
+              <div class="mt-1.5">
+                <div class="font-bold text-[9.5px] text-[#332B25] leading-tight truncate">{item.title}</div>
+                <div class="text-[7.5px] text-[#8F857D] leading-tight mt-0.5 line-clamp-2">{item.subtitle}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-
-      <!-- 2. Cupping Flavour -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FFF3E0] to-[#FFE0B2] flex items-center justify-center text-[#E65100]">
-          <Icon name="disc" size={12} color="#E65100" />
-        </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Cupping Flavour</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">SCA wheel & sensori</div>
-        </div>
-      </div>
-
-      <!-- 3. Coffee Roastery -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#EFEBE9] to-[#D7CCC8] flex items-center justify-center text-[#5D4037]">
-          <Icon name="store" size={12} color="#5D4037" />
-        </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Coffee Roastery</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">50 Roastery & lineup</div>
-        </div>
-      </div>
-
-      <!-- 4. Beans Radar -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#E0F2F1] to-[#B2DFDB] flex items-center justify-center text-[#00796B]">
-          <Icon name="radar" size={12} color="#00796B" />
-        </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Beans Radar</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Cari beans via GPS</div>
-        </div>
-      </div>
-
-      <!-- 5. Jurnal Brew -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#E8EAF6] to-[#C5CAE9] flex items-center justify-center text-[#303F9F]">
-          <Icon name="book" size={12} color="#303F9F" />
-        </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Jurnal Brew</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Log & rating harian</div>
-        </div>
-      </div>
-
-      <!-- 6. Social Coffee -->
-      <div class="bg-white p-2 rounded-xl border border-[#E8DFD8] shadow-xs flex flex-col justify-between h-20">
-        <div class="w-6 h-6 rounded-lg bg-gradient-to-tr from-[#FCE4EC] to-[#F8BBD0] flex items-center justify-center text-[#E91E63]">
-          <Icon name="users" size={12} color="#E91E63" />
-        </div>
-        <div>
-          <div class="font-bold text-[10px] text-[#332B25] leading-tight">Social Coffee</div>
-          <div class="text-[8px] text-[#8F857D] leading-tight mt-0.5 line-clamp-1">Komunitas barista</div>
-        </div>
-      </div>
-
-    </div>
+    ))}
 
   </div>
 
-  <!-- Bottom Navigation Bar -->
-  <div class="bg-white border-t border-[#E8DFD8] py-1.5 px-3 flex items-center justify-between text-[8px] font-medium text-[#8F857D] shrink-0">
-    <div class="flex flex-col items-center">
-      <Icon name="home" size={13} color="#8F857D" />
-      <span>Home</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="book" size={13} color="#8F857D" />
-      <span>Recipes</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
-        <Icon name="timer" size={13} color="#FFFFFF" />
-      </div>
-      <span class="mt-0.5">Brew</span>
-    </div>
-    <div class="flex flex-col items-center text-[#6B4423] font-bold">
-      <Icon name="wrench" size={13} color="#6B4423" />
-      <span>Toolkit</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="user" size={13} color="#8F857D" />
-      <span>Profile</span>
-    </div>
-  </div>
+  <!-- Custom Elevated Notched Bottom Navigation Bar -->
+  <MobileBottomNav activeTab="toolkit" />
 
 </div>

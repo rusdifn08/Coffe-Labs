@@ -1,113 +1,158 @@
 ---
+// Exact 1:1 Flutter UI replication for Profil Pengguna Screen (profile_screen.dart)
 import Icon from '../ui/Icon.astro';
+import MobileBottomNav from './MobileBottomNav.astro';
 ---
 
-<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs">
+<div class="flex-1 flex flex-col justify-between bg-[#F9F6F0] text-[#332B25] select-none text-xs h-full overflow-hidden">
   
   <div class="p-3 space-y-2.5 overflow-y-auto no-scrollbar flex-1">
     
-    <!-- Top Header -->
-    <div class="flex items-center justify-between pt-0.5 pb-1">
-      <div class="flex items-center gap-1.5">
-        <div class="w-6 h-6 rounded-lg bg-white border border-[#E8DFD8] flex items-center justify-center text-[#6B4423]">
-          <Icon name="user" size={13} color="#6B4423" />
-        </div>
-        <h3 class="text-[13px] font-extrabold text-[#332B25] leading-tight">Pengaturan Profil</h3>
-      </div>
-      <span class="px-2 py-0.5 rounded-md bg-[#6B4423]/10 text-[#6B4423] text-[9px] font-bold">Pro Member</span>
-    </div>
-
-    <!-- Avatar Section -->
-    <div class="flex flex-col items-center justify-center py-1">
-      <div class="relative">
-        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-sm ring-2 ring-[#6B4423]/20">
-          <img src="/images/avatars/portraits/bayu_prawiro.jpg" alt="Avatar" class="w-full h-full object-cover" />
-        </div>
-        <div class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-[#6B4423] text-white flex items-center justify-center border-2 border-white shadow-xs">
-          <Icon name="sparkles" size={9} color="#FFFFFF" />
-        </div>
-      </div>
-      <span class="font-extrabold text-[12px] text-[#332B25] mt-1.5">Bayu Prawiro</span>
-      <span class="text-[9px] text-[#8F857D] font-medium">Head Brewer @ Coffee Labs</span>
-      <button class="mt-1.5 px-2.5 py-1 rounded-lg border border-[#6B4423]/30 bg-white text-[#6B4423] text-[9px] font-bold inline-flex items-center gap-1 hover:bg-[#F1E8E0] transition-colors">
-        <Icon name="sparkles" size={9} color="#6B4423" />
-        <span>Ganti Karakter Avatar</span>
-      </button>
-    </div>
-
-    <!-- Section 1: Identitas Barista -->
-    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
-      <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Identitas Barista</span>
-      <div class="flex items-center gap-2 p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[11px]">
-        <Icon name="user" size={12} color="#6B4423" />
-        <span class="font-medium text-[#332B25] flex-1">Bayu Prawiro</span>
-        <span class="text-[9px] text-[#8F857D]">Tersimpan</span>
+    <!-- Top AppBar (Profil Pengguna + Gear Icon) -->
+    <div class="relative flex items-center justify-center pb-0.5">
+      <h3 class="text-[13px] font-extrabold text-[#332B25] leading-tight">Profil Pengguna</h3>
+      <div class="absolute right-0 w-6 h-6 rounded-full flex items-center justify-center text-[#332B25]">
+        <Icon name="gear" size={14} color="#332B25" />
       </div>
     </div>
 
-    <!-- Section 2: Bahasa & Wilayah -->
-    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
-      <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Bahasa & Wilayah</span>
-      <div class="flex items-center justify-between p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[11px]">
-        <div class="flex items-center gap-1.5">
-          <span class="text-xs">🇮🇩</span>
-          <span class="font-semibold text-[#332B25]">Bahasa Indonesia</span>
+    <!-- 1. UserProfileHeaderCard (Squircle Avatar + Level Roadmap + 4 Gamification Stat Boxes) -->
+    <div class="bg-white p-2.5 rounded-2xl border border-[#ECE2D6] shadow-2xs space-y-2">
+      <!-- Avatar + Name + Badges -->
+      <div class="flex items-center gap-2.5">
+        <div class="relative shrink-0">
+          <div class="w-12 h-12 rounded-2xl p-[2px] bg-gradient-to-tr from-[#7E57C2] via-[#9575CD] to-[#B39DDB] shadow-xs">
+            <div class="w-full h-full rounded-[14px] overflow-hidden bg-[#EDE7F6]">
+              <img src="/images/characters/char_avatar_1.jpg" alt="Profile Avatar" class="w-full h-full object-cover" />
+            </div>
+          </div>
+          <span class="absolute -bottom-1 left-1/2 -translate-x-1/2 px-1.5 py-[1px] rounded-full bg-[#607D8B] text-white text-[7px] font-extrabold border border-white shadow-2xs whitespace-nowrap">
+            ⚙ LV.3
+          </span>
         </div>
-        <span class="text-[9px] font-bold text-[#6B4423] bg-[#6B4423]/10 px-1.5 py-0.5 rounded">Aktif</span>
+
+        <div class="min-w-0 flex-1">
+          <div class="font-extrabold text-[12px] text-[#332B25] leading-tight truncate">Labs Business Demo</div>
+          <div class="text-[9px] text-[#8F857D] font-medium">@bisnis123</div>
+          <div class="flex flex-wrap items-center gap-1 mt-1">
+            <span class="px-1.5 py-[1px] rounded-full bg-[#FFF8E1] border border-[#FFB74D] text-[#D97706] text-[7px] font-extrabold">
+              💼 BUSINESS CAFE
+            </span>
+            <span class="px-1.5 py-[1px] rounded-full bg-[#ECEFF1] text-[#455A64] text-[7px] font-bold">
+              Extraction Craftsman
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-[#F2ECE4] pt-2 space-y-1">
+        <!-- Level & Roadmap Link -->
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="px-1.5 py-[1px] rounded bg-[#607D8B] text-white text-[7px] font-extrabold">⚙ LEVEL 3</span>
+            <span class="text-[9px] font-bold text-[#332B25]">Extraction Craftsman</span>
+          </div>
+          <span class="text-[8.5px] font-bold text-[#546E7A]">Roadmap ›</span>
+        </div>
+
+        <!-- EXP Bar -->
+        <div class="w-full h-1.5 bg-[#ECEFF1] rounded-full overflow-hidden">
+          <div class="h-full w-[65%] bg-[#546E7A] rounded-full"></div>
+        </div>
+        <div class="flex items-center justify-between text-[7.5px]">
+          <span class="font-bold text-[#332B25]">825 EXP • 65% Selesai</span>
+          <span class="text-[#8F857D]">175 EXP ke Lv.4</span>
+        </div>
+      </div>
+
+      <!-- 4 Gamification Stat Boxes -->
+      <div class="grid grid-cols-4 gap-1.5 pt-0.5">
+        <div class="bg-[#FFF8F3] rounded-xl p-1.5 text-center">
+          <div class="text-[10px] font-extrabold text-[#E65100] leading-tight">8</div>
+          <div class="text-[7px] text-[#8F857D] font-medium">Seduhan</div>
+        </div>
+        <div class="bg-[#F3F8FF] rounded-xl p-1.5 text-center">
+          <div class="text-[10px] font-extrabold text-[#0288D1] leading-tight">5</div>
+          <div class="text-[7px] text-[#8F857D] font-medium">Toolkit</div>
+        </div>
+        <div class="bg-[#F3FBF5] rounded-xl p-1.5 text-center">
+          <div class="text-[10px] font-extrabold text-[#2E7D32] leading-tight">5</div>
+          <div class="text-[7px] text-[#8F857D] font-medium">Evaluasi</div>
+        </div>
+        <div class="bg-[#FFF4F2] rounded-xl p-1.5 text-center">
+          <div class="text-[10px] font-extrabold text-[#D84315] leading-tight">6d</div>
+          <div class="text-[7px] text-[#8F857D] font-medium">Streak</div>
+        </div>
       </div>
     </div>
 
-    <!-- Section 3: Pembaruan Sistem OTA -->
-    <div class="bg-white p-2.5 rounded-xl border border-[#E8DFD8] shadow-xs space-y-1.5">
+    <!-- 2. Coffee Labs Business License Card -->
+    <div class="bg-[#FFFDF5] p-2.5 rounded-2xl border border-[#F3D178] shadow-2xs space-y-1">
       <div class="flex items-center justify-between">
-        <span class="text-[9px] font-bold text-[#8F857D] uppercase tracking-wider">Sistem & Pembaruan</span>
-        <span class="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200">v1.4.2</span>
-      </div>
-      <div class="flex items-center justify-between p-1.5 rounded-lg bg-[#F9F6F0] border border-[#E8DFD8]/60 text-[10px]">
-        <div class="flex items-center gap-1.5">
-          <Icon name="shield-check" size={12} color="#16A34A" />
-          <span class="font-medium text-[#332B25]">Sistem Terkini (OTA Ready)</span>
+        <div class="flex items-center gap-2">
+          <div class="w-6 h-6 rounded-full bg-[#FFF3CD] flex items-center justify-center text-[#D97706] text-[10px]">
+            💼
+          </div>
+          <div>
+            <div class="font-extrabold text-[10px] text-[#332B25] leading-tight">Coffee Labs Business</div>
+            <div class="text-[7.5px] text-[#8F857D]">Lisensi Aktif • Bebas Iklan & Seduh Unlimited</div>
+          </div>
         </div>
-        <button class="px-2 py-0.5 rounded bg-[#6B4423] text-white text-[9px] font-bold">Cek OTA</button>
+        <span class="px-1.5 py-0.5 rounded-md bg-[#F59E0B] text-white text-[7px] font-extrabold">AKTIF</span>
+      </div>
+      <p class="text-[7.5px] text-[#6F655D] leading-snug">
+        Akun bisnis kafe aktif: Akses 5 barista, katalog roastery, dan struk bluetooth tanpa batas.
+      </p>
+    </div>
+
+    <!-- 3. Mode Business (POS Kasir & Display AOD) Launcher Card -->
+    <div class="bg-[#1C1613] p-2.5 rounded-2xl border border-[#D4AF37]/40 text-white flex items-center justify-between gap-2 shadow-sm">
+      <div class="flex items-center gap-2 min-w-0">
+        <div class="w-8 h-8 rounded-full bg-[#2C221B] border border-[#D4AF37]/60 flex items-center justify-center shrink-0">
+          <Icon name="store" size={13} color="#D4AF37" />
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1">
+            <span class="font-extrabold text-[10px] text-white truncate">Mode Business</span>
+            <span class="px-1 py-[0.5px] rounded bg-[#ECA400] text-[#1E1612] text-[6.5px] font-black">BUSINESS</span>
+          </div>
+          <div class="text-[7.5px] text-white/75 truncate">Dashboard, Kasir POS, Display AOD & Stock</div>
+        </div>
+      </div>
+      <span class="text-[#ECA400] font-bold text-sm shrink-0">›</span>
+    </div>
+
+    <!-- 4. Menu List -->
+    <div class="bg-white rounded-2xl border border-[#ECE2D6] divide-y divide-[#F2ECE4] overflow-hidden">
+      <div class="p-2 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <div class="w-6 h-6 rounded-lg bg-[#F5EFEA] flex items-center justify-center text-[#6B4423] shrink-0">
+            <Icon name="gear" size={12} color="#6B4423" />
+          </div>
+          <div class="min-w-0">
+            <div class="font-bold text-[9.5px] text-[#332B25]">Pengaturan</div>
+            <div class="text-[7.5px] text-[#8F857D] truncate">Ubah nama barista, avatar & preferensi</div>
+          </div>
+        </div>
+        <span class="text-[#8F857D] text-xs">›</span>
+      </div>
+      <div class="p-2 flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2 min-w-0">
+          <div class="w-6 h-6 rounded-lg bg-[#FFF3E0] flex items-center justify-center text-[#E65100] shrink-0">
+            <Icon name="book" size={12} color="#E65100" />
+          </div>
+          <div class="min-w-0">
+            <div class="font-bold text-[9.5px] text-[#332B25]">Catatan Seduh</div>
+            <div class="text-[7.5px] text-[#8F857D] truncate">Lihat riwayat seduhan dan rating kopi</div>
+          </div>
+        </div>
+        <span class="text-[#8F857D] text-xs">›</span>
       </div>
     </div>
 
   </div>
 
-  <!-- Bottom Navigation Bar (Profile tab highlighted!) -->
-  <div class="border-t border-[#E8DFD8] bg-white px-3 py-1.5 grid grid-cols-5 items-center text-[9px] text-[#8F857D] shrink-0">
-    <div class="flex flex-col items-center">
-      <Icon name="home" size={13} color="#8F857D" />
-      <span>Home</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="book" size={13} color="#8F857D" />
-      <span>Recipes</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <div class="w-7 h-7 -mt-3 rounded-full bg-[#6B4423] text-white flex items-center justify-center text-xs shadow-md">
-        <Icon name="timer" size={13} color="#FFFFFF" />
-      </div>
-      <span class="mt-0.5">Brew</span>
-    </div>
-    <div class="flex flex-col items-center">
-      <Icon name="wrench" size={13} color="#8F857D" />
-      <span>Toolkit</span>
-    </div>
-    <div class="flex flex-col items-center text-[#6B4423] font-bold">
-      <Icon name="user" size={13} color="#6B4423" />
-      <span>Profile</span>
-    </div>
-  </div>
+  <!-- Custom Elevated Notched Bottom Navigation Bar -->
+  <MobileBottomNav activeTab="profile" />
 
 </div>
-
-<style>
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>
