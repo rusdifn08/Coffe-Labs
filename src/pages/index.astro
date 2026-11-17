@@ -17,6 +17,7 @@ import TestimonialsSection from '../components/sections/TestimonialsSection.astr
 import FaqSection from '../components/sections/FaqSection.astro';
 import FinalCtaSection from '../components/sections/FinalCtaSection.astro';
 import FooterSection from '../components/sections/FooterSection.astro';
+import SharedRecipeModal from '../components/sections/SharedRecipeModal.astro';
 import { landingData } from '../data/landingData';
 
 const pageTitle = "Coffee Labs — Specialty Coffee Brewing Labs & Panduan Seduh Presisi";
@@ -123,5 +124,8 @@ const pageDesc = "500+ resep seduh dari 200+ barista dunia & Indonesia, Guided B
 
     <!-- 17. Footer -->
     <FooterSection />
+
+    <!-- Shared Recipe Preview Modal (?recipe=...) -->
+    <SharedRecipeModal />
   </body>
 </html>

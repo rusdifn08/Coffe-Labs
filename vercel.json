@@ -2,5 +2,9 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
-  "framework": "astro"
+  "framework": "astro",
+  "rewrites": [
+    { "source": "/livebrew/:code", "destination": "/livebrew" },
+    { "source": "/livebrew/:code/", "destination": "/livebrew" }
+  ]
 }

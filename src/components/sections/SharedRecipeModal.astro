@@ -1,0 +1,148 @@
+---
+import { landingData } from '../../data/landingData';
+
+const apkUrl = landingData.brand.downloadAndroid;
+const iosUrl = landingData.brand.downloadIos;
+---
+
+<div
+  id="shared-recipe-modal"
+  class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="shared-recipe-title"
+>
+  <div class="relative w-full max-w-md rounded-3xl overflow-hidden bg-[#1E140E] text-white border border-[#D4AF37]/40 shadow-2xl">
+    <!-- Top Studio Banner -->
+    <div class="px-5 pt-5 pb-4 bg-gradient-to-br from-[#2C1C12] to-[#170F0A] border-b border-white/10">
+      <div class="flex items-center justify-between gap-2 mb-3">
+        <div class="inline-flex items-center gap-2">
+          <img src="/icon.png" alt="Coffee Labs" class="w-6 h-6 object-contain" />
+          <span class="text-[11px] font-extrabold tracking-[0.16em] text-[#D4AF37] uppercase">
+            COFFEE LABS • SHARED RECIPE
+          </span>
+        </div>
+        <button
+          id="close-shared-recipe"
+          type="button"
+          aria-label="Tutup pratinjau resep"
+          class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white/80 hover:text-white flex items-center justify-center text-sm font-bold cursor-pointer transition"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ECA400] text-[#1E140E] text-[11px] font-extrabold mb-2">
+        <span id="shared-recipe-method">Hario V60</span>
+      </div>
+
+      <h2 id="shared-recipe-title" class="text-xl font-extrabold leading-snug text-white">
+        Specialty Brew Recipe
+      </h2>
+      <p class="text-xs text-[#EBD9C5] mt-1">
+        Brewer: <span id="shared-recipe-author" class="font-semibold text-white">Coffee Labs Barista</span>
+      </p>
+      <p id="shared-recipe-bean" class="hidden text-[11px] text-white/70 mt-0.5"></p>
+    </div>
+
+    <!-- Specs Telemetry -->
+    <div class="p-5 space-y-4 bg-[#F9F6F0] text-[#332B25]">
+      <div class="grid grid-cols-4 gap-2">
+        <div class="rounded-xl bg-white p-2.5 text-center border border-[#E8DFD8]">
+          <div class="text-[9px] font-bold uppercase tracking-wider text-[#8F857D]">Dose</div>
+          <div id="shared-recipe-dose" class="text-sm font-extrabold text-[#6B4423] mt-0.5">15g</div>
+        </div>
+        <div class="rounded-xl bg-white p-2.5 text-center border border-[#E8DFD8]">
+          <div class="text-[9px] font-bold uppercase tracking-wider text-[#8F857D]">Air</div>
+          <div id="shared-recipe-water" class="text-sm font-extrabold text-[#6B4423] mt-0.5">225g</div>
+        </div>
+        <div class="rounded-xl bg-white p-2.5 text-center border border-[#E8DFD8]">
+          <div class="text-[9px] font-bold uppercase tracking-wider text-[#8F857D]">Suhu</div>
+          <div id="shared-recipe-temp" class="text-sm font-extrabold text-[#6B4423] mt-0.5">92°C</div>
+        </div>
+        <div class="rounded-xl bg-white p-2.5 text-center border border-[#E8DFD8]">
+          <div class="text-[9px] font-bold uppercase tracking-wider text-[#8F857D]">Waktu</div>
+          <div id="shared-recipe-time" class="text-sm font-extrabold text-[#6B4423] mt-0.5">02:30</div>
+        </div>
+      </div>
+
+      <div id="shared-recipe-notes-wrap" class="hidden flex flex-wrap gap-1.5"></div>
+
+      <div class="rounded-xl bg-amber-50 border border-amber-200 px-3.5 py-2.5 text-xs text-[#6B4423] leading-relaxed">
+        Buka aplikasi <strong>Coffee Labs</strong> untuk mengikuti panduan tuangan real-time step-by-step, konverter klik grinder, & timer seduh presisi.
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-2.5 pt-1">
+        <a
+          href={apkUrl}
+          class="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-[#6B4423] hover:bg-[#533319] text-white text-xs font-extrabold text-center transition"
+        >
+          Unduh Coffee Labs (Android)
+        </a>
+        <a
+          href={iosUrl}
+          class="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-white hover:bg-[#EFE7DC] text-[#6B4423] border border-[#D8CABD] text-xs font-extrabold text-center transition"
+        >
+          Unduh iOS (.IPA)
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const recipeId = params.get('recipe');
+      const title = params.get('title');
+      if (!recipeId && !title) return;
+
+      const modal = document.getElementById('shared-recipe-modal');
+      if (!modal) return;
+
+      const setText = (id, val, fallback) => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = val && val.trim() ? val.trim() : fallback;
+      };
+
+      setText('shared-recipe-title', title, 'Resep Seduh Presisi #' + (recipeId || '1'));
+      setText('shared-recipe-author', params.get('author'), 'Coffee Labs Barista');
+      setText('shared-recipe-method', params.get('method'), 'Hario V60');
+      setText('shared-recipe-dose', params.get('dose'), '15g');
+      setText('shared-recipe-water', params.get('water'), '225g');
+      const tempRaw = params.get('temp');
+      setText('shared-recipe-temp', tempRaw ? tempRaw.replace(/C$/i, '°C') : '92°C', '92°C');
+      setText('shared-recipe-time', params.get('time'), '02:30');
+
+      const bean = params.get('bean');
+      const beanEl = document.getElementById('shared-recipe-bean');
+      if (beanEl && bean && bean.trim()) {
+        beanEl.textContent = 'Biji Kopi: ' + bean.trim();
+        beanEl.classList.remove('hidden');
+      }
+
+      const notes = params.get('notes');
+      const notesWrap = document.getElementById('shared-recipe-notes-wrap');
+      if (notesWrap && notes && notes.trim()) {
+        notesWrap.innerHTML = '';
+        notes.split(',').map((s) => s.trim()).filter(Boolean).slice(0, 4).forEach((note) => {
+          const pill = document.createElement('span');
+          pill.className = 'px-2.5 py-1 rounded-full bg-white border border-[#E8DFD8] text-[11px] font-bold text-[#6B4423]';
+          pill.textContent = note;
+          notesWrap.appendChild(pill);
+        });
+        notesWrap.classList.remove('hidden');
+      }
+
+      modal.classList.remove('hidden');
+      const closeBtn = document.getElementById('close-shared-recipe');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => modal.classList.add('hidden'));
+      }
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+      });
+    } catch (_) {}
+  })();
+</script>

@@ -17,6 +17,7 @@ import TestimonialsSection from '../../components/sections/TestimonialsSection.a
 import FaqSection from '../../components/sections/FaqSection.astro';
 import FinalCtaSection from '../../components/sections/FinalCtaSection.astro';
 import FooterSection from '../../components/sections/FooterSection.astro';
+import SharedRecipeModal from '../../components/sections/SharedRecipeModal.astro';
 
 const pageTitle = "Coffee Labs — Specialty Coffee Brewing Labs & Precision Brew Guide";
 const pageDesc = "500+ brew recipes from 200+ world & Indonesian baristas, Guided Brew precision timer, Brew Doctor sensory diagnosis, 10-attribute SCA cupping & 100+ grinder converter. Multi-platform for iOS, Android & Web.";
@@ -102,6 +103,9 @@ const pageDesc = "500+ brew recipes from 200+ world & Indonesian baristas, Guide
 
     <!-- 17. Footer -->
     <FooterSection />
+
+    <!-- Shared Recipe Preview Modal (?recipe=...) -->
+    <SharedRecipeModal />
 
     <!-- Ensure English is initialized immediately for /en -->
     <script>

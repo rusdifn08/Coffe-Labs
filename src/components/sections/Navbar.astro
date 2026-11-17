@@ -70,6 +70,16 @@ const navItems = [
 
     <!-- Right Side Actions -->
     <div class="flex items-center gap-2.5 sm:gap-3">
+
+      <!-- Live Brew Link -->
+      <a
+        href="/livebrew"
+        class="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#6B4423]/25 bg-white/70 hover:bg-[#F1E8E0] text-[#6B4423] text-xs font-bold transition whitespace-nowrap"
+        title="Lacak Seduhan Barista Live via QR"
+      >
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span>Live Brew</span>
+      </a>
       
       <!-- Language Pill Indicator (Desktop ID / EN Switcher) -->
       <div id="lang-switch-desktop" class="hidden sm:flex items-center text-xs font-bold bg-[#F1E8E0] p-0.5 rounded-lg border border-[#6B4423]/15">
@@ -111,13 +121,22 @@ const navItems = [
     class="hidden md:hidden border-t border-[#E8DFD8] bg-[#F9F6F0]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3 shadow-xl transition-all duration-300"
   >
     <!-- Quick CTA inside mobile drawer -->
-    <a
-      href="/trial"
-      class="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-sm shadow-sm active:scale-98 transition-all"
-    >
-      <span data-i18n="nav.coba_gratis_mobile">Coba Gratis Sekarang</span>
-      <Icon name="arrow-right" size={14} color="#332B25" />
-    </a>
+    <div class="grid grid-cols-2 gap-2">
+      <a
+        href="/trial"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#332B25] font-bold text-xs shadow-sm active:scale-98 transition-all"
+      >
+        <span data-i18n="nav.coba_gratis_mobile">Coba Gratis</span>
+        <Icon name="arrow-right" size={13} color="#332B25" />
+      </a>
+      <a
+        href="/livebrew"
+        class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1E1612] text-[#ECA400] font-bold text-xs shadow-sm"
+      >
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+        <span>Live Brew</span>
+      </a>
+    </div>
 
     <div class="flex flex-col space-y-1">
       {navItems.map((item) => (
