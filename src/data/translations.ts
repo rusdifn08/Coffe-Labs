@@ -112,8 +112,8 @@ export const translations: TranslationDict = {
     en: "Free Trial",
   },
   "hero.cta_trial_desktop": {
-    id: "Uji Coba Versi Web Gratis",
-    en: "Try Free Web Version",
+    id: "Free Trial",
+    en: "Free Trial",
   },
   "hero.cta_explore": {
     id: "Lihat Aplikasi",
