@@ -3,7 +3,7 @@
 <div align="center">
   <img src="./public/icon.png" alt="Coffee Labs Logo" width="100" />
   <h3>Master Your Brew — Panduan Seduh Kopi Manual Presisi</h3>
-  <p>159+ Resep Barista Dunia • Guided Timer Interaktif • Koreksi Sensori Brew Doctor • Multi-Platform</p>
+  <p>500+ Resep Barista Dunia & Indonesia • Guided Timer Interaktif • Koreksi Sensori Brew Doctor • Multi-Platform</p>
 
   [![CI & Build](https://github.com/rusdifn08/Coffe-Labs/actions/workflows/ci.yml/badge.svg)](https://github.com/rusdifn08/Coffe-Labs/actions/workflows/ci.yml)
   [![Multi-Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android%20%7C%20Web-6B4423)](https://github.com/rusdifn08/Coffe-Labs)
@@ -26,12 +26,12 @@ Tersedia secara resmi sebagai aplikasi **Multi-Platform**:
 
 ## 🌟 Fitur Utama
 
-- **Pustaka 159+ Resep Juara Dunia**: Metode resmi dari Tetsu Kasuya (4:6 Method), James Hoffmann (Ultimate V60), Mikael Jasin (WBC 2024), Du Jianing, Chad Wang, Carlos Medina, dll.
+- **Pustaka 500+ Resep Juara Dunia & Indonesia**: Metode resmi dari 200+ barista termasuk Tetsu Kasuya (4:6 Method), James Hoffmann (Ultimate V60), Mikael Jasin (WBC 2024), Du Jianing, Chad Wang, Carlos Medina, dll.
 - **Guided Brew Stopwatch Interaktif**: Pengukur waktu presisi tahap-per-tahap dengan target gramasi timbangan real-time dan audio efek suara (*chime*, *ticks*, dan musik santai *Chill Coffee Lounge*).
 - **Brew Doctor & Sensory Diagnosis**: Sistem diagnosis rasa cerdas berbasis radar rasa lidah (*Sweetness*, *Acidity*, *Bitterness*, *Body*) untuk merekomendasikan koreksi klik grinder dan suhu air.
-- **29 Model Konverter Grinder**: Kalkulasi klik otomatis antar merk terkemuka (Comandante C40, Timemore Chestnut, Vesper VS-3 Fold, MHW-3BOMBER, DF64, Fellow Ode, dll).
+- **100+ Model Konverter Grinder**: Kalkulasi klik otomatis antar merk terkemuka (Comandante C40, Timemore Chestnut, Vesper VS-3 Fold, MHW-3BOMBER, DF64, Fellow Ode, dll).
 - **Direktori 50 Roastery & Beans Radar GPS**: Temukan kedai dan roastery kopi lokal nusantara terdekat dengan stok biji kopi segar.
-- **Form Cupping SCA & 92 Flavor Notes**: Pencatatan profil sensori standar internasional.
+- **Form Cupping 10 Parameter SCA & Wheel Aroma (110 Atribut)**: Pencatatan profil sensori standar dunia SCA & World Coffee Research.
 - **Cetak Struk Resep Thermal Bluetooth**: Integrasi printer kasir portable 58mm/80mm standar ESC/POS untuk slow bar kedai kopi.
 
 ---

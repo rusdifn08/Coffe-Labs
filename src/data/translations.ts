@@ -12,8 +12,8 @@ export const translations: TranslationDict = {
     en: "Coffee Labs — Specialty Coffee Brewing Labs & Precision Brew Guide",
   },
   "meta.desc": {
-    id: "200+ resep seduh dari 100+ barista dunia, Guided Brew timer presisi, koreksi rasa Brew Doctor, cupping SCA & katalog 50 roastery. Multi-platform untuk iOS, Android & Web.",
-    en: "200+ brew recipes from 100+ world champions, Guided Brew precision timer, Brew Doctor sensory diagnosis, SCA cupping & 50+ roastery catalog. Multi-platform for iOS, Android & Web.",
+    id: "500+ resep seduh dari 200+ barista dunia & Indonesia, Guided Brew timer presisi, koreksi rasa Brew Doctor, 10 parameter cupping SCA & konverter 100+ grinder. Multi-platform untuk iOS, Android & Web.",
+    en: "500+ brew recipes from 200+ world & Indonesian baristas, Guided Brew precision timer, Brew Doctor sensory diagnosis, 10-attribute SCA cupping & 100+ grinder converter. Multi-platform for iOS, Android & Web.",
   },
 
   // NAVBAR
@@ -104,8 +104,8 @@ export const translations: TranslationDict = {
     en: "World Champion Barista Standards.",
   },
   "hero.subheadline": {
-    id: "Bukan sekadar stopwatch biasa. Panduan rasio baku, kalkulasi gramasi otomatis, 200+ resep resmi brewer juara dunia, dan evaluasi Brew Doctor untuk cangkir sempurna tanpa tebakan.",
-    en: "Not just an ordinary stopwatch. Precise ratio guides, auto-gram calculation, 200+ official recipes from world champions, and Brew Doctor sensory diagnosis for the perfect cup without guesswork.",
+    id: "Bukan sekadar stopwatch biasa. Panduan rasio baku, kalkulasi gramasi otomatis, 500+ resep resmi brewer juara dunia & Indonesia, dan evaluasi Brew Doctor untuk cangkir sempurna tanpa tebakan.",
+    en: "Not just an ordinary stopwatch. Precise ratio guides, auto-gram calculation, 500+ official recipes from world & Indonesian champions, and Brew Doctor sensory diagnosis for the perfect cup without guesswork.",
   },
   "hero.cta_trial_mobile": {
     id: "Free Trial",
@@ -149,37 +149,53 @@ export const translations: TranslationDict = {
   },
 
   // TRUST BAR
+  "trust.recipes_val": {
+    id: "500+",
+    en: "500+",
+  },
   "trust.recipes_num": {
-    id: "200+ Resep Juara Dunia",
-    en: "200+ Champion Recipes",
+    id: "Resep Juara Dunia",
+    en: "Champion Recipes",
   },
   "trust.recipes_sub": {
     id: "WBC, WBrC & Juara Nasional",
     en: "WBC, WBrC & National Champions",
   },
+  "trust.baristas_val": {
+    id: "200+",
+    en: "200+",
+  },
   "trust.baristas_num": {
-    id: "100+ Barista Dunia",
-    en: "100+ World Baristas",
+    id: "Barista Dunia & Indonesia",
+    en: "World & Indonesian Baristas",
   },
   "trust.baristas_sub": {
     id: "Kurasi parameter seduhan resmi",
     en: "Curated official brew parameters",
   },
+  "trust.grinders_val": {
+    id: "100+",
+    en: "100+",
+  },
   "trust.grinders_num": {
-    id: "50+ Model Grinder",
-    en: "50+ Grinder Models",
+    id: "Model Grinder",
+    en: "Grinder Models",
   },
   "trust.grinders_sub": {
     id: "Konversi klik & acuan mikron",
     en: "Click conversion & micron references",
   },
+  "trust.sensory_val": {
+    id: "10",
+    en: "10",
+  },
   "trust.sensory_num": {
-    id: "9 Parameter Sensori",
-    en: "9 Sensory Parameters",
+    id: "Parameter Sensori SCA",
+    en: "SCA Sensory Parameters",
   },
   "trust.sensory_sub": {
-    id: "Wheel aroma & acuan rasa SCA",
-    en: "Aroma wheel & SCA sensory standards",
+    id: "Wheel aroma 110 atribut & acuan rasa SCA",
+    en: "110-attribute Flavor Wheel & SCA world standard",
   },
 
   // PROBLEM VS SOLUTION
@@ -214,8 +230,8 @@ export const translations: TranslationDict = {
     en: "Everything you need for the perfect brew in every cup.",
   },
   "bento.desc": {
-    id: "Studio seduhan presisi dengan algoritma kalkulasi rasio, 200+ resep juara, dan evaluasi sensori profesional.",
-    en: "Precision brewing studio with ratio algorithms, 200+ champion recipes, and professional sensory evaluation.",
+    id: "Studio seduhan presisi dengan algoritma kalkulasi rasio, 500+ resep juara, dan evaluasi sensori profesional.",
+    en: "Precision brewing studio with ratio algorithms, 500+ champion recipes, and professional sensory evaluation.",
   },
   "bento.t1_badge": {
     id: "PANDUAN SEDUH",
@@ -234,8 +250,8 @@ export const translations: TranslationDict = {
     en: "Precision Timer",
   },
   "bento.t2_badge": {
-    id: "200+ RESEP",
-    en: "200+ RECIPES",
+    id: "500+ RESEP",
+    en: "500+ RECIPES",
   },
   "bento.t2_title": {
     id: "Resep Barista Dunia",
@@ -274,8 +290,8 @@ export const translations: TranslationDict = {
     en: "SCA Cupping",
   },
   "bento.t4_desc": {
-    id: "Form cupping standar Specialty Coffee Association. Skoring Clean Cup, Acidity, Sweetness, dan 92 flavor notes.",
-    en: "Specialty Coffee Association standard cupping form. Scoring Clean Cup, Acidity, Sweetness, and 92 flavor notes.",
+    id: "Form cupping 10 parameter standar Specialty Coffee Association. Skoring lengkap dengan wheel aroma 110 atribut standar dunia.",
+    en: "Specialty Coffee Association 10-attribute cupping form. Complete scoring with the 110-attribute world-standard flavor wheel.",
   },
   "bento.t4_sub": {
     id: "Flavor Wheel",
@@ -366,8 +382,8 @@ export const translations: TranslationDict = {
     en: "COMPLETE RECIPE LIBRARY",
   },
   "recipes.title": {
-    id: "200+ Resep dari 100+ Barista Dunia, termasuk juara World Brewers Cup.",
-    en: "200+ Recipes from 100+ World Baristas, including World Brewers Cup champions.",
+    id: "500+ Resep dari 200+ Barista Dunia & Indonesia, termasuk juara World Brewers Cup.",
+    en: "500+ Recipes from 200+ World & Indonesian Baristas, including World Brewers Cup champions.",
   },
   "recipes.desc": {
     id: "Tak perlu lagi mencatat acak dari video YouTube. Setiap resep telah diuji, memiliki dosis rasio baku, suhu air terukur, dan panduan klik grinder.",
@@ -452,8 +468,8 @@ export const translations: TranslationDict = {
     en: "Flexible plans, starting free forever.",
   },
   "pricing.desc": {
-    id: "Nikmati seluruh 200+ resep juara dunia dan diagnosis Brew Doctor dengan lisensi seumur hidup (Lifetime).",
-    en: "Enjoy all 200+ world champion recipes and Brew Doctor diagnosis with a Lifetime license.",
+    id: "Nikmati seluruh 500+ resep juara dunia & Indonesia dan diagnosis Brew Doctor dengan lisensi seumur hidup (Lifetime).",
+    en: "Enjoy all 500+ world & Indonesian champion recipes and Brew Doctor diagnosis with a Lifetime license.",
   },
   "pricing.free_name": {
     id: "Free Plan",
@@ -600,8 +616,8 @@ export const translations: TranslationDict = {
 
   // FOOTER
   "footer.desc": {
-    id: "Aplikasi specialty coffee brewing labs terdepan di Indonesia. Multi-platform untuk iOS, Android, dan Web. Menggabungkan 200+ resep barista dunia, guided timer interaktif, diagnosis sensori Brew Doctor, dan direktori roastery nusantara.",
-    en: "Indonesia's premier specialty coffee brewing labs application. Multi-platform for iOS, Android, and Web. Combining 200+ world barista recipes, interactive guided timer, Brew Doctor sensory diagnosis, and roastery directory.",
+    id: "Aplikasi specialty coffee brewing labs terdepan di Indonesia. Multi-platform untuk iOS, Android, dan Web. Menggabungkan 500+ resep barista dunia & Indonesia, guided timer interaktif, diagnosis sensori Brew Doctor, dan direktori roastery nusantara.",
+    en: "Indonesia's premier specialty coffee brewing labs application. Multi-platform for iOS, Android, and Web. Combining 500+ world & Indonesian barista recipes, interactive guided timer, Brew Doctor sensory diagnosis, and roastery directory.",
   },
   "footer.nav_title": {
     id: "Navigasi",

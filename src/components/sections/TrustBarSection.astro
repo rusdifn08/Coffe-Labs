@@ -6,10 +6,13 @@ import { landingData } from '../../data/landingData';
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
     <!-- 4 Key Numbers Grid -->
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center divide-y lg:divide-y-0 lg:divide-x divide-[#E8DFD8]">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center lg:divide-x divide-[#E8DFD8]">
       {landingData.stats.map((stat, i) => (
-        <div class={`space-y-1 ${i > 1 ? 'pt-6 sm:pt-0' : ''}`}>
-          <div class="text-3xl sm:text-5xl font-extrabold text-[#6B4423] tracking-tight font-mono">
+        <div class={`space-y-1 ${i > 1 ? 'pt-4 lg:pt-0' : ''}`}>
+          <div
+            class="text-3xl sm:text-5xl font-extrabold text-[#6B4423] tracking-tight font-mono"
+            data-i18n={i === 0 ? 'trust.recipes_val' : i === 1 ? 'trust.baristas_val' : i === 2 ? 'trust.grinders_val' : 'trust.sensory_val'}
+          >
             {stat.value}
           </div>
           <div
@@ -19,7 +22,7 @@ import { landingData } from '../../data/landingData';
             {stat.label}
           </div>
           <div
-            class="text-xs text-[#8F857D] font-medium max-w-[200px] mx-auto"
+            class="text-xs text-[#8F857D] font-medium max-w-[220px] mx-auto"
             data-i18n={i === 0 ? 'trust.recipes_sub' : i === 1 ? 'trust.baristas_sub' : i === 2 ? 'trust.grinders_sub' : 'trust.sensory_sub'}
           >
             {stat.sub}
