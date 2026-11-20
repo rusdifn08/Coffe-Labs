@@ -3,8 +3,9 @@ import '../styles/global.css';
 import { landingData } from '../data/landingData';
 
 const apkDownloadUrl = landingData.brand.downloadAndroid;
-const pageTitle = 'Live Brew Tracker — Coffee Labs Brewing Telemetry';
-const pageDesc = 'Saksikan proses penyeduhan kopi Anda secara real-time detik demi detik langsung dari Brew Bar Coffee Labs.';
+const pageTitle = 'Live Brewing 2.0 — Coffee Labs Real-Time 1:1 Mirror';
+const pageDesc =
+  'Pantau proses pemilihan resep, profil biji kopi, progres pesanan POS, dan timer seduh NTP 1:1 secara real-time langsung dari Brew Bar Coffee Labs.';
 ---
 
 <!doctype html>
@@ -17,363 +18,349 @@ const pageDesc = 'Saksikan proses penyeduhan kopi Anda secara real-time detik de
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/icon.png" />
     <style>
+      :root {
+        --brand-bg: #12100e;
+        --brand-surface: #1c1714;
+        --brand-accent: #d4a373;
+        --brand-text: #f9f5ee;
+      }
       @keyframes pulseDot {
         0%, 100% { opacity: 1; transform: scale(1); }
         50% { opacity: 0.45; transform: scale(1.25); }
       }
       @keyframes floatParticle {
         0% { opacity: 1; transform: translateY(0) scale(0.95); }
-        100% { opacity: 0; transform: translateY(-95px) scale(1.35); }
-      }
-      @keyframes bubbleRise {
-        0% { transform: translateY(10px) scale(0.6); opacity: 0; }
-        40% { opacity: 0.85; }
-        100% { transform: translateY(-22px) scale(1.25); opacity: 0; }
+        100% { opacity: 0; transform: translateY(-90px) scale(1.3); }
       }
       .live-dot { animation: pulseDot 1.3s ease-in-out infinite; }
       .cheer-particle {
         position: fixed;
         z-index: 60;
         pointer-events: none;
-        font-size: 28px;
-        animation: floatParticle 1.2s ease-out forwards;
-      }
-      .co2-bubble {
-        animation: bubbleRise 1.6s ease-in-out infinite;
+        font-size: 26px;
+        animation: floatParticle 1.15s ease-out forwards;
       }
     </style>
   </head>
 
-  <body class="min-h-screen bg-[#12100E] text-[#F9F5EE] antialiased selection:bg-[#D4AF37] selection:text-[#12100E]">
-    <!-- Top Integrated Header -->
-    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#12100E]/90 backdrop-blur-lg">
-      <div class="max-w-5xl mx-auto px-4 h-15 flex items-center justify-between gap-3">
-        <a href="/" class="flex items-center gap-2.5 group shrink-0">
-          <img src="/icon.png" alt="Coffee Labs" class="w-8 h-8 object-contain" />
+  <body class="min-h-screen bg-[#12100E] text-[#F9F5EE] antialiased selection:bg-[#D4A373] selection:text-[#12100E]">
+    <!-- High-Contrast Obsidian Header -->
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#12100E]/95 backdrop-blur-lg">
+      <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+        <a href="/" class="flex items-center gap-2.5 shrink-0">
+          <img id="header-cafe-logo" src="/icon.png" alt="Coffee Labs" class="w-8 h-8 rounded-lg object-contain" />
           <div class="leading-tight">
-            <span class="font-extrabold text-sm sm:text-base tracking-tight text-white">
-              Coffee <span class="text-[#ECA400]">Labs</span>
+            <span id="header-brand-title" class="font-extrabold text-sm sm:text-base tracking-tight text-[#F9F5EE]">
+              Coffee <span style="color: var(--brand-accent)">Labs</span>
             </span>
-            <span class="block text-[9px] font-bold tracking-[0.18em] text-[#D4AF37] uppercase">
-              LIVE BREW STUDIO
+            <span id="header-brand-sub" class="block text-[10px] font-bold tracking-[0.16em] uppercase" style="color: var(--brand-accent)">
+              LIVE BREWING 2.0 • 1:1 REAL-TIME
             </span>
           </div>
         </a>
 
-        <form id="code-jump-form" class="flex items-center gap-1.5 flex-1 max-w-xs">
-          <input
-            id="code-input"
-            type="text"
-            inputmode="numeric"
-            maxlength="16"
-            placeholder="Kode 13-digit QR / Meja..."
-            class="w-full rounded-xl bg-white/8 border border-white/15 px-3 py-1.5 text-xs text-white placeholder:text-white/40 focus:border-[#D4AF37] focus:outline-none"
-          />
-          <button
-            type="submit"
-            class="px-3 py-1.5 rounded-xl bg-[#D4AF37] text-[#12100E] font-bold text-xs hover:bg-[#ECA400] transition cursor-pointer shrink-0"
+        <div class="flex items-center gap-2">
+          <span
+            id="conn-badge"
+            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-extrabold bg-white/5 border border-white/15 text-[#F9F5EE]"
           >
-            Lacak
-          </button>
-        </form>
-
-        <div class="hidden sm:flex items-center gap-2 shrink-0">
-          <button
-            id="demo-mode-btn"
-            type="button"
-            class="px-3 py-1.5 rounded-xl border border-[#D4AF37]/40 text-[#D4AF37] hover:bg-[#D4AF37]/10 text-xs font-bold transition cursor-pointer"
-          >
-            Simulasi Live
-          </button>
+            <span id="conn-dot" class="w-2 h-2 rounded-full bg-amber-400"></span>
+            <span id="conn-label">SIAP</span>
+          </span>
           <a
-            href="/trial"
-            class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-white transition"
+            id="open-app-header"
+            href="coffeelabs://livebrew"
+            class="hidden sm:inline-flex items-center px-3 py-1.5 rounded-xl text-xs font-extrabold text-[#12100E] transition hover:opacity-90"
+            style="background: var(--brand-accent)"
           >
-            Web Trial
+            Buka di Aplikasi
           </a>
         </div>
       </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-4 py-6 space-y-5">
-      <!-- Empty / Code Prompt Banner (Shown only when no code in URL yet) -->
-      <section id="landing-empty-card" class="hidden rounded-3xl border border-[#D4AF37]/30 bg-gradient-to-br from-[#231914] to-[#16110E] p-6 sm:p-8 text-center space-y-4">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30 text-[#D4AF37] text-[11px] font-bold uppercase tracking-wider">
-          Dynamic Order QR (3...) &bull; Static Table QR (7...)
+    <main class="max-w-4xl mx-auto px-4 py-6 sm:py-8 space-y-5">
+      <!-- 1. Entry / Lookup Card (Saat URL belum memuat kode atau meja) -->
+      <section
+        id="lookup-card"
+        class="rounded-3xl bg-[#1C1714] border border-[#D4A373]/30 p-6 sm:p-8 shadow-2xl space-y-5"
+      >
+        <div class="space-y-2">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-extrabold uppercase tracking-wider bg-[#D4A373]/15 text-[#D4A373]">
+            Zero Simulation • 100% Real-Time NTP Mirror
+          </span>
+          <h1 class="text-2xl sm:text-3xl font-black text-[#F9F5EE] tracking-tight">
+            Lacak Seduhan Barista Secara Langsung (1:1)
+          </h1>
+          <p class="text-sm text-[#CBBFB2] leading-relaxed">
+            Masukkan kode siaran 13-digit dari barista atau slug meja kafe bisnis Anda (contoh:
+            <code class="px-1.5 py-0.5 rounded bg-black/40 text-[#D4A373]">kopi-senja/meja-04</code>)
+            untuk menyambung ke sesi seduh nyata secara instan.
+          </p>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black text-white">
-          Saksikan Seduhan Kopi Anda Secara Real-Time
-        </h1>
-        <p class="text-sm text-[#D6CEC5] max-w-xl mx-auto">
-          Pindai QR di struk kasir atau stiker meja kedai Coffee Labs, masukkan 13-digit kode di atas, atau jalankan simulasi live 10Hz untuk melihat kurva timbangan &amp; animasi V60 bekerja langsung di browser.
-        </p>
-        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+
+        <form id="jump-form" class="flex flex-col sm:flex-row gap-3">
+          <input
+            id="target-input"
+            type="text"
+            autocomplete="off"
+            placeholder="Kode 13 digit (7...) atau cafe-slug/meja-04"
+            class="flex-1 rounded-2xl bg-[#12100E] border border-[#D4A373]/35 px-4 py-3.5 text-sm text-[#F9F5EE] placeholder-[#9C8F82] focus:outline-none focus:border-[#D4A373]"
+          />
           <button
-            id="start-demo-cta"
-            type="button"
-            class="px-5 py-2.5 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#12100E] font-extrabold text-sm shadow-lg transition cursor-pointer"
+            type="submit"
+            class="px-6 py-3.5 rounded-2xl font-extrabold text-sm text-[#12100E] transition hover:opacity-90 cursor-pointer shrink-0"
+            style="background: var(--brand-accent)"
           >
-            Jalankan Demo Seduh V60 Live (10Hz)
+            Hubungkan Live Mirror
           </button>
-          <a
-            href={apkDownloadUrl}
-            class="px-5 py-2.5 rounded-xl border border-white/20 hover:bg-white/10 text-white font-semibold text-sm transition"
-          >
-            Download APK Coffee Labs
-          </a>
-        </div>
+        </form>
+
+        <div id="lookup-error" class="hidden rounded-2xl bg-red-950/50 border border-red-500/40 px-4 py-3 text-xs text-red-200 font-semibold"></div>
       </section>
 
-      <!-- Static Table Waiting Room -->
-      <section id="table-waiting-card" class="hidden rounded-3xl border border-amber-500/35 bg-[#1D1612] p-7 text-center space-y-4">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/15 text-amber-300 text-xs font-extrabold">
-          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 live-dot"></span>
-          <span id="waiting-table-badge">MEJA TERHUBUNG</span>
-        </div>
-        <h2 id="waiting-title" class="text-2xl font-black text-white">
-          Menunggu Barista Memulai Seduhan Anda...
-        </h2>
-        <p id="waiting-subtitle" class="text-sm text-[#D6CEC5] max-w-lg mx-auto">
-          Halaman ini akan otomatis beralih menjadi Live Brew Tracker dalam kurang dari 100ms begitu barista menekan Mulai Seduh.
+      <!-- 2. Loading State -->
+      <section
+        id="loading-card"
+        class="hidden rounded-3xl bg-[#1C1714] border border-[#D4A373]/30 p-8 text-center space-y-3"
+      >
+        <div class="w-10 h-10 mx-auto rounded-full border-4 border-[#D4A373]/30 border-t-[#D4A373] animate-spin"></div>
+        <p class="text-sm font-bold text-[#F9F5EE]">
+          Menghubungkan ke Studio Barista &amp; Kalibrasi Jam NTP (&lt; 25ms)...
         </p>
-        <div class="flex justify-center py-2">
-          <div class="w-16 h-16 rounded-full border-2 border-[#D4AF37]/40 border-t-[#ECA400] animate-spin"></div>
-        </div>
       </section>
 
-      <!-- Live Telemetry Dashboard (Active or Completed) -->
-      <div id="live-dashboard" class="hidden space-y-5">
-        <!-- 1. Live Barista & Bean Metadata Card -->
-        <section class="rounded-3xl border border-white/12 bg-gradient-to-br from-[#231914] to-[#17120F] p-5 sm:p-6">
+      <!-- 3. Real-Time Live Mirror Dashboard -->
+      <div id="live-shell" class="hidden space-y-5">
+        <!-- Custom Cafe Branding & Seat Banner -->
+        <section
+          id="branding-card"
+          class="rounded-3xl bg-[#1C1714] border p-5 sm:p-6 space-y-4 shadow-xl"
+          style="border-color: color-mix(in srgb, var(--brand-accent) 40%, transparent)"
+        >
           <div class="flex flex-wrap items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5">
-              <span id="live-status-pill" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 border border-red-400/40 text-red-200 text-xs font-extrabold">
-                <span class="w-2 h-2 rounded-full bg-red-400 live-dot"></span>
-                <span id="live-status-text">LIVE DARI BREW BAR</span>
-              </span>
-              <span id="table-chip" class="hidden px-2.5 py-1 rounded-full bg-[#D4AF37]/20 text-[#D4AF37] text-xs font-bold"></span>
-            </div>
-            <div class="flex items-center gap-2 text-xs text-white/65">
-              <span>Kode: <strong id="session-code-label" class="text-white font-mono">-</strong></span>
-              <a id="open-in-app-link" href="#" class="px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold transition">
-                Buka di App
-              </a>
-            </div>
-          </div>
-
-          <div class="mt-4 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-            <div class="md:col-span-7 space-y-1.5">
-              <div class="text-xs text-[#D4AF37] font-bold uppercase tracking-wider" id="store-barista-label">
-                Coffee Labs Slow Bar &bull; Barista
+            <div class="min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <h2 id="cafe-name" class="text-xl sm:text-2xl font-black text-[#F9F5EE] truncate">
+                  Coffee Labs Brew Bar
+                </h2>
+                <span
+                  id="seat-pill"
+                  class="hidden px-2.5 py-0.5 rounded-full text-[11px] font-extrabold text-[#12100E]"
+                  style="background: var(--brand-accent)"
+                ></span>
               </div>
-              <h1 id="recipe-title-label" class="text-xl sm:text-2xl font-black text-white">
-                Resep V60 Spesial
-              </h1>
-              <p id="bean-meta-label" class="text-xs sm:text-sm text-[#D6CEC5]">
-                Malabar Wine Reserve &bull; Wine Process
+              <p id="cafe-welcome" class="text-xs sm:text-sm text-[#CBBFB2] mt-1">
+                Selamat menikmati seduhan segar kami! Seluruh proses seduhan tersinkronisasi 1:1 di layar ini.
               </p>
-              <div id="tasting-notes-row" class="flex flex-wrap gap-1.5 pt-1"></div>
             </div>
-            <div class="md:col-span-5 grid grid-cols-3 gap-2 text-center bg-black/25 rounded-2xl p-3 border border-white/8">
-              <div>
-                <span class="block text-[10px] text-white/55">Dosis Kopi</span>
-                <strong id="target-dose-val" class="text-sm font-extrabold text-white">15g</strong>
-              </div>
-              <div>
-                <span class="block text-[10px] text-white/55">Target Air</span>
-                <strong id="target-water-val" class="text-sm font-extrabold text-[#ECA400]">225ml</strong>
-              </div>
-              <div>
-                <span class="block text-[10px] text-white/55">Suhu Target</span>
-                <strong id="target-temp-val" class="text-sm font-extrabold text-sky-300">91&deg;C</strong>
-              </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <button
+                id="change-target-btn"
+                type="button"
+                class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-bold text-[#F9F5EE] cursor-pointer"
+              >
+                Ganti Kode / Meja
+              </button>
             </div>
+          </div>
+
+          <!-- 1-Tap Copy Wi-Fi Bar (Business Cafe) -->
+          <div
+            id="wifi-bar"
+            class="hidden flex items-center justify-between gap-3 rounded-2xl bg-[#12100E] border border-white/10 px-4 py-2.5"
+          >
+            <div class="text-xs text-[#F9F5EE] truncate">
+              <span class="font-extrabold" style="color: var(--brand-accent)">Wi-Fi Kafe:</span>
+              <span id="wifi-text" class="ml-1 font-semibold"></span>
+            </div>
+            <button
+              id="copy-wifi-btn"
+              type="button"
+              class="px-3 py-1 rounded-lg text-[11px] font-extrabold text-[#12100E] shrink-0 cursor-pointer"
+              style="background: var(--brand-accent)"
+            >
+              Salin Sandi
+            </button>
           </div>
         </section>
 
-        <!-- 2. 7-Step Animated Progress Stepper -->
-        <section class="rounded-2xl border border-white/10 bg-[#1B1511] p-4">
-          <div class="flex items-center justify-between mb-3">
-            <span id="stage-banner-label" class="text-sm font-extrabold text-[#ECA400]">
-              Menunggu tahap seduh...
-            </span>
-            <span id="stage-step-counter" class="text-xs font-bold text-white/60">Tahap 1 / 7</span>
+        <!-- Business POS Order Progress Stepper -->
+        <section
+          id="pos-order-card"
+          class="hidden rounded-3xl bg-[#1C1714] border border-white/10 p-5 space-y-4"
+        >
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] font-extrabold uppercase tracking-widest" style="color: var(--brand-accent)">
+                SINKRONISASI KASIR POS BISNIS
+              </span>
+              <h3 id="pos-order-title" class="text-base font-black text-[#F9F5EE]"></h3>
+              <p id="pos-order-items" class="text-xs text-[#CBBFB2]"></p>
+            </div>
+            <span
+              id="pos-queue-pill"
+              class="hidden px-3 py-1 rounded-full text-xs font-extrabold bg-[#D4A373]/15 text-[#D4A373]"
+            ></span>
           </div>
-          <div id="stage-stepper" class="grid grid-cols-7 gap-1.5"></div>
+
+          <div class="grid grid-cols-4 gap-2 text-center" id="pos-stepper">
+            <div data-pos-step="0" class="rounded-xl p-2 bg-[#12100E] border border-white/10 text-[11px] font-bold text-[#9C8F82]">1. Masuk POS</div>
+            <div data-pos-step="1" class="rounded-xl p-2 bg-[#12100E] border border-white/10 text-[11px] font-bold text-[#9C8F82]">2. Pilih Resep</div>
+            <div data-pos-step="2" class="rounded-xl p-2 bg-[#12100E] border border-white/10 text-[11px] font-bold text-[#9C8F82]">3. Diseduh</div>
+            <div data-pos-step="3" class="rounded-xl p-2 bg-[#12100E] border border-white/10 text-[11px] font-bold text-[#9C8F82]">4. Disajikan</div>
+          </div>
         </section>
 
-        <!-- 3. Dual-View Stage + 4 Live Gauges -->
-        <section class="grid grid-cols-1 lg:grid-cols-12 gap-5">
-          <!-- Left: SVG Animated V60 / WebRTC Camera Switcher -->
-          <div class="lg:col-span-5 rounded-3xl border border-white/10 bg-[#1B1511] p-4 flex flex-col">
-            <div class="flex items-center gap-2 mb-3">
-              <button
-                id="tab-telemetry-btn"
-                type="button"
-                class="flex-1 py-2 rounded-xl text-xs font-bold bg-[#D4AF37] text-[#12100E] cursor-pointer transition"
+        <!-- Real Branded Idle State (Saat Meja Aktif Tetapi Barista Belum Mulai Seduh) -->
+        <section
+          id="idle-waiting-card"
+          class="hidden rounded-3xl bg-[#1C1714] border border-white/10 p-7 text-center space-y-3"
+        >
+          <div class="w-14 h-14 mx-auto rounded-2xl flex items-center justify-center bg-[#D4A373]/15 border border-[#D4A373]/40 text-2xl">
+            ☕
+          </div>
+          <h3 id="idle-title" class="text-lg font-black text-[#F9F5EE]">
+            Meja Terhubung Real-Time — Menunggu Barista
+          </h3>
+          <p class="text-sm text-[#CBBFB2] max-w-lg mx-auto leading-relaxed">
+            Halaman ini mendengarkan server Coffee Labs secara langsung. Begitu barista memilih metode seduh, menimbang biji kopi, dan menyalakan timer, layar ini langsung berubah otomatis 1:1 tanpa perlu refresh.
+          </p>
+        </section>
+
+        <!-- Active 1:1 Mirror Grid -->
+        <div id="active-mirror-grid" class="hidden grid grid-cols-1 md:grid-cols-12 gap-5">
+          <!-- Left: 60fps NTP Circular Timer + Telemetry -->
+          <section class="md:col-span-5 rounded-3xl bg-[#1C1714] border border-white/10 p-6 flex flex-col items-center justify-between space-y-5">
+            <div class="w-full flex items-center justify-between gap-2 text-[11px]">
+              <span
+                id="phase-pill"
+                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-extrabold bg-[#D4A373]/15 text-[#F9F5EE]"
               >
-                Animasi V60 Real-Time
-              </button>
-              <button
-                id="tab-camera-btn"
-                type="button"
-                class="flex-1 py-2 rounded-xl text-xs font-bold bg-white/8 text-white/75 hover:text-white cursor-pointer transition"
-              >
-                Kamera Barista Live
-              </button>
+                <span class="w-2 h-2 rounded-full bg-red-500 live-dot"></span>
+                <span id="phase-label">Menyiapkan Seduhan</span>
+              </span>
+              <span id="ntp-meta" class="font-mono text-[10px] text-[#9C8F82]">v1 • NTP 0ms</span>
             </div>
 
-            <!-- Tab 1: Interactive V60 SVG Cross-Section -->
-            <div id="v60-visual-pane" class="flex-1 flex flex-col items-center justify-center py-2">
-              <svg viewBox="0 0 260 270" class="w-full max-w-[250px]" aria-label="Animasi V60 Real-Time">
-                <defs>
-                  <clipPath id="v60-cone-clip">
-                    <polygon points="45,45 215,45 145,152 115,152" />
-                  </clipPath>
-                  <clipPath id="server-clip">
-                    <rect x="75" y="168" width="110" height="82" rx="14" />
-                  </clipPath>
-                </defs>
-
-                <!-- Kettle Pour Jet -->
-                <path id="svg-kettle-jet" d="M210,12 Q155,20 132,78" stroke="#FBBF24" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.85" />
-
-                <!-- V60 Ceramic Rim -->
-                <polygon points="38,42 222,42 148,154 112,154" fill="rgba(249,245,238,0.10)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5" />
-
-                <!-- Coffee Bed inside V60 -->
-                <polygon points="88,108 172,108 145,150 115,150" fill="#4A2A18" />
-
-                <!-- Dynamic Slurry Water Level inside Cone -->
-                <g clip-path="url(#v60-cone-clip)">
-                  <rect id="svg-cone-water" x="40" y="110" width="180" height="50" fill="rgba(212,139,75,0.58)" />
-                </g>
-
-                <!-- CO2 Bloom Bubbles (toggled during BLOOMING_DEGASSING) -->
-                <g id="svg-bloom-bubbles" opacity="0">
-                  <circle cx="115" cy="112" r="3" fill="#FDE68A" class="co2-bubble" />
-                  <circle cx="132" cy="106" r="4" fill="#FDE68A" class="co2-bubble" style="animation-delay:0.4s" />
-                  <circle cx="146" cy="114" r="2.8" fill="#FDE68A" class="co2-bubble" style="animation-delay:0.8s" />
-                </g>
-
-                <!-- Drip Drop -->
-                <circle id="svg-drip-dot" cx="130" cy="162" r="3.2" fill="#D48B4B" opacity="0.8" />
-
-                <!-- Server Carafe -->
-                <rect x="75" y="168" width="110" height="82" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.38)" stroke-width="2.2" />
-                <g clip-path="url(#server-clip)">
-                  <rect id="svg-server-liquid" x="75" y="250" width="110" height="82" fill="#6B3219" />
-                </g>
+            <!-- 60fps SVG Circular Brew Timer -->
+            <div class="relative w-48 h-48 flex items-center justify-center">
+              <svg class="w-48 h-48 -rotate-90" viewBox="0 0 180 180">
+                <circle cx="90" cy="90" r="78" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="11" />
+                <circle
+                  id="timer-arc"
+                  cx="90"
+                  cy="90"
+                  r="78"
+                  fill="none"
+                  stroke="#D4A373"
+                  stroke-width="11"
+                  stroke-linecap="round"
+                  stroke-dasharray="490.09"
+                  stroke-dashoffset="490.09"
+                />
               </svg>
-            </div>
-
-            <!-- Tab 2: Live Video Stream (WebRTC WHEP + Keyframe Fallback) -->
-            <div id="camera-visual-pane" class="hidden flex-1 flex flex-col items-center justify-center rounded-2xl bg-black/40 border border-white/10 min-h-[240px] p-3 text-center">
-              <video id="whep-video-el" autoplay playsinline muted class="hidden w-full h-56 object-cover rounded-xl"></video>
-              <img id="live-keyframe-img" alt="Kamera Overhead Barista" class="hidden w-full h-56 object-cover rounded-xl" />
-              <div id="camera-offline-msg" class="space-y-2 text-xs text-white/60">
-                <p class="font-bold text-white/80">Menunggu Kamera Overhead Barista</p>
-                <p>Jika barista menyalakan kamera di tabletnya, video live akan langsung tampil di sini via WebRTC WHEP / live stream.</p>
-              </div>
-            </div>
-
-            <!-- 4 Live Digital Telemetry Gauges -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 border-t border-white/10 mt-3">
-              <div class="rounded-xl bg-white/5 p-2.5 text-center">
-                <span class="block text-[10px] text-white/55">Waktu Seduh</span>
-                <strong id="gauge-timer" class="text-base font-black font-mono text-white">00:00</strong>
-              </div>
-              <div class="rounded-xl bg-white/5 p-2.5 text-center">
-                <span class="block text-[10px] text-white/55">Berat Air</span>
-                <strong id="gauge-weight" class="text-base font-black font-mono text-[#ECA400]">0.0g</strong>
-              </div>
-              <div class="rounded-xl bg-white/5 p-2.5 text-center">
-                <span class="block text-[10px] text-white/55">Laju Tuang</span>
-                <strong id="gauge-flow" class="text-base font-black font-mono text-emerald-300">0.0 ml/s</strong>
-              </div>
-              <div class="rounded-xl bg-white/5 p-2.5 text-center">
-                <span class="block text-[10px] text-white/55">Suhu Ketel</span>
-                <strong id="gauge-temp" class="text-base font-black font-mono text-sky-300">91.0&deg;C</strong>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right: 60fps Cubic Hermite Spline Chart + Cheer Bar -->
-          <div class="lg:col-span-7 flex flex-col gap-4">
-            <div class="rounded-3xl border border-white/10 bg-[#1B1511] p-4 sm:p-5 flex-1 flex flex-col">
-              <div class="flex items-center justify-between mb-3">
-                <div>
-                  <h2 class="text-sm sm:text-base font-extrabold text-white">
-                    Kurva Tuangan 60fps (Target vs Aktual)
-                  </h2>
-                  <p class="text-[11px] text-white/55">
-                    Interpolasi Cubic Hermite Spline dari telemetri timbangan 10Hz
-                  </p>
+              <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <div class="flex items-baseline font-black text-[#F9F5EE] tabular-nums">
+                  <span id="timer-mmss" class="text-4xl tracking-tight">00:00</span>
+                  <span id="timer-tenth" class="text-lg ml-0.5" style="color: var(--brand-accent)">.0</span>
                 </div>
-                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 text-[10px] font-bold">
-                  10Hz &rarr; 60FPS
+                <span id="timer-target" class="text-[11px] font-bold text-[#9C8F82] mt-1">Target 02:30</span>
+              </div>
+            </div>
+
+            <!-- Live Scale & Extraction Telemetry -->
+            <div class="w-full grid grid-cols-3 gap-2">
+              <div class="rounded-2xl bg-[#12100E] p-3 text-center border border-white/5">
+                <span class="block text-[10px] font-bold text-[#9C8F82] uppercase">Berat</span>
+                <strong id="metric-weight" class="text-base font-black text-[#F9F5EE] tabular-nums">0.0 g</strong>
+              </div>
+              <div class="rounded-2xl bg-[#12100E] p-3 text-center border border-white/5">
+                <span class="block text-[10px] font-bold text-[#9C8F82] uppercase">Aliran</span>
+                <strong id="metric-flow" class="text-base font-black text-[#F9F5EE] tabular-nums">0.0 ml/s</strong>
+              </div>
+              <div class="rounded-2xl bg-[#12100E] p-3 text-center border border-white/5">
+                <span class="block text-[10px] font-bold text-[#9C8F82] uppercase">Suhu</span>
+                <strong id="metric-temp" class="text-base font-black text-[#F9F5EE] tabular-nums">91°C</strong>
+              </div>
+            </div>
+
+            <!-- Cheer Bar -->
+            <div class="w-full flex items-center justify-between gap-3 pt-2 border-t border-white/10">
+              <div class="min-w-0">
+                <p id="brewer-name" class="text-xs font-extrabold text-[#F9F5EE] truncate">Barista Coffee Labs</p>
+                <p id="viewers-cheers" class="text-[11px] text-[#9C8F82]">1 penonton • 0 apresiasi</p>
+              </div>
+              <button
+                id="cheer-btn"
+                type="button"
+                class="px-3.5 py-2 rounded-xl text-xs font-black text-[#12100E] shrink-0 cursor-pointer transition active:scale-95"
+                style="background: var(--brand-accent)"
+              >
+                👏 Semangat!
+              </button>
+            </div>
+          </section>
+
+          <!-- Right: Live Recipe Picker Mirror + Live Bean Passport -->
+          <div class="md:col-span-7 space-y-5">
+            <!-- Recipe Card -->
+            <section class="rounded-3xl bg-[#1C1714] border border-white/10 p-5 space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <h3 class="text-sm font-extrabold text-[#F9F5EE]">Resep &amp; Tahapan Barista</h3>
+                <span
+                  id="method-badge"
+                  class="px-2.5 py-0.5 rounded-lg text-[11px] font-extrabold bg-[#D4A373]/15 text-[#D4A373]"
+                >
+                  Menunggu Resep
                 </span>
               </div>
-              <div class="relative flex-1 min-h-[210px]">
-                <canvas id="pouring-chart-canvas" class="w-full h-full rounded-2xl bg-black/25"></canvas>
-              </div>
-            </div>
+              <p id="recipe-title" class="text-lg font-black text-[#F9F5EE]">
+                Barista sedang memilih resep terbaik...
+              </p>
+              <div id="recipe-specs" class="flex flex-wrap gap-2 text-[11px]"></div>
+              <div id="recipe-steps" class="space-y-1.5 pt-1"></div>
+            </section>
 
-            <!-- Interactive Cheer Bar -->
-            <div class="rounded-2xl border border-[#D4AF37]/25 bg-[#211813] p-4 flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <div class="text-xs font-extrabold text-[#D4AF37]">Kirim Semangat ke Tablet Barista</div>
-                <div class="text-[11px] text-white/65">
-                  Total reaksi meja &amp; penonton: <strong id="cheers-counter" class="text-white">0</strong>
-                </div>
-              </div>
-              <div class="flex items-center gap-2">
-                <button type="button" data-cheer="clap" class="cheer-btn px-3 py-2 rounded-xl bg-white/10 hover:bg-[#D4AF37] hover:text-[#12100E] text-xs font-bold transition cursor-pointer">
-                  👏 Semangat!
-                </button>
-                <button type="button" data-cheer="fire" class="cheer-btn px-3 py-2 rounded-xl bg-white/10 hover:bg-[#D4AF37] hover:text-[#12100E] text-xs font-bold transition cursor-pointer">
-                  🔥 Mantap!
-                </button>
-                <button type="button" data-cheer="coffee" class="cheer-btn px-3 py-2 rounded-xl bg-white/10 hover:bg-[#D4AF37] hover:text-[#12100E] text-xs font-bold transition cursor-pointer">
-                  ☕ Harum!
-                </button>
-              </div>
-            </div>
+            <!-- Bean Passport Card -->
+            <section id="bean-card" class="rounded-3xl bg-[#1C1714] border border-white/10 p-5 space-y-3">
+              <h3 class="text-sm font-extrabold text-[#F9F5EE]">Profil Biji Kopi (Live Bean Passport)</h3>
+              <p id="bean-name" class="text-base font-black text-[#F9F5EE]">
+                Menunggu barista memilih biji kopi...
+              </p>
+              <p id="bean-sub" class="text-xs font-bold" style="color: var(--brand-accent)"></p>
+              <div id="bean-notes" class="flex flex-wrap gap-1.5"></div>
+            </section>
           </div>
-        </section>
+        </div>
 
-        <!-- 4. Digital Cup Passport Card (Unlocks when READY_TO_SERVE) -->
-        <section id="passport-card" class="hidden rounded-3xl border-2 border-[#D4AF37] bg-gradient-to-br from-[#2B1F17] to-[#17110D] p-6 space-y-4 shadow-2xl">
-          <div class="flex flex-wrap items-center justify-between gap-3">
-            <div>
-              <span class="text-[11px] font-black uppercase tracking-[0.18em] text-[#D4AF37]">
-                DIGITAL CUP PASSPORT RESMI
-              </span>
-              <h2 class="text-2xl font-black text-white mt-0.5">
-                🎉 Kopi Anda Siap Disajikan!
-              </h2>
-            </div>
-            <div class="px-4 py-2 rounded-2xl bg-[#D4AF37] text-[#12100E] text-center">
-              <span class="block text-[10px] font-bold uppercase">Skor Presisi</span>
-              <strong id="passport-accuracy" class="text-xl font-black">98.5%</strong>
-            </div>
+        <!-- Digital Cup Passport (Muncul saat SERVING_READY_PASSPORT) -->
+        <section
+          id="passport-card"
+          class="hidden rounded-3xl bg-gradient-to-br from-[#1C2A1B] to-[#1C1714] border border-emerald-500/50 p-6 space-y-4"
+        >
+          <div>
+            <span class="text-[11px] font-extrabold tracking-widest uppercase text-emerald-400">
+              DIGITAL CUP PASSPORT RESMI
+            </span>
+            <h2 class="text-2xl font-black text-[#F9F5EE] mt-0.5">
+              Kopi Anda Siap Disajikan!
+            </h2>
+            <p id="passport-summary" class="text-sm text-[#CBBFB2] mt-1"></p>
           </div>
-          <p id="passport-summary" class="text-sm text-[#E5DDD5]">
-            Disajikan dengan ekstraksi Golden Cup. Simpan resep dan profil biji kopi ini ke jurnal pribadi Anda di aplikasi Coffee Labs!
-          </p>
-          <div class="flex flex-wrap gap-3 pt-1">
+          <div class="flex flex-wrap gap-3">
             <a
-              id="passport-app-deeplink"
+              id="passport-deeplink"
               href="coffeelabs://livebrew"
-              class="px-5 py-3 rounded-xl bg-white text-[#12100E] font-extrabold text-xs sm:text-sm hover:bg-[#F3EDE3] transition"
+              class="px-5 py-3 rounded-xl bg-emerald-400 text-[#0B160C] font-extrabold text-xs sm:text-sm hover:opacity-90 transition"
             >
-              Simpan Resep ke Aplikasi Coffee Labs
+              Buka di Aplikasi Coffee Labs
             </a>
             <a
               href={apkDownloadUrl}
-              class="px-5 py-3 rounded-xl bg-[#ECA400] hover:bg-[#D4AF37] text-[#12100E] font-extrabold text-xs sm:text-sm transition"
+              class="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 border border-white/20 text-[#F9F5EE] font-extrabold text-xs sm:text-sm transition"
             >
-              📲 Download Aplikasi Coffee Labs (APK Gratis)
+              Download Aplikasi Coffee Labs (Android)
             </a>
           </div>
         </section>
@@ -382,6 +369,7 @@ const pageDesc = 'Saksikan proses penyeduhan kopi Anda secara real-time detik de
 
     <script is:inline>
       (() => {
+        const CIRCUMFERENCE = 2 * Math.PI * 78;
         const params = new URLSearchParams(window.location.search);
         const queryApi = params.get('api');
         if (queryApi) localStorage.setItem('coffeelabs_api_base', queryApi.replace(/\/$/, ''));
@@ -391,449 +379,468 @@ const pageDesc = 'Saksikan proses penyeduhan kopi Anda secara real-time detik de
           (window.location.hostname === 'localhost' && params.get('local') === '1'
             ? 'http://127.0.0.1:3000'
             : 'https://coffe-labs-backend.onrender.com');
+        const wsBase = apiBase.startsWith('https://')
+          ? apiBase.replace(/^https:\/\//, 'wss://')
+          : apiBase.replace(/^http:\/\//, 'ws://');
 
-        const STAGES = [
-          { code: 'QUEUED_ASSIGNED', short: 'Antre' },
-          { code: 'GRINDING_DOSE', short: 'Giling' },
-          { code: 'FILTER_RINSE_PREHEAT', short: 'Bilas' },
-          { code: 'BLOOMING_DEGASSING', short: 'Bloom' },
-          { code: 'ACTIVE_POURING', short: 'Tuang' },
-          { code: 'DRAWDOWN_SWIRL', short: 'Tiris' },
-          { code: 'READY_TO_SERVE', short: 'Saji!' },
-        ];
+        const $ = (id) => document.getElementById(id);
 
-        const STAGE_LABELS = {
-          QUEUED_ASSIGNED: 'Pesanan Diterima di Brew Bar',
-          GRINDING_DOSE: 'Menimbang & Menggiling Biji Kopi',
-          FILTER_RINSE_PREHEAT: 'Membilas Filter & Pemanasan Server',
-          BLOOMING_DEGASSING: 'Tahap 1: Blooming & Pelepasan Gas CO2',
-          ACTIVE_POURING: 'Tahap 2-3: Ekstraksi Aroma & Sweetness',
-          DRAWDOWN_SWIRL: 'Tahap Akhir: Gentle Swirl & Drawdown',
-          READY_TO_SERVE: 'Kopi Anda Siap Disajikan!',
-        };
+        let currentTarget = null; // { kind: 'branded', cafe, seat, key } | { kind: 'code', code, key }
+        let currentResolution = null;
+        let currentSnap = null;
+        let clockOffsetMs = 0;
+        let bestRttMs = Number.MAX_SAFE_INTEGER;
+        let appliedVersion = -1;
+        let ws = null;
+        let es = null;
+        let rafId = null;
 
-        const els = {
-          emptyCard: document.getElementById('landing-empty-card'),
-          waitingCard: document.getElementById('table-waiting-card'),
-          dashboard: document.getElementById('live-dashboard'),
-          codeInput: document.getElementById('code-input'),
-          codeForm: document.getElementById('code-jump-form'),
-          demoBtn: document.getElementById('demo-mode-btn'),
-          startDemoCta: document.getElementById('start-demo-cta'),
-          waitingBadge: document.getElementById('waiting-table-badge'),
-          waitingTitle: document.getElementById('waiting-title'),
-          waitingSub: document.getElementById('waiting-subtitle'),
-          tableChip: document.getElementById('table-chip'),
-          sessionCode: document.getElementById('session-code-label'),
-          openAppLink: document.getElementById('open-in-app-link'),
-          storeBarista: document.getElementById('store-barista-label'),
-          recipeTitle: document.getElementById('recipe-title-label'),
-          beanMeta: document.getElementById('bean-meta-label'),
-          tastingRow: document.getElementById('tasting-notes-row'),
-          targetDose: document.getElementById('target-dose-val'),
-          targetWater: document.getElementById('target-water-val'),
-          targetTemp: document.getElementById('target-temp-val'),
-          stageBanner: document.getElementById('stage-banner-label'),
-          stageCounter: document.getElementById('stage-step-counter'),
-          stepper: document.getElementById('stage-stepper'),
-          gaugeTimer: document.getElementById('gauge-timer'),
-          gaugeWeight: document.getElementById('gauge-weight'),
-          gaugeFlow: document.getElementById('gauge-flow'),
-          gaugeTemp: document.getElementById('gauge-temp'),
-          cheersCounter: document.getElementById('cheers-counter'),
-          passportCard: document.getElementById('passport-card'),
-          passportAcc: document.getElementById('passport-accuracy'),
-          passportAppLink: document.getElementById('passport-app-deeplink'),
-          canvas: document.getElementById('pouring-chart-canvas'),
-          svgConeWater: document.getElementById('svg-cone-water'),
-          svgServerLiquid: document.getElementById('svg-server-liquid'),
-          svgKettleJet: document.getElementById('svg-kettle-jet'),
-          svgBubbles: document.getElementById('svg-bloom-bubbles'),
-          tabTelemetry: document.getElementById('tab-telemetry-btn'),
-          tabCamera: document.getElementById('tab-camera-btn'),
-          v60Pane: document.getElementById('v60-visual-pane'),
-          camPane: document.getElementById('camera-visual-pane'),
-          whepVideo: document.getElementById('whep-video-el'),
-          liveImg: document.getElementById('live-keyframe-img'),
-          camOffline: document.getElementById('camera-offline-msg'),
-        };
+        function parseRawInput(raw) {
+          const text = (raw || '').trim();
+          if (!text) return null;
+          try {
+            if (/^(https?:|coffeelabs:)/i.test(text)) {
+              const u = new URL(text);
+              const segs = u.pathname.split('/').filter(Boolean);
+              if (u.protocol === 'coffeelabs:' && u.hostname === 'livebrew') {
+                if (segs.length >= 2) {
+                  return { kind: 'branded', cafe: segs[0].toLowerCase(), seat: segs[1].toLowerCase(), key: `${segs[0].toLowerCase()}__${segs[1].toLowerCase()}` };
+                }
+                if (segs.length === 1) return { kind: 'code', code: segs[0], key: segs[0] };
+              }
+              const idx = segs.indexOf('livebrew');
+              if (idx >= 0) {
+                const rest = segs.slice(idx + 1);
+                if (rest.length >= 2) {
+                  return { kind: 'branded', cafe: rest[0].toLowerCase(), seat: rest[1].toLowerCase(), key: `${rest[0].toLowerCase()}__${rest[1].toLowerCase()}` };
+                }
+                if (rest.length === 1) return { kind: 'code', code: rest[0], key: rest[0] };
+              }
+            }
+          } catch (_) {}
 
-        let activeCode = '';
-        let activeSessionId = '';
-        let eventSource = null;
-        let demoTimer = null;
-        let points = []; // [{ t_ms, w_g, flow, temp_c }]
-        let targetWaterMl = 225;
-        let targetDurationSec = 145;
-        let currentStage = 'QUEUED_ASSIGNED';
-        let localCheers = 0;
-
-        function extractCodeFromUrl() {
-          const fromParam = params.get('code');
-          if (fromParam && /^\d{13}$/.test(fromParam.trim())) return fromParam.trim();
-          const m = window.location.pathname.match(/\/livebrew\/(\d{13})\/?$/);
-          return m ? m[1] : '';
-        }
-
-        function formatMmSs(sec) {
-          const s = Math.max(0, Math.floor(sec));
-          return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-        }
-
-        function renderStepper(stageCode) {
-          const idx = Math.max(0, STAGES.findIndex((s) => s.code === stageCode));
-          els.stageBanner.textContent = STAGE_LABELS[stageCode] || stageCode;
-          els.stageCounter.textContent = `Tahap ${Math.min(idx + 1, 7)} / 7`;
-          els.stepper.innerHTML = STAGES.map((st, i) => {
-            const done = i <= idx;
-            return `<div class="text-center">
-              <div class="h-1.5 rounded-full ${done ? 'bg-[#ECA400]' : 'bg-white/10'} transition-all"></div>
-              <span class="block mt-1 text-[9px] font-bold ${done ? 'text-[#ECA400]' : 'text-white/40'}">${st.short}</span>
-            </div>`;
-          }).join('');
-          els.svgBubbles.setAttribute('opacity', stageCode === 'BLOOMING_DEGASSING' ? '1' : '0');
-        }
-
-        function updateV60Visuals(weightG, flowMlS, tempC) {
-          const ratio = Math.min(1, Math.max(0, weightG / (targetWaterMl || 225)));
-          const serverTop = 250 - Math.round(ratio * 82);
-          els.svgServerLiquid.setAttribute('y', String(serverTop));
-          const coneFill = Math.min(1, Math.max(0.1, (flowMlS / 8.0) * 0.65 + ratio * 0.25));
-          els.svgConeWater.setAttribute('y', String(145 - Math.round(coneFill * 48)));
-          const coolShift = tempC <= 76;
-          els.svgKettleJet.setAttribute('stroke', coolShift ? '#7DD3FC' : '#FBBF24');
-          els.svgKettleJet.setAttribute('opacity', flowMlS > 0.2 ? '0.9' : '0.15');
-        }
-
-        // Cubic Hermite Spline Interpolation (10Hz samples -> 60fps canvas curve)
-        function drawHermiteChart() {
-          const canvas = els.canvas;
-          if (!canvas) return;
-          const dpr = window.devicePixelRatio || 1;
-          const rect = canvas.getBoundingClientRect();
-          if (rect.width < 10 || rect.height < 10) return;
-          if (canvas.width !== Math.round(rect.width * dpr) || canvas.height !== Math.round(rect.height * dpr)) {
-            canvas.width = Math.round(rect.width * dpr);
-            canvas.height = Math.round(rect.height * dpr);
-          }
-          const ctx = canvas.getContext('2d');
-          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-          const w = rect.width;
-          const h = rect.height;
-          ctx.clearRect(0, 0, w, h);
-
-          const padL = 38, padR = 14, padT = 14, padB = 24;
-          const pw = w - padL - padR;
-          const ph = h - padT - padB;
-          const maxSec = Math.max(targetDurationSec, points.length ? (points[points.length - 1].t_ms / 1000) + 10 : 145);
-          const maxWater = Math.max(targetWaterMl * 1.08, 240);
-          const toX = (sec) => padL + (sec / maxSec) * pw;
-          const toY = (gram) => padT + ph - (gram / maxWater) * ph;
-
-          // Grid lines
-          ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-          ctx.lineWidth = 1;
-          [0.25, 0.5, 0.75, 1].forEach((f) => {
-            const y = padT + ph * (1 - f);
-            ctx.beginPath();
-            ctx.moveTo(padL, y);
-            ctx.lineTo(w - padR, y);
-            ctx.stroke();
-          });
-
-          // Target Recipe Dashed Curve
-          ctx.save();
-          ctx.setLineDash([5, 5]);
-          ctx.strokeStyle = 'rgba(249,245,238,0.45)';
-          ctx.lineWidth = 1.6;
-          ctx.beginPath();
-          ctx.moveTo(toX(0), toY(0));
-          ctx.lineTo(toX(targetDurationSec * 0.24), toY(targetWaterMl * 0.2));
-          ctx.lineTo(toX(targetDurationSec * 0.52), toY(targetWaterMl * 0.6));
-          ctx.lineTo(toX(targetDurationSec), toY(targetWaterMl));
-          ctx.stroke();
-          ctx.restore();
-
-          if (points.length < 2) return;
-
-          // Hermite-interpolated Live Pour Curve
-          const grad = ctx.createLinearGradient(padL, 0, w - padR, 0);
-          grad.addColorStop(0, '#ECA400');
-          grad.addColorStop(1, '#34D399');
-          ctx.strokeStyle = grad;
-          ctx.lineWidth = 3;
-          ctx.lineCap = 'round';
-          ctx.beginPath();
-          ctx.moveTo(toX(points[0].t_ms / 1000), toY(points[0].w_g));
-
-          for (let i = 0; i < points.length - 1; i++) {
-            const p0 = points[i];
-            const p1 = points[i + 1];
-            const dtSec = Math.max(0.05, (p1.t_ms - p0.t_ms) / 1000);
-            const steps = 6;
-            for (let s = 1; s <= steps; s++) {
-              const u = s / steps;
-              const u2 = u * u;
-              const u3 = u2 * u;
-              const wInterp =
-                (2 * u3 - 3 * u2 + 1) * p0.w_g +
-                (u3 - 2 * u2 + u) * dtSec * p0.flow +
-                (-2 * u3 + 3 * u2) * p1.w_g +
-                (u3 - u2) * dtSec * p1.flow;
-              const tSec = (p0.t_ms + (p1.t_ms - p0.t_ms) * u) / 1000;
-              ctx.lineTo(toX(tSec), toY(Math.max(0, wInterp)));
+          if (text.includes('/')) {
+            const parts = text.split('/').map((s) => s.trim()).filter(Boolean);
+            if (parts.length >= 2) {
+              const cafe = parts[parts.length - 2].toLowerCase();
+              const seat = parts[parts.length - 1].toLowerCase();
+              return { kind: 'branded', cafe, seat, key: `${cafe}__${seat}` };
             }
           }
-          ctx.stroke();
+          return { kind: 'code', code: text, key: text };
+        }
+
+        function parseFromPathname() {
+          const segs = window.location.pathname.split('/').filter(Boolean);
+          const idx = segs.indexOf('livebrew');
+          if (idx >= 0) {
+            const rest = segs.slice(idx + 1);
+            if (rest.length >= 2) {
+              const cafe = decodeURIComponent(rest[0]).toLowerCase();
+              const seat = decodeURIComponent(rest[1]).toLowerCase();
+              return { kind: 'branded', cafe, seat, key: `${cafe}__${seat}` };
+            }
+            if (rest.length === 1) {
+              const code = decodeURIComponent(rest[0]);
+              return { kind: 'code', code, key: code };
+            }
+          }
+          const qCode = params.get('code');
+          if (qCode) return parseRawInput(qCode);
+          return null;
+        }
+
+        function setConnBadge(label, colorClass) {
+          $('conn-label').textContent = label;
+          $('conn-dot').className = `w-2 h-2 rounded-full ${colorClass}`;
+        }
+
+        function formatMmSs(ms) {
+          const totalSec = Math.max(0, Math.floor(ms / 1000));
+          const m = String(Math.floor(totalSec / 60)).padStart(2, '0');
+          const s = String(totalSec % 60).padStart(2, '0');
+          return `${m}:${s}`;
+        }
+
+        function computeElapsedMs(snap) {
+          if (!snap) return 0;
+          const acc = Number(snap.timer_accumulated_ms || 0);
+          if (String(snap.timer_status || '').toUpperCase() === 'RUNNING' && snap.timer_anchor_server_ms) {
+            const serverNow = Date.now() + clockOffsetMs;
+            return Math.max(0, acc + Math.max(0, serverNow - Number(snap.timer_anchor_server_ms)));
+          }
+          return Math.max(0, acc);
+        }
+
+        function targetDurationSec(snap) {
+          const rec = snap && snap.recipe_snapshot_json ? snap.recipe_snapshot_json : {};
+          if (rec.totalTimeSeconds && Number(rec.totalTimeSeconds) > 0) return Number(rec.totalTimeSeconds);
+          if (Array.isArray(rec.steps) && rec.steps.length > 0) {
+            const sum = rec.steps.reduce((a, s) => a + Number(s.durationSeconds || s.duration || 30), 0);
+            if (sum > 0) return sum;
+          }
+          return 150;
+        }
+
+        function tickTimerFrame() {
+          if (!currentSnap) return;
+          const elapsedMs = computeElapsedMs(currentSnap);
+          const targetMs = Math.max(1000, targetDurationSec(currentSnap) * 1000);
+          const progress = Math.min(1, Math.max(0, elapsedMs / targetMs));
+          $('timer-mmss').textContent = formatMmSs(elapsedMs);
+          $('timer-tenth').textContent = `.${Math.floor((elapsedMs % 1000) / 100)}`;
+          $('timer-target').textContent = `Target ${formatMmSs(targetMs)}`;
+          $('timer-arc').setAttribute('stroke-dashoffset', String(CIRCUMFERENCE * (1 - progress)));
+          if (String(currentSnap.timer_status || '').toUpperCase() === 'RUNNING') {
+            rafId = requestAnimationFrame(tickTimerFrame);
+          } else {
+            rafId = null;
+          }
+        }
+
+        function ensureTimerLoop() {
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = requestAnimationFrame(tickTimerFrame);
+        }
+
+        async function calibrateNtp() {
+          bestRttMs = Number.MAX_SAFE_INTEGER;
+          for (let i = 0; i < 3; i++) {
+            const t1 = Date.now();
+            try {
+              const res = await fetch(`${apiBase}/api/v1/livebrew/ntp?client_send_ms=${t1}`);
+              if (!res.ok) continue;
+              const body = await res.json();
+              const d = body && body.data ? body.data : null;
+              if (!d) continue;
+              const t4 = Date.now();
+              const t2 = Number(d.server_recv_ms || t1);
+              const t3 = Number(d.server_send_ms || t2);
+              const rtt = Math.max(0, (t4 - t1) - (t3 - t2));
+              if (rtt < bestRttMs) {
+                bestRttMs = rtt;
+                clockOffsetMs = Math.round(((t2 - t1) + (t3 - t4)) / 2);
+              }
+            } catch (_) {}
+          }
+        }
+
+        function applyBranding(branding, seat) {
+          const accent = (branding && branding.accent_color_hex) || '#D4A373';
+          document.documentElement.style.setProperty('--brand-accent', accent);
+          $('timer-arc').setAttribute('stroke', accent);
+
+          if (branding && branding.cafe_display_name) {
+            $('cafe-name').textContent = branding.cafe_display_name;
+            $('header-brand-title').textContent = branding.cafe_display_name;
+          } else if (currentSnap && currentSnap.brewer_display_name) {
+            $('cafe-name').textContent = `Studio Seduh ${currentSnap.brewer_display_name}`;
+          }
+
+          if (branding && branding.logo_cloudinary_url) {
+            $('header-cafe-logo').src = branding.logo_cloudinary_url;
+          }
+          if (branding && branding.welcome_message) {
+            $('cafe-welcome').textContent = branding.welcome_message;
+          }
+
+          if (seat && seat.seat_label) {
+            $('seat-pill').textContent = `${seat.seat_label} • ${seat.zone_area || 'Main Area'}`;
+            $('seat-pill').classList.remove('hidden');
+            $('idle-title').textContent = `${seat.seat_label} Terhubung Real-Time — Menunggu Barista`;
+          } else {
+            $('seat-pill').classList.add('hidden');
+          }
+
+          if (branding && branding.wifi_ssid) {
+            const pass = branding.wifi_password || '';
+            $('wifi-text').textContent = pass ? `${branding.wifi_ssid} • Sandi: ${pass}` : branding.wifi_ssid;
+            $('wifi-bar').classList.remove('hidden');
+            $('copy-wifi-btn').onclick = () => {
+              if (pass && navigator.clipboard) {
+                navigator.clipboard.writeText(pass);
+                $('copy-wifi-btn').textContent = 'Tersalin!';
+                setTimeout(() => ($('copy-wifi-btn').textContent = 'Salin Sandi'), 1800);
+              }
+            };
+          } else {
+            $('wifi-bar').classList.add('hidden');
+          }
+        }
+
+        function renderPosProgress(pos, snap, branding) {
+          if (!pos && !(snap && snap.pos_order_number)) {
+            $('pos-order-card').classList.add('hidden');
+            return;
+          }
+          $('pos-order-card').classList.remove('hidden');
+          const orderNo = (pos && pos.pos_order_number) || (snap && snap.pos_order_number) || '';
+          const customer = (pos && pos.customer_name) || (snap && snap.customer_name) || 'Pelanggan';
+          $('pos-order-title').textContent = `Pesanan ${orderNo} • ${customer}`;
+          $('pos-order-items').textContent = (pos && pos.items_summary) || 'Specialty Handcrafted Coffee';
+
+          if (branding?.show_pos_queue_position !== false && pos && Number(pos.queue_position_ahead || 0) > 0) {
+            $('pos-queue-pill').textContent = `Antrean #${pos.queue_position_ahead}`;
+            $('pos-queue-pill').classList.remove('hidden');
+          } else {
+            $('pos-queue-pill').classList.add('hidden');
+          }
+
+          const phase = String(snap?.phase || '').toUpperCase();
+          const st = String(pos?.pos_order_status || snap?.pos_order_status || 'QUEUED').toUpperCase();
+          let activeIdx = 0;
+          if (phase === 'SERVING_READY_PASSPORT' || st === 'SERVED' || st === 'READY') activeIdx = 3;
+          else if (phase === 'BREWING_ACTIVE' || phase === 'BREWING_PAUSED' || st === 'BREWING') activeIdx = 2;
+          else if (phase === 'BREWER_SELECTING_RECIPE' || phase === 'BREWER_SELECTING_BEAN' || phase === 'PRE_BREW_CALIBRATED') activeIdx = 1;
+
+          document.querySelectorAll('#pos-stepper [data-pos-step]').forEach((el) => {
+            const idx = Number(el.getAttribute('data-pos-step'));
+            if (idx <= activeIdx) {
+              el.style.background = 'var(--brand-accent)';
+              el.style.color = '#12100E';
+            } else {
+              el.style.background = '#12100E';
+              el.style.color = '#9C8F82';
+            }
+          });
         }
 
         function renderSnapshot(snap) {
-          els.emptyCard.classList.add('hidden');
-          els.waitingCard.classList.add('hidden');
-          els.dashboard.classList.remove('hidden');
-
-          activeSessionId = snap.session_id || '';
-          targetWaterMl = Number(snap.target_water_ml || 225);
-          targetDurationSec = Number(snap.target_duration_sec || 145);
-          currentStage = snap.current_stage || 'QUEUED_ASSIGNED';
-
-          els.sessionCode.textContent = snap.dynamic_address_code || activeCode;
-          els.openAppLink.href = snap.deep_link_url || `coffeelabs://livebrew/${activeCode}`;
-          els.passportAppLink.href = els.openAppLink.href;
-          if (snap.table_number) {
-            els.tableChip.classList.remove('hidden');
-            els.tableChip.textContent = snap.table_number;
-          } else {
-            els.tableChip.classList.add('hidden');
+          if (!snap) {
+            $('idle-waiting-card').classList.remove('hidden');
+            $('active-mirror-grid').classList.add('hidden');
+            $('passport-card').classList.add('hidden');
+            return;
           }
-          els.storeBarista.textContent = `${snap.store_name || 'Coffee Labs'} • Barista ${snap.barista_display_name || 'Coffee Labs'}`;
-          els.recipeTitle.textContent = snap.recipe_title || 'V60 Live Brew';
-          els.beanMeta.textContent = `${snap.bean_name || ''} • ${snap.roastery_name || ''} • ${snap.bean_process || ''}`;
-          els.tastingRow.innerHTML = (snap.tasting_notes || [])
-            .map((n) => `<span class="px-2.5 py-0.5 rounded-full bg-white/10 text-[11px] font-semibold text-amber-200">${n}</span>`)
+
+          const ver = Number(snap.state_version || 1);
+          if (ver < appliedVersion) return;
+          appliedVersion = ver;
+          currentSnap = snap;
+
+          $('idle-waiting-card').classList.add('hidden');
+          $('active-mirror-grid').classList.remove('hidden');
+
+          $('phase-label').textContent = snap.phase_label_id || snap.phase || 'Seduhan Aktif';
+          $('ntp-meta').textContent = `v${ver} • NTP ${clockOffsetMs >= 0 ? '+' : ''}${clockOffsetMs}ms`;
+          $('metric-weight').textContent = `${Number(snap.current_weight_g || 0).toFixed(1)} g`;
+          $('metric-flow').textContent = `${Number(snap.current_flow_rate_ml_s || 0).toFixed(1)} ml/s`;
+          $('metric-temp').textContent = `${Math.round(Number(snap.current_temp_c || 91))}°C`;
+          $('brewer-name').textContent = snap.brewer_display_name || 'Barista Coffee Labs';
+          $('viewers-cheers').textContent = `${Number(snap.active_viewers_count || 1)} penonton • ${Number(snap.cheers_count || 0)} apresiasi`;
+
+          // Recipe Card
+          $('method-badge').textContent = snap.selected_method_name || 'Menunggu Metode';
+          $('recipe-title').textContent = snap.selected_recipe_title || 'Barista sedang memilih resep terbaik...';
+          const rec = snap.recipe_snapshot_json || {};
+          const specs = [];
+          if (rec.coffeeWeightGrams) specs.push(`Dosis ${rec.coffeeWeightGrams}g`);
+          if (rec.totalWaterWeightGrams) specs.push(`Air ${rec.totalWaterWeightGrams}ml`);
+          if (snap.current_temp_c) specs.push(`Suhu ${Math.round(snap.current_temp_c)}°C`);
+          $('recipe-specs').innerHTML = specs
+            .map((s) => `<span class="px-2.5 py-1 rounded-lg bg-[#12100E] border border-white/10 font-bold text-[#F9F5EE]">${s}</span>`)
             .join('');
 
-          els.targetDose.textContent = `${Number(snap.target_dose_g || 15).toFixed(0)}g`;
-          els.targetWater.textContent = `${targetWaterMl.toFixed(0)}ml`;
-          els.targetTemp.textContent = `${Number(snap.target_temp_c || 91).toFixed(0)}°C`;
+          const steps = Array.isArray(rec.steps) ? rec.steps : [];
+          const curIdx = Number(snap.current_step_index || 0);
+          $('recipe-steps').innerHTML = steps
+            .map((st, idx) => {
+              const isAct = idx === curIdx && String(snap.phase).toUpperCase() === 'BREWING_ACTIVE';
+              const isDone = idx < curIdx || String(snap.phase).toUpperCase() === 'SERVING_READY_PASSPORT';
+              const title = st.title || st.name || `Tahap ${idx + 1}`;
+              const dur = Number(st.durationSeconds || st.duration || 30);
+              return `<div class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl text-xs ${
+                isAct ? 'bg-[#D4A373]/20 border border-[#D4A373] text-[#F9F5EE] font-extrabold' : 'bg-[#12100E] border border-white/5 text-[#CBBFB2]'
+              }">
+                <span class="truncate">${isDone ? '✓ ' : isAct ? '▶ ' : '• '}${title}</span>
+                <span class="font-mono shrink-0" style="color: var(--brand-accent)">${dur}d</span>
+              </div>`;
+            })
+            .join('');
 
-          localCheers = Number(snap.cheers_reactions_count || 0);
-          els.cheersCounter.textContent = String(localCheers);
+          // Bean Passport Card
+          const bean = snap.bean_snapshot_json || {};
+          const beanName = bean.name || bean.bean_name || '';
+          $('bean-name').textContent = beanName || 'Menunggu barista memilih biji kopi...';
+          $('bean-sub').textContent = [bean.roastery || bean.roaster, bean.origin, bean.process]
+            .filter(Boolean)
+            .join(' • ');
+          const rawNotes = bean.tasting_notes || bean.notes;
+          const notes = Array.isArray(rawNotes)
+            ? rawNotes
+            : typeof rawNotes === 'string' && rawNotes.trim()
+            ? rawNotes.split(',').map((s) => s.trim())
+            : [];
+          $('bean-notes').innerHTML = notes
+            .slice(0, 6)
+            .map((n) => `<span class="px-2.5 py-1 rounded-full text-[11px] font-bold bg-[#D4A373]/15 text-[#F9F5EE]">${n}</span>`)
+            .join('');
 
-          points = Array.isArray(snap.catchup_curve_points) ? [...snap.catchup_curve_points] : [];
-          applyTelemetryPoint(
-            (snap.elapsed_sec || 0) * 1000,
-            snap.current_weight_g || 0,
-            snap.current_flow_rate_ml_s || 0,
-            snap.current_temp_c || snap.target_temp_c || 91,
-            false
-          );
-          renderStepper(currentStage);
-
-          if (currentStage === 'READY_TO_SERVE') {
-            els.passportCard.classList.remove('hidden');
-            els.passportAcc.textContent = `${Number(snap.final_accuracy_score_pct || 98.5).toFixed(1)}%`;
+          // Digital Cup Passport
+          if (String(snap.phase).toUpperCase() === 'SERVING_READY_PASSPORT') {
+            $('passport-card').classList.remove('hidden');
+            $('passport-summary').textContent = `Seduhan selesai dalam ${formatMmSs(Number(snap.timer_accumulated_ms || 0))} dengan berat akhir ${Number(snap.current_weight_g || 0).toFixed(1)} g oleh ${snap.brewer_display_name || 'Barista Coffee Labs'}.`;
           } else {
-            els.passportCard.classList.add('hidden');
+            $('passport-card').classList.add('hidden');
           }
+
+          renderPosProgress(currentResolution?.pos_order_progress, snap, currentResolution?.branding);
+          ensureTimerLoop();
         }
 
-        function applyTelemetryPoint(tMs, wG, flow, tempC, pushPoint = true) {
-          if (pushPoint) points.push({ t_ms: tMs, w_g: wG, flow, temp_c: tempC });
-          els.gaugeTimer.textContent = formatMmSs(tMs / 1000);
-          els.gaugeWeight.textContent = `${Number(wG).toFixed(1)}g`;
-          els.gaugeFlow.textContent = `${Number(flow).toFixed(1)} ml/s`;
-          els.gaugeTemp.textContent = `${Number(tempC).toFixed(1)}°C`;
-          updateV60Visuals(wG, flow, tempC);
-          drawHermiteChart();
+        function closeStreams() {
+          if (ws) { try { ws.close(); } catch (_) {} ws = null; }
+          if (es) { try { es.close(); } catch (_) {} es = null; }
         }
 
-        function spawnCheerParticle(kind) {
-          const map = { clap: '👏', fire: '🔥', coffee: '☕' };
-          const el = document.createElement('div');
-          el.className = 'cheer-particle';
-          el.textContent = map[kind] || kind || '☕';
-          el.style.left = `${30 + Math.random() * 45}vw`;
-          el.style.bottom = '90px';
-          document.body.appendChild(el);
-          setTimeout(() => el.remove(), 1250);
-        }
-
-        async function loadAndConnect(code) {
-          stopDemo();
-          activeCode = code;
-          els.codeInput.value = code;
-          if (eventSource) { eventSource.close(); eventSource = null; }
-
+        function connectRealtimeStream(targetKey) {
+          closeStreams();
           try {
-            const resp = await fetch(`${apiBase}/api/v1/livebrew/resolve/${encodeURIComponent(code)}`);
-            const body = await resp.json();
-            const data = body.data;
-            if (!resp.ok || !data) throw new Error(body.message || 'Kode tidak ditemukan');
-
-            if (data.resolution_kind === 'TABLE_WAITING' && data.waiting) {
-              els.emptyCard.classList.add('hidden');
-              els.dashboard.classList.add('hidden');
-              els.waitingCard.classList.remove('hidden');
-              els.waitingBadge.textContent = `${data.waiting.table_number} • ${data.waiting.static_address_code}`;
-              els.waitingTitle.textContent = `${data.waiting.table_number} — Menunggu Barista Memulai Seduhan`;
-            } else if (data.session) {
-              renderSnapshot(data.session);
-            }
-
-            eventSource = new EventSource(`${apiBase}/api/v1/livebrew/stream/${encodeURIComponent(code)}/sse`);
-            eventSource.onmessage = (msg) => {
+            ws = new WebSocket(`${wsBase}/api/v1/livebrew/v2/stream/${encodeURIComponent(targetKey)}/ws`);
+            ws.onopen = () => {
+              setConnBadge('LIVE WS', 'bg-emerald-400 live-dot');
+              ws.send(JSON.stringify({ cmd: 'NTP_PING', client_send_ms: Date.now() }));
+            };
+            ws.onmessage = (evt) => {
               try {
-                const ev = JSON.parse(msg.data);
-                if (ev.event === 'initial_session_snapshot') renderSnapshot(ev);
-                if (ev.event === 'table_session_bound' && ev.snapshot) renderSnapshot(ev.snapshot);
-                if (ev.event === 'stage_changed') {
-                  currentStage = ev.stage;
-                  renderStepper(ev.stage);
-                }
-                if (ev.event === 'telemetry_tick') {
-                  applyTelemetryPoint(ev.t_ms, ev.w_g, ev.flow, ev.temp_c, true);
-                }
-                if (ev.event === 'customer_cheer') {
-                  localCheers = Number(ev.total_cheers || localCheers + 1);
-                  els.cheersCounter.textContent = String(localCheers);
-                  spawnCheerParticle(ev.cheer_kind);
-                }
-                if (ev.event === 'video_keyframe_relayed' && ev.jpeg_b64) {
-                  els.camOffline.classList.add('hidden');
-                  els.liveImg.classList.remove('hidden');
-                  els.liveImg.src = `data:image/jpeg;base64,${ev.jpeg_b64}`;
-                }
-                if (ev.event === 'brew_completed_passport') {
-                  currentStage = 'READY_TO_SERVE';
-                  renderStepper('READY_TO_SERVE');
-                  els.passportCard.classList.remove('hidden');
-                  els.passportAcc.textContent = `${Number(ev.accuracy_score_pct || 98.4).toFixed(1)}%`;
+                const ev = JSON.parse(evt.data);
+                if (ev.event === 'ntp_pong') {
+                  const t4 = Date.now();
+                  const t1 = Number(ev.client_send_ms || t4);
+                  const t2 = Number(ev.server_recv_ms || t4);
+                  const t3 = Number(ev.server_send_ms || t2);
+                  clockOffsetMs = Math.round(((t2 - t1) + (t3 - t4)) / 2);
+                } else if (ev.event === 'mirror_snapshot') {
+                  renderSnapshot(ev);
+                } else if (ev.event === 'cheer_burst' && currentSnap) {
+                  currentSnap.cheers_count = Number(ev.total_cheers || currentSnap.cheers_count || 0);
+                  $('viewers-cheers').textContent = `${Number(currentSnap.active_viewers_count || 1)} penonton • ${currentSnap.cheers_count} apresiasi`;
+                } else if (ev.event === 'pos_order_updated') {
+                  if (currentResolution) {
+                    currentResolution.pos_order_progress = ev;
+                    renderPosProgress(ev, currentSnap, currentResolution.branding);
+                  }
                 }
               } catch (_) {}
             };
+            ws.onerror = () => connectSseFallback(targetKey);
+            ws.onclose = () => {
+              if (!es) setConnBadge('RECONNECT', 'bg-amber-400');
+            };
           } catch (_) {
-            els.emptyCard.classList.remove('hidden');
+            connectSseFallback(targetKey);
           }
         }
 
-        function stopDemo() {
-          if (demoTimer) { clearInterval(demoTimer); demoTimer = null; }
-        }
-
-        function startDemo() {
-          stopDemo();
-          if (eventSource) { eventSource.close(); eventSource = null; }
-          activeCode = '3201923849204';
-          renderSnapshot({
-            session_id: 'demo-live-v60',
-            dynamic_address_code: '3201923849204',
-            table_number: 'Meja 04 (Demo)',
-            store_name: 'Coffee Labs Flagship Bar',
-            barista_display_name: 'Master Kaito',
-            recipe_title: 'Malabar Wine Dual-Temp 93°C -> 70°C V60',
-            bean_name: 'Malabar Wine Reserve 1700 MDPL',
-            roastery_name: 'Coffee Labs Roastery',
-            bean_process: 'Wine Natural',
-            tasting_notes: ['Winey Grape', 'Dark Cocoa', 'Sweet Berry'],
-            target_dose_g: 15,
-            target_water_ml: 225,
-            target_temp_c: 93,
-            target_duration_sec: 145,
-            current_stage: 'BLOOMING_DEGASSING',
-            cheers_reactions_count: 3,
-            catchup_curve_points: [],
-          });
-
-          let tMs = 0;
-          demoTimer = setInterval(() => {
-            tMs += 500;
-            const sec = tMs / 1000;
-            let w = 0;
-            let flow = 0;
-            let temp = 93.0;
-            let stage = 'BLOOMING_DEGASSING';
-            if (sec <= 35) {
-              w = Math.min(45, sec * 3.8);
-              flow = sec < 12 ? 3.8 : 0.1;
-              stage = 'BLOOMING_DEGASSING';
-            } else if (sec <= 105) {
-              stage = 'ACTIVE_POURING';
-              w = Math.min(225, 45 + (sec - 35) * 2.57);
-              flow = 5.1 + Math.sin(sec * 0.4) * 0.5;
-              if (sec > 72) temp = 70.4;
-            } else if (sec < 145) {
-              stage = 'DRAWDOWN_SWIRL';
-              w = 225.0;
-              flow = 0.0;
-              temp = 70.0;
-            } else {
-              stage = 'READY_TO_SERVE';
-              w = 225.0;
-              flow = 0.0;
-              renderStepper('READY_TO_SERVE');
-              els.passportCard.classList.remove('hidden');
-              els.passportAcc.textContent = '99.1%';
-              stopDemo();
-              return;
-            }
-            if (stage !== currentStage) {
-              currentStage = stage;
-              renderStepper(stage);
-            }
-            applyTelemetryPoint(tMs, w, flow, temp, true);
-          }, 250);
-        }
-
-        els.codeForm?.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const val = (els.codeInput?.value || '').trim();
-          if (val) {
-            window.history.replaceState({}, '', `/livebrew/${val}`);
-            loadAndConnect(val);
-          }
-        });
-
-        els.demoBtn?.addEventListener('click', startDemo);
-        els.startDemoCta?.addEventListener('click', startDemo);
-
-        els.tabTelemetry?.addEventListener('click', () => {
-          els.v60Pane.classList.remove('hidden');
-          els.camPane.classList.add('hidden');
-          els.tabTelemetry.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-[#D4AF37] text-[#12100E] cursor-pointer transition';
-          els.tabCamera.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-white/8 text-white/75 hover:text-white cursor-pointer transition';
-        });
-
-        els.tabCamera?.addEventListener('click', () => {
-          els.camPane.classList.remove('hidden');
-          els.v60Pane.classList.add('hidden');
-          els.tabCamera.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-[#D4AF37] text-[#12100E] cursor-pointer transition';
-          els.tabTelemetry.className = 'flex-1 py-2 rounded-xl text-xs font-bold bg-white/8 text-white/75 hover:text-white cursor-pointer transition';
-        });
-
-        document.querySelectorAll('.cheer-btn').forEach((btn) => {
-          btn.addEventListener('click', async () => {
-            const kind = btn.getAttribute('data-cheer') || 'coffee';
-            spawnCheerParticle(kind);
-            localCheers += 1;
-            els.cheersCounter.textContent = String(localCheers);
-            if (!demoTimer && activeCode) {
+        function connectSseFallback(targetKey) {
+          if (es) return;
+          try {
+            es = new EventSource(`${apiBase}/api/v1/livebrew/v2/stream/${encodeURIComponent(targetKey)}/sse`);
+            es.onopen = () => setConnBadge('LIVE SSE', 'bg-emerald-400 live-dot');
+            es.onmessage = (evt) => {
               try {
-                await fetch(`${apiBase}/api/v1/livebrew/${encodeURIComponent(activeCode)}/cheer`, {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ cheer_kind: kind }),
-                });
+                const ev = JSON.parse(evt.data);
+                if (ev.event === 'mirror_snapshot') renderSnapshot(ev);
               } catch (_) {}
-            }
-          });
+            };
+          } catch (_) {}
+        }
+
+        async function loadTarget(target, pushUrl = false) {
+          currentTarget = target;
+          appliedVersion = -1;
+          currentSnap = null;
+          closeStreams();
+
+          $('lookup-error').classList.add('hidden');
+          $('lookup-card').classList.add('hidden');
+          $('live-shell').classList.add('hidden');
+          $('loading-card').classList.remove('hidden');
+          setConnBadge('SYNC...', 'bg-amber-400 live-dot');
+
+          const deepLink = target.kind === 'branded'
+            ? `coffeelabs://livebrew/${target.cafe}/${target.seat}`
+            : `coffeelabs://livebrew/${target.code}`;
+          $('open-app-header').href = deepLink;
+          $('passport-deeplink').href = deepLink;
+
+          if (pushUrl) {
+            const newPath = target.kind === 'branded'
+              ? `/livebrew/${target.cafe}/${target.seat}`
+              : `/livebrew/${target.code}`;
+            window.history.replaceState({}, '', newPath);
+          }
+
+          await calibrateNtp();
+
+          const endpoint = target.kind === 'branded'
+            ? `${apiBase}/api/v1/livebrew/resolve/cafe/${encodeURIComponent(target.cafe)}/${encodeURIComponent(target.seat)}`
+            : `${apiBase}/api/v1/livebrew/resolve/code/${encodeURIComponent(target.code)}`;
+
+          try {
+            const res = await fetch(endpoint);
+            if (!res.ok) throw new Error('Sesi atau meja tidak ditemukan');
+            const body = await res.json();
+            const data = body && body.data ? body.data : null;
+            if (!data) throw new Error('Respon server kosong');
+
+            currentResolution = data;
+            $('loading-card').classList.add('hidden');
+            $('live-shell').classList.remove('hidden');
+
+            applyBranding(data.branding, data.seat);
+            renderPosProgress(data.pos_order_progress, data.active_brew_session, data.branding);
+            renderSnapshot(data.active_brew_session || null);
+            connectRealtimeStream(target.key);
+          } catch (err) {
+            $('loading-card').classList.add('hidden');
+            $('lookup-card').classList.remove('hidden');
+            $('lookup-error').textContent =
+              'Kode atau meja Live Brew tidak ditemukan di server. Pastikan QR aktif atau barista sudah memulai siaran.';
+            $('lookup-error').classList.remove('hidden');
+            setConnBadge('OFFLINE', 'bg-red-500');
+          }
+        }
+
+        $('jump-form').addEventListener('submit', (e) => {
+          e.preventDefault();
+          const parsed = parseRawInput($('target-input').value);
+          if (!parsed) {
+            $('lookup-error').textContent = 'Masukkan kode 13 digit atau slug cafe/meja yang valid.';
+            $('lookup-error').classList.remove('hidden');
+            return;
+          }
+          loadTarget(parsed, true);
         });
 
-        const initialCode = extractCodeFromUrl();
-        if (initialCode) {
-          loadAndConnect(initialCode);
-        } else {
-          els.emptyCard.classList.remove('hidden');
+        $('change-target-btn').addEventListener('click', () => {
+          closeStreams();
+          $('live-shell').classList.add('hidden');
+          $('lookup-card').classList.remove('hidden');
+        });
+
+        $('cheer-btn').addEventListener('click', async (ev) => {
+          if (!currentTarget) return;
+          const p = document.createElement('span');
+          p.className = 'cheer-particle';
+          p.textContent = '☕';
+          p.style.left = `${ev.clientX}px`;
+          p.style.top = `${ev.clientY}px`;
+          document.body.appendChild(p);
+          setTimeout(() => p.remove(), 1200);
+          try {
+            const key = currentSnap?.share_code || currentTarget.key;
+            await fetch(`${apiBase}/api/v1/livebrew/v2/${encodeURIComponent(key)}/cheer`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ cheer_kind: 'clap' }),
+            });
+          } catch (_) {}
+        });
+
+        const initial = parseFromPathname();
+        if (initial) {
+          loadTarget(initial, false);
         }
       })();
     </script>

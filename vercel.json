@@ -4,6 +4,8 @@
   "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": "astro",
   "rewrites": [
+    { "source": "/livebrew/:cafeSlug/:seatSlug", "destination": "/livebrew" },
+    { "source": "/livebrew/:cafeSlug/:seatSlug/", "destination": "/livebrew" },
     { "source": "/livebrew/:code", "destination": "/livebrew" },
     { "source": "/livebrew/:code/", "destination": "/livebrew" }
   ]
