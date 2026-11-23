@@ -373,12 +373,20 @@ const pageDesc =
         const params = new URLSearchParams(window.location.search);
         const queryApi = params.get('api');
         if (queryApi) localStorage.setItem('coffeelabs_api_base', queryApi.replace(/\/$/, ''));
+        const cachedApi = localStorage.getItem('coffeelabs_api_base');
+        const safeCachedApi =
+          cachedApi && !cachedApi.toLowerCase().includes('onrender.com')
+            ? cachedApi
+            : null;
+        if (cachedApi && !safeCachedApi) {
+          localStorage.removeItem('coffeelabs_api_base');
+        }
         const apiBase =
           queryApi ||
-          localStorage.getItem('coffeelabs_api_base') ||
+          safeCachedApi ||
           (window.location.hostname === 'localhost' && params.get('local') === '1'
             ? 'http://127.0.0.1:3000'
-            : 'https://coffe-labs-backend.onrender.com');
+            : 'https://coffe-labs-backend-production.up.railway.app');
         const wsBase = apiBase.startsWith('https://')
           ? apiBase.replace(/^https:\/\//, 'wss://')
           : apiBase.replace(/^http:\/\//, 'ws://');
