@@ -27,8 +27,8 @@ export const landingData = {
     tagline: "Master Your Brew",
     subTagline: "Specialty Coffee Brewing Labs",
     description: "Aplikasi panduan seduh kopi manual presisi terlengkap di Indonesia. Multi-platform untuk iOS, Android & Web. 500+ resep barista dunia & Indonesia, guided timer interaktif, diagnosis Brew Doctor, cupping SCA 10 parameter, konverter 100+ grinder, dan 50 roastery lokal.",
-    version: "2.5.3",
-    downloadAndroid: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.3/Coffee.Labs.253.apk",
+    version: "2.5.4",
+    downloadAndroid: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.4/Coffee.Labs.254.apk",
     downloadIos: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/CoffeLabs25.ipa",
   },
 
