@@ -29,7 +29,7 @@ export const landingData = {
     description: "Aplikasi panduan seduh kopi manual presisi terlengkap di Indonesia. Multi-platform untuk iOS, Android & Web. 500+ resep barista dunia & Indonesia, guided timer interaktif, diagnosis Brew Doctor, cupping SCA 10 parameter, konverter 100+ grinder, dan 50 roastery lokal.",
     version: "2.5.2",
     downloadAndroid: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/Coffe_Labs_25.apk",
-    downloadIos: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.1/CoffeLabs25.ipa",
+    downloadIos: "https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/CoffeLabs25.ipa",
   },
 
   stats: [

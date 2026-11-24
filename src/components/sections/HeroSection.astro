@@ -72,7 +72,7 @@ import { landingData } from '../../data/landingData';
         <div class="pt-2 grid grid-cols-3 gap-1.5 sm:gap-2.5 max-w-sm sm:max-w-md mx-auto lg:mx-0">
           <!-- Apple (iOS) Badge -->
           <a
-            href="https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.1/CoffeLabs25.ipa"
+            href={landingData.brand.downloadIos}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-1.5 px-2 py-2 bg-black text-white rounded-lg shadow-xs hover:scale-105 transition-transform border border-white/10 text-center"
@@ -89,7 +89,7 @@ import { landingData } from '../../data/landingData';
 
           <!-- Android Badge -->
           <a
-            href="https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.1/Coffe_Labs_25.apk"
+            href={landingData.brand.downloadAndroid}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-1.5 px-2 py-2 bg-black text-white rounded-lg shadow-xs hover:scale-105 transition-transform text-center"
@@ -106,11 +106,11 @@ import { landingData } from '../../data/landingData';
 
           <!-- Direct APK Download Badge -->
           <a
-            href="https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.1/Coffe_Labs_25.apk"
+            href={landingData.brand.downloadAndroid}
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center justify-center gap-1.5 px-2 py-2 bg-[#6B4423] text-white rounded-lg shadow-xs hover:bg-[#563519] transition-all text-center"
-            title="Download file APK Android langsung"
+            title={`Download file APK Android v${landingData.brand.version}`}
           >
             <Icon name="package" size={13} color="#FFFFFF" />
             <div class="text-left leading-tight">
