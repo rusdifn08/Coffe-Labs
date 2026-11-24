@@ -3,6 +3,15 @@
   "buildCommand": "pnpm build",
   "installCommand": "pnpm install --no-frozen-lockfile",
   "framework": "astro",
+  "headers": [
+    {
+      "source": "/runtime-endpoints.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=60" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/livebrew/:cafeSlug/:seatSlug", "destination": "/livebrew" },
     { "source": "/livebrew/:cafeSlug/:seatSlug/", "destination": "/livebrew" },
