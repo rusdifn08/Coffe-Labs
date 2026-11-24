@@ -19,7 +19,7 @@
 
 Tersedia secara resmi sebagai aplikasi **Multi-Platform**:
 - 🍏 **iOS (iPhone & iPad)**: [Download IPA Release (v2.5.2)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/CoffeLabs25.ipa)
-- 🤖 **Android (Google Play & APK)**: [Download APK Universal (v2.5.2)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/Coffe_Labs_25.apk)
+- 🤖 **Android (Google Play & APK)**: [Download APK ARM64 (v2.5.3 - 78.7 MB)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.3/Coffee.Labs.253.apk)
 - 🌐 **Web App Live Trial**: Akses uji coba langsung tanpa instalasi di `/trial`
 
 ---
