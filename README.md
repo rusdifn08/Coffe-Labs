@@ -18,7 +18,7 @@
 **Coffee Labs** adalah ekosistem aplikasi panduan seduh kopi manual presisi terlengkap di Indonesia. Dirancang khusus untuk home brewer, barista kompetisi, hingga slow bar café komersial yang menginginkan konsistensi rasa kopi terbaik di setiap cangkir tanpa tebakan.
 
 Tersedia secara resmi sebagai aplikasi **Multi-Platform**:
-- 🍏 **iOS (iPhone & iPad)**: [Download IPA Release (v2.5.2)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.2/CoffeLabs25.ipa)
+- 🍏 **iOS (iPhone & iPad)**: [Download IPA Release (v2.5.5-r2)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.5-r2/CoffeLabs25.ipa)
 - 🤖 **Android (Google Play & APK)**: [Download APK ARM64 (v2.5.5)](https://github.com/rusdifn08/coffe-labs-mobile/releases/download/v2.5.5/Coffee.Labs.255.apk)
 - 🌐 **Web App Live Trial**: Akses uji coba langsung tanpa instalasi di `/trial`
 
